@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Inter:wght@400;600;700&family=Itim&family=Open+Sans:wght@400;600&family=Playfair+Display:wght@400;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html,
+body,
+#root,
+.app {
+    height: 100%;
+    width: 100%;
+    font-family: "DM Sans", sans-serif;
+    @apply text-white
+}
+
+.btn-bg {
+    background: linear-gradient(
+        92.23deg,
+        #3bace2 14.53%,
+        #406aff 69.36%
+    );
+}
+.btn-bg:hover {
+    background: linear-gradient(
+        92.23deg,
+        #406aff 21.43%,
+        #3bace2 50.63%,
+        #b936ee 100%,
+        #ff56f6 117.04%
+    );
+}
+
+@layer base {
+    .text-gradient-blue-dark {
+        @apply bg-gradient-to-r text-transparent bg-clip-text from-[#009FFD] to-[#2A2A72]
+    }
+    .text-gradient-blue {
+        @apply bg-gradient-to-r text-transparent bg-clip-text from-[#3EADCF] to-[#ABE9CD]
+    }
+}
