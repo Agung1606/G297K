@@ -1,3 +1,3 @@
-import { ButtonBlue } from "./Button";
+import { ButtonBlue, ButtonTransparent } from "./Button";
 
-export { ButtonBlue }
+export { ButtonBlue, ButtonTransparent };

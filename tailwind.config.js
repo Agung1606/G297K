@@ -14,6 +14,11 @@ module.exports = {
         LoraMedium: ["LoraMedium", "sans-serif"],
         LoraRegular: ["LoraRegular", "sans-serif"],
       },
+      colors: {
+        blue: "#1D7ED8",
+        darkBlue: "#00008b",
+        gainsboro: "#dcdcdc",
+      },
     },
   },
   plugins: [],

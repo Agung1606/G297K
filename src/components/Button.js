@@ -1,11 +1,27 @@
-import { Text, Pressable } from "react-native";
+import { Text, ActivityIndicator } from "react-native";
 import React from "react";
+import { StyledPressable } from "./styledComponent";
 
-export const ButtonBlue = ({ title, width, onPress }) => (
-  <Pressable
+export const ButtonBlue = ({ title, onPress, loading }) => (
+  <StyledPressable
     onPress={onPress}
-    className={`w-[${width}] h-[40px] justify-center items-center rounded-full bg-[#1D7ED8]`}
+    className={`w-full h-[42px] justify-center items-center rounded-full bg-blue shadow-md shadow-black active:scale-95 active:opacity-80`}
   >
-    <Text className="text-lg font-semibold text-white">{title}</Text>
-  </Pressable>
+    {loading ? (
+      <ActivityIndicator size={"large"} color={"#FFF"} />
+    ) : (
+      <Text className="text-lg font-InterSemiBold text-white">{title}</Text>
+    )}
+  </StyledPressable>
+);
+
+export const ButtonTransparent = ({ title, onPress, borderColor }) => (
+  <StyledPressable
+    onPress={onPress}
+    className={`w-full h-[45px] justify-center items-center border-[1.5px] ${borderColor} rounded-2xl active:scale-95`}
+  >
+    <Text className={`text-[16px] font-InterSemiBold`}>
+      {title}
+    </Text>
+  </StyledPressable>
 );
