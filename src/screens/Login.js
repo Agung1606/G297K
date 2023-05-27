@@ -4,6 +4,7 @@ import { LinearGradient } from "expo-linear-gradient";
 
 import { ButtonBlue, ButtonTransparent } from "../components";
 import { styles } from "../style/Global";
+import { useKeyboardVisible } from "../hooks";
 import { Entypo } from "@expo/vector-icons";
 
 const Login = () => {
@@ -14,22 +15,23 @@ const Login = () => {
 
   const [hidePassword, setHidePassword] = useState(true);
   const handleHidePassword = () => setHidePassword(!hidePassword);
+  const isKeyboardVisible = useKeyboardVisible();
 
   return (
     <View className="flex-1 justify-center items-center px-[6px]">
       <LinearGradient
         // Background Linear Gradient
-        colors={["#E8DBFC", "#F8F9D2"]}
-        start={[0, 0]}
+        colors={["#f3fffb", "#defff8"]}
+        start={[0.2, 0]}
         end={[1, 1]}
         className="absolute top-0 bottom-0 left-0 right-0"
       />
       {/* logo */}
-      <View className="absolute top-28">
+      <View className="absolute top-24">
         <Text className="text-4xl font-LoraBold">Logo</Text>
       </View>
       {/* form login wrapper */}
-      <View className="w-full h-auto p-4">
+      <View className="w-full h-auto p-4 items-center">
         {/* username */}
         <View className={`${styles.inputStyle} mb-3`}>
           <TextInput
@@ -72,15 +74,17 @@ const Login = () => {
         <Text className="font-InterSemiBold">Forget password?</Text>
       </TouchableOpacity>
       {/* create new account */}
-      <View className="w-[90%] absolute bottom-3 space-y-1">
-        <ButtonTransparent
-          title={"Create new account"}
-          borderColor={"border-blue"}
-        />
-        <Text className="text-center font-LoraBold tracking-wider text-gray-600">
-          G297K
-        </Text>
-      </View>
+      {!isKeyboardVisible && (
+        <View className="w-[90%] absolute bottom-3 space-y-1">
+          <ButtonTransparent
+            title={"Create new account"}
+            borderColor={"border-blue"}
+          />
+          <Text className="text-center font-LoraBold tracking-wider text-gray-600">
+            G297K
+          </Text>
+        </View>
+      )}
     </View>
   );
 };

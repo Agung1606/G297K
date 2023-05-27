@@ -17,7 +17,6 @@ module.exports = {
       colors: {
         blue: "#1D7ED8",
         darkBlue: "#00008b",
-        gainsboro: "#dcdcdc",
       },
     },
   },
