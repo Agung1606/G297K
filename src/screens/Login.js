@@ -1,13 +1,14 @@
-import { View, TextInput, Text, TouchableOpacity } from "react-native";
+import { View, TextInput, Text, TouchableOpacity, Image } from "react-native";
 import React, { useState } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 
 import { ButtonBlue, ButtonTransparent } from "../components";
+import { assets } from "../constant";
 import { styles } from "../style/Global";
 import { useKeyboardVisible } from "../hooks";
 import { Entypo } from "@expo/vector-icons";
 
-const Login = () => {
+const Login = ({ navigation }) => {
   const [loginInput, setLoginInput] = useState({
     username: "",
     password: "",
@@ -27,11 +28,13 @@ const Login = () => {
         className="absolute top-0 bottom-0 left-0 right-0"
       />
       {/* logo */}
-      <View className="absolute top-24">
-        <Text className="text-4xl font-LoraBold">Logo</Text>
-      </View>
+      <Image
+        source={assets.logoGrk}
+        alt="logo-grk"
+        className="w-[180px] h-[120px]"
+      />
       {/* form login wrapper */}
-      <View className="w-full h-auto p-4 items-center">
+      <View className="w-full h-auto p-4">
         {/* username */}
         <View className={`${styles.inputStyle} mb-3`}>
           <TextInput
@@ -79,6 +82,7 @@ const Login = () => {
           <ButtonTransparent
             title={"Create new account"}
             borderColor={"border-blue"}
+            onPress={() => navigation.navigate("BottomNav")}
           />
           <Text className="text-center font-LoraBold tracking-wider text-gray-600">
             G297K

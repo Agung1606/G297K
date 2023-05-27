@@ -3,6 +3,7 @@ import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Login from './src/screens/Login';
+import BottomNav from './src/screens';
 
 const theme = {
   ...DefaultTheme,
@@ -36,6 +37,7 @@ export default function App() {
         }}
       >
         <Stack.Screen name="LoginScreen" component={Login} />
+        <Stack.Screen name="BottomNav" component={BottomNav} options={{ presentation: "modal", animation: "slide_from_right" }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
