@@ -1,16 +1,16 @@
-import { useFonts } from 'expo-font'
-import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useFonts } from "expo-font";
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import Login from './src/screens/Login';
-import BottomNav from './src/screens';
+import Login from "./src/screens/Login";
+import BottomNav from "./src/screens";
 
 const theme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme,
-    background: "transparent"
-  }
+    background: "transparent",
+  },
 };
 
 const Stack = createNativeStackNavigator();
@@ -28,7 +28,7 @@ export default function App() {
     LoraRegular: require("./src/assets/fonts/Lora-Regular.ttf"),
   });
 
-  if(!loaded) return null; // wait until the fonts loaded
+  if (!loaded) return null; // wait until the fonts loaded
   return (
     <NavigationContainer theme={theme}>
       <Stack.Navigator
@@ -36,8 +36,12 @@ export default function App() {
           headerShown: false,
         }}
       >
+        <Stack.Screen
+          name="BottomNav"
+          component={BottomNav}
+          options={{ presentation: "modal", animation: "slide_from_right" }}
+        />
         <Stack.Screen name="LoginScreen" component={Login} />
-        <Stack.Screen name="BottomNav" component={BottomNav} options={{ presentation: "modal", animation: "slide_from_right" }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,3 +1,4 @@
 import assets from "./assets";
+import { tweet } from "./dummy";
 
-export { assets }
+export { assets, tweet }

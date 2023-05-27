@@ -1,6 +1,8 @@
 import { styled } from "nativewind";
-import { Pressable } from 'react-native'
+import { Pressable, View, Text } from 'react-native'
 
 const StyledPressable = styled(Pressable);
+const StyledView = styled(View)
+const StyledText = styled(Text)
 
-export { StyledPressable }
+export { StyledPressable, StyledView, StyledText }
