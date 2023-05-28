@@ -1,8 +1,8 @@
 import { Text, ActivityIndicator } from "react-native";
 import React from "react";
-import { StyledPressable } from "./styledComponent";
+import { StyledPressable } from "../styledComponent";
 
-import { styles } from "../style/Global";
+import { styles } from "../../style/Global";
 
 export const ButtonBlue = ({ title, onPress, loading }) => (
   <StyledPressable

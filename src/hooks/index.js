@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { Keyboard } from "react-native";
 import {
   useSharedValue,
@@ -32,6 +32,15 @@ export const useKeyboardVisible = () => {
   }, []);
 
   return isKeyboardVisible;
+};
+
+export const bottomModalConfig = (points) => {
+  const bottomSheetModalRef = useRef(null);
+  const snapPoints = useMemo(() => points, []);
+  const openModal = () => bottomSheetModalRef.current.present();
+  const closeModal = () => bottomSheetModalRef.current.dismiss();
+
+  return { bottomSheetModalRef, snapPoints, openModal, closeModal }
 };
 
 export const scrollableView = () => {

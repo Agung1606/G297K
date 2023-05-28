@@ -1,2 +1,62 @@
-export const tweet =
-  "Monkey D. Luffy, commonly referred to as Luffy, is a fictional character and the protagonist of the popular manga and anime series called 'One Piece.' Created by Eiichiro Oda, One Piece is a long-running and highly successful series that follows the adventures of Luffy and his crew, the Straw Hat Pirates, as they search for the ultimate treasure known as the One Piece. Luffy is a young pirate who is known for his distinctive straw hat and his dream of becoming the Pirate King. He possesses the power of the Gum-Gum Fruit (Gomu Gomu no Mi), which gives him the ability to stretch his body like rubber. Luffy is known for his determination, optimism, and unwavering loyalty to his friends. He is often depicted as a carefree and somewhat naïve character, but his strength, courage, and loyalty make him a formidable leader and fighter. Throughout the series, Luffy and his crew face numerous challenges, encounter other pirates and factions, and explore various islands and seas in search of treasure and adventure. The character of Luffy has become iconic within the world of anime and manga, capturing the hearts of fans worldwide with his infectious spirit and his unwavering pursuit of freedom and adventure.";
+import assets from "./assets";
+
+export const TWEETSDATA = [
+  {
+    userId: 1,
+    profile: assets.luffyProfile,
+    username: "Monkey D Luffy",
+    date: "49 menit",
+    tweet: "Who needs a plan when you can punch your way through everything?",
+    numberOfLikes: 12,
+    numberOfComments: 0,
+  },
+  {
+    userId: 2,
+    profile: assets.zoroProfile,
+    username: "Roronoa Zoro",
+    date: "2 jam",
+    tweet:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed viverra, odio ac elementum laoreet, risus justo tincidunt sem, vel aliquet est lectus eget enim. Nulla lobortis tincidunt purus, id maximus lacus efficitur ut. Sed vitae hendrerit est. Sed convallis, mauris sit amet egestas scelerisque, nunc libero elementum sapien, id tempus sapien dolor eget est. Sed scelerisque, libero sed dapibus commodo, lectus justo lobortis ante, vel malesuada sapien sapien nec mauris. Phasellus condimentum tincidunt mauris, nec rutrum orci laoreet sed. Fusce non tortor vel nisi euismod tincidunt sed sed felis. Nam vitae erat vel odio semper malesuada at sit amet mauris. Integer tristique ultrices lacus, id luctus lectus maximus non. Nunc fermentum ligula lorem, vitae tempor tellus placerat ut. Mauris a tellus non tortor dictum malesuada vel eu neque.",
+    numberOfLikes: 0,
+    numberOfComments: 0,
+  },
+  {
+    userId: 3,
+    profile: assets.sanjiProfile,
+    username: "Vinsmoke Sanji",
+    date: "12 jam",
+    tweet:
+      "I don't care who you are, what you've done, or who you've aligned yourself with. If you lay a finger on a lady, I won't forgive you.",
+    numberOfLikes: 0,
+    numberOfComments: 0,
+  },
+  {
+    userId: 4,
+    profile: assets.usopProfile,
+    username: "Usoop",
+    date: "1 hari",
+    tweet:
+      "Vestibulum convallis, massa nec tincidunt facilisis, ante eros accumsan lorem, ut posuere nulla mauris eu ipsum. Fusce accumsan dui lorem, ac consectetur mi fermentum ut. Morbi vitae magna ex. Proin at metus euismod, malesuada ex vitae, vulputate tellus. Pellentesque ut consequat metus. Aliquam consectetur pellentesque rutrum. Vivamus vitae tortor rutrum, varius metus vel, tincidunt est. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed rutrum, tortor nec semper scelerisque, erat mauris aliquam est, et interdum ex nisl vel mauris. Quisque congue aliquet tristique. Mauris bibendum mauris vel est tincidunt, et lobortis risus cursus. Sed fermentum augue felis, eu sollicitudin purus eleifend et. Phasellus in felis ac leo hendrerit consectetur. Aenean sed nunc bibendum, consectetur lorem ac, venenatis lectus.",
+    numberOfLikes: 0,
+    numberOfComments: 0,
+  },
+  {
+    userId: 5,
+    profile: assets.coperProfile,
+    username: "Tony Chooper",
+    date: "3 hari",
+    tweet: "オオカミは何匹いますか？",
+    numberOfLikes: 0,
+    numberOfComments: 0,
+  },
+  {
+    userId: 6,
+    profile: assets.jinbeiProfile,
+    username: "Jinbei",
+    date: "2 minggu",
+    tweet:
+      "You have power over your mind - not outside events. Realize this, and you will find strength.",
+    numberOfLikes: 0,
+    numberOfComments: 0,
+  },
+];

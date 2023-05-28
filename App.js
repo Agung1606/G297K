@@ -1,6 +1,8 @@
 import { useFonts } from "expo-font";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 import Login from "./src/screens/Login";
 import BottomNav from "./src/screens";
@@ -30,19 +32,23 @@ export default function App() {
 
   if (!loaded) return null; // wait until the fonts loaded
   return (
-    <NavigationContainer theme={theme}>
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: false,
-        }}
-      >
-        <Stack.Screen
-          name="BottomNav"
-          component={BottomNav}
-          options={{ presentation: "modal", animation: "slide_from_right" }}
-        />
-        <Stack.Screen name="LoginScreen" component={Login} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <GestureHandlerRootView className="flex-1">
+      <BottomSheetModalProvider>
+        <NavigationContainer theme={theme}>
+          <Stack.Navigator
+            screenOptions={{
+              headerShown: false,
+            }}
+          >
+            <Stack.Screen name="LoginScreen" component={Login} />
+            <Stack.Screen
+              name="BottomNav"
+              component={BottomNav}
+              options={{ presentation: "modal", animation: "slide_from_right" }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </BottomSheetModalProvider>
+    </GestureHandlerRootView>
   );
 }

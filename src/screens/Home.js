@@ -1,7 +1,8 @@
-import { View, Text, TouchableOpacity, ScrollView } from "react-native";
+import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
 
+import { TWEETSDATA } from '../constant'
 import { TweetCard } from '../components'
 import { styles } from "../style/Global";
 import { EvilIcons } from "@expo/vector-icons";
@@ -22,11 +23,11 @@ const Home = () => {
           </TouchableOpacity>
         </View>
       </View>
-      <ScrollView>
-        <TweetCard />
-        <TweetCard />
-        <TweetCard />
-      </ScrollView>
+      <FlatList 
+        data={TWEETSDATA}
+        renderItem={({ item }) => <TweetCard item={item} />}
+        keyExtractor={(item) => item.userId}
+      />
     </SafeAreaView>
   );
 };
