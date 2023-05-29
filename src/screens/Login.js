@@ -70,7 +70,10 @@ const Login = ({ navigation }) => {
           </View>
         </View>
         {/* button login */}
-        <ButtonBlue title={"Log in"} />
+        <ButtonBlue
+          title={"Log in"}
+          onPress={() => navigation.navigate("BottomNav")}
+        />
       </View>
       {/* forget password */}
       <TouchableOpacity>
@@ -82,7 +85,6 @@ const Login = ({ navigation }) => {
           <ButtonTransparent
             title={"Create new account"}
             borderColor={"border-blue"}
-            onPress={() => navigation.navigate("BottomNav")}
           />
           <Text className="text-center font-LoraBold tracking-wider text-gray-600">
             G297K

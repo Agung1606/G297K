@@ -60,3 +60,48 @@ export const TWEETSDATA = [
     numberOfComments: 0,
   },
 ];
+
+export const COMMENTS = [
+  {
+    id: 1,
+    comment: "Hello Lord!",
+    date: "1 menit",
+    profile: assets.defaultProfile
+  },
+  {
+    id: 2,
+    comment: "Hello Lord!",
+    date: "18 menit",
+    profile: assets.defaultProfile
+  },
+  {
+    id: 3,
+    comment: "Hello Lord!",
+    date: "1 jam",
+    profile: assets.defaultProfile
+  },
+  {
+    id: 4,
+    comment: "Hello Lord!",
+    date: "7 jam",
+    profile: assets.defaultProfile
+  },
+  {
+    id: 5,
+    comment: "Hello Lord!",
+    date: "1 hari",
+    profile: assets.defaultProfile
+  },
+  {
+    id: 6,
+    comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec lorem mauris. Integer varius lorem a tortor eleifend, vitae consequat turpis consectetur. Sed in justo ac lectus consectetur viverra. Mauris pellentesque, sem nec mattis semper, dolor tellus ultrices lectus, non scelerisque justo sapien sed dui. Suspendisse eu pellentesque lectus.",
+    date: "1 minggu",
+    profile: assets.defaultProfile
+  },
+  {
+    id: 7,
+    comment: "Hello Lord!",
+    date: "1 minggu",
+    profile: assets.defaultProfile
+  },
+];
