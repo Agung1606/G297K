@@ -26,7 +26,7 @@ const Home = () => {
       <FlatList 
         data={TWEETSDATA}
         renderItem={({ item }) => <TweetCard item={item} />}
-        keyExtractor={(item) => item.userId}
+        keyExtractor={(item) => item.id}
       />
     </SafeAreaView>
   );

@@ -2,7 +2,7 @@ import assets from "./assets";
 
 export const TWEETSDATA = [
   {
-    userId: 1,
+    id: 1,
     profile: assets.luffyProfile,
     username: "Monkey D Luffy",
     date: "49 menit",
@@ -11,7 +11,7 @@ export const TWEETSDATA = [
     numberOfComments: 0,
   },
   {
-    userId: 2,
+    id: 2,
     profile: assets.zoroProfile,
     username: "Roronoa Zoro",
     date: "2 jam",
@@ -21,7 +21,7 @@ export const TWEETSDATA = [
     numberOfComments: 0,
   },
   {
-    userId: 3,
+    id: 3,
     profile: assets.sanjiProfile,
     username: "Vinsmoke Sanji",
     date: "12 jam",
@@ -31,7 +31,7 @@ export const TWEETSDATA = [
     numberOfComments: 0,
   },
   {
-    userId: 4,
+    id: 4,
     profile: assets.usopProfile,
     username: "Usoop",
     date: "1 hari",
@@ -41,7 +41,7 @@ export const TWEETSDATA = [
     numberOfComments: 0,
   },
   {
-    userId: 5,
+    id: 5,
     profile: assets.coperProfile,
     username: "Tony Chooper",
     date: "3 hari",
@@ -50,7 +50,7 @@ export const TWEETSDATA = [
     numberOfComments: 0,
   },
   {
-    userId: 6,
+    id: 6,
     profile: assets.jinbeiProfile,
     username: "Jinbei",
     date: "2 minggu",

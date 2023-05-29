@@ -6,6 +6,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 import Login from "./src/screens/Login";
 import BottomNav from "./src/screens";
+import DetailsTweet from "./src/screens/DetailsTweet";
 
 const theme = {
   ...DefaultTheme,
@@ -44,6 +45,11 @@ export default function App() {
             <Stack.Screen
               name="BottomNav"
               component={BottomNav}
+              options={{ presentation: "modal", animation: "slide_from_right" }}
+            />
+            <Stack.Screen
+              name="DetailsTweetScreen"
+              component={DetailsTweet}
               options={{ presentation: "modal", animation: "slide_from_right" }}
             />
           </Stack.Navigator>
