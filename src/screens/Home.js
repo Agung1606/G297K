@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
 
-import { TWEETSDATA } from "../constant";
+import { TWEETS } from "../constant";
 import { TweetCard } from "../components";
 import { styles } from "../style/Global";
 import { EvilIcons } from "@expo/vector-icons";
@@ -24,7 +24,7 @@ const Home = () => {
         </View>
       </View>
       <FlatList
-        data={TWEETSDATA}
+        data={TWEETS}
         renderItem={({ item }) => <TweetCard item={item} />}
         keyExtractor={(item) => item.id}
       />

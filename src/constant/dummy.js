@@ -1,13 +1,13 @@
 import assets from "./assets";
 
-export const TWEETSDATA = [
+export const TWEETS = [
   {
     id: 1,
     profile: assets.luffyProfile,
     username: "Monkey D Luffy",
     date: "49 menit",
     tweet: "Who needs a plan when you can punch your way through everything?",
-    numberOfLikes: 12,
+    numberOfLikes: 0,
     numberOfComments: 0,
   },
   {

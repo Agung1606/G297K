@@ -1,10 +1,13 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
+import { loggedInUser } from '../hooks'
+
 const Profile = () => {
-  return (
+  const { data } = loggedInUser();
+  return ( 
     <View className="flex-1 justify-center items-center">
-      <Text>Profile</Text>
+      <Text>{data.username}</Text>
     </View>
   )
 }

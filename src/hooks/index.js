@@ -7,6 +7,13 @@ import {
   withTiming,
   Easing,
 } from "react-native-reanimated";
+import { useSelector } from "react-redux";
+
+export const loggedInUser = () => {
+  const data = useSelector((state) => state.global.user);
+
+  return { data };
+};
 
 export const useKeyboardVisible = () => {
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);

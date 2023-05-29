@@ -4,6 +4,11 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from "redux-persist";
+import { store } from "./src/redux";
+
 import Login from "./src/screens/Login";
 import BottomNav from "./src/screens";
 import DetailsTweet from "./src/screens/DetailsTweet";
@@ -33,28 +38,43 @@ export default function App() {
 
   if (!loaded) return null; // wait until the fonts loaded
   return (
-    <GestureHandlerRootView className="flex-1">
-      <BottomSheetModalProvider>
-        <NavigationContainer theme={theme}>
-          <Stack.Navigator
-            screenOptions={{
-              headerShown: false,
-            }}
-          >
-            <Stack.Screen name="LoginScreen" component={Login} />
-            <Stack.Screen
-              name="BottomNav"
-              component={BottomNav}
-              options={{ presentation: "modal", animation: "slide_from_right" }}
-            />
-            <Stack.Screen
-              name="DetailsTweetScreen"
-              component={DetailsTweet}
-              options={{ presentation: "modal", animation: "slide_from_right" }}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </BottomSheetModalProvider>
-    </GestureHandlerRootView>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistStore(store)}>
+        <GestureHandlerRootView className="flex-1">
+          <BottomSheetModalProvider>
+            <NavigationContainer theme={theme}>
+              <Routes />
+            </NavigationContainer>
+          </BottomSheetModalProvider>
+        </GestureHandlerRootView>
+      </PersistGate>
+    </Provider>
   );
 }
+
+
+const Routes = () => (
+  <Stack.Navigator
+    screenOptions={{
+      headerShown: false,
+    }}
+  >
+    <Stack.Screen name="LoginScreen" component={Login} />
+    <Stack.Screen
+      name="BottomNav"
+      component={BottomNav}
+      options={{
+        presentation: "modal",
+        animation: "slide_from_right",
+      }}
+    />
+    <Stack.Screen
+      name="DetailsTweetScreen"
+      component={DetailsTweet}
+      options={{
+        presentation: "modal",
+        animation: "slide_from_right",
+      }}
+    />
+  </Stack.Navigator>
+);
