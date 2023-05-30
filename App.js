@@ -39,7 +39,7 @@ export default function App() {
   if (!loaded) return null; // wait until the fonts loaded
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistStore(store)}>
+      {/* <PersistGate loading={null} persistor={persistStore(store)}> */}
         <GestureHandlerRootView className="flex-1">
           <BottomSheetModalProvider>
             <NavigationContainer theme={theme}>
@@ -47,7 +47,7 @@ export default function App() {
             </NavigationContainer>
           </BottomSheetModalProvider>
         </GestureHandlerRootView>
-      </PersistGate>
+      {/* </PersistGate> */}
     </Provider>
   );
 }

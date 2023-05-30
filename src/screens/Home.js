@@ -7,22 +7,31 @@ import { TweetCard } from "../components";
 import { styles } from "../style/Global";
 import { EvilIcons } from "@expo/vector-icons";
 
+const Header = () => (
+  <View
+    className={`flex-row ${styles.flexBetween} py-1 px-3 border-b border-b-gray-600`}
+  >
+    <Text className="font-LoraBold text-3xl tracking-wider">G297K</Text>
+    <View className={`flex-row ${styles.flexBetween} space-x-6`}>
+      <TouchableOpacity>
+        <EvilIcons name="plus" size={39} />
+      </TouchableOpacity>
+      <View>
+        <TouchableOpacity>
+          <EvilIcons name="sc-telegram" size={39} />
+          <View className={styles.unreadNotif}>
+            <Text className="font-InterSemiBold text-xs">99</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+    </View>
+  </View>
+);
+
 const Home = () => {
   return (
     <SafeAreaView className="flex-1">
-      <View
-        className={`flex-row ${styles.flexBetween} py-1 px-2 border-b border-b-gray-600`}
-      >
-        <Text className="font-LoraBold text-3xl tracking-wider">G297K</Text>
-        <View className={`flex-row ${styles.flexBetween} space-x-4`}>
-          <TouchableOpacity>
-            <EvilIcons name="plus" size={39} />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <EvilIcons name="sc-telegram" size={39} />
-          </TouchableOpacity>
-        </View>
-      </View>
+      <Header />
       <FlatList
         data={TWEETS}
         renderItem={({ item }) => <TweetCard item={item} />}
