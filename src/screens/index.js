@@ -54,11 +54,12 @@ const BottomNavTab = () => (
 );
 
 const RegisterStack = () => (
-  <Stack.Navigator>
-    <Stack.Screen
-      name="EmailRegisterScreen"
-      component={EmailRegisterScreen}
-    />
+  <Stack.Navigator
+    screenOptions={{
+      headerShown: false,
+    }}
+  >
+    <Stack.Screen name="EmailRegisterScreen" component={EmailRegisterScreen} />
     <Stack.Screen
       name="PasswordRegisterScreen"
       component={PasswordRegisterScreen}

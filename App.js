@@ -9,7 +9,6 @@ import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 import { store } from "./src/redux";
 
-
 import {
   Login,
   RegisterStack,
@@ -28,6 +27,53 @@ const theme = {
 };
 
 const Stack = createNativeStackNavigator();
+
+const Routes = () => (
+  <Stack.Navigator
+    screenOptions={{
+      headerShown: false,
+    }}
+  >
+    <Stack.Group>
+      <Stack.Screen name="LoginScreen" component={Login} />
+      <Stack.Screen name="RegisterStack" component={RegisterStack} />
+    </Stack.Group>
+    <Stack.Group>
+      <Stack.Screen
+        name="BottomNavTab"
+        component={BottomNavTab}
+        options={{
+          presentation: "modal",
+          animation: "slide_from_right",
+        }}
+      />
+      <Stack.Screen
+        name="DetailsTweetScreen"
+        component={DetailsTweet}
+        options={{
+          presentation: "modal",
+          animation: "slide_from_right",
+        }}
+      />
+      <Stack.Screen
+        name="VisitProfileScreen"
+        component={VisitProfile}
+        options={{
+          presentation: "modal",
+          animation: "slide_from_right",
+        }}
+      />
+      <Stack.Screen
+        name="MessageScreen"
+        component={Message}
+        options={{
+          presentation: "modal",
+          animation: "slide_from_right",
+        }}
+      />
+    </Stack.Group>
+  </Stack.Navigator>
+);
 
 export default function App() {
   const [loaded] = useFonts({
@@ -57,46 +103,3 @@ export default function App() {
     </Provider>
   );
 }
-
-const Routes = () => (
-  <Stack.Navigator
-    screenOptions={{
-      headerShown: false,
-    }}
-  >
-    <Stack.Screen name="LoginScreen" component={Login} />
-    <Stack.Screen name="RegisterStack" component={RegisterStack} />
-    <Stack.Screen
-      name="BottomNavTab"
-      component={BottomNavTab}
-      options={{
-        presentation: "modal",
-        animation: "slide_from_right",
-      }}
-    />
-    <Stack.Screen
-      name="DetailsTweetScreen"
-      component={DetailsTweet}
-      options={{
-        presentation: "modal",
-        animation: "slide_from_right",
-      }}
-    />
-    <Stack.Screen
-      name="VisitProfileScreen"
-      component={VisitProfile}
-      options={{
-        presentation: "modal",
-        animation: "slide_from_right",
-      }}
-    />
-    <Stack.Screen
-      name="MessageScreen"
-      component={Message}
-      options={{
-        presentation: "modal",
-        animation: "slide_from_right",
-      }}
-    />
-  </Stack.Navigator>
-);
