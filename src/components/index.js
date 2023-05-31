@@ -3,6 +3,9 @@ import TweetCard, { Interaction } from "./card/TweetCard";
 import Avatar from "./common/Avatar";
 import ProfileInfo from "./common/ProfileInfo";
 
+import EmailRegisterScreen from "./screens/EmailRegister";
+import PasswordRegisterScreen from "./screens/PasswordRegister";
+
 export {
   ButtonBlue,
   ButtonTransparent,
@@ -11,5 +14,7 @@ export {
   Interaction,
   ProfileInfo,
   ButtonGray,
-  ButtonFollow
+  ButtonFollow,
+  EmailRegisterScreen,
+  PasswordRegisterScreen
 };

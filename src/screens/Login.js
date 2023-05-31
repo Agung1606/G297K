@@ -72,7 +72,7 @@ const Login = ({ navigation }) => {
         {/* button login */}
         <ButtonBlue
           title={"Log in"}
-          onPress={() => navigation.navigate("BottomNav")}
+          onPress={() => navigation.navigate("BottomNavTab")}
         />
       </View>
       {/* forget password */}
@@ -85,6 +85,7 @@ const Login = ({ navigation }) => {
           <ButtonTransparent
             title={"Create new account"}
             borderColor={"border-blue"}
+            onPress={() => navigation.navigate("RegisterStack")}
           />
           <Text className="text-center font-LoraBold tracking-wider text-gray-600">
             G297K

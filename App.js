@@ -9,11 +9,15 @@ import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 import { store } from "./src/redux";
 
-import Login from "./src/screens/Login";
-import BottomNav from "./src/screens";
-import DetailsTweet from "./src/screens/DetailsTweet";
-import VisitProfile from "./src/screens/VisitProfile";
-import Message from "./src/screens/Message";
+
+import {
+  Login,
+  RegisterStack,
+  BottomNavTab,
+  DetailsTweet,
+  VisitProfile,
+  Message,
+} from "./src/screens";
 
 const theme = {
   ...DefaultTheme,
@@ -42,18 +46,17 @@ export default function App() {
   return (
     <Provider store={store}>
       {/* <PersistGate loading={null} persistor={persistStore(store)}> */}
-        <GestureHandlerRootView className="flex-1">
-          <BottomSheetModalProvider>
-            <NavigationContainer theme={theme}>
-              <Routes />
-            </NavigationContainer>
-          </BottomSheetModalProvider>
-        </GestureHandlerRootView>
+      <GestureHandlerRootView className="flex-1">
+        <BottomSheetModalProvider>
+          <NavigationContainer theme={theme}>
+            <Routes />
+          </NavigationContainer>
+        </BottomSheetModalProvider>
+      </GestureHandlerRootView>
       {/* </PersistGate> */}
     </Provider>
   );
 }
-
 
 const Routes = () => (
   <Stack.Navigator
@@ -62,9 +65,10 @@ const Routes = () => (
     }}
   >
     <Stack.Screen name="LoginScreen" component={Login} />
+    <Stack.Screen name="RegisterStack" component={RegisterStack} />
     <Stack.Screen
-      name="BottomNav"
-      component={BottomNav}
+      name="BottomNavTab"
+      component={BottomNavTab}
       options={{
         presentation: "modal",
         animation: "slide_from_right",
