@@ -6,6 +6,22 @@ import { styles } from "../../style/Global";
 import { styled } from "nativewind";
 const StyledPressable = styled(Pressable)
 
+export const ButtonFollow = ({ title, onPress, isFollow }) => (
+  <StyledPressable
+    onPress={onPress}
+    className={`w-full h-[35px] ${styles.flexCenter} ${isFollow ? "bg-gray-600/50": "bg-blue"} rounded-lg ${styles.pressableEffect}`}
+  >
+    <Text className="font-InterSemiBold text-[16px]">{title}</Text>
+  </StyledPressable>
+);
+
+
+export const ButtonGray = ({ title, onPress }) => (
+  <StyledPressable onPress={onPress} className={`w-full h-[35px] ${styles.flexCenter} bg-gray-600/50 rounded-lg ${styles.pressableEffect}`}>
+    <Text className="font-InterSemiBold text-[16px]">{title}</Text>
+  </StyledPressable>
+);
+
 export const ButtonBlue = ({ title, onPress, loading }) => (
   <StyledPressable
     onPress={onPress}
@@ -19,11 +35,6 @@ export const ButtonBlue = ({ title, onPress, loading }) => (
   </StyledPressable>
 );
 
-export const ButtonGray = ({ title, onPress }) => (
-  <StyledPressable onPress={onPress} className={`w-full h-[35px] ${styles.flexCenter} bg-gray-600/50 rounded-lg ${styles.pressableEffect}`}>
-    <Text className="font-InterSemiBold text-[16px]">{title}</Text>
-  </StyledPressable>
-);
 
 export const ButtonTransparent = ({ title, onPress, borderColor }) => (
   <StyledPressable

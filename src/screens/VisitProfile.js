@@ -6,7 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 
 import { styles } from "../style/Global";
 import { PROFILE, TWEETS } from "../constant";
-import { ButtonGray, ProfileInfo, TweetCard } from "../components";
+import { ButtonGray, ButtonFollow, ProfileInfo, TweetCard } from "../components";
 
 const Header = ({ username }) => {
   const navigation = useNavigation();
@@ -41,6 +41,9 @@ const VisitProfile = ({ route }) => {
     setData(filter[0]);
   }, [id]);
 
+  const [isFollow, setIsFollow] = useState(false);
+  const handleFollow = () => setIsFollow(!isFollow);
+
   return (
     <SafeAreaView className="flex-1">
       <Header username={data.username} />
@@ -62,9 +65,10 @@ const VisitProfile = ({ route }) => {
               className={`flex-row ${styles.flexBetween} space-x-2 mt-1 px-3`}
             >
               <View className="flex-1">
-                <ButtonGray
-                  title={"Edit profile"}
-                  onPress={() => alert("Open edit profile screen!")}
+                <ButtonFollow
+                  title={isFollow ? "Following" : "Follow"}
+                  isFollow={isFollow}
+                  onPress={handleFollow}
                 />
               </View>
               <View className="flex-1">
