@@ -4,7 +4,7 @@ import {
   TouchableOpacity,
   TextInput,
   ScrollView,
-  Pressable
+  Pressable,
 } from "react-native";
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
@@ -12,17 +12,19 @@ import { MaterialIcons, FontAwesome, Feather } from "@expo/vector-icons";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
 
 import Avatar from "../common/Avatar";
-import { bottomModalConfig } from "../../hooks";
-import { assets } from "../../constant";
+import { bottomModalConfig, loggedInUser } from "../../hooks";
 import { ButtonBlue } from "../common/Button";
 import { styles } from "../../style/Global";
 
 import { styled } from "nativewind";
-const StyledPressable = styled(Pressable)
+const StyledPressable = styled(Pressable);
 
 const TweetCard = ({ item }) => {
   const navigation = useNavigation();
-  const goToDetails = () => navigation.navigate("DetailsTweetScreen", { param: item })
+  const goToDetails = () =>
+    navigation.navigate("DetailsTweetScreen", { param: item });
+  const goToVisitProfile = () =>
+    navigation.navigate("VisitProfileScreen", { param: item.userId });
 
   const [text, setText] = useState(item.tweet.slice(0, 550));
   const [readMore, setReadMore] = useState(false);
@@ -41,17 +43,22 @@ const TweetCard = ({ item }) => {
       {/* container */}
       <View className="flex-row space-x-2">
         {/* profile */}
-        <Avatar imgUrl={item.profile} size={50} onPress={() => alert("Visit the profile")} />
+        <Avatar imgUrl={item.profile} size={50} onPress={goToVisitProfile} />
         {/* wrapper */}
         <View className="flex-1">
-          <StyledPressable onPress={goToDetails} className="active:bg-gray-600/20 rounded-lg">
+          <StyledPressable
+            onPress={goToDetails}
+            className="active:bg-gray-600/20 rounded-lg"
+          >
             {/* username and date */}
             <View className={`flex-row ${styles.flexBetween} mb-1`}>
               <View>
-                <Text className="font-InterBold">{item.username}</Text>
+                <Text className="font-InterBold">{item.name}</Text>
                 <Text className="text-[12px] text-gray-400">{item.date}</Text>
               </View>
-              <TouchableOpacity onPress={() => alert("Open more vertical modal")}>
+              <TouchableOpacity
+                onPress={() => alert("Open more vertical modal")}
+              >
                 <MaterialIcons name="more-vert" size={25} />
               </TouchableOpacity>
             </View>
@@ -81,7 +88,14 @@ const TweetCard = ({ item }) => {
   );
 };
 
-export const Interaction = ({ id, username, numberOfLikes, numberOfComments }) => {
+export const Interaction = ({
+  id,
+  username,
+  numberOfLikes,
+  numberOfComments,
+}) => {
+  const { data: loggedInUserData } = loggedInUser();
+
   const [likesCount, setLikesCount] = useState(numberOfLikes);
   const [isLiked, setIsLiked] = useState(false);
   const handleLike = () => {
@@ -128,13 +142,17 @@ export const Interaction = ({ id, username, numberOfLikes, numberOfComments }) =
         index={0}
         snapPoints={snapPoints}
       >
-        <Comment username={username} closeModal={closeModal} />
+        <Comment
+          loggedInUserData={loggedInUserData}
+          username={username}
+          closeModal={closeModal}
+        />
       </BottomSheetModal>
     </>
   );
 };
 
-const Comment = ({ username, closeModal }) => {
+const Comment = ({ loggedInUserData, username, closeModal }) => {
   const [commentInput, setCommentInput] = useState("");
   const handleComment = () => {
     if (!commentInput) {
@@ -158,7 +176,7 @@ const Comment = ({ username, closeModal }) => {
       {/* main */}
       <View className="flex-row space-x-3">
         <View className="space-y-2">
-          <Avatar imgUrl={assets.defaultProfile} size={55} />
+          <Avatar imgUrl={{ uri: loggedInUserData.profile }} size={55} />
           <Text className="text-center text-[10px] font-InterLight">
             {commentInput.length}/500
           </Text>

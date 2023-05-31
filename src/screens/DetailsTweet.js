@@ -10,6 +10,8 @@ import { styles } from "../style/Global";
 const DetailsTweet = ({ route, navigation }) => {
   const item = route?.params?.param;
   const goToPrevScreen = () => navigation.goBack();
+  const goToVisitProfile = () =>
+    navigation.navigate("VisitProfileScreen", { param: item.userId });
 
   return (
     <SafeAreaView className="flex-1">
@@ -23,8 +25,10 @@ const DetailsTweet = ({ route, navigation }) => {
           Tweet
         </Text>
       </View>
-      <FlatList   
-        ListHeaderComponent={<Tweet item={item} />}
+      <FlatList
+        ListHeaderComponent={
+          <Tweet item={item} goToVisitProfile={goToVisitProfile} />
+        }
         data={COMMENTS}
         renderItem={({ item }) => <Comment item={item} />}
         keyExtractor={(item) => item.id}
@@ -33,17 +37,13 @@ const DetailsTweet = ({ route, navigation }) => {
   );
 };
 
-const Tweet = ({ item }) => (
+const Tweet = ({ item, goToVisitProfile }) => (
   <View className="px-3 py-2 mb-2 border-b border-gray-300">
     <View className={`flex-row ${styles.flexBetween} mb-2`}>
       <View className="flex-row items-center space-x-4">
-        <Avatar
-          imgUrl={item.profile}
-          size={50}
-          onPress={() => alert("Visit the profile")}
-        />
+        <Avatar imgUrl={item.profile} size={50} onPress={goToVisitProfile} />
         <View>
-          <Text className="font-InterBold">{item.username}</Text>
+          <Text className="font-InterBold">{item.name}</Text>
           <Text className="text-[12px] text-gray-400">{item.date}</Text>
         </View>
       </View>

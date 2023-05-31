@@ -12,6 +12,7 @@ import { store } from "./src/redux";
 import Login from "./src/screens/Login";
 import BottomNav from "./src/screens";
 import DetailsTweet from "./src/screens/DetailsTweet";
+import VisitProfile from "./src/screens/VisitProfile";
 
 const theme = {
   ...DefaultTheme,
@@ -71,6 +72,14 @@ const Routes = () => (
     <Stack.Screen
       name="DetailsTweetScreen"
       component={DetailsTweet}
+      options={{
+        presentation: "modal",
+        animation: "slide_from_right",
+      }}
+    />
+    <Stack.Screen
+      name="VisitProfileScreen"
+      component={VisitProfile}
       options={{
         presentation: "modal",
         animation: "slide_from_right",

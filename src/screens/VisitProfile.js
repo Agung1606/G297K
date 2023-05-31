@@ -1,36 +1,46 @@
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import React from "react";
-import { EvilIcons, SimpleLineIcons } from "@expo/vector-icons";
+import React, { useEffect, useState } from "react";
+import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
-import { loggedInUser } from "../hooks";
-import { ProfileInfo, ButtonGray, TweetCard } from "../components";
 import { styles } from "../style/Global";
-import { TWEETS } from "../constant";
+import { PROFILE, TWEETS } from "../constant";
+import { ButtonGray, ProfileInfo, TweetCard } from "../components";
 
 const Header = ({ username }) => {
+  const navigation = useNavigation();
+  const goToPrevScreen = () => navigation.goBack();
+
   return (
     <View className={`flex-row ${styles.flexBetween} my-1 px-3`}>
-      <Text className="font-InterBold text-xl tracking-wide">{username}</Text>
-      <View className={`flex-row space-x-6`}>
-        <TouchableOpacity>
-          <EvilIcons name="plus" size={39} />
+      <View className={`flex-row ${styles.flexBetween} space-x-6`}>
+        <TouchableOpacity onPress={goToPrevScreen}>
+          <MaterialIcons name="arrow-back" size={30} />
         </TouchableOpacity>
-        <View>
-          <TouchableOpacity>
-            <SimpleLineIcons name="menu" size={28} />
-            <View className={styles.unreadNotif}>
-              <Text className="font-InterBold text-xs">1</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
+        <Text className="font-InterBold text-lg tracking-wide">{username}</Text>
+      </View>
+      <View className={`flex-row ${styles.flexBetween} space-x-6`}>
+        <TouchableOpacity>
+          <FontAwesome name="bell-o" size={25} />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <MaterialIcons name="more-vert" size={25} />
+        </TouchableOpacity>
       </View>
     </View>
   );
 };
 
-const Profile = () => {
-  const { data } = loggedInUser();
+const VisitProfile = ({ route }) => {
+  const id = route?.params?.param;
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    const filter = PROFILE.filter((item) => item.id === id);
+    setData(filter[0]);
+  }, [id]);
+
   return (
     <SafeAreaView className="flex-1">
       <Header username={data.username} />
@@ -39,7 +49,7 @@ const Profile = () => {
           <View className="mb-4 pb-4 border-b border-gray-600">
             <View className="mt-4 px-3">
               <ProfileInfo
-                profileUrl={{ uri: data.profile }}
+                profileUrl={data.profile}
                 name={data.name}
                 bio={data.bio}
                 numberOfTweets={TWEETS.length}
@@ -59,8 +69,8 @@ const Profile = () => {
               </View>
               <View className="flex-1">
                 <ButtonGray
-                  title={"Share profile"}
-                  onPress={() => alert("Share profile!")}
+                  title={"Message"}
+                  onPress={() => alert("Message!")}
                 />
               </View>
             </View>
@@ -74,4 +84,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default VisitProfile;

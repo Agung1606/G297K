@@ -8,12 +8,13 @@ const ProfileInfo = ({
   profileUrl,
   name,
   bio,
+  numberOfTweets,
   numberOfFollowers,
   numberOfFollowing,
 }) => {
   const info = [
     {
-      number: 0,
+      number: numberOfTweets,
       text: "Tweets",
     },
     {
@@ -26,7 +27,7 @@ const ProfileInfo = ({
     },
   ];
 
-  const [text, setText] = useState(bio.slice(0, 100));
+  const [text, setText] = useState(bio?.slice(0, 100));
   const [readMore, setReadMore] = useState(false);
   const handleReadMore = () => {
     if(!readMore) {
@@ -37,7 +38,7 @@ const ProfileInfo = ({
   return (
     <>
       <View className={`flex-row ${styles.flexBetween} space-x-10`}>
-        <Avatar imgUrl={{ uri: profileUrl }} size={80} />
+        <Avatar imgUrl={profileUrl} size={80} />
         <View className={`flex-1 flex-row ${styles.flexBetween}`}>
           {info.map((item) => (
             <View className={styles.flexCenter} key={item.text}>
@@ -50,7 +51,7 @@ const ProfileInfo = ({
       <Text className="font-InterBold">{name}</Text>
       <Text className="text-[15px] text-justify">
         {text}
-        {bio.length > 100 && !readMore && (
+        {bio?.length > 100 && !readMore && (
           <Text onPress={handleReadMore} className="text-gray-600">
             ...more
           </Text>
