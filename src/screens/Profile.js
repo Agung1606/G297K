@@ -20,7 +20,7 @@ const Header = ({ username }) => {
           <TouchableOpacity>
             <SimpleLineIcons name="menu" size={28} />
             <View className={styles.unreadNotif}>
-              <Text className="font-InterBold text-xs">1</Text>
+              <Text className="font-InterBold text-xs text-white">1</Text>
             </View>
           </TouchableOpacity>
         </View>

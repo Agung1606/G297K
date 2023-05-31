@@ -4,20 +4,24 @@ import React from "react";
 import { styles } from "../../style/Global";
 
 import { styled } from "nativewind";
-const StyledPressable = styled(Pressable)
+const StyledPressable = styled(Pressable);
 
 export const ButtonFollow = ({ title, onPress, isFollow }) => (
   <StyledPressable
     onPress={onPress}
-    className={`w-full h-[35px] ${styles.flexCenter} ${isFollow ? "bg-gray-600/50": "bg-blue"} rounded-lg ${styles.pressableEffect}`}
+    className={`w-full h-[35px] ${styles.flexCenter} ${
+      isFollow ? "bg-gray-300/50" : "bg-blue"
+    } rounded-lg ${styles.pressableEffect}`}
   >
-    <Text className="font-InterSemiBold text-[16px]">{title}</Text>
+    <Text className={`font-InterSemiBold text-[16px] ${!isFollow && "text-white"}`}>{title}</Text>
   </StyledPressable>
 );
 
-
 export const ButtonGray = ({ title, onPress }) => (
-  <StyledPressable onPress={onPress} className={`w-full h-[35px] ${styles.flexCenter} bg-gray-600/50 rounded-lg ${styles.pressableEffect}`}>
+  <StyledPressable
+    onPress={onPress}
+    className={`w-full h-[35px] ${styles.flexCenter} bg-gray-300/50 rounded-lg ${styles.pressableEffect}`}
+  >
     <Text className="font-InterSemiBold text-[16px]">{title}</Text>
   </StyledPressable>
 );
@@ -35,14 +39,11 @@ export const ButtonBlue = ({ title, onPress, loading }) => (
   </StyledPressable>
 );
 
-
 export const ButtonTransparent = ({ title, onPress, borderColor }) => (
   <StyledPressable
     onPress={onPress}
     className={`w-full h-[45px] ${styles.flexCenter} border-[1.5px] ${borderColor} rounded-2xl ${styles.pressableEffect}`}
   >
-    <Text className={`text-[16px] font-InterSemiBold`}>
-      {title}
-    </Text>
+    <Text className={`text-[16px] font-InterSemiBold`}>{title}</Text>
   </StyledPressable>
 );

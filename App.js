@@ -13,6 +13,7 @@ import Login from "./src/screens/Login";
 import BottomNav from "./src/screens";
 import DetailsTweet from "./src/screens/DetailsTweet";
 import VisitProfile from "./src/screens/VisitProfile";
+import Message from "./src/screens/Message";
 
 const theme = {
   ...DefaultTheme,
@@ -80,6 +81,14 @@ const Routes = () => (
     <Stack.Screen
       name="VisitProfileScreen"
       component={VisitProfile}
+      options={{
+        presentation: "modal",
+        animation: "slide_from_right",
+      }}
+    />
+    <Stack.Screen
+      name="MessageScreen"
+      component={Message}
       options={{
         presentation: "modal",
         animation: "slide_from_right",
