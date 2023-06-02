@@ -78,7 +78,7 @@ const TweetCard = ({ item }) => {
           {/* like, comment, and share */}
           <Interaction
             id={item.id}
-            username={item.username}
+            name={item.name}
             numberOfLikes={item.numberOfLikes}
             numberOfComments={item.numberOfComments}
           />
@@ -90,7 +90,7 @@ const TweetCard = ({ item }) => {
 
 export const Interaction = ({
   id,
-  username,
+  name,
   numberOfLikes,
   numberOfComments,
 }) => {
@@ -144,7 +144,7 @@ export const Interaction = ({
       >
         <Comment
           loggedInUserData={loggedInUserData}
-          username={username}
+          name={name}
           closeModal={closeModal}
         />
       </BottomSheetModal>
@@ -152,7 +152,7 @@ export const Interaction = ({
   );
 };
 
-const Comment = ({ loggedInUserData, username, closeModal }) => {
+const Comment = ({ loggedInUserData, name, closeModal }) => {
   const [commentInput, setCommentInput] = useState("");
   const handleComment = () => {
     if (!commentInput) {
@@ -184,7 +184,7 @@ const Comment = ({ loggedInUserData, username, closeModal }) => {
         <View className="flex-1 space-y-2">
           <Text className="font-InterRegular text-gray-600">
             Replying to{" "}
-            <Text className="text-blue font-InterSemiBold">{username}</Text>
+            <Text className="text-blue font-InterSemiBold">{name}</Text>
           </Text>
           <ScrollView className="mb-20">
             <TextInput

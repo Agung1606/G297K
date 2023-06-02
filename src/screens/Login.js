@@ -31,7 +31,7 @@ const Login = ({ navigation }) => {
       <Image
         source={assets.logoGrk}
         alt="logo-grk"
-        className="w-[180px] h-[120px]"
+        className="w-[200px] h-[60px]"
       />
       {/* form login wrapper */}
       <View className="w-full h-auto p-4">

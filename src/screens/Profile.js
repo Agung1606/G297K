@@ -34,9 +34,9 @@ const Profile = () => {
   const [tweets, setTweets] = useState([]);
 
   useEffect(() => {
-    const filter = TWEETS.filter(item => item.userId === data.id)
-    setTweets(filter)
-  }, [])
+    const filter = TWEETS.filter((item) => item.userId === data.id);
+    setTweets(filter);
+  }, []);
 
   return (
     <SafeAreaView className="flex-1">
@@ -76,7 +76,9 @@ const Profile = () => {
         data={tweets}
         renderItem={({ item }) => <TweetCard item={item} />}
         keyExtractor={(item) => item.id}
-        ListEmptyComponent={<NoTweets text="When you make a tweet it will appear here" />}
+        ListEmptyComponent={
+          <NoTweets text="When you make a tweet it will appear here" />
+        }
       />
     </SafeAreaView>
   );

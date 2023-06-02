@@ -55,7 +55,7 @@ const Tweet = ({ item, goToVisitProfile }) => (
     <Text className="font-InterRegular text-[17px]">{item.tweet}</Text>
     <View className="my-4">
       <Interaction
-        username={item.username}
+        name={item.name}
         numberOfLikes={item.numberOfLikes}
         numberOfComments={item.numberOfComments}
       />
