@@ -2,6 +2,7 @@ import { ButtonBlue, ButtonTransparent, ButtonGray, ButtonFollow } from "./commo
 import TweetCard, { Interaction } from "./card/TweetCard";
 import Avatar from "./common/Avatar";
 import ProfileInfo from "./common/ProfileInfo";
+import NoTweets from "./common/NoTweets";
 
 import EmailRegisterScreen from "./screens/EmailRegister";
 import PasswordRegisterScreen from "./screens/PasswordRegister";
@@ -16,5 +17,6 @@ export {
   ButtonGray,
   ButtonFollow,
   EmailRegisterScreen,
-  PasswordRegisterScreen
+  PasswordRegisterScreen,
+  NoTweets
 };

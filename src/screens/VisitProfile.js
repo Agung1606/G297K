@@ -6,7 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 
 import { styles } from "../style/Global";
 import { PROFILE, TWEETS } from "../constant";
-import { ButtonGray, ButtonFollow, ProfileInfo, TweetCard } from "../components";
+import { ButtonGray, ButtonFollow, ProfileInfo, TweetCard, NoTweets } from "../components";
 
 const Header = ({ username }) => {
   const navigation = useNavigation();
@@ -35,10 +35,13 @@ const Header = ({ username }) => {
 const VisitProfile = ({ route }) => {
   const id = route?.params?.param;
   const [data, setData] = useState({});
+  const [tweets, setTweets] = useState([]);
 
   useEffect(() => {
-    const filter = PROFILE.filter((item) => item.id === id);
-    setData(filter[0]);
+    const filterProfile = PROFILE.filter((item) => item.id === id);
+    const filterTweets = TWEETS.filter((item) => item.userId === id);
+    setTweets(filterTweets);
+    setData(filterProfile[0]);
   }, [id]);
 
   const [isFollow, setIsFollow] = useState(false);
@@ -55,7 +58,7 @@ const VisitProfile = ({ route }) => {
                 profileUrl={data.profile}
                 name={data.name}
                 bio={data.bio}
-                numberOfTweets={TWEETS.length}
+                numberOfTweets={tweets.length}
                 numberOfFollowers={data.followers}
                 numberOfFollowing={data.following}
               />
@@ -80,9 +83,10 @@ const VisitProfile = ({ route }) => {
             </View>
           </View>
         )}
-        data={TWEETS}
+        data={tweets}
         renderItem={({ item }) => <TweetCard item={item} />}
         keyExtractor={(item) => item.id}
+        ListEmptyComponent={<NoTweets text="It seems that this person have not make a tweet yet" />}
       />
     </SafeAreaView>
   );

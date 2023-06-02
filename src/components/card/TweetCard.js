@@ -63,7 +63,7 @@ const TweetCard = ({ item }) => {
               </TouchableOpacity>
             </View>
             {/* tweets */}
-            <Text className={`font-InterRegular mb-3`}>
+            <Text className={`font-InterRegular`}>
               {text}
               {item.tweet.length > 550 && (
                 <Text
@@ -122,14 +122,14 @@ export const Interaction = ({
               <FontAwesome name="heart-o" size={22} color="#7d7d7d" />
             )}
           </TouchableOpacity>
-          <Text className="text-[#7d7d7d]">{likesCount}</Text>
+          <Text className="text-grayCustom">{likesCount}</Text>
         </View>
         {/* comment */}
         <View className={`${styles.iconInteractionWrapper}`}>
           <TouchableOpacity onPress={openModal}>
             <FontAwesome name="comment-o" size={22} color="#7d7d7d" />
           </TouchableOpacity>
-          <Text className="text-[#7d7d7d]">{numberOfComments}</Text>
+          <Text className="text-grayCustom">{numberOfComments}</Text>
         </View>
         {/* share */}
         <TouchableOpacity>

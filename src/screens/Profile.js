@@ -1,10 +1,10 @@
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { EvilIcons, SimpleLineIcons } from "@expo/vector-icons";
 
 import { loggedInUser } from "../hooks";
-import { ProfileInfo, ButtonGray, TweetCard } from "../components";
+import { ProfileInfo, ButtonGray, TweetCard, NoTweets } from "../components";
 import { styles } from "../style/Global";
 import { TWEETS } from "../constant";
 
@@ -31,6 +31,13 @@ const Header = ({ username }) => {
 
 const Profile = () => {
   const { data } = loggedInUser();
+  const [tweets, setTweets] = useState([]);
+
+  useEffect(() => {
+    const filter = TWEETS.filter(item => item.userId === data.id)
+    setTweets(filter)
+  }, [])
+
   return (
     <SafeAreaView className="flex-1">
       <Header username={data.username} />
@@ -42,7 +49,7 @@ const Profile = () => {
                 profileUrl={{ uri: data.profile }}
                 name={data.name}
                 bio={data.bio}
-                numberOfTweets={TWEETS.length}
+                numberOfTweets={tweets.length}
                 numberOfFollowers={data.followers}
                 numberOfFollowing={data.following}
               />
@@ -66,9 +73,10 @@ const Profile = () => {
             </View>
           </View>
         )}
-        data={TWEETS}
+        data={tweets}
         renderItem={({ item }) => <TweetCard item={item} />}
         keyExtractor={(item) => item.id}
+        ListEmptyComponent={<NoTweets text="When you make a tweet it will appear here" />}
       />
     </SafeAreaView>
   );

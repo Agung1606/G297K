@@ -65,10 +65,15 @@ const Tweet = ({ item, goToVisitProfile }) => (
 
 const Comment = ({ item }) => (
   <View className="my-2 p-2 flex-row space-x-2 border-b border-gray-300/50">
-    <Avatar imgUrl={item.profile} size={40} />
+    <Avatar imgUrl={{ uri: item.profile }} size={40} />
     <View className="flex-1">
+      <View className={`flex-row items-center`}>
+        <Text className="font-InterMedium text-grayCustom">{`${item.name} * `}</Text>
+        <Text className="font-InterLight text-[12px] text-grayCustom">
+          {item.date}
+        </Text>
+      </View>
       <Text className="font-InterRegular">{item.comment}</Text>
-      <Text className="font-InterLight text-[10px]">{item.date}</Text>
     </View>
   </View>
 );
