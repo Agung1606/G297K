@@ -48,7 +48,7 @@ const TweetCard = ({ item }) => {
         <View className="flex-1">
           <StyledPressable
             onPress={goToDetails}
-            className="active:bg-gray-600/20 rounded-lg"
+            className="active:bg-gray-600/20 rounded-lg mb-2"
           >
             {/* username and date */}
             <View className={`flex-row ${styles.flexBetween} mb-1`}>

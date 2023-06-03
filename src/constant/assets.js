@@ -7,6 +7,7 @@ import sanjiProfile from '../assets/images/sanjiProfile.jpg'
 import zoroProfile from '../assets/images/zoroProfile.jpg'
 import usopProfile from '../assets/images/usopProfile.jpg'
 import coperProfile from '../assets/images/coperProfile.png'
+import narutoProfile from '../assets/images/narutoProfile.jpg'
 
 export default {
   logoGrk,
@@ -16,5 +17,6 @@ export default {
   sanjiProfile,
   zoroProfile,
   usopProfile,
-  coperProfile
+  coperProfile,
+  narutoProfile
 }

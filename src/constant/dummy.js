@@ -55,17 +55,45 @@ export const PROFILE = [
     following: "905",
     bio: "Strength isn't just about physical power. It's also about the strength of one's heart and convictions.",
   },
+  {
+    id: 7,
+    username: "uzumakinaruto_",
+    name: "Naruto Uzumaki",
+    profile: assets.narutoProfile,
+    followers: "231K",
+    following: "5,403",
+    bio: "I'm not gonna die, 'cause I'm gonna be the Hokage!",
+  },
 ];
 
 export const TWEETS = [
+  {
+    id: 100,
+    userId: 7,
+    profile: assets.narutoProfile,
+    name: "Naruto Uzumaki",
+    date: "43 detik",
+    tweet: `Teori Newton mengacu pada kontribusi Sir Isaac Newton dalam fisika, terutama dalam bidang mekanika dan gravitasi. Berikut ini beberapa teori yang dikembangkan oleh Newton:
+
+1. Hukum Gerak Newton: Newton menyusun tiga hukum gerak yang dikenal sebagai Hukum Newton. Hukum pertama menyatakan bahwa benda cenderung tetap dalam keadaan gerak lurus beraturan atau diam kecuali ada gaya yang bekerja padanya. Hukum kedua menghubungkan gaya dengan percepatan benda, yaitu gaya yang bekerja pada benda adalah hasil perkalian massa benda dengan percepatannya. Hukum ketiga menyatakan bahwa setiap aksi memiliki reaksi yang sebanding dan berlawanan arah.
+
+2. Hukum Gravitasi Universal: Newton mengembangkan hukum gravitasi universal yang menjelaskan bahwa setiap benda dalam alam semesta saling menarik dengan gaya gravitasi yang sebanding dengan massa masing-masing benda dan berbanding terbalik dengan kuadrat jarak di antara mereka.
+
+3. Kalkulus: Newton juga dikenal sebagai salah satu pengembang kalkulus, suatu cabang matematika yang membahas tentang perubahan dan hubungan antara fungsi. Kalkulus menjadi alat penting dalam pemodelan dan analisis fenomena fisik.
+
+4. Spektrum Cahaya: Newton melakukan eksperimen dengan memecah cahaya putih menggunakan prisma dan menemukan bahwa cahaya terdiri dari berbagai warna yang membentuk spektrum. Penemuan ini menjadi dasar dalam memahami sifat-sifat cahaya.
+
+Teori Newton menghasilkan pemahaman baru tentang gerak, gravitasi, dan fenomena alam lainnya. Kontribusinya terhadap ilmu fisika telah memberikan landasan penting bagi perkembangan ilmu pengetahuan selanjutnya.`,
+    numberOfLikes: 0,
+    numberOfComments: 4,
+  },
   {
     id: 101,
     userId: 3,
     profile: assets.sanjiProfile,
     name: "Vinsmoke Sanji",
     date: "1 menit",
-    tweet:
-      `Cerita dimulai dengan Luffy yang berpetualang mencari kru bajak laut yang kuat dan mengejar impian menjadi Raja Bajak Laut (Pirate King). Di sepanjang perjalanan mereka, Luffy dan kru menghadapi berbagai tantangan, bertemu dengan karakter-karakter unik, dan terlibat dalam pertempuran sengit dengan bajak laut jahat, pemerintah dunia, dan pasukan angkatan laut. Selain itu, cerita One Piece juga memperkenalkan konsep Haki (kekuatan spiritual), Buah Iblis (buah ajaib yang memberikan kekuatan supernatural kepada penggunanya), dan Poneglyph (batu peninggalan kuno yang menyimpan rahasia tentang sejarah dunia). Sejarah One Piece terus berkembang dan mengungkapkan misteri-misteri yang terkait dengan asal-usul dunia, Raftel (pulau terakhir Grand Line tempat One Piece diyakini berada), dan sejarah kuno yang terkait dengan Keponegoroan Void Century.`,
+    tweet: `Cerita dimulai dengan Luffy yang berpetualang mencari kru bajak laut yang kuat dan mengejar impian menjadi Raja Bajak Laut (Pirate King). Di sepanjang perjalanan mereka, Luffy dan kru menghadapi berbagai tantangan, bertemu dengan karakter-karakter unik, dan terlibat dalam pertempuran sengit dengan bajak laut jahat, pemerintah dunia, dan pasukan angkatan laut. Selain itu, cerita One Piece juga memperkenalkan konsep Haki (kekuatan spiritual), Buah Iblis (buah ajaib yang memberikan kekuatan supernatural kepada penggunanya), dan Poneglyph (batu peninggalan kuno yang menyimpan rahasia tentang sejarah dunia). Sejarah One Piece terus berkembang dan mengungkapkan misteri-misteri yang terkait dengan asal-usul dunia, Raftel (pulau terakhir Grand Line tempat One Piece diyakini berada), dan sejarah kuno yang terkait dengan Keponegoroan Void Century.`,
     numberOfLikes: 0,
     numberOfComments: 4,
   },

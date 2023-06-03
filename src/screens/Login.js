@@ -6,7 +6,7 @@ import { ButtonBlue, ButtonTransparent } from "../components";
 import { assets } from "../constant";
 import { styles } from "../style/Global";
 import { useKeyboardVisible } from "../hooks";
-import { Entypo } from "@expo/vector-icons";
+import { Entypo, AntDesign } from "@expo/vector-icons";
 
 const Login = ({ navigation }) => {
   const [loginInput, setLoginInput] = useState({
@@ -15,7 +15,10 @@ const Login = ({ navigation }) => {
   });
 
   const [hidePassword, setHidePassword] = useState(true);
+
+  const removeUsername = () => setLoginInput({...loginInput, username: ""});
   const handleHidePassword = () => setHidePassword(!hidePassword);
+
   const isKeyboardVisible = useKeyboardVisible();
 
   return (
@@ -45,6 +48,17 @@ const Login = ({ navigation }) => {
               setLoginInput({ ...loginInput, username: text })
             }
           />
+          <View className="absolute right-4">
+            {loginInput.username && (
+              <TouchableOpacity onPress={removeUsername}>
+                <AntDesign
+                  name={"close"}
+                  size={22}
+                  color={styles.gray}
+                />
+              </TouchableOpacity>
+            )}
+          </View>
         </View>
         {/* password */}
         <View className={`${styles.inputStyle} mb-6`}>
@@ -61,7 +75,7 @@ const Login = ({ navigation }) => {
             {loginInput.password && (
               <TouchableOpacity onPress={handleHidePassword}>
                 <Entypo
-                  name={hidePassword ? "eye" : "eye-with-line"}
+                  name={hidePassword ? "eye-with-line" : "eye"}
                   size={22}
                   color={styles.gray}
                 />

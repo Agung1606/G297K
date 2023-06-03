@@ -5,11 +5,13 @@ import { styles } from "../../style/Global";
 
 const NoTweets = ({ text }) => {
   return (
-    <View className={`${styles.flexCenter}`}>
-      <Text className="font-InterSemiBold text-xl text-grayCustom">
-        No tweets
-      </Text>
-      <Text className="font-InterRegular text-grayCustom">{text}</Text>
+    <View className={`${styles.flexCenter} mt-10`}>
+      <View className={`w-[70%] ${styles.flexCenter}`}>
+        <Text className="font-InterSemiBold text-xl text-grayCustom">
+          No tweets
+        </Text>
+        <Text className="font-InterRegular text-grayCustom text-center">{text}</Text>
+      </View>
     </View>
   );
 };
