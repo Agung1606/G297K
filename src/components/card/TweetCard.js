@@ -56,11 +56,6 @@ const TweetCard = ({ item }) => {
                 <Text className="font-InterBold">{item.name}</Text>
                 <Text className="text-[12px] text-gray-400">{item.date}</Text>
               </View>
-              <TouchableOpacity
-                onPress={() => alert("Open more vertical modal")}
-              >
-                <MaterialIcons name="more-vert" size={25} />
-              </TouchableOpacity>
             </View>
             {/* tweets */}
             <Text className={`font-InterRegular`}>
@@ -88,12 +83,7 @@ const TweetCard = ({ item }) => {
   );
 };
 
-export const Interaction = ({
-  id,
-  name,
-  numberOfLikes,
-  numberOfComments,
-}) => {
+export const Interaction = ({ id, name, numberOfLikes, numberOfComments }) => {
   const { data: loggedInUserData } = loggedInUser();
 
   const [likesCount, setLikesCount] = useState(numberOfLikes);
