@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { Keyboard } from "react-native";
 import {
   useSharedValue,
@@ -7,6 +7,7 @@ import {
   withTiming,
   Easing,
 } from "react-native-reanimated";
+import { BottomSheetBackdrop } from "@gorhom/bottom-sheet";
 import { useSelector } from "react-redux";
 
 export const loggedInUser = () => {
@@ -47,7 +48,18 @@ export const bottomModalConfig = (points) => {
   const openModal = () => bottomSheetModalRef.current.present();
   const closeModal = () => bottomSheetModalRef.current.dismiss();
 
-  return { bottomSheetModalRef, snapPoints, openModal, closeModal }
+  const renderBackdrop = useCallback(
+    (props) => (
+      <BottomSheetBackdrop
+        {...props}
+        disappearsOnIndex={-1}
+        appearsOnIndex={0}
+      />
+    ),
+    []
+  );
+
+  return { bottomSheetModalRef, snapPoints, openModal, closeModal, renderBackdrop }
 };
 
 export const scrollableView = () => {

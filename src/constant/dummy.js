@@ -48,7 +48,7 @@ export const PROFILE = [
   },
   {
     id: 6,
-    username: "Jinbei_",
+    username: "jinbei_",
     name: "Jinbei",
     profile: assets.jinbeiProfile,
     followers: "86.7K",
@@ -72,6 +72,7 @@ export const TWEETS = [
     userId: 7,
     profile: assets.narutoProfile,
     name: "Naruto Uzumaki",
+    username: "uzumakinaruto_",
     date: "43 detik",
     tweet: `Teori Newton mengacu pada kontribusi Sir Isaac Newton dalam fisika, terutama dalam bidang mekanika dan gravitasi. Berikut ini beberapa teori yang dikembangkan oleh Newton:
 
@@ -92,6 +93,7 @@ Teori Newton menghasilkan pemahaman baru tentang gerak, gravitasi, dan fenomena 
     userId: 3,
     profile: assets.sanjiProfile,
     name: "Vinsmoke Sanji",
+    username: "vnskmj_sanji",
     date: "1 menit",
     tweet: `Cerita dimulai dengan Luffy yang berpetualang mencari kru bajak laut yang kuat dan mengejar impian menjadi Raja Bajak Laut (Pirate King). Di sepanjang perjalanan mereka, Luffy dan kru menghadapi berbagai tantangan, bertemu dengan karakter-karakter unik, dan terlibat dalam pertempuran sengit dengan bajak laut jahat, pemerintah dunia, dan pasukan angkatan laut. Selain itu, cerita One Piece juga memperkenalkan konsep Haki (kekuatan spiritual), Buah Iblis (buah ajaib yang memberikan kekuatan supernatural kepada penggunanya), dan Poneglyph (batu peninggalan kuno yang menyimpan rahasia tentang sejarah dunia). Sejarah One Piece terus berkembang dan mengungkapkan misteri-misteri yang terkait dengan asal-usul dunia, Raftel (pulau terakhir Grand Line tempat One Piece diyakini berada), dan sejarah kuno yang terkait dengan Keponegoroan Void Century.`,
     numberOfLikes: 0,
@@ -102,6 +104,7 @@ Teori Newton menghasilkan pemahaman baru tentang gerak, gravitasi, dan fenomena 
     userId: 1,
     profile: assets.luffyProfile,
     name: "Monkey D Luffy",
+    username: "king.of.pirate15_",
     date: "49 menit",
     tweet: "Who needs a plan when you can punch your way through everything?",
     numberOfLikes: 0,
@@ -112,6 +115,7 @@ Teori Newton menghasilkan pemahaman baru tentang gerak, gravitasi, dan fenomena 
     userId: 2,
     profile: assets.zoroProfile,
     name: "Roronoa Zoro",
+    username: "rrnoazoro",
     date: "2 jam",
     tweet:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed viverra, odio ac elementum laoreet, risus justo tincidunt sem, vel aliquet est lectus eget enim. Nulla lobortis tincidunt purus, id maximus lacus efficitur ut. Sed vitae hendrerit est. Sed convallis, mauris sit amet egestas scelerisque, nunc libero elementum sapien, id tempus sapien dolor eget est. Sed scelerisque, libero sed dapibus commodo, lectus justo lobortis ante, vel malesuada sapien sapien nec mauris. Phasellus condimentum tincidunt mauris, nec rutrum orci laoreet sed. Fusce non tortor vel nisi euismod tincidunt sed sed felis. Nam vitae erat vel odio semper malesuada at sit amet mauris. Integer tristique ultrices lacus, id luctus lectus maximus non. Nunc fermentum ligula lorem, vitae tempor tellus placerat ut. Mauris a tellus non tortor dictum malesuada vel eu neque.",
@@ -123,6 +127,7 @@ Teori Newton menghasilkan pemahaman baru tentang gerak, gravitasi, dan fenomena 
     userId: 3,
     profile: assets.sanjiProfile,
     name: "Vinsmoke Sanji",
+    username: "vnskmj_sanji",
     date: "12 jam",
     tweet:
       "I don't care who you are, what you've done, or who you've aligned yourself with. If you lay a finger on a lady, I won't forgive you.",
@@ -134,6 +139,7 @@ Teori Newton menghasilkan pemahaman baru tentang gerak, gravitasi, dan fenomena 
     userId: 4,
     profile: assets.usopProfile,
     name: "Usoop",
+    username: "usoopppp297_",
     date: "1 hari",
     tweet:
       "Vestibulum convallis, massa nec tincidunt facilisis, ante eros accumsan lorem, ut posuere nulla mauris eu ipsum. Fusce accumsan dui lorem, ac consectetur mi fermentum ut. Morbi vitae magna ex. Proin at metus euismod, malesuada ex vitae, vulputate tellus. Pellentesque ut consequat metus. Aliquam consectetur pellentesque rutrum. Vivamus vitae tortor rutrum, varius metus vel, tincidunt est. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed rutrum, tortor nec semper scelerisque, erat mauris aliquam est, et interdum ex nisl vel mauris. Quisque congue aliquet tristique. Mauris bibendum mauris vel est tincidunt, et lobortis risus cursus. Sed fermentum augue felis, eu sollicitudin purus eleifend et. Phasellus in felis ac leo hendrerit consectetur. Aenean sed nunc bibendum, consectetur lorem ac, venenatis lectus.",
@@ -145,6 +151,7 @@ Teori Newton menghasilkan pemahaman baru tentang gerak, gravitasi, dan fenomena 
     userId: 5,
     profile: assets.coperProfile,
     name: "Tony Chooper",
+    username: "coper12",
     date: "3 hari",
     tweet: "オオカミは何匹いますか？",
     numberOfLikes: 0,
@@ -155,6 +162,7 @@ Teori Newton menghasilkan pemahaman baru tentang gerak, gravitasi, dan fenomena 
     userId: 6,
     profile: assets.jinbeiProfile,
     name: "Jinbei",
+    username: "jinbei_",
     date: "2 minggu",
     tweet:
       "You have power over your mind - not outside events. Realize this, and you will find strength.",

@@ -27,7 +27,7 @@ const BottomNavTab = () => (
       tabBarStyle: {
         backgroundColor: "white",
         borderTopColor: "gray",
-        height: 60,
+        height: 50,
       },
     }}
     initialRouteName="HomeScreen"

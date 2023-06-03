@@ -1,8 +1,8 @@
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
-import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import { MaterialIcons } from "@expo/vector-icons";
+import { BottomSheetModal } from "@gorhom/bottom-sheet";
 
 import { Avatar, Interaction } from "../components";
 import { COMMENTS } from "../constant";
@@ -45,11 +45,16 @@ const Tweet = ({ item, goToVisitProfile }) => (
       <View className="flex-row items-center space-x-4">
         <Avatar imgUrl={item.profile} size={50} onPress={goToVisitProfile} />
         <View>
-          <Text className="font-InterBold">{item.name}</Text>
+          <View className="flex-row items-center space-x-1">
+            <Text className="font-InterBold">{item.name}</Text>
+            <Text className="font-InterRegular text-xs text-grayCustom">
+              @{item.username}
+            </Text>
+          </View>
           <Text className="text-[12px] text-gray-400">{item.date}</Text>
         </View>
       </View>
-      <BtnMoreVert tweetId={item.id} />
+      <BtnMoreVert tweetId={item.id} username={item.username} />
     </View>
     {/* tweets */}
     <Text className="font-InterRegular text-[17px]">{item.tweet}</Text>
@@ -63,9 +68,20 @@ const Tweet = ({ item, goToVisitProfile }) => (
   </View>
 );
 
-const BtnMoreVert = ({ tweetId }) => {
-  const { bottomSheetModalRef, snapPoints, openModal, closeModal } =
-    bottomModalConfig(["25%"]);
+const BtnMoreVert = ({ tweetId, username }) => {
+  const { bottomSheetModalRef, snapPoints, openModal, renderBackdrop } =
+    bottomModalConfig(["15%"]);
+
+  const options = [
+    {
+      icon: <MaterialIcons name="person-add" size={30} />,
+      text: `Follow @${username}`,
+    },
+    {
+      icon: <MaterialIcons name="report" size={30} />,
+      text: "Report Tweet",
+    },
+  ];
 
   return (
     <>
@@ -76,8 +92,19 @@ const BtnMoreVert = ({ tweetId }) => {
         ref={bottomSheetModalRef}
         index={0}
         snapPoints={snapPoints}
+        backdropComponent={renderBackdrop}
       >
-        <Text>{tweetId}</Text>
+        <View className="px-6 space-y-3">
+          {options.map((item) => (
+            <TouchableOpacity
+              key={item.text}
+              className="flex-row items-center space-x-2"
+            >
+              {item.icon}
+              <Text className="font-InterMedium text-[16px]">{item.text}</Text>
+            </TouchableOpacity>
+          ))}
+        </View>
       </BottomSheetModal>
     </>
   );

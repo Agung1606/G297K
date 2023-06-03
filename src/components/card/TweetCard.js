@@ -51,11 +51,12 @@ const TweetCard = ({ item }) => {
             className="active:bg-gray-600/20 rounded-lg mb-2"
           >
             {/* username and date */}
-            <View className={`flex-row ${styles.flexBetween} mb-1`}>
-              <View>
+            <View className="mb-1">
+              <View className="flex-row items-center space-x-1">
                 <Text className="font-InterBold">{item.name}</Text>
-                <Text className="text-[12px] text-gray-400">{item.date}</Text>
+                <Text className="font-InterRegular text-xs text-grayCustom">@{item.username}</Text>
               </View>
+              <Text className="text-[12px] text-gray-400">{item.date}</Text>
             </View>
             {/* tweets */}
             <Text className={`font-InterRegular`}>
