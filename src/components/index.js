@@ -4,6 +4,8 @@ import Avatar from "./common/Avatar";
 import ProfileInfo from "./common/ProfileInfo";
 import NoTweets from "./common/NoTweets";
 
+import DialogModal from "./Modal/DialogModal";
+
 import EmailRegisterScreen from "./screens/EmailRegister";
 import PasswordRegisterScreen from "./screens/PasswordRegister";
 
@@ -18,5 +20,6 @@ export {
   ButtonFollow,
   EmailRegisterScreen,
   PasswordRegisterScreen,
-  NoTweets
+  NoTweets,
+  DialogModal,
 };

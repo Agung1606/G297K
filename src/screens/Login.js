@@ -2,7 +2,7 @@ import { View, TextInput, Text, TouchableOpacity, Image } from "react-native";
 import React, { useState } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 
-import { ButtonBlue, ButtonTransparent } from "../components";
+import { ButtonBlue, ButtonTransparent, DialogModal } from "../components";
 import { assets } from "../constant";
 import { styles } from "../style/Global";
 import { useKeyboardVisible } from "../hooks";
@@ -14,12 +14,24 @@ const Login = ({ navigation }) => {
     password: "",
   });
 
-  const [hidePassword, setHidePassword] = useState(true);
-
-  const removeUsername = () => setLoginInput({...loginInput, username: ""});
-  const handleHidePassword = () => setHidePassword(!hidePassword);
-
   const isKeyboardVisible = useKeyboardVisible();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [hidePassword, setHidePassword] = useState(true);
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const closeModal = () => setIsModalOpen(false);
+  const handleHidePassword = () => setHidePassword(!hidePassword);
+  const removeUsername = () => setLoginInput({ ...loginInput, username: "" });
+
+  const handleLogin = () => {
+    if (loginInput.username && loginInput.password) {
+      navigation.navigate("BottomNavTab");
+    } else {
+      setErrorMsg("One Piece fans!");
+      setIsModalOpen(true);
+    }
+  };
 
   return (
     <View className="flex-1 justify-center items-center px-[6px]">
@@ -51,11 +63,7 @@ const Login = ({ navigation }) => {
           <View className="absolute right-4">
             {loginInput.username && (
               <TouchableOpacity onPress={removeUsername}>
-                <AntDesign
-                  name={"close"}
-                  size={22}
-                  color={styles.gray}
-                />
+                <AntDesign name={"close"} size={22} color={styles.gray} />
               </TouchableOpacity>
             )}
           </View>
@@ -84,10 +92,7 @@ const Login = ({ navigation }) => {
           </View>
         </View>
         {/* button login */}
-        <ButtonBlue
-          title={"Log in"}
-          onPress={() => navigation.navigate("BottomNavTab")}
-        />
+        <ButtonBlue title={"Log in"} onPress={handleLogin} />
       </View>
       {/* forget password */}
       <TouchableOpacity>
@@ -106,6 +111,12 @@ const Login = ({ navigation }) => {
           </Text>
         </View>
       )}
+      {/* simple modal */}
+      <DialogModal
+        isModalOpen={isModalOpen}
+        msg={errorMsg}
+        closeModal={closeModal}
+      />
     </View>
   );
 };
