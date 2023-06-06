@@ -3,6 +3,7 @@ import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { PaperProvider } from "react-native-paper";
 
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
@@ -94,9 +95,11 @@ export default function App() {
       {/* <PersistGate loading={null} persistor={persistStore(store)}> */}
       <GestureHandlerRootView className="flex-1">
         <BottomSheetModalProvider>
-          <NavigationContainer theme={theme}>
-            <Routes />
-          </NavigationContainer>
+          <PaperProvider>
+            <NavigationContainer theme={theme}>
+              <Routes />
+            </NavigationContainer>
+          </PaperProvider>
         </BottomSheetModalProvider>
       </GestureHandlerRootView>
       {/* </PersistGate> */}

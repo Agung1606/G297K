@@ -28,7 +28,7 @@ const Login = ({ navigation }) => {
     if (loginInput.username && loginInput.password) {
       navigation.navigate("BottomNavTab");
     } else {
-      setErrorMsg("One Piece fans!");
+      setErrorMsg("Please provides username, phone number, or email to continue :)");
       setIsModalOpen(true);
     }
   };
