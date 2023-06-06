@@ -54,7 +54,9 @@ const TweetCard = ({ item }) => {
             <View className="mb-1">
               <View className="flex-row items-center space-x-1">
                 <Text className="font-InterBold">{item.name}</Text>
-                <Text className="font-InterRegular text-xs text-grayCustom">@{item.username}</Text>
+                <Text className="font-InterRegular text-xs text-grayCustom">
+                  @{item.username}
+                </Text>
               </View>
               <Text className="text-[12px] text-gray-400">{item.date}</Text>
             </View>

@@ -1,9 +1,9 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { FontAwesome } from "@expo/vector-icons";
 
 import Login from "./Login";
+import Register from "./Register";
 import Message from "./Message";
 import VisitProfile from "./VisitProfile";
 import DetailsTweet from "./DetailsTweet";
@@ -11,10 +11,8 @@ import DetailsTweet from "./DetailsTweet";
 import Home from "./Home";
 import Profile from "./Profile";
 
-import { EmailRegisterScreen, PasswordRegisterScreen } from "../components";
 
 const Tab = createBottomTabNavigator();
-const Stack = createNativeStackNavigator();
 
 const BottomNavTab = () => (
   <Tab.Navigator
@@ -53,29 +51,11 @@ const BottomNavTab = () => (
   </Tab.Navigator>
 );
 
-const RegisterStack = () => (
-  <Stack.Navigator
-    screenOptions={{
-      headerShown: false,
-    }}
-  >
-    <Stack.Screen name="EmailRegisterScreen" component={EmailRegisterScreen} />
-    <Stack.Screen
-      name="PasswordRegisterScreen"
-      component={PasswordRegisterScreen}
-      options={{
-        presentation: "modal",
-        animation: "slide_from_right",
-      }}
-    />
-  </Stack.Navigator>
-);
-
 export {
   Login,
+  Register,
   BottomNavTab,
   DetailsTweet,
   VisitProfile,
   Message,
-  RegisterStack,
 };

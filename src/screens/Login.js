@@ -104,7 +104,7 @@ const Login = ({ navigation }) => {
           <ButtonTransparent
             title={"Create new account"}
             borderColor={"border-blue"}
-            onPress={() => navigation.navigate("RegisterStack")}
+            onPress={() => navigation.navigate("RegisterScreen")}
           />
           <Text className="text-center font-LoraBold tracking-wider text-gray-600">
             G297K

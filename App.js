@@ -12,7 +12,7 @@ import { store } from "./src/redux";
 
 import {
   Login,
-  RegisterStack,
+  Register,
   BottomNavTab,
   DetailsTweet,
   VisitProfile,
@@ -37,7 +37,7 @@ const Routes = () => (
   >
     <Stack.Group>
       <Stack.Screen name="LoginScreen" component={Login} />
-      <Stack.Screen name="RegisterStack" component={RegisterStack} />
+      <Stack.Screen name="RegisterScreen" component={Register} />
     </Stack.Group>
     <Stack.Group>
       <Stack.Screen

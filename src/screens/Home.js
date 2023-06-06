@@ -3,9 +3,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
 
 import { TWEETS } from "../constant";
-import { TweetCard } from "../components";
+import { TweetCard, BadgeNotif } from "../components";
 import { styles } from "../style/Global";
 import { EvilIcons, Fontisto } from "@expo/vector-icons";
+
+import { Badge } from "react-native-paper";
 
 const Header = ({ goToMessage }) => (
   <View
@@ -19,9 +21,7 @@ const Header = ({ goToMessage }) => (
       <View>
         <TouchableOpacity onPress={goToMessage}>
           <Fontisto name="email" size={30} />
-          <View className={styles.unreadNotif}>
-            <Text className="font-InterSemiBold text-xs text-white">99</Text>
-          </View>
+          <BadgeNotif num={99} />
         </TouchableOpacity>
       </View>
     </View>

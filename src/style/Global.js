@@ -1,5 +1,3 @@
-// bg-[#feffff]
-
 export const styles = {
   gray: "#808080",
   inputStyle:
@@ -12,7 +10,4 @@ export const styles = {
   flexCenter: "justify-center items-center",
   flexBetween: "justify-between items-center",
   flexEvenly: "justify-evenly items-center",
-
-  unreadNotif:
-    "w-5 h-5 bg-red-600 rounded-full justify-center items-center absolute -top-1 -right-1",
 };

@@ -1,25 +1,31 @@
-import { ButtonBlue, ButtonTransparent, ButtonGray, ButtonFollow } from "./common/Button";
 import TweetCard, { Interaction } from "./card/TweetCard";
-import Avatar from "./common/Avatar";
-import ProfileInfo from "./common/ProfileInfo";
-import NoTweets from "./common/NoTweets";
 
-import DialogModal from "./Modal/DialogModal";
-
-import EmailRegisterScreen from "./screens/EmailRegister";
-import PasswordRegisterScreen from "./screens/PasswordRegister";
-
-export {
+import {
   ButtonBlue,
   ButtonTransparent,
-  TweetCard,
-  Avatar,
-  Interaction,
-  ProfileInfo,
   ButtonGray,
   ButtonFollow,
+  ProfileInfo,
+  NoTweets,
+  Avatar,
+} from "./common";
+
+import { DialogModal, BadgeNotif } from "./reactPaper";
+
+import { EmailRegisterScreen, PasswordRegisterScreen } from "./screens";
+
+export {
+  TweetCard,
+  Interaction,
+  ButtonBlue,
+  ButtonTransparent,
+  ButtonGray,
+  ButtonFollow,
+  ProfileInfo,
+  NoTweets,
+  Avatar,
+  DialogModal,
+  BadgeNotif,
   EmailRegisterScreen,
   PasswordRegisterScreen,
-  NoTweets,
-  DialogModal,
 };

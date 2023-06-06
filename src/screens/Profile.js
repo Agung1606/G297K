@@ -4,7 +4,13 @@ import React, { useEffect, useState } from "react";
 import { EvilIcons, SimpleLineIcons } from "@expo/vector-icons";
 
 import { loggedInUser } from "../hooks";
-import { ProfileInfo, ButtonGray, TweetCard, NoTweets } from "../components";
+import {
+  ProfileInfo,
+  ButtonGray,
+  TweetCard,
+  NoTweets,
+  BadgeNotif,
+} from "../components";
 import { styles } from "../style/Global";
 import { TWEETS } from "../constant";
 
@@ -19,9 +25,7 @@ const Header = ({ username }) => {
         <View>
           <TouchableOpacity>
             <SimpleLineIcons name="menu" size={28} />
-            <View className={styles.unreadNotif}>
-              <Text className="font-InterBold text-xs text-white">1</Text>
-            </View>
+            <BadgeNotif num={1} />
           </TouchableOpacity>
         </View>
       </View>

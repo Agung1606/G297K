@@ -30,9 +30,9 @@ const ProfileInfo = ({
   const [text, setText] = useState(bio?.slice(0, 100));
   const [readMore, setReadMore] = useState(false);
   const handleReadMore = () => {
-    if(!readMore) {
+    if (!readMore) {
       setText(bio);
-      setReadMore(true)
+      setReadMore(true);
     }
   };
   return (
