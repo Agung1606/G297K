@@ -54,7 +54,7 @@ const Tweet = ({ item, goToVisitProfile }) => (
           <Text className="text-[12px] text-gray-400">{item.date}</Text>
         </View>
       </View>
-      <BtnMoreVert tweetId={item.id} username={item.username} />
+      <ButtonMoreVert tweetId={item.id} username={item.username} />
     </View>
     {/* tweets */}
     <Text className="font-InterRegular text-[17px]">{item.tweet}</Text>
@@ -68,18 +68,31 @@ const Tweet = ({ item, goToVisitProfile }) => (
   </View>
 );
 
-const BtnMoreVert = ({ tweetId, username }) => {
-  const { bottomSheetModalRef, snapPoints, openModal, renderBackdrop } =
-    bottomModalConfig(["15%"]);
+const ButtonMoreVert = ({ tweetId, username }) => {
+  const {
+    bottomSheetModalRef,
+    snapPoints,
+    openModal,
+    closeModal,
+    renderBackdrop,
+  } = bottomModalConfig(["15%"]);
 
   const options = [
     {
       icon: <MaterialIcons name="person-add" size={30} />,
       text: `Follow @${username}`,
+      onPress: () => {
+        alert(`Followed ${username}`);
+        closeModal();
+      },
     },
     {
       icon: <MaterialIcons name="report" size={30} />,
       text: "Report Tweet",
+      onPress: () => {
+        alert("Report this tweet");
+        closeModal();
+      },
     },
   ];
 
@@ -99,6 +112,7 @@ const BtnMoreVert = ({ tweetId, username }) => {
             <TouchableOpacity
               key={item.text}
               className="flex-row items-center space-x-2"
+              onPress={item.onPress}
             >
               {item.icon}
               <Text className="font-InterMedium text-[16px]">{item.text}</Text>

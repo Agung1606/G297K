@@ -7,8 +7,6 @@ import { TweetCard, BadgeNotif } from "../components";
 import { styles } from "../style/Global";
 import { EvilIcons, Fontisto } from "@expo/vector-icons";
 
-import { Badge } from "react-native-paper";
-
 const Header = ({ goToMessage }) => (
   <View
     className={`flex-row ${styles.flexBetween} py-1 px-3 border-b border-b-gray-600`}
@@ -18,18 +16,16 @@ const Header = ({ goToMessage }) => (
       <TouchableOpacity>
         <EvilIcons name="plus" size={39} />
       </TouchableOpacity>
-      <View>
-        <TouchableOpacity onPress={goToMessage}>
-          <Fontisto name="email" size={30} />
-          <BadgeNotif num={99} />
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity onPress={goToMessage}>
+        <Fontisto name="email" size={30} />
+        <BadgeNotif num={99} />
+      </TouchableOpacity>
     </View>
   </View>
 );
 
 const Home = ({ navigation }) => {
-  const goToMessage = () => navigation.navigate("MessageScreen")
+  const goToMessage = () => navigation.navigate("MessageScreen");
   return (
     <SafeAreaView className="flex-1">
       <Header goToMessage={goToMessage} />

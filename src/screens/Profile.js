@@ -1,7 +1,14 @@
-import { View, Text, TouchableOpacity, FlatList } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  FlatList,
+  SectionList,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React, { useEffect, useState } from "react";
-import { EvilIcons, SimpleLineIcons } from "@expo/vector-icons";
+import { BottomSheetModal } from "@gorhom/bottom-sheet";
+import { EvilIcons, SimpleLineIcons, MaterialIcons } from "@expo/vector-icons";
 
 import { loggedInUser } from "../hooks";
 import {
@@ -11,25 +18,91 @@ import {
   NoTweets,
   BadgeNotif,
 } from "../components";
+import { bottomModalConfig } from "../hooks";
 import { styles } from "../style/Global";
 import { TWEETS } from "../constant";
 
-const Header = ({ username }) => {
+const BottomMenu = () => {
+  const options = [
+    {
+      title: "Professional Tools",
+      data: [
+        {
+          text: "G297K for Professional",
+          icon: <SimpleLineIcons name="rocket" size={18} />,
+        },
+        {
+          text: "Monetization",
+          icon: <MaterialIcons name="attach-money" size={20} />,
+        },
+      ],
+    },
+    {
+      title: "Settings & Support",
+      data: [
+        {
+          text: "Settings and Privacy",
+          icon: <SimpleLineIcons name="settings" size={18} />,
+        },
+        {
+          text: "Help Center",
+          icon: <MaterialIcons name="help-outline" size={20} />,
+        },
+      ],
+    },
+  ];
+
   return (
-    <View className={`flex-row ${styles.flexBetween} my-1 px-3`}>
-      <Text className="font-InterBold text-xl tracking-wide">{username}</Text>
-      <View className={`flex-row space-x-6`}>
-        <TouchableOpacity>
-          <EvilIcons name="plus" size={39} />
+    <SectionList
+      sections={options}
+      renderSectionHeader={({ section }) => (
+        <Text className="px-6 py-2 font-InterSemiBold text-lg">
+          {section.title}
+        </Text>
+      )}
+      renderItem={({ item }) => (
+        <TouchableOpacity className="flex-row items-center px-8 pb-2 space-x-2">
+          {item.icon}
+          <Text className="font-InterMedium">{item.text}</Text>
         </TouchableOpacity>
-        <View>
+      )}
+      keyExtractor={(item) => `basicListEntry-${item.text}`}
+    />
+  );
+};
+
+const Header = ({ username }) => {
+  const {
+    bottomSheetModalRef,
+    snapPoints,
+    openModal,
+    closeModal,
+    renderBackdrop,
+  } = bottomModalConfig(["30%"]);
+  return (
+    <>
+      <View className={`flex-row ${styles.flexBetween} my-1 px-3`}>
+        <Text className="font-InterBold text-xl tracking-wide">{username}</Text>
+        <View className={`flex-row items-center space-x-4`}>
           <TouchableOpacity>
+            <EvilIcons name="plus" size={39} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={openModal}>
             <SimpleLineIcons name="menu" size={28} />
             <BadgeNotif num={1} />
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+      {/* bottom modal */}
+      <BottomSheetModal
+        ref={bottomSheetModalRef}
+        index={0}
+        snapPoints={snapPoints}
+        backdropComponent={renderBackdrop}
+      >
+        <BottomMenu />
+      </BottomSheetModal>
+    </>
   );
 };
 
