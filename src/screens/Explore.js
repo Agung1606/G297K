@@ -9,23 +9,25 @@ const StyledPressable = styled(Pressable);
 import { styles } from "../style/Global";
 
 const SearchBar = ({ onPress }) => (
-  <StyledPressable
-    onPress={onPress}
-    className="flex-1 px-4 py-2 bg-gray-300/80 active:bg-gray-300/50 rounded-full ml-6"
+  <View
+    className={`flex-row ${styles.flexBetween} py-2 px-4 border-b border-gray-600`}
   >
-    <Text className="font-InterMedium text-gray-600">Search Account</Text>
-  </StyledPressable>
+    <TouchableOpacity>
+      <SimpleLineIcons name="settings" size={22} />
+    </TouchableOpacity>
+    <StyledPressable
+      onPress={onPress}
+      className="flex-1 px-4 py-2 bg-gray-300/80 active:bg-gray-300/50 rounded-full ml-6"
+    >
+      <Text className="font-InterMedium text-gray-600">Search Account</Text>
+    </StyledPressable>
+  </View>
 );
 
 const Explore = ({ navigation }) => {
   return (
-    <SafeAreaView className="flex-1 mx-4">
-      <View className={`flex-row ${styles.flexBetween} p-2`}>
-        <TouchableOpacity>
-          <SimpleLineIcons name="settings" size={22} />
-        </TouchableOpacity>
-        <SearchBar onPress={() => navigation.navigate("SearchScreen")} />
-      </View>
+    <SafeAreaView className="flex-1">
+      <SearchBar onPress={() => navigation.navigate("SearchScreen")} />
     </SafeAreaView>
   );
 };
