@@ -12,7 +12,7 @@ import {
 
 import { DialogModal, BadgeNotif } from "./reactPaper";
 
-import { EmailRegisterScreen, PasswordRegisterScreen } from "./screens";
+import { EmailRegisterScreen, PasswordRegisterScreen, SearchScreen } from "./screens";
 
 export {
   TweetCard,
@@ -28,4 +28,5 @@ export {
   BadgeNotif,
   EmailRegisterScreen,
   PasswordRegisterScreen,
+  SearchScreen
 };

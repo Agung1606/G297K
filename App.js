@@ -19,6 +19,8 @@ import {
   Message,
 } from "./src/screens";
 
+import { SearchScreen } from "./src/components";
+
 const theme = {
   ...DefaultTheme,
   colors: {
@@ -70,6 +72,14 @@ const Routes = () => (
         options={{
           presentation: "modal",
           animation: "slide_from_right",
+        }}
+      />
+      <Stack.Screen
+        name="SearchScreen"
+        component={SearchScreen}
+        options={{
+          presentation: "modal",
+          animation: "none",
         }}
       />
     </Stack.Group>

@@ -15,5 +15,5 @@ export {
   ButtonFollow,
   ProfileInfo,
   NoTweets,
-  Avatar
+  Avatar,
 }

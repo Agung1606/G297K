@@ -4,9 +4,9 @@ import React from 'react'
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from '@react-navigation/native';
 
-import HeaderRegister from '../common/HeaderRegister';
-import { ButtonBlue } from '../common/Button'
-import { styles } from '../../style/Global'
+import HeaderRegister from '../../common/HeaderRegister';
+import { ButtonBlue } from '../../common/Button'
+import { styles } from '../../../style/Global'
 
 const EmailRegister = () => {
   const navigation = useNavigation();

@@ -2,6 +2,7 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { FontAwesome } from "@expo/vector-icons";
 
+
 import Login from "./Login";
 import Register from "./Register";
 import Message from "./Message";
@@ -9,8 +10,8 @@ import VisitProfile from "./VisitProfile";
 import DetailsTweet from "./DetailsTweet";
 
 import Home from "./Home";
+import Explore from "./Explore";
 import Profile from "./Profile";
-
 
 const Tab = createBottomTabNavigator();
 
@@ -36,6 +37,15 @@ const BottomNavTab = () => (
       options={{
         tabBarIcon: ({ color }) => (
           <FontAwesome name="home" size={30} color={color} />
+        ),
+      }}
+    />
+    <Tab.Screen
+      name="ExploreScreen"
+      component={Explore}
+      options={{
+        tabBarIcon: ({ color }) => (
+          <FontAwesome name="search" size={30} color={color} />
         ),
       }}
     />

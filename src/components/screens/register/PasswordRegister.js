@@ -5,9 +5,9 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { Entypo } from "@expo/vector-icons";
 
-import HeaderRegister from "../common/HeaderRegister";
-import { styles } from "../../style/Global";
-import { ButtonBlue } from "../common/Button";
+import HeaderRegister from "../../common/HeaderRegister";
+import { styles } from "../../../style/Global";
+import { ButtonBlue } from "../../common/Button";
 
 const PasswordRegister = () => {
   const navigation = useNavigation();

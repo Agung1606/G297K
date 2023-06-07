@@ -10,7 +10,7 @@ import { Entypo, AntDesign } from "@expo/vector-icons";
 
 const Login = ({ navigation }) => {
   const [loginInput, setLoginInput] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
@@ -22,15 +22,15 @@ const Login = ({ navigation }) => {
 
   const closeModal = () => setIsModalOpen(false);
   const handleHidePassword = () => setHidePassword(!hidePassword);
-  const removeUsername = () => setLoginInput({ ...loginInput, username: "" });
+  const removeUsername = () => setLoginInput({ ...loginInput, email: "" });
 
   const handleLogin = () => {
-    if (loginInput.username && loginInput.password) {
+    // if (loginInput.email && loginInput.password) {
       navigation.navigate("BottomNavTab");
-    } else {
-      setErrorMsg("Please provides username, phone number, or email to continue :)");
-      setIsModalOpen(true);
-    }
+    // } else {
+    //   setErrorMsg("Please provides phone number, or email to continue :)");
+    //   setIsModalOpen(true);
+    // }
   };
 
   return (
@@ -53,11 +53,11 @@ const Login = ({ navigation }) => {
         {/* username */}
         <View className={`${styles.inputStyle} mb-3`}>
           <TextInput
-            placeholder="Username"
+            placeholder="Email"
             className="font-InterBold text-[16px]"
-            value={loginInput.username}
+            value={loginInput.email}
             onChangeText={(text) =>
-              setLoginInput({ ...loginInput, username: text })
+              setLoginInput({ ...loginInput, email: text })
             }
           />
           <View className="absolute right-4">
