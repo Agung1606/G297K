@@ -76,7 +76,6 @@ const Header = ({ username }) => {
     bottomSheetModalRef,
     snapPoints,
     openModal,
-    closeModal,
     renderBackdrop,
   } = bottomModalConfig(["30%"]);
   return (

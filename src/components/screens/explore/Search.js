@@ -4,6 +4,7 @@ import {
   TextInput,
   TouchableOpacity,
   Pressable,
+  FlatList,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React, { useEffect, useState } from "react";
@@ -37,9 +38,21 @@ const SearchBar = ({ goBack, query, setQuery }) => (
 
 const Search = ({ navigation }) => {
   const goBack = () => navigation.goBack();
+  const goToProfile = (item) => {
+    navigation.navigate("VisitProfileScreen", { param: item.id });
+    handleHistory(item);
+  };
 
   const [query, setQuery] = useState("");
   const [users, setUsers] = useState([]);
+  const [history, setHistory] = useState([]);
+
+  const handleHistory = (item) => {
+    const isUserAlreadyExist = history.some((user) => user.id === item.id);
+    if (!isUserAlreadyExist) {
+      setHistory([item, ...history]);
+    }
+  };
 
   useEffect(() => {
     if (query) {
@@ -55,25 +68,60 @@ const Search = ({ navigation }) => {
   return (
     <SafeAreaView className="flex-1">
       <SearchBar goBack={goBack} query={query} setQuery={setQuery} />
-      {/* wanted user */}
-      {users &&
-        users.map((user) => (
-          <StyledPressable
-            onPress={() =>
-              navigation.navigate("VisitProfileScreen", { param: user.id })
-            }
-            key={user.id}
-            className="m-2 p-2 flex-row items-center space-x-4 active:bg-gray-200 rounded-lg"
-          >
-            <Avatar imgUrl={user.profile} size={45} />
-            <View>
-              <Text className="font-InterBold">{user.name}</Text>
-              <Text className="font-InterRegular text-grayCustom">
-                @{user.username}
+      {users && query ? (
+        <FlatList
+          data={users}
+          renderItem={({ item }) => (
+            <StyledPressable
+              onPress={() => goToProfile(item)}
+              key={item.id}
+              className="m-2 p-2 flex-row items-center space-x-4 active:bg-gray-200 rounded-lg"
+            >
+              <Avatar imgUrl={item.profile} size={45} />
+              <View>
+                <Text className="font-InterBold">{item.name}</Text>
+                <Text className="font-InterRegular text-grayCustom">
+                  @{item.username}
+                </Text>
+              </View>
+            </StyledPressable>
+          )}
+          keyExtractor={(item) => item.id}
+        />
+      ) : (
+        <View className="mt-6">
+          <FlatList
+            data={history}
+            renderItem={({ item }) => (
+              <StyledPressable
+                onPress={() => goToProfile(item)}
+                key={item.id}
+                className="mr-6 items-center active:bg-gray-200 rounded-lg"
+              >
+                <Avatar
+                  imgUrl={item.profile}
+                  size={40}
+                  onPress={() => goToProfile(item)}
+                />
+                <View className="items-center">
+                  <Text className="font-InterMedium">{item.name}</Text>
+                  <Text className="font-InterRegular text-grayCustom">
+                    @{item.username}
+                  </Text>
+                </View>
+              </StyledPressable>
+            )}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            keyExtractor={(item) => item.id}
+            ListEmptyComponent={() => (
+              <Text className="mt-6 font-InterSemiBold text-gray-600">
+                Try searching for people
               </Text>
-            </View>
-          </StyledPressable>
-        ))}
+            )}
+          />
+        </View>
+      )}
     </SafeAreaView>
   );
 };
