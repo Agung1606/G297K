@@ -15,6 +15,8 @@ const StyledPressable = styled(Pressable);
 
 import { styles } from "../../../style/Global";
 import { PROFILE } from "../../../constant";
+import { modalPopupConfig } from "../../../hooks";
+import { ConfirmModal } from "../../reactPaper";
 import { Avatar } from "../../common";
 
 const SearchBar = ({ goBack, query, setQuery }) => (
@@ -42,6 +44,8 @@ const Search = ({ navigation }) => {
     navigation.navigate("VisitProfileScreen", { param: item.id });
     handleHistory(item);
   };
+
+  const { isModalOpen, openModal, closeModal } = modalPopupConfig();
 
   const [query, setQuery] = useState("");
   const [users, setUsers] = useState([]);
@@ -89,14 +93,25 @@ const Search = ({ navigation }) => {
           keyExtractor={(item) => item.id}
         />
       ) : (
-        <View className="mt-6">
+        <View className="m-2">
+          {/* for remove history */}
+          {history.length > 0 && (
+            <View className={`mb-2 flex-row ${styles.flexBetween}`}>
+              <Text className="font-InterSemiBold text-lg text-grayCustom">
+                Recent
+              </Text>
+              <TouchableOpacity onPress={openModal}>
+                <AntDesign name="closecircle" size={20} />
+              </TouchableOpacity>
+            </View>
+          )}
           <FlatList
             data={history}
             renderItem={({ item }) => (
               <StyledPressable
                 onPress={() => goToProfile(item)}
                 key={item.id}
-                className="mr-6 items-center active:bg-gray-200 rounded-lg"
+                className="mr-6 p-2 items-center active:bg-gray-200 rounded-lg"
               >
                 <Avatar
                   imgUrl={item.profile}
@@ -114,14 +129,29 @@ const Search = ({ navigation }) => {
             horizontal
             showsHorizontalScrollIndicator={false}
             keyExtractor={(item) => item.id}
-            ListEmptyComponent={() => (
-              <Text className="mt-6 font-InterSemiBold text-gray-600">
-                Try searching for people
-              </Text>
-            )}
           />
+          {history.length === 0 && (
+            <Text className="font-InterSemiBold text-center text-grayCustom">
+              Try searching for people
+            </Text>
+          )}
         </View>
       )}
+      {/* confirm modal to make sure you really wanna remove all history */}
+      <ConfirmModal
+        isModalOpen={isModalOpen}
+        onCancel={closeModal}
+        onOk={() => {
+          setHistory([])
+          closeModal();
+        }}
+        title={"Clear all recent searches?"}
+        subtitle={
+          "This can't be undone and you'll remove all your recent searches"
+        }
+        textBtnCancel={"Cancel"}
+        textBtnOk={"Clear"}
+      />
     </SafeAreaView>
   );
 };

@@ -42,6 +42,14 @@ export const useKeyboardVisible = () => {
   return isKeyboardVisible;
 };
 
+export const modalPopupConfig = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
+  return { isModalOpen, openModal, closeModal };
+};
+
 export const bottomModalConfig = (points) => {
   const bottomSheetModalRef = useRef(null);
   const snapPoints = useMemo(() => points, []);
@@ -59,7 +67,13 @@ export const bottomModalConfig = (points) => {
     []
   );
 
-  return { bottomSheetModalRef, snapPoints, openModal, closeModal, renderBackdrop }
+  return {
+    bottomSheetModalRef,
+    snapPoints,
+    openModal,
+    closeModal,
+    renderBackdrop,
+  };
 };
 
 export const scrollableView = () => {

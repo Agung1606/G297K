@@ -10,7 +10,7 @@ import {
   Avatar,
 } from "./common";
 
-import { DialogModal, BadgeNotif } from "./reactPaper";
+import { DialogModal, ConfirmModal, BadgeNotif } from "./reactPaper";
 
 import { EmailRegisterScreen, PasswordRegisterScreen, SearchScreen } from "./screens";
 
@@ -25,6 +25,7 @@ export {
   NoTweets,
   Avatar,
   DialogModal,
+  ConfirmModal,
   BadgeNotif,
   EmailRegisterScreen,
   PasswordRegisterScreen,

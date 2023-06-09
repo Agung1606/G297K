@@ -5,7 +5,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { ButtonBlue, ButtonTransparent, DialogModal } from "../components";
 import { assets } from "../constant";
 import { styles } from "../style/Global";
-import { useKeyboardVisible } from "../hooks";
+import { useKeyboardVisible, modalPopupConfig } from "../hooks";
 import { Entypo, AntDesign } from "@expo/vector-icons";
 
 const Login = ({ navigation }) => {
@@ -15,12 +15,11 @@ const Login = ({ navigation }) => {
   });
 
   const isKeyboardVisible = useKeyboardVisible();
+  const { isModalOpen, openModal, closeModal } = modalPopupConfig();
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [hidePassword, setHidePassword] = useState(true);
   const [errorMsg, setErrorMsg] = useState("");
 
-  const closeModal = () => setIsModalOpen(false);
   const handleHidePassword = () => setHidePassword(!hidePassword);
   const removeUsername = () => setLoginInput({ ...loginInput, email: "" });
 
@@ -29,7 +28,7 @@ const Login = ({ navigation }) => {
       navigation.navigate("BottomNavTab");
     // } else {
     //   setErrorMsg("Please provides phone number, or email to continue :)");
-    //   setIsModalOpen(true);
+    //   openModal()
     // }
   };
 
