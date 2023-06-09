@@ -1,4 +1,4 @@
 import assets from "./assets";
-import { TWEETS, COMMENTS, PROFILE } from "./dummy";
+import { TWEETS, COMMENTS, PROFILE, TRENDINGLISTS } from "./dummy";
 
-export { assets, TWEETS, COMMENTS, PROFILE };
+export { assets, TWEETS, COMMENTS, PROFILE, TRENDINGLISTS };

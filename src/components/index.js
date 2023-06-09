@@ -1,4 +1,5 @@
 import TweetCard, { Interaction } from "./card/TweetCard";
+import TrendingListCard from "./card/TrendingListCard";
 
 import {
   ButtonBlue,
@@ -16,6 +17,7 @@ import { EmailRegisterScreen, PasswordRegisterScreen, SearchScreen } from "./scr
 
 export {
   TweetCard,
+  TrendingListCard,
   Interaction,
   ButtonBlue,
   ButtonTransparent,

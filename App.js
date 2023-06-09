@@ -13,10 +13,11 @@ import { store } from "./src/redux";
 import {
   Login,
   Register,
-  BottomNavTab,
-  DetailsTweet,
-  VisitProfile,
   Message,
+  VisitProfile,
+  DetailsTweet,
+  TrendingList,
+  BottomNavTab,
 } from "./src/screens";
 
 import { SearchScreen } from "./src/components";
@@ -51,6 +52,14 @@ const Routes = () => (
         }}
       />
       <Stack.Screen
+        name="MessageScreen"
+        component={Message}
+        options={{
+          presentation: "modal",
+          animation: "slide_from_right",
+        }}
+      />
+      <Stack.Screen
         name="DetailsTweetScreen"
         component={DetailsTweet}
         options={{
@@ -67,19 +76,19 @@ const Routes = () => (
         }}
       />
       <Stack.Screen
-        name="MessageScreen"
-        component={Message}
-        options={{
-          presentation: "modal",
-          animation: "slide_from_right",
-        }}
-      />
-      <Stack.Screen
         name="SearchScreen"
         component={SearchScreen}
         options={{
           presentation: "modal",
           animation: "none",
+        }}
+      />
+      <Stack.Screen
+        name="TrendingListScreen"
+        component={TrendingList}
+        options={{
+          presentation: "modal",
+          animation: "slide_from_right",
         }}
       />
     </Stack.Group>

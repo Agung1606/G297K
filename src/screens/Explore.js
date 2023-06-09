@@ -4,15 +4,17 @@ import {
   TouchableOpacity,
   Pressable,
   Text,
-  FlatList,
+  ScrollView,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { SimpleLineIcons, MaterialIcons } from "@expo/vector-icons";
+import { SimpleLineIcons } from "@expo/vector-icons";
 
 import { styled } from "nativewind";
 const StyledPressable = styled(Pressable);
 
 import { styles } from "../style/Global";
+import { TrendingListCard } from "../components";
+import { TRENDINGLISTS } from "../constant";
 
 const SearchBar = ({ onPress }) => (
   <View
@@ -30,72 +32,24 @@ const SearchBar = ({ onPress }) => (
   </View>
 );
 
-const TrendingTweets = () => {
-  const hardCoded = [
-    {
-      id: 1,
-      trendingOn: "Trending in Indonesia",
-      trendingKeywords: "PDIP",
-      numberOfTweets: "712K",
-    },
-    {
-      id: 2,
-      trendingOn: "Trending in Indonesia",
-      trendingKeywords: "Malem Minggu",
-      numberOfTweets: "2,642",
-    },
-    {
-      id: 3,
-      trendingOn: "Technology - Trending",
-      trendingKeywords: "artificial intelligence",
-      numberOfTweets: "126K",
-    },
-    {
-      id: 4,
-      trendingOn: "Trending in Indonesia",
-      trendingKeywords: "Pagi-pagi",
-      numberOfTweets: "9,215",
-    },
-    {
-      id: 5,
-      trendingOn: "Trending in Indonesia",
-      trendingKeywords: "Jokowi",
-      numberOfTweets: "11.4K",
-    },
-  ];
-
+const ListOfTrendingTweets = ({ goToTrendingListScreen }) => {
   return (
     <View className="my-2">
       <Text className="mx-4 font-InterBold text-xl">Trends for you</Text>
 
       <View className="my-2">
-        <FlatList
-          data={hardCoded}
-          renderItem={({ item }) => (
-            <StyledPressable className="px-6 py-3 active:bg-gray-300/50">
-              <View className={`flex-row ${styles.flexBetween} mb-1`}>
-                <Text className="font-InterSemiBold text-grayCustom">
-                  {item.trendingOn}
-                </Text>
-                <TouchableOpacity>
-                  <MaterialIcons name="more-vert" size={22} />
-                </TouchableOpacity>
-              </View>
-              <View className="space-y-1">
-                <Text className="font-InterSemiBold text-[16px]">
-                  {item.trendingKeywords}
-                </Text>
-                <Text className="font-InterRegular text-grayCustom">
-                  {item.numberOfTweets} Tweets
-                </Text>
-              </View>
-            </StyledPressable>
-          )}
-          keyExtractor={(item) => item.id}
-        />
+        {/* only take the first 5 off list */}
+        {TRENDINGLISTS.slice(0, 5).map((item) => (
+          <TrendingListCard
+            key={item.id}
+            trendingOn={item.trendingOn}
+            trendingKeywords={item.trendingKeywords}
+            numberOfTweets={item.numberOfTweets}
+          />
+        ))}
       </View>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={goToTrendingListScreen}>
         <Text className="mx-4 text-blue font-InterMedium">Show more</Text>
       </TouchableOpacity>
     </View>
@@ -103,10 +57,17 @@ const TrendingTweets = () => {
 };
 
 const Explore = ({ navigation }) => {
+  const goToSearchScreen = () => navigation.navigate("SearchScreen")
+  const goToTrendingListScreen = () =>
+    navigation.navigate("TrendingListScreen");
   return (
     <SafeAreaView className="flex-1">
-      <SearchBar onPress={() => navigation.navigate("SearchScreen")} />
-      <TrendingTweets />
+      <ScrollView>
+        <SearchBar onPress={goToSearchScreen} />
+        <ListOfTrendingTweets
+          goToTrendingListScreen={goToTrendingListScreen}
+        />
+      </ScrollView>
     </SafeAreaView>
   );
 };

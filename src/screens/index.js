@@ -8,6 +8,7 @@ import Register from "./Register";
 import Message from "./Message";
 import VisitProfile from "./VisitProfile";
 import DetailsTweet from "./DetailsTweet";
+import TrendingList from "./TrendingList";
 
 import Home from "./Home";
 import Explore from "./Explore";
@@ -64,8 +65,9 @@ const BottomNavTab = () => (
 export {
   Login,
   Register,
-  BottomNavTab,
-  DetailsTweet,
-  VisitProfile,
   Message,
+  VisitProfile,
+  DetailsTweet,
+  TrendingList,
+  BottomNavTab,
 };

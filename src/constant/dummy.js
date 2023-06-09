@@ -206,3 +206,102 @@ export const COMMENTS = [
       "https://firebasestorage.googleapis.com/v0/b/groak-f947e.appspot.com/o/assets%2F4d789760-c2c5-44bb-8eb5-92998cf6d683.jpeg?alt=media&token=cf3ba06e-4112-489c-b683-fce653532280",
   },
 ];
+
+export const TRENDINGLISTS = [
+  {
+    id: 1,
+    trendingOn: "Trending in Indonesia",
+    trendingKeywords: "PDIP",
+    numberOfTweets: "712K",
+  },
+  {
+    id: 2,
+    trendingOn: "Trending in Indonesia",
+    trendingKeywords: "Malem Minggu",
+    numberOfTweets: "2,642",
+  },
+  {
+    id: 3,
+    trendingOn: "Technology - Trending",
+    trendingKeywords: "artificial intelligence",
+    numberOfTweets: "126K",
+  },
+  {
+    id: 4,
+    trendingOn: "Trending in Indonesia",
+    trendingKeywords: "Pagi-pagi",
+    numberOfTweets: "9,215",
+  },
+  {
+    id: 5,
+    trendingOn: "Trending in Indonesia",
+    trendingKeywords: "Jokowi",
+    numberOfTweets: "11.4K",
+  },
+  {
+    id: 6,
+    trendingOn: "Trending in Indonesia",
+    trendingKeywords: "MLBB",
+    numberOfTweets: "4,771",
+  },
+  {
+    id: 7,
+    trendingOn: "Technology - Trending",
+    trendingKeywords: "iPhone 13",
+    numberOfTweets: "9,152",
+  },
+  {
+    id: 8,
+    trendingOn: "Trending in Indonesia",
+    trendingKeywords: "JARINGAN TERCEPAT",
+    numberOfTweets: "4,251",
+  },
+  {
+    id: 9,
+    trendingOn: "Trending in Indonesia",
+    trendingKeywords: "Siang",
+    numberOfTweets: "27.9K",
+  },
+  {
+    id: 10,
+    trendingOn: "Trending in Indonesia",
+    trendingKeywords: "Pocky Rasa Baru",
+    numberOfTweets: "4,649",
+  },
+  {
+    id: 11,
+    trendingOn: "Trending",
+    trendingKeywords: "#Porsche",
+    numberOfTweets: "3,590",
+  },
+  {
+    id: 12,
+    trendingOn: "Trending in Indonesia",
+    trendingKeywords: "Sore",
+    numberOfTweets: "43.6K",
+  },
+  {
+    id: 13,
+    trendingOn: "Trending in Indonesia",
+    trendingKeywords: "Morn",
+    numberOfTweets: "7,683",
+  },
+  {
+    id: 14,
+    trendingOn: "Technology - Trending",
+    trendingKeywords: "Vision Pro",
+    numberOfTweets: "9,142",
+  },
+  {
+    id: 15,
+    trendingOn: "Trending in Indonesia",
+    trendingKeywords: "#womensday",
+    numberOfTweets: "1,213",
+  },
+  {
+    id: 16,
+    trendingOn: "Trending",
+    trendingKeywords: "Sering",
+    numberOfTweets: "28.6K",
+  },
+];
