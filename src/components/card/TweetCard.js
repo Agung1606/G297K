@@ -26,18 +26,6 @@ const TweetCard = ({ item }) => {
   const goToVisitProfile = () =>
     navigation.navigate("VisitProfileScreen", { param: item.userId });
 
-  const [text, setText] = useState(item.tweet.slice(0, 550));
-  const [readMore, setReadMore] = useState(false);
-  const handleReadMore = () => {
-    if (!readMore) {
-      setText(item.tweet);
-      setReadMore(true);
-    } else {
-      setText(item.tweet.slice(0, 550));
-      setReadMore(false);
-    }
-  };
-
   return (
     <View className="px-3 py-2 mb-2 border-b border-gray-300">
       {/* container */}
@@ -60,17 +48,14 @@ const TweetCard = ({ item }) => {
               </View>
               <Text className="text-[12px] text-gray-400">{item.date}</Text>
             </View>
-            {/* tweets */}
-            <Text className={`font-InterRegular`}>
-              {text}
+            {/* tweets, Note: this is a little bit tricky code */}
+            <Text>
+              <Text className="font-InterRegular">
+                {item.tweet.slice(0, 550)}
+              </Text>
               {item.tweet.length > 550 && (
-                <Text
-                  onPress={handleReadMore}
-                  className="text-blue font-InterSemiBold"
-                >
-                  {readMore
-                    ? " Tampilkan Lebih Sedikit"
-                    : "...Baca Lebih Lanjut"}
+                <Text className="text-blue font-InterSemiBold">
+                  ...Baca Lebih Lanjut
                 </Text>
               )}
             </Text>
@@ -137,7 +122,7 @@ export const Interaction = ({ id, name, numberOfLikes, numberOfComments }) => {
         index={0}
         snapPoints={snapPoints}
       >
-        <Comment
+        <SendComment
           loggedInUserData={loggedInUserData}
           name={name}
           closeModal={closeModal}
@@ -147,7 +132,7 @@ export const Interaction = ({ id, name, numberOfLikes, numberOfComments }) => {
   );
 };
 
-const Comment = ({ loggedInUserData, name, closeModal }) => {
+const SendComment = ({ loggedInUserData, name, closeModal }) => {
   const [commentInput, setCommentInput] = useState("");
   const handleComment = () => {
     if (!commentInput) {
@@ -158,7 +143,7 @@ const Comment = ({ loggedInUserData, name, closeModal }) => {
   };
 
   return (
-    <View className="flex-1 p-2">
+    <View className="flex-1 px-2 py-4">
       {/* top */}
       <View className={`flex-row ${styles.flexBetween} mb-6`}>
         <TouchableOpacity onPress={closeModal}>
@@ -172,14 +157,14 @@ const Comment = ({ loggedInUserData, name, closeModal }) => {
       <View className="flex-row space-x-3">
         <View className="space-y-2">
           <Avatar imgUrl={{ uri: loggedInUserData.profile }} size={55} />
-          <Text className="text-center text-[10px] font-InterLight">
+          <Text className="text-center text-[10px] font-InterLight text-grayCustom">
             {commentInput.length}/500
           </Text>
         </View>
         <View className="flex-1 space-y-2">
           <Text className="font-InterRegular text-gray-600">
             Membalas{" "}
-            <Text className="text-blue font-InterSemiBold">{name}</Text>
+            <Text className="text-blue font-InterSemiBold">@{name}</Text>
           </Text>
           <ScrollView className="mb-20">
             <TextInput

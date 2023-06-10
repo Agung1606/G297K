@@ -31,9 +31,9 @@ const DetailsTweet = ({ route, navigation }) => {
         ListHeaderComponent={
           <Tweet item={item} goToVisitProfile={goToVisitProfile} />
         }
-        data={COMMENTS}
-        renderItem={({ item }) => <Comment item={item} />}
-        keyExtractor={(item) => item.id}
+        // data={COMMENTS}
+        // renderItem={({ item }) => <Comment item={item} />}
+        // keyExtractor={(item) => item.id}
       />
     </SafeAreaView>
   );

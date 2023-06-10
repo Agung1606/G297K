@@ -14,6 +14,7 @@ import {
   Login,
   Register,
   Message,
+  UploadTweet,
   VisitProfile,
   DetailsTweet,
   TrendingList,
@@ -57,6 +58,14 @@ const Routes = () => (
         options={{
           presentation: "modal",
           animation: "slide_from_right",
+        }}
+      />
+      <Stack.Screen
+        name="UploadTweetScreen"
+        component={UploadTweet}
+        options={{
+          presentation: "modal",
+          animation: "slide_from_left",
         }}
       />
       <Stack.Screen

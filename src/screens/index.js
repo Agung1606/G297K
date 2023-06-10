@@ -5,6 +5,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import Login from "./Login";
 import Register from "./Register";
 import Message from "./Message";
+import UploadTweet from "./UploadTweet";
 import VisitProfile from "./VisitProfile";
 import DetailsTweet from "./DetailsTweet";
 import TrendingList from "./TrendingList";
@@ -67,6 +68,7 @@ export {
   Login,
   Register,
   Message,
+  UploadTweet,
   VisitProfile,
   DetailsTweet,
   TrendingList,

@@ -8,13 +8,13 @@ import { TweetCard, BadgeNotif } from "../components";
 import { styles } from "../style/Global";
 import { EvilIcons, Fontisto } from "@expo/vector-icons";
 
-const Header = ({ goToMessage }) => (
+const Header = ({ goToMessage, goToUploadTweet }) => (
   <View
     className={`flex-row ${styles.flexBetween} py-1 px-3 border-b border-b-gray-600`}
   >
     <Text className="font-LoraBold text-3xl tracking-wider">G297K</Text>
     <View className={`flex-row ${styles.flexBetween} space-x-4`}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={goToUploadTweet}>
         <EvilIcons name="plus" size={39} />
       </TouchableOpacity>
       <TouchableOpacity onPress={goToMessage}>
@@ -27,6 +27,7 @@ const Header = ({ goToMessage }) => (
 
 const Home = ({ navigation }) => {
   const goToMessage = () => navigation.navigate("MessageScreen");
+  const goToUploadTweet = () => navigation.navigate("UploadTweetScreen");
 
   const [isScrolled, setIsScrolled] = useState(false);
   const flatListRef = React.useRef(null);
@@ -39,7 +40,7 @@ const Home = ({ navigation }) => {
 
   return (
     <SafeAreaView className="flex-1">
-      <Header goToMessage={goToMessage} />
+      <Header goToMessage={goToMessage} goToUploadTweet={goToUploadTweet} />
       <FlatList
         ref={flatListRef}
         onScroll={handleScroll}

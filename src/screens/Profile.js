@@ -71,19 +71,15 @@ const BottomMenu = () => {
   );
 };
 
-const Header = ({ username }) => {
-  const {
-    bottomSheetModalRef,
-    snapPoints,
-    openModal,
-    renderBackdrop,
-  } = bottomModalConfig(["30%"]);
+const Header = ({ username, goToUploadTweet }) => {
+  const { bottomSheetModalRef, snapPoints, openModal, renderBackdrop } =
+    bottomModalConfig(["30%"]);
   return (
     <>
       <View className={`flex-row ${styles.flexBetween} my-1 px-3`}>
         <Text className="font-InterBold text-xl tracking-wide">{username}</Text>
         <View className={`flex-row items-center space-x-4`}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={goToUploadTweet}>
             <EvilIcons name="plus" size={39} />
           </TouchableOpacity>
           <TouchableOpacity onPress={openModal}>
@@ -105,7 +101,9 @@ const Header = ({ username }) => {
   );
 };
 
-const Profile = () => {
+const Profile = ({ navigation }) => {
+  const goToUploadTweet = () => navigation.navigate("UploadTweetScreen");
+
   const { data } = loggedInUser();
   const [tweets, setTweets] = useState([]);
 
@@ -116,7 +114,7 @@ const Profile = () => {
 
   return (
     <SafeAreaView className="flex-1">
-      <Header username={data.username} />
+      <Header username={data.username} goToUploadTweet={goToUploadTweet} />
       <FlatList
         ListHeaderComponent={() => (
           <View className="mb-4 pb-4 border-b border-gray-600">
