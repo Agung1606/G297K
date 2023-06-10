@@ -8,7 +8,7 @@ const NoTweets = ({ text }) => {
     <View className={`${styles.flexCenter} mt-10`}>
       <View className={`w-[70%] ${styles.flexCenter}`}>
         <Text className="font-InterSemiBold text-xl text-grayCustom">
-          No tweets
+        Tidak ada tweet
         </Text>
         <Text className="font-InterRegular text-grayCustom text-center">{text}</Text>
       </View>

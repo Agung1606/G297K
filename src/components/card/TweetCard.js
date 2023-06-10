@@ -68,7 +68,9 @@ const TweetCard = ({ item }) => {
                   onPress={handleReadMore}
                   className="text-blue font-InterSemiBold"
                 >
-                  {readMore ? " Show Less" : "...Read More"}
+                  {readMore
+                    ? " Tampilkan Lebih Sedikit"
+                    : "...Baca Lebih Lanjut"}
                 </Text>
               )}
             </Text>
@@ -163,7 +165,7 @@ const Comment = ({ loggedInUserData, name, closeModal }) => {
           <MaterialIcons name="close" size={35} />
         </TouchableOpacity>
         <View className="w-[110px]">
-          <ButtonBlue title="Reply" onPress={handleComment} />
+          <ButtonBlue title="Kirim" onPress={handleComment} />
         </View>
       </View>
       {/* main */}
@@ -176,12 +178,12 @@ const Comment = ({ loggedInUserData, name, closeModal }) => {
         </View>
         <View className="flex-1 space-y-2">
           <Text className="font-InterRegular text-gray-600">
-            Replying to{" "}
+            Membalas{" "}
             <Text className="text-blue font-InterSemiBold">{name}</Text>
           </Text>
           <ScrollView className="mb-20">
             <TextInput
-              placeholder="Tweet your reply"
+              placeholder="Tweet balasan Anda"
               className="font-InterRegular text-lg"
               value={commentInput}
               onChangeText={(input) => setCommentInput(input)}

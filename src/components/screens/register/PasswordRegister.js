@@ -13,7 +13,7 @@ const PasswordRegister = () => {
   const navigation = useNavigation();
   const goToPrevScreen = () => navigation.goBack();
 
-  const [passwordInput, setPasswordInput] = useState("")
+  const [passwordInput, setPasswordInput] = useState("");
 
   const [hidePassword, setHidePassword] = useState(true);
   const handleHidePassword = () => setHidePassword(!hidePassword);
@@ -28,16 +28,15 @@ const PasswordRegister = () => {
       />
       <View className="mt-8 mx-3 space-y-5">
         <HeaderRegister
-          title="Create a password"
-          subtitle="Create a password with at least 6 letters and numbers. It should be
-          something others can't guess."
+          title="Buat kata sandi"
+          subtitle="Buat kata sandi dengan setidaknya 6 huruf dan angka. Itu harus menjadi sesuatu yang tidak bisa ditebak orang lain."
           onPress={goToPrevScreen}
         />
         <View>
           {/* password input */}
           <View className={`${styles.inputStyle} mb-6`}>
             <TextInput
-              placeholder="Password"
+              placeholder="Kata sandi"
               className="font-InterBold text-[16px]"
               secureTextEntry={hidePassword}
               value={passwordInput}
@@ -55,7 +54,7 @@ const PasswordRegister = () => {
               )}
             </View>
           </View>
-          <ButtonBlue title={"Create account"} />
+          <ButtonBlue title={"Buat akun"} />
         </View>
       </View>
     </SafeAreaView>

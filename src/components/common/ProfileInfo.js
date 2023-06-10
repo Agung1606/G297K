@@ -15,15 +15,15 @@ const ProfileInfo = ({
   const info = [
     {
       number: numberOfTweets,
-      text: "Tweets",
+      text: "Tweet",
     },
     {
       number: numberOfFollowers,
-      text: "Followers",
+      text: "Pengikut",
     },
     {
       number: numberOfFollowing,
-      text: "Following",
+      text: "Mengikuti",
     },
   ];
 

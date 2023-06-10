@@ -52,7 +52,7 @@ const Home = ({ navigation }) => {
           onPress={scrollToTop}
           className="absolute bottom-6 right-2 bg-blue rounded-full p-2"
         >
-          <AntDesign name="arrowup" size={24} />
+          <AntDesign name="arrowup" size={24} color={"white"} />
         </TouchableOpacity>
       )}
     </SafeAreaView>

@@ -80,15 +80,15 @@ const ButtonMoreVert = ({ tweetId, username }) => {
   const options = [
     {
       icon: <MaterialIcons name="person-add" size={30} />,
-      text: `Follow @${username}`,
+      text: `Ikuti @${username}`,
       onPress: () => {
         alert(`Followed ${username}`);
         closeModal();
       },
     },
     {
-      icon: <MaterialIcons name="report" size={30} />,
-      text: "Report Tweet",
+      icon: <MaterialIcons name="report" size={30} color={"red"} />,
+      text: "Laporkan tweet ini",
       onPress: () => {
         alert("Report this tweet");
         closeModal();

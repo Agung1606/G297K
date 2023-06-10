@@ -28,7 +28,7 @@ const SearchBar = ({ goBack, query, setQuery }) => (
     </TouchableOpacity>
     <View className="flex-1 px-4 py-2 ml-6">
       <TextInput
-        placeholder="Search Account"
+        placeholder="Cari akun"
         className="font-InterMedium text-gray-600"
         autoFocus={true}
         value={query}
@@ -98,7 +98,7 @@ const Search = ({ navigation }) => {
           {history.length > 0 && (
             <View className={`mb-2 flex-row ${styles.flexBetween}`}>
               <Text className="font-InterSemiBold text-lg text-grayCustom">
-                Recent
+                Baru saja
               </Text>
               <TouchableOpacity onPress={openModal}>
                 <AntDesign name="closecircle" size={20} />
@@ -132,7 +132,7 @@ const Search = ({ navigation }) => {
           />
           {history.length === 0 && (
             <Text className="font-InterSemiBold text-center text-grayCustom">
-              Try searching for people
+              Coba telusuri orang
             </Text>
           )}
         </View>
@@ -142,15 +142,15 @@ const Search = ({ navigation }) => {
         isModalOpen={isModalOpen}
         onCancel={closeModal}
         onOk={() => {
-          setHistory([])
+          setHistory([]);
           closeModal();
         }}
-        title={"Clear all recent searches?"}
+        title={"Hapus semua pencarian terbaru?"}
         subtitle={
-          "This can't be undone and you'll remove all your recent searches"
+          "Tindakan ini tidak dapat dibatalkan dan Anda akan menghapus semua penelusuran terbaru"
         }
-        textBtnCancel={"Cancel"}
-        textBtnOk={"Clear"}
+        textBtnCancel={"Batal"}
+        textBtnOk={"Hapus"}
       />
     </SafeAreaView>
   );

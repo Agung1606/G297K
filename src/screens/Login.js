@@ -70,7 +70,7 @@ const Login = ({ navigation }) => {
         {/* password */}
         <View className={`${styles.inputStyle} mb-6`}>
           <TextInput
-            placeholder="Password"
+            placeholder="Kata sandi"
             className="font-InterBold text-[16px]"
             secureTextEntry={hidePassword}
             value={loginInput.password}
@@ -91,17 +91,17 @@ const Login = ({ navigation }) => {
           </View>
         </View>
         {/* button login */}
-        <ButtonBlue title={"Log in"} onPress={handleLogin} />
+        <ButtonBlue title={"Masuk"} onPress={handleLogin} />
       </View>
       {/* forget password */}
       <TouchableOpacity>
-        <Text className="font-InterSemiBold">Forget password?</Text>
+        <Text className="font-InterSemiBold">Lupa kata sandi?</Text>
       </TouchableOpacity>
       {/* create new account */}
       {!isKeyboardVisible && (
         <View className="w-[90%] absolute bottom-3 space-y-1">
           <ButtonTransparent
-            title={"Create new account"}
+            title={"Buat akun baru"}
             borderColor={"border-blue"}
             onPress={() => navigation.navigate("RegisterScreen")}
           />

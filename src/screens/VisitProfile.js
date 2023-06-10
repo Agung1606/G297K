@@ -69,14 +69,14 @@ const VisitProfile = ({ route }) => {
             >
               <View className="flex-1">
                 <ButtonFollow
-                  title={isFollow ? "Following" : "Follow"}
+                  title={isFollow ? "Mengikuti" : "Ikuti"}
                   isFollow={isFollow}
                   onPress={handleFollow}
                 />
               </View>
               <View className="flex-1">
                 <ButtonGray
-                  title={"Message"}
+                  title={"Kirim pesan"}
                   onPress={() => alert("Message!")}
                 />
               </View>
@@ -86,7 +86,9 @@ const VisitProfile = ({ route }) => {
         data={tweets}
         renderItem={({ item }) => <TweetCard item={item} />}
         keyExtractor={(item) => item.id}
-        ListEmptyComponent={<NoTweets text="It seems that this person have not make a tweet yet" />}
+        ListEmptyComponent={
+          <NoTweets text="Sepertinya orang ini belum membuat tweet" />
+        }
       />
     </SafeAreaView>
   );

@@ -25,27 +25,27 @@ import { TWEETS } from "../constant";
 const BottomMenu = () => {
   const options = [
     {
-      title: "Professional Tools",
+      title: "Alat Profesional",
       data: [
         {
-          text: "G297K for Professional",
+          text: "G297K untuk Professional",
           icon: <SimpleLineIcons name="rocket" size={18} />,
         },
         {
-          text: "Monetization",
+          text: "Monetisasi",
           icon: <MaterialIcons name="attach-money" size={20} />,
         },
       ],
     },
     {
-      title: "Settings & Support",
+      title: "Pengaturan & Dukungan",
       data: [
         {
-          text: "Settings and Privacy",
+          text: "Pengaturan dan Privasi",
           icon: <SimpleLineIcons name="settings" size={18} />,
         },
         {
-          text: "Help Center",
+          text: "Pusat Bantuan",
           icon: <MaterialIcons name="help-outline" size={20} />,
         },
       ],
@@ -136,13 +136,13 @@ const Profile = () => {
             >
               <View className="flex-1">
                 <ButtonGray
-                  title={"Edit profile"}
+                  title={"Ubah profil"}
                   onPress={() => alert("Open edit profile screen!")}
                 />
               </View>
               <View className="flex-1">
                 <ButtonGray
-                  title={"Share profile"}
+                  title={"Bagikan profil"}
                   onPress={() => alert("Share profile!")}
                 />
               </View>
@@ -153,7 +153,7 @@ const Profile = () => {
         renderItem={({ item }) => <TweetCard item={item} />}
         keyExtractor={(item) => item.id}
         ListEmptyComponent={
-          <NoTweets text="When you make a tweet it will appear here" />
+          <NoTweets text="Ketika Anda membuat tweet, itu akan muncul di sini" />
         }
       />
     </SafeAreaView>

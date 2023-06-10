@@ -1,18 +1,19 @@
-import { View, Text, TouchableOpacity, TextInput } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context';
-import React from 'react'
+import { View, Text, TouchableOpacity, TextInput } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 
-import HeaderRegister from '../../common/HeaderRegister';
-import { ButtonBlue } from '../../common/Button'
-import { styles } from '../../../style/Global'
+import HeaderRegister from "../../common/HeaderRegister";
+import { ButtonBlue } from "../../common/Button";
+import { styles } from "../../../style/Global";
 
 const EmailRegister = () => {
   const navigation = useNavigation();
   const goToLogin = () => navigation.navigate("LoginScreen");
-  const goToPasswordRegister = () => navigation.navigate("PasswordRegisterScreen")
-  
+  const goToPasswordRegister = () =>
+    navigation.navigate("PasswordRegisterScreen");
+
   return (
     <SafeAreaView className="flex-1">
       <LinearGradient
@@ -24,9 +25,8 @@ const EmailRegister = () => {
       />
       <View className="mt-8 mx-3 space-y-5">
         <HeaderRegister
-          title="What's your email?"
-          subtitle="Please enter your frequently used email, your email will be used if at
-          any time you forget your password."
+          title="Apa email Anda?"
+          subtitle="Silakan masukkan email yang sering Anda gunakan, email Anda akan digunakan jika sewaktu-waktu Anda lupa kata sandi Anda."
           onPress={goToLogin}
         />
         <View>
@@ -36,7 +36,7 @@ const EmailRegister = () => {
               className="font-InterBold text-[16px]"
             />
           </View>
-          <ButtonBlue title={"Next"} onPress={goToPasswordRegister} />
+          <ButtonBlue title={"Berikutnya"} onPress={goToPasswordRegister} />
         </View>
       </View>
       {/* btn have account */}
@@ -49,6 +49,6 @@ const EmailRegister = () => {
       </View>
     </SafeAreaView>
   );
-}
+};
 
-export default EmailRegister
+export default EmailRegister;
