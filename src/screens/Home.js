@@ -1,6 +1,7 @@
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import React from "react";
+import React, { useState } from "react";
+import { AntDesign } from "@expo/vector-icons";
 
 import { TWEETS } from "../constant";
 import { TweetCard, BadgeNotif } from "../components";
@@ -26,14 +27,34 @@ const Header = ({ goToMessage }) => (
 
 const Home = ({ navigation }) => {
   const goToMessage = () => navigation.navigate("MessageScreen");
+
+  const [isScrolled, setIsScrolled] = useState(false);
+  const flatListRef = React.useRef(null);
+  const handleScroll = (event) => {
+    const offsetY = event.nativeEvent.contentOffset.y;
+    setIsScrolled(offsetY > 0);
+  };
+  const scrollToTop = () =>
+    flatListRef.current.scrollToOffset({ offset: 0, animated: true });
+
   return (
     <SafeAreaView className="flex-1">
       <Header goToMessage={goToMessage} />
       <FlatList
+        ref={flatListRef}
+        onScroll={handleScroll}
         data={TWEETS}
         renderItem={({ item }) => <TweetCard item={item} />}
         keyExtractor={(item) => item.id}
       />
+      {isScrolled && (
+        <TouchableOpacity
+          onPress={scrollToTop}
+          className="absolute bottom-6 right-2 bg-blue rounded-full p-2"
+        >
+          <AntDesign name="arrowup" size={24} />
+        </TouchableOpacity>
+      )}
     </SafeAreaView>
   );
 };
