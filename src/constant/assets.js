@@ -1,13 +1,19 @@
 import logoGrk from '../assets/images/logo.png';
 
 import defaultProfile from '../assets/images/default.jpeg';
+
 import jinbeiProfile from '../assets/images/jinbeiProfile.jpg'
 import luffyProfile from '../assets/images/luffyProfile.jpg'
 import sanjiProfile from '../assets/images/sanjiProfile.jpg'
 import zoroProfile from '../assets/images/zoroProfile.jpg'
 import usopProfile from '../assets/images/usopProfile.jpg'
 import coperProfile from '../assets/images/coperProfile.png'
+import robinProfile from '../assets/images/robinProfile.jpg'
+
 import narutoProfile from '../assets/images/narutoProfile.jpg'
+import painProfile from '../assets/images/painProfile.jpg'
+import itachiProfile from '../assets/images/itachiProfile.jpg'
+
 
 export default {
   logoGrk,
@@ -18,5 +24,8 @@ export default {
   zoroProfile,
   usopProfile,
   coperProfile,
-  narutoProfile
-}
+  robinProfile,
+  narutoProfile,
+  painProfile,
+  itachiProfile,
+};

@@ -62,18 +62,60 @@ export const PROFILE = [
     profile: assets.narutoProfile,
     followers: "231K",
     following: "5,403",
-    bio: "I'm not gonna die, 'cause I'm gonna be the Hokage!",
+    bio: "🔥I'm not gonna die, 'cause I'm gonna be the Hokage!🔥",
+  },
+  {
+    id: 8,
+    username: "pain._",
+    name: "Pain",
+    profile: assets.painProfile,
+    followers: "728K",
+    following: "1,291",
+    bio: "❗Pain is inevitable, suffering is optional❗",
+  },
+  {
+    id: 9,
+    username: "itachi297._",
+    name: "Itachi Uchiha",
+    profile: assets.itachiProfile,
+    followers: "999K",
+    following: "9,291",
+    bio: "Those who forgive themselves, and are able to accept their true nature... They are the strong ones!",
   },
 ];
 
 export const TWEETS = [
+  {
+    id: 98,
+    userId: 10,
+    profile: assets.robinProfile,
+    name: "Robin",
+    username: "raja.bajak.laut16_",
+    date: "16 hari",
+    tweet:
+      "Salah satu penemuan terbesar di dunia arkeologi adalah Piramida Mesir Kuno, terutama Piramida Besar Giza yang dibangun sekitar 4.500 tahun yang lalu. Piramida ini merupakan salah satu Keajaiban Dunia Kuno dan merupakan monumen yang luar biasa dalam hal desain, presisi konstruksi, dan kompleksitasnya. Penemuan ini memberikan wawasan yang berharga tentang kebudayaan dan teknologi Mesir Kuno, serta memberikan petunjuk tentang kehidupan dan kepercayaan spiritual mereka. Piramida Giza juga menjadi simbol keabadian dan kekuatan kebudayaan Mesir Kuno yang mendalam. Penemuan ini telah mempengaruhi arkeologi, sejarah, dan studi tentang peradaban kuno secara keseluruhan.",
+    numberOfLikes: 0,
+    numberOfComments: 0,
+  },
+  {
+    id: 99,
+    userId: 1,
+    profile: assets.luffyProfile,
+    name: "Monkey D Luffy",
+    username: "raja.bajak.laut16_",
+    date: "16 hari",
+    tweet:
+      "Menjadi Raja Bajak Laut adalah hal yang paling berarti bagiku di dunia ini. Aku akan bertarung, bertahan, dan tidak pernah menyerah sampai aku mencapai tujuan itu. Mungkin aku bukan yang terkuat, paling pintar, atau paling mahir, tapi aku memiliki kru teman yang percaya padaku. Bersama-sama, kita akan menguasai Grand Line, menghadapi segala tantangan yang datang, dan membuktikan bahwa mimpi dapat menjadi kenyataan. Aku mungkin ceroboh, agak gila, dan selalu lapar, tapi aku akan tetap menjadi diriku sendiri. Aku akan melindungi teman-temanku, berdiri untuk kebenaran, dan menjalani kehidupan yang penuh kebebasan dan petualangan. Itulah cara Bajak Laut Topi Jerami, dan itulah jalan yang kutemui sebagai Monkey D. Luffy!",
+    numberOfLikes: 0,
+    numberOfComments: 0,
+  },
   {
     id: 100,
     userId: 7,
     profile: assets.narutoProfile,
     name: "Naruto Uzumaki",
     username: "uzumakinaruto_",
-    date: "43 detik",
+    date: "16 hari",
     tweet: `Teori Newton mengacu pada kontribusi Sir Isaac Newton dalam fisika, terutama dalam bidang mekanika dan gravitasi. Berikut ini beberapa teori yang dikembangkan oleh Newton:
 
 1. Hukum Gerak Newton: Newton menyusun tiga hukum gerak yang dikenal sebagai Hukum Newton. Hukum pertama menyatakan bahwa benda cenderung tetap dalam keadaan gerak lurus beraturan atau diam kecuali ada gaya yang bekerja padanya. Hukum kedua menghubungkan gaya dengan percepatan benda, yaitu gaya yang bekerja pada benda adalah hasil perkalian massa benda dengan percepatannya. Hukum ketiga menyatakan bahwa setiap aksi memiliki reaksi yang sebanding dan berlawanan arah.
@@ -94,8 +136,18 @@ Teori Newton menghasilkan pemahaman baru tentang gerak, gravitasi, dan fenomena 
     profile: assets.sanjiProfile,
     name: "Vinsmoke Sanji",
     username: "vnskmj_sanji",
-    date: "1 menit",
-    tweet: `Cerita dimulai dengan Luffy yang berpetualang mencari kru bajak laut yang kuat dan mengejar impian menjadi Raja Bajak Laut (Pirate King). Di sepanjang perjalanan mereka, Luffy dan kru menghadapi berbagai tantangan, bertemu dengan karakter-karakter unik, dan terlibat dalam pertempuran sengit dengan bajak laut jahat, pemerintah dunia, dan pasukan angkatan laut. Selain itu, cerita One Piece juga memperkenalkan konsep Haki (kekuatan spiritual), Buah Iblis (buah ajaib yang memberikan kekuatan supernatural kepada penggunanya), dan Poneglyph (batu peninggalan kuno yang menyimpan rahasia tentang sejarah dunia). Sejarah One Piece terus berkembang dan mengungkapkan misteri-misteri yang terkait dengan asal-usul dunia, Raftel (pulau terakhir Grand Line tempat One Piece diyakini berada), dan sejarah kuno yang terkait dengan Keponegoroan Void Century.`,
+    date: "16 hari",
+    tweet: `Love is a profound and multifaceted emotion that has captivated hearts throughout history. It has the power to ignite passion, inspire creativity, and bring immense joy and fulfillment to our lives. Love is a force that transcends boundaries, connecting individuals in the most profound and meaningful ways.
+
+At its core, love is an unconditional acceptance and deep appreciation for another person. It is a bond that goes beyond mere attraction or infatuation. Love encompasses kindness, empathy, and a willingness to support and care for one another through both the ups and downs of life.
+
+Love can be found in various forms: the love between romantic partners, the love between family members, and the love between friends. Each connection is unique and brings its own set of emotions and experiences. Love is an intricate tapestry of emotions, ranging from the exhilaration of new beginnings to the comfort and security of long-lasting companionship.
+
+Love is not without its challenges. It requires effort, compromise, and understanding. It calls for vulnerability and a willingness to open our hearts to another person, knowing that we may experience both joy and pain along the way. Love requires patience and forgiveness, as we navigate the complexities of human relationships.
+
+But despite the challenges, love is a beautiful and transformative force. It has the power to heal wounds, mend broken hearts, and create a sense of belonging and purpose. Love gives us the strength to overcome adversity and the courage to face life's uncertainties.
+
+In the end, love is a celebration of the human experience. It is a reminder that, amidst the chaos of the world, there is a profound connection that binds us all together. Love is a gift that should be cherished, nurtured, and shared with others. It is a reminder that, in the presence of love, anything is possible.`,
     numberOfLikes: 0,
     numberOfComments: 0,
   },
@@ -105,7 +157,7 @@ Teori Newton menghasilkan pemahaman baru tentang gerak, gravitasi, dan fenomena 
     profile: assets.luffyProfile,
     name: "Monkey D Luffy",
     username: "raja.bajak.laut16_",
-    date: "49 menit",
+    date: "16 hari",
     tweet: "Who needs a plan when you can punch your way through everything?",
     numberOfLikes: 0,
     numberOfComments: 0,
@@ -116,9 +168,9 @@ Teori Newton menghasilkan pemahaman baru tentang gerak, gravitasi, dan fenomena 
     profile: assets.zoroProfile,
     name: "Roronoa Zoro",
     username: "rrnoazoro",
-    date: "2 jam",
+    date: "16 hari",
     tweet:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed viverra, odio ac elementum laoreet, risus justo tincidunt sem, vel aliquet est lectus eget enim. Nulla lobortis tincidunt purus, id maximus lacus efficitur ut. Sed vitae hendrerit est. Sed convallis, mauris sit amet egestas scelerisque, nunc libero elementum sapien, id tempus sapien dolor eget est. Sed scelerisque, libero sed dapibus commodo, lectus justo lobortis ante, vel malesuada sapien sapien nec mauris. Phasellus condimentum tincidunt mauris, nec rutrum orci laoreet sed. Fusce non tortor vel nisi euismod tincidunt sed sed felis. Nam vitae erat vel odio semper malesuada at sit amet mauris. Integer tristique ultrices lacus, id luctus lectus maximus non. Nunc fermentum ligula lorem, vitae tempor tellus placerat ut. Mauris a tellus non tortor dictum malesuada vel eu neque.",
+      "Dunia ini adalah tempat yang luas dan penuh dengan keindahan yang luar biasa. Di dalamnya terdapat keanekaragaman budaya, keajaiban alam, dan kehidupan yang beragam. Dari pegunungan yang menjulang tinggi hingga lautan yang luas, setiap sudut dunia ini memiliki cerita unik yang menarik. Indonesia, sebagai salah satu negara di dunia, memiliki kekayaan alam yang melimpah, mulai dari hutan tropis yang rimbun, pantai yang indah, hingga gunung-gunung yang menantang. Selain itu, Indonesia juga memiliki keanekaragaman budaya yang kaya, dengan berbagai suku, bahasa, dan adat istiadat yang berbeda-beda. Dunia ini begitu indah dan menakjubkan, memberikan kita kesempatan untuk menjelajahi, belajar, dan menghargai keajaiban yang ada di sekeliling kita.",
     numberOfLikes: 0,
     numberOfComments: 0,
   },
@@ -128,7 +180,7 @@ Teori Newton menghasilkan pemahaman baru tentang gerak, gravitasi, dan fenomena 
     profile: assets.sanjiProfile,
     name: "Vinsmoke Sanji",
     username: "vnskmj_sanji",
-    date: "12 jam",
+    date: "16 hari",
     tweet:
       "I don't care who you are, what you've done, or who you've aligned yourself with. If you lay a finger on a lady, I won't forgive you.",
     numberOfLikes: 0,
@@ -140,9 +192,9 @@ Teori Newton menghasilkan pemahaman baru tentang gerak, gravitasi, dan fenomena 
     profile: assets.usopProfile,
     name: "Usoop",
     username: "usoopppp297_",
-    date: "1 hari",
+    date: "16 hari",
     tweet:
-      "Vestibulum convallis, massa nec tincidunt facilisis, ante eros accumsan lorem, ut posuere nulla mauris eu ipsum. Fusce accumsan dui lorem, ac consectetur mi fermentum ut. Morbi vitae magna ex. Proin at metus euismod, malesuada ex vitae, vulputate tellus. Pellentesque ut consequat metus. Aliquam consectetur pellentesque rutrum. Vivamus vitae tortor rutrum, varius metus vel, tincidunt est. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed rutrum, tortor nec semper scelerisque, erat mauris aliquam est, et interdum ex nisl vel mauris. Quisque congue aliquet tristique. Mauris bibendum mauris vel est tincidunt, et lobortis risus cursus. Sed fermentum augue felis, eu sollicitudin purus eleifend et. Phasellus in felis ac leo hendrerit consectetur. Aenean sed nunc bibendum, consectetur lorem ac, venenatis lectus.",
+      "Anxiety is a common emotion that often creeps up on people in various situations. It feels like a heavy burden on the chest, making the breath shallow and the mind racing. Anxiety causes the heart to race, cold sweats to flow, and the body to feel tense. Negative thoughts and worries haunt you, making it difficult to concentrate and get restful sleep. Anxiety is like a monster in the mind that is hard to overcome, always lurking and disrupting your peace. However, it's important to remember that anxiety doesn't have to control your life. With the right support, stress management strategies, and positive mindset shifts, you can overcome anxiety and regain a more peaceful and happy life.",
     numberOfLikes: 0,
     numberOfComments: 0,
   },
@@ -152,8 +204,9 @@ Teori Newton menghasilkan pemahaman baru tentang gerak, gravitasi, dan fenomena 
     profile: assets.coperProfile,
     name: "Tony Chooper",
     username: "coper12",
-    date: "3 hari",
-    tweet: "オオカミは何匹いますか？",
+    date: "16 hari",
+    tweet:
+      "Japan, known as the Land of the Rising Sun, is a captivating blend of ancient traditions and modern innovation. From the serene beauty of its cherry blossoms to the bustling streets of Tokyo, Japan offers a rich tapestry of cultural wonders. Its harmonious fusion of tradition and technology is evident in its impressive architecture, exquisite cuisine, and renowned art forms such as tea ceremonies, Kabuki theater, and anime. With a deep respect for nature, Japan boasts breathtaking landscapes, from majestic mountains to tranquil gardens. The warmth and politeness of its people add to the charm of this remarkable nation, making it a destination that captivates the senses and leaves an indelible impression.",
     numberOfLikes: 0,
     numberOfComments: 0,
   },
@@ -163,9 +216,94 @@ Teori Newton menghasilkan pemahaman baru tentang gerak, gravitasi, dan fenomena 
     profile: assets.jinbeiProfile,
     name: "Jinbei",
     username: "jinbei_",
-    date: "2 minggu",
+    date: "16 hari",
     tweet:
       "You have power over your mind - not outside events. Realize this, and you will find strength.",
+    numberOfLikes: 0,
+    numberOfComments: 0,
+  },
+  {
+    id: 108,
+    userId: 1,
+    profile: assets.luffyProfile,
+    name: "Monkey D Luffy",
+    username: "raja.bajak.laut16_",
+    date: "16 hari",
+    tweet:
+      "I may be a pirate, but I've got a heart of gold and a crew that's willing to give everything for our dreams. I'll never back down, no matter how tough the challenge, because I believe in the power of friendship and the strength within me. Get ready, world, 'cause Monkey D. Luffy is here to shake things up and have the adventure of a lifetime!",
+    numberOfLikes: 0,
+    numberOfComments: 0,
+  },
+  {
+    id: 109,
+    userId: 4,
+    profile: assets.usopProfile,
+    name: "Usoop",
+    username: "usoopppp297_",
+    date: "16 hari",
+    tweet:
+      "Konsep Parisi di Indonesia merujuk pada gaya hidup yang santai, bebas, dan tidak terlalu formal. Orang-orang Indonesia cenderung lebih mengutamakan keakraban dan kehangatan dalam interaksi sosial. Konsiparsi di Indonesia juga mencerminkan adanya keberagaman budaya dan adat istiadat di setiap daerah, yang memberikan warna dan keunikan dalam berbagai acara dan perayaan. Konsiparsi di Indonesia sering kali melibatkan makanan lezat, tawa, dan kebersamaan yang erat antara keluarga, teman, dan tetangga. Dalam konsiparsi di Indonesia, pentingnya menjaga hubungan sosial yang harmonis dan saling mendukung menjadi nilai yang dijunjung tinggi.",
+    numberOfLikes: 0,
+    numberOfComments: 0,
+  },
+  {
+    id: 110,
+    userId: 4,
+    profile: assets.usopProfile,
+    name: "Usoop",
+    username: "usoopppp297_",
+    date: "16 hari",
+    tweet: `Konspirasi di dunia ini merujuk pada teori-teori yang mengklaim adanya tindakan tersembunyi atau rencana jahat yang dilakukan oleh pihak-pihak tertentu dengan tujuan mempengaruhi atau mengendalikan kehidupan manusia. Konspirasi dapat melibatkan berbagai topik seperti politik, ekonomi, ilmu pengetahuan, teknologi, kesehatan, dan sebagainya. Contoh konspirasi yang populer antara lain teori bahwa pemerintahan atau kelompok-kelompok tertentu mengendalikan media massa, teori pembuatan senjata rahasia, atau teori bahwa kejadian-kejadian besar seperti serangan teroris atau pandemi dibuat dengan sengaja.
+
+Penting untuk diingat bahwa konspirasi seringkali didasarkan pada spekulasi, informasi yang tidak terverifikasi, atau penggambaran yang tidak akurat. Banyak konspirasi yang tidak memiliki bukti yang kuat dan dapat dijelaskan dengan penelitian ilmiah atau investigasi yang objektif. Namun demikian, minat terhadap konspirasi dapat memunculkan pertanyaan, mencari kebenaran, atau mempertanyakan narasi resmi. Penting bagi setiap individu untuk memeriksa dan mengevaluasi informasi dengan kritis, menggunakan sumber yang terpercaya, dan berpikir secara rasional sebelum menerima klaim konspirasi tanpa bukti yang kuat.`,
+    numberOfLikes: 0,
+    numberOfComments: 0,
+  },
+  {
+    id: 111,
+    userId: 8,
+    profile: assets.painProfile,
+    name: "Pain",
+    username: "pain._",
+    date: "16 hari",
+    tweet:
+      "Rasa sakit adalah alat yang berguna. Rasa sakit mengajarkan kita sesuatu dan membantu kita tumbuh. Jika kita tidak pernah merasakan rasa sakit, kita tidak akan pernah menghargai kebahagiaan. Dalam penderitaan, kita menemukan kekuatan. Ketika kita kehilangan segalanya, hanya ada satu hal yang bisa kita lakukan: pergi ke depan. Teruslah bergerak maju, meskipun itu sulit. Terimalah rasa sakit, nikmati kehidupan, dan jadilah orang yang lebih baik. Rasa sakit adalah bagian dari hidup, tetapi itu juga menjadikan kita manusia.",
+    numberOfLikes: 0,
+    numberOfComments: 0,
+  },
+  {
+    id: 112,
+    userId: 9,
+    profile: assets.itachiProfile,
+    name: "Itachi Uchiha",
+    username: "itachi297._",
+    date: "16 hari",
+    tweet:
+      "Ketakutan adalah sebuah penyusun penting dalam kehidupan. Tanpa rasa takut, kita tidak bisa menjadi kuat. Ketika kita menghadapi ketakutan kita, kita bisa menemukan keberanian yang sejati. Ketakutan adalah pilihan, keberanian adalah tanggapan. Jangan biarkan ketakutan menghentikanmu, hadapilah dengan kepala tegak. Kadang-kadang kita harus berkorban demi keadilan. Itulah arti menjadi seorang ninja. Hidup itu seperti permata yang berkilau di malam hari. Kehidupan tidak berharga jika tidak ada cobaan dan penderitaan. Dan aku akan terus berjalan, menuju cahaya di ujung jalan yang panjang ini.",
+    numberOfLikes: 0,
+    numberOfComments: 0,
+  },
+  {
+    id: 113,
+    userId: 8,
+    profile: assets.painProfile,
+    name: "Pain",
+    username: "pain._",
+    date: "16 hari",
+    tweet:
+      "The pain of being alone... is not an easy one to bear. Why is it... that I can understand your pain? But... I already have many people who are important to me now... and I can't let you hurt any of them. Even if I have to kill you!😊",
+    numberOfLikes: 0,
+    numberOfComments: 0,
+  },
+  {
+    id: 114,
+    userId: 7,
+    profile: assets.narutoProfile,
+    name: "Naruto Uzumaki",
+    username: "uzumakinaruto_",
+    date: "16 hari",
+    tweet:
+      "Kedamaian adalah sebuah keadaan harmoni yang mendalam yang melampaui konflik dan mendorong keadaan ketenangan dalam diri individu maupun komunitas. Ini adalah aspirasi kolektif untuk membangun dunia di mana perbedaan diterima dengan tulus, dan persatuan menguasai. Kedamaian sejati meliputi bukan hanya ketiadaan kekerasan, tetapi juga keberadaan keadilan, kesetaraan, dan penghargaan terhadap semua makhluk. Ini adalah keadaan keseimbangan di mana belas kasihan menang atas kebencian, pemahaman menang atas kebodohan, dan kerja sama menang atas perpecahan. Kedamaian dimulai dari dalam diri masing-masing dari kita, saat kita mengembangkan kebaikan, empati, dan kemauan untuk mendengarkan orang lain. Melalui upaya kolektif kita, berlandaskan cinta dan pemahaman, kita dapat menciptakan dunia di mana kedamaian menjadi kenyataan bersama bagi generasi mendatang.",
     numberOfLikes: 0,
     numberOfComments: 0,
   },
