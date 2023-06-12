@@ -1,5 +1,4 @@
 import logoGrk from '../assets/images/logo.png';
-
 import defaultProfile from '../assets/images/default.jpeg';
 
 import jinbeiProfile from '../assets/images/jinbeiProfile.jpg'
@@ -13,7 +12,6 @@ import robinProfile from '../assets/images/robinProfile.jpg'
 import narutoProfile from '../assets/images/narutoProfile.jpg'
 import painProfile from '../assets/images/painProfile.jpg'
 import itachiProfile from '../assets/images/itachiProfile.jpg'
-
 
 export default {
   logoGrk,

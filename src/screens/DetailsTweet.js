@@ -29,7 +29,7 @@ const DetailsTweet = ({ route, navigation }) => {
         ListHeaderComponent={
           <TweetDetailCard item={item} goToVisitProfile={goToVisitProfile} />
         }
-        ListFooterComponent={<CommentCard />}
+        // ListFooterComponent={<CommentCard />}
       />
     </SafeAreaView>
   );

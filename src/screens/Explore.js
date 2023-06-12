@@ -5,16 +5,18 @@ import {
   Pressable,
   Text,
   ScrollView,
+  FlatList,
+  SectionList,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { SimpleLineIcons } from "@expo/vector-icons";
+import { SimpleLineIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 
 import { styled } from "nativewind";
 const StyledPressable = styled(Pressable);
 
 import { styles } from "../style/Global";
-import { TrendingListCard } from "../components";
-import { TRENDINGLISTS } from "../constant";
+import { TrendingListCard, TweetCard } from "../components";
+import { TRENDINGLISTS, EXPLORETWEETS } from "../constant";
 
 const SearchBar = ({ onPress }) => (
   <View
@@ -34,7 +36,7 @@ const SearchBar = ({ onPress }) => (
 
 const ListOfTrendingTweets = ({ goToTrendingListScreen }) => {
   return (
-    <View className="my-2">
+    <View className="my-2 pb-8 border-b border-gray-600">
       <Text className="mx-4 font-InterBold text-xl">Trending untuk Anda</Text>
 
       <View className="my-2">
@@ -59,17 +61,32 @@ const ListOfTrendingTweets = ({ goToTrendingListScreen }) => {
 };
 
 const Explore = ({ navigation }) => {
-  const goToSearchScreen = () => navigation.navigate("SearchScreen")
+  const goToSearchScreen = () => navigation.navigate("SearchScreen");
   const goToTrendingListScreen = () =>
     navigation.navigate("TrendingListScreen");
   return (
     <SafeAreaView className="flex-1">
-      <ScrollView>
-        <SearchBar onPress={goToSearchScreen} />
-        <ListOfTrendingTweets
-          goToTrendingListScreen={goToTrendingListScreen}
-        />
-      </ScrollView>
+      <SearchBar onPress={goToSearchScreen} />
+      <SectionList
+        ListHeaderComponent={
+          <ListOfTrendingTweets
+            goToTrendingListScreen={goToTrendingListScreen}
+          />
+        }
+        sections={EXPLORETWEETS}
+        renderSectionHeader={({ section }) => (
+          <View className="m-2 flex-row items-center space-x-2">
+            <MaterialCommunityIcons
+              name="message-text"
+              size={25}
+              color={"#1D7ED8"}
+            />
+            <Text className="font-InterSemiBold text-lg">{section.title}</Text>
+          </View>
+        )}
+        renderItem={({ item }) => <TweetCard item={item} />}
+        keyExtractor={(item) => `basicListEntry-${item.id}`}
+      />
     </SafeAreaView>
   );
 };
