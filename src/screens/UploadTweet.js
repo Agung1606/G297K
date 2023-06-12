@@ -1,16 +1,22 @@
-import { View, Text, TouchableOpacity, ScrollView, TextInput } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import React from 'react'
-import { MaterialIcons } from '@expo/vector-icons'
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  TextInput,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import React from "react";
+import { MaterialIcons } from "@expo/vector-icons";
 
-import { styles } from '../style/Global'
-import { loggedInUser } from '../hooks'
-import { ButtonBlue, Avatar } from '../components'
+import { styles } from "../style/Global";
+import { loggedInUser } from "../hooks";
+import { ButtonBlue, Avatar } from "../components";
 
 const UploadTweet = ({ navigation }) => {
-  const goToPrevScreen = () => navigation.goBack()
+  const goToPrevScreen = () => navigation.goBack();
 
-  const { data: loggedInUserData } = loggedInUser(); 
+  const { data: loggedInUserData } = loggedInUser();
 
   return (
     <SafeAreaView className="flex-1 px-2 py-4">
@@ -39,7 +45,11 @@ const UploadTweet = ({ navigation }) => {
             <Text className="font-InterMedium text-blue text-center">
               Publik
             </Text>
-            <MaterialIcons name="keyboard-arrow-down" size={20} color={"#1D7ED8"} />
+            <MaterialIcons
+              name="keyboard-arrow-down"
+              size={20}
+              color={"#1D7ED8"}
+            />
           </TouchableOpacity>
           <ScrollView className="mb-20">
             <TextInput
@@ -54,6 +64,6 @@ const UploadTweet = ({ navigation }) => {
       </View>
     </SafeAreaView>
   );
-}
+};
 
-export default UploadTweet
+export default UploadTweet;
