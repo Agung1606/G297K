@@ -316,6 +316,21 @@ Penting untuk diingat bahwa konspirasi seringkali didasarkan pada spekulasi, inf
     numberOfLikes: 0,
     numberOfComments: 0,
   },
+  {
+    id: 115,
+    userId: 10,
+    profile: assets.robinProfile,
+    name: "Nico Robin",
+    username: "nicorobin_16",
+    date: "16 hari",
+    tweet: `In the One Piece anime, Poneglyphs are ancient stone tablets with inscriptions written in an indecipherable language known as the "Ancient Language" or "Void Century script." These Poneglyphs hold significant historical information about the world and its hidden secrets. They are said to contain information about the "True History" and the events of the "Void Century," a mysterious and forgotten period in history that the World Government has tried to erase.
+
+Poneglyphs are extremely rare and difficult to find, as they were created by the ancient civilization known as the "Ancient Kingdom." The World Government has made it illegal to study or decipher the Poneglyphs, as they fear the revelation of their secrets. Only a select few, known as the "Ohara Scholars," dedicated their lives to studying and deciphering the Poneglyphs, but their efforts were met with persecution and eventually led to the destruction of their island.
+
+The protagonist, Monkey D. Luffy, and his crew, the Straw Hat Pirates, embark on a grand adventure in search of the Poneglyphs, as they believe that uncovering the truth hidden within them will lead them to the ultimate treasure, the One Piece.`,
+    numberOfLikes: 0,
+    numberOfComments: 0,
+  },
 ];
 
 export const EXPLORETWEETS = [
@@ -473,6 +488,21 @@ In the end, love is a celebration of the human experience. It is a reminder that
         tweet: `Konspirasi di dunia ini merujuk pada teori-teori yang mengklaim adanya tindakan tersembunyi atau rencana jahat yang dilakukan oleh pihak-pihak tertentu dengan tujuan mempengaruhi atau mengendalikan kehidupan manusia. Konspirasi dapat melibatkan berbagai topik seperti politik, ekonomi, ilmu pengetahuan, teknologi, kesehatan, dan sebagainya. Contoh konspirasi yang populer antara lain teori bahwa pemerintahan atau kelompok-kelompok tertentu mengendalikan media massa, teori pembuatan senjata rahasia, atau teori bahwa kejadian-kejadian besar seperti serangan teroris atau pandemi dibuat dengan sengaja.
 
 Penting untuk diingat bahwa konspirasi seringkali didasarkan pada spekulasi, informasi yang tidak terverifikasi, atau penggambaran yang tidak akurat. Banyak konspirasi yang tidak memiliki bukti yang kuat dan dapat dijelaskan dengan penelitian ilmiah atau investigasi yang objektif. Namun demikian, minat terhadap konspirasi dapat memunculkan pertanyaan, mencari kebenaran, atau mempertanyakan narasi resmi. Penting bagi setiap individu untuk memeriksa dan mengevaluasi informasi dengan kritis, menggunakan sumber yang terpercaya, dan berpikir secara rasional sebelum menerima klaim konspirasi tanpa bukti yang kuat.`,
+        numberOfLikes: 0,
+        numberOfComments: 0,
+      },
+      {
+        id: 115,
+        userId: 10,
+        profile: assets.robinProfile,
+        name: "Nico Robin",
+        username: "nicorobin_16",
+        date: "16 hari",
+        tweet: `In the One Piece anime, Poneglyphs are ancient stone tablets with inscriptions written in an indecipherable language known as the "Ancient Language" or "Void Century script." These Poneglyphs hold significant historical information about the world and its hidden secrets. They are said to contain information about the "True History" and the events of the "Void Century," a mysterious and forgotten period in history that the World Government has tried to erase.
+
+Poneglyphs are extremely rare and difficult to find, as they were created by the ancient civilization known as the "Ancient Kingdom." The World Government has made it illegal to study or decipher the Poneglyphs, as they fear the revelation of their secrets. Only a select few, known as the "Ohara Scholars," dedicated their lives to studying and deciphering the Poneglyphs, but their efforts were met with persecution and eventually led to the destruction of their island.
+
+The protagonist, Monkey D. Luffy, and his crew, the Straw Hat Pirates, embark on a grand adventure in search of the Poneglyphs, as they believe that uncovering the truth hidden within them will lead them to the ultimate treasure, the One Piece.`,
         numberOfLikes: 0,
         numberOfComments: 0,
       },

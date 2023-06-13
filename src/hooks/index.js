@@ -9,6 +9,19 @@ export const loggedInUser = () => {
   return { data };
 };
 
+export const flatListScrollToTopConfig = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const flatListRef = useRef(null);
+  const handleScroll = (event) => {
+    const offsetY = event.nativeEvent.contentOffset.y;
+    setIsScrolled(offsetY > 0);
+  };
+  const scrollToTop = () =>
+    flatListRef.current.scrollToOffset({ offset: 0, animated: true });
+
+  return { isScrolled, flatListRef, handleScroll, scrollToTop };
+};
+
 export const useKeyboardVisible = () => {
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
 

@@ -11,6 +11,7 @@ import {
   ProfileInfo,
   NoTweets,
   Avatar,
+  ScrollToTop
 } from "./common";
 
 import { DialogModal, ConfirmModal, BadgeNotif } from "./reactPaper";
@@ -30,6 +31,7 @@ export {
   ProfileInfo,
   NoTweets,
   Avatar,
+  ScrollToTop,
   DialogModal,
   ConfirmModal,
   BadgeNotif,

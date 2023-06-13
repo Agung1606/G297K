@@ -4,8 +4,6 @@ import {
   TouchableOpacity,
   Pressable,
   Text,
-  ScrollView,
-  FlatList,
   SectionList,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -17,6 +15,38 @@ const StyledPressable = styled(Pressable);
 import { styles } from "../style/Global";
 import { TrendingListCard, TweetCard } from "../components";
 import { TRENDINGLISTS, EXPLORETWEETS } from "../constant";
+
+const Explore = ({ navigation }) => {
+  const goToSearchScreen = () => navigation.navigate("SearchScreen");
+  const goToTrendingListScreen = () =>
+    navigation.navigate("TrendingListScreen");
+
+  return (
+    <SafeAreaView className="flex-1">
+      <SearchBar onPress={goToSearchScreen} />
+      <SectionList
+        ListHeaderComponent={
+          <ListOfTrendingTweets
+            goToTrendingListScreen={goToTrendingListScreen}
+          />
+        }
+        sections={EXPLORETWEETS}
+        renderSectionHeader={({ section }) => (
+          <View className="m-2 flex-row items-center space-x-2">
+            <MaterialCommunityIcons
+              name="message-text"
+              size={25}
+              color={"#1D7ED8"}
+            />
+            <Text className="font-InterSemiBold text-lg">{section.title}</Text>
+          </View>
+        )}
+        renderItem={({ item }) => <TweetCard item={item} />}
+        keyExtractor={(item) => `basicListEntry-${item.id}`}
+      />
+    </SafeAreaView>
+  );
+};
 
 const SearchBar = ({ onPress }) => (
   <View
@@ -57,37 +87,6 @@ const ListOfTrendingTweets = ({ goToTrendingListScreen }) => {
         </Text>
       </TouchableOpacity>
     </View>
-  );
-};
-
-const Explore = ({ navigation }) => {
-  const goToSearchScreen = () => navigation.navigate("SearchScreen");
-  const goToTrendingListScreen = () =>
-    navigation.navigate("TrendingListScreen");
-  return (
-    <SafeAreaView className="flex-1">
-      <SearchBar onPress={goToSearchScreen} />
-      <SectionList
-        ListHeaderComponent={
-          <ListOfTrendingTweets
-            goToTrendingListScreen={goToTrendingListScreen}
-          />
-        }
-        sections={EXPLORETWEETS}
-        renderSectionHeader={({ section }) => (
-          <View className="m-2 flex-row items-center space-x-2">
-            <MaterialCommunityIcons
-              name="message-text"
-              size={25}
-              color={"#1D7ED8"}
-            />
-            <Text className="font-InterSemiBold text-lg">{section.title}</Text>
-          </View>
-        )}
-        renderItem={({ item }) => <TweetCard item={item} />}
-        keyExtractor={(item) => `basicListEntry-${item.id}`}
-      />
-    </SafeAreaView>
   );
 };
 

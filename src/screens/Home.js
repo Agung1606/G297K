@@ -4,7 +4,8 @@ import React, { useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
 
 import { TWEETS } from "../constant";
-import { TweetCard, BadgeNotif } from "../components";
+import { flatListScrollToTopConfig } from "../hooks";
+import { TweetCard, BadgeNotif, ScrollToTop } from "../components";
 import { styles } from "../style/Global";
 import { EvilIcons, Fontisto } from "@expo/vector-icons";
 
@@ -29,14 +30,8 @@ const Home = ({ navigation }) => {
   const goToMessage = () => navigation.navigate("MessageScreen");
   const goToUploadTweet = () => navigation.navigate("UploadTweetScreen");
 
-  const [isScrolled, setIsScrolled] = useState(false);
-  const flatListRef = React.useRef(null);
-  const handleScroll = (event) => {
-    const offsetY = event.nativeEvent.contentOffset.y;
-    setIsScrolled(offsetY > 0);
-  };
-  const scrollToTop = () =>
-    flatListRef.current.scrollToOffset({ offset: 0, animated: true });
+  const { isScrolled, flatListRef, handleScroll, scrollToTop } =
+    flatListScrollToTopConfig();
 
   return (
     <SafeAreaView className="flex-1">
@@ -47,15 +42,10 @@ const Home = ({ navigation }) => {
         data={TWEETS}
         renderItem={({ item }) => <TweetCard item={item} />}
         keyExtractor={(item) => item.id}
+        initialNumToRender={20}
+        showsVerticalScrollIndicator={false}
       />
-      {isScrolled && (
-        <TouchableOpacity
-          onPress={scrollToTop}
-          className="absolute bottom-6 right-2 bg-blue rounded-full p-2"
-        >
-          <AntDesign name="arrowup" size={24} color={"white"} />
-        </TouchableOpacity>
-      )}
+      {isScrolled && <ScrollToTop onPress={scrollToTop} />}
     </SafeAreaView>
   );
 };

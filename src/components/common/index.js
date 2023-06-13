@@ -7,6 +7,7 @@ import {
 import ProfileInfo from "./ProfileInfo";
 import NoTweets from "./NoTweets";
 import Avatar from "./Avatar";
+import ScrollToTop from "./ScrollToTop";
 
 export {
   ButtonBlue,
@@ -16,4 +17,5 @@ export {
   ProfileInfo,
   NoTweets,
   Avatar,
+  ScrollToTop
 }
