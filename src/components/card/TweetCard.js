@@ -27,49 +27,44 @@ const TweetCard = ({ item }) => {
     navigation.navigate("VisitProfileScreen", { param: item.userId });
 
   return (
-    <View className="px-3 py-2 mb-2 border-b border-gray-300">
-      {/* container */}
-      <View className="flex-row space-x-2">
-        {/* profile */}
+    <StyledPressable
+      onPress={goToDetails}
+      className="flex-row space-x-2 active:bg-gray-600/30 p-2 border-b border-gray-300"
+    >
+      {/* profile */}
+      <View>
         <Avatar imgUrl={item.profile} size={50} onPress={goToVisitProfile} />
-        {/* wrapper */}
-        <View className="flex-1">
-          <StyledPressable
-            onPress={goToDetails}
-            className="active:bg-gray-600/20 rounded-lg mb-2"
-          >
-            {/* username and date */}
-            <View className="mb-1">
-              <View className="flex-row items-center space-x-1">
-                <Text className="font-InterBold">{item.name}</Text>
-                <Text className="font-InterRegular text-xs text-grayCustom">
-                  @{item.username}
-                </Text>
-              </View>
-              <Text className="text-[12px] text-gray-400">{item.date}</Text>
-            </View>
-            {/* tweets, Note: this is a little bit tricky code */}
-            <Text>
-              <Text className="font-InterRegular">
-                {item.tweet.slice(0, 550)}
-              </Text>
-              {item.tweet.length > 550 && (
-                <Text className="text-blue font-InterSemiBold">
-                  ...Baca Lebih Lanjut
-                </Text>
-              )}
-            </Text>
-          </StyledPressable>
-          {/* like, comment, and share */}
-          <Interaction
-            id={item.id}
-            name={item.name}
-            numberOfLikes={item.numberOfLikes}
-            numberOfComments={item.numberOfComments}
-          />
-        </View>
       </View>
-    </View>
+      {/* wrapper */}
+      <View className="flex-1">
+        {/* username and date */}
+        <View className="mb-1">
+          <View className="flex-row items-center space-x-1">
+            <Text className="font-InterBold">{item.name}</Text>
+            <Text className="font-InterRegular text-xs text-grayCustom">
+              @{item.username}
+            </Text>
+          </View>
+          <Text className="text-[12px] text-gray-400">{item.date}</Text>
+        </View>
+        {/* tweets, Note: this is a little bit tricky code */}
+        <Text className="mb-2">
+          <Text className="font-InterRegular">{item.tweet.slice(0, 550)}</Text>
+          {item.tweet.length > 550 && (
+            <Text className="text-blue font-InterSemiBold">
+              ...Baca Lebih Lanjut
+            </Text>
+          )}
+        </Text>
+        {/* like, comment, and share */}
+        <Interaction
+          id={item.id}
+          name={item.name}
+          numberOfLikes={item.numberOfLikes}
+          numberOfComments={item.numberOfComments}
+        />
+      </View>
+    </StyledPressable>
   );
 };
 

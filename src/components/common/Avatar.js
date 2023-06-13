@@ -1,19 +1,25 @@
-import { Image, TouchableOpacity } from "react-native";
+import { Image, Pressable } from "react-native";
 import React from "react";
 
+import { styled } from "nativewind";
+const SyledPressable = styled(Pressable);
 
 const Avatar = ({ imgUrl, size, onPress, onLongPress }) => (
-  <TouchableOpacity onPress={onPress} onLongPress={onLongPress}>
+  <SyledPressable
+    onPress={onPress}
+    onLongPress={onLongPress}
+    className="active:scale-95"
+  >
     <Image
       source={imgUrl}
       alt="img"
       style={{
         width: size,
         height: size,
-        borderRadius: 100
+        borderRadius: 200,
       }}
     />
-  </TouchableOpacity>
+  </SyledPressable>
 );
 
 export default Avatar;
