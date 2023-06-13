@@ -12,6 +12,7 @@ import robinProfile from '../assets/images/robinProfile.jpg'
 import narutoProfile from '../assets/images/narutoProfile.jpg'
 import painProfile from '../assets/images/painProfile.jpg'
 import itachiProfile from '../assets/images/itachiProfile.jpg'
+import sasukeProfile from '../assets/images/sasukeProfile.jpg'
 
 export default {
   logoGrk,
@@ -26,4 +27,5 @@ export default {
   narutoProfile,
   painProfile,
   itachiProfile,
+  sasukeProfile,
 };

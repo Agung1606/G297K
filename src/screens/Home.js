@@ -1,7 +1,6 @@
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import React, { useState } from "react";
-import { AntDesign } from "@expo/vector-icons";
+import React from "react";
 
 import { TWEETS } from "../constant";
 import { flatListScrollToTopConfig } from "../hooks";

@@ -12,6 +12,7 @@ import TrendingList from "./TrendingList";
 
 import Home from "./Home";
 import Explore from "./Explore";
+import Nontification from "./Nontification";
 import Profile from "./Profile";
 
 const Tab = createBottomTabNavigator();
@@ -52,11 +53,20 @@ const BottomNavTab = () => {
         }}
       />
       <Tab.Screen
+        name="NontificationScreen"
+        component={Nontification}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="bell-o" size={30} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
         name="ProfileScreen"
         component={Profile}
         options={{
           tabBarIcon: ({ color }) => (
-            <FontAwesome name="user-circle" size={30} color={color} />
+            <FontAwesome name="user-circle-o" size={30} color={color} />
           ),
         }}
       />

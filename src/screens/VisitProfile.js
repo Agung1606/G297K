@@ -6,7 +6,15 @@ import { useNavigation } from "@react-navigation/native";
 
 import { styles } from "../style/Global";
 import { PROFILE, TWEETS } from "../constant";
-import { ButtonGray, ButtonFollow, ProfileInfo, TweetCard, NoTweets } from "../components";
+import { modalPopupConfig } from "../hooks";
+import {
+  ButtonGray,
+  ButtonFollow,
+  ProfileInfo,
+  TweetCard,
+  NoTweets,
+  SeeProfileModal,
+} from "../components";
 
 const Header = ({ username }) => {
   const navigation = useNavigation();
@@ -47,6 +55,8 @@ const VisitProfile = ({ route }) => {
   const [isFollow, setIsFollow] = useState(false);
   const handleFollow = () => setIsFollow(!isFollow);
 
+  const { isModalOpen, openModal, closeModal } = modalPopupConfig();
+
   return (
     <SafeAreaView className="flex-1">
       <Header username={data.username} />
@@ -61,6 +71,7 @@ const VisitProfile = ({ route }) => {
                 numberOfTweets={tweets.length}
                 numberOfFollowers={data.followers}
                 numberOfFollowing={data.following}
+                openModal={openModal}
               />
             </View>
             {/* button */}
@@ -89,6 +100,12 @@ const VisitProfile = ({ route }) => {
         ListEmptyComponent={
           <NoTweets text="Sepertinya orang ini belum membuat tweet" />
         }
+      />
+      {/* when user long press the profile this will triggered */}
+      <SeeProfileModal
+        isModalOpen={isModalOpen}
+        closeModal={closeModal}
+        profileUrl={data.profile}
       />
     </SafeAreaView>
   );

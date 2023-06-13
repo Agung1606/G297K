@@ -14,7 +14,7 @@ import {
   ScrollToTop
 } from "./common";
 
-import { DialogModal, ConfirmModal, BadgeNotif } from "./reactPaper";
+import { DialogModal, ConfirmModal, BadgeNotif, SeeProfileModal } from "./reactPaper";
 
 import { EmailRegisterScreen, PasswordRegisterScreen, SearchScreen } from "./screens";
 
@@ -35,6 +35,7 @@ export {
   DialogModal,
   ConfirmModal,
   BadgeNotif,
+  SeeProfileModal,
   EmailRegisterScreen,
   PasswordRegisterScreen,
   SearchScreen

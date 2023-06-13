@@ -87,20 +87,41 @@ export const PROFILE = [
     username: "nicorobin_16",
     name: "Nico Robin",
     profile: assets.robinProfile,
-    followers: "19M",
+    followers: "19JT",
     following: "726",
     bio: `"The existence of the Poneglyphs will shake the world to its core! I want to learn the true history! I want to know what happened during the Void Century!"`,
+  },
+  {
+    id: 11,
+    username: "sasuke_",
+    name: "Sasuke Uchiha",
+    profile: assets.sasukeProfile,
+    followers: "91JT",
+    following: "0",
+    bio: `"My only goal is in the darkness."`,
   },
 ];
 
 export const TWEETS = [
+  {
+    id: 97,
+    userId: 11,
+    profile: assets.sasukeProfile,
+    name: "Sasuke Uchiha",
+    username: "sasuke_",
+    date: "10 hari",
+    tweet:
+      "Balas dendam adalah emosi manusia yang kuat dan kompleks yang didorong oleh keinginan untuk membalas dendam dan mendapatkan keadilan. Ini adalah respons yang tertanam dalam diri seseorang terhadap perlakuan yang dianggap salah atau merugikan terhadap diri sendiri atau orang terdekat. Didorong oleh perasaan kemarahan, pengkhianatan, atau kehilangan, upaya membalas dendam sering melibatkan pencarian tanpa henti untuk menyebabkan rasa sakit atau penderitaan pada pelaku yang dianggap bertanggung jawab. Namun, balas dendam adalah pisau bermata dua yang dapat menghabiskan individu, membawanya ke jalan kegelapan dan ambiguitas moral. Ini adalah perjalanan emosional yang dapat mengubah persepsi seseorang tentang benar dan salah, membuat mereka buta terhadap konsekuensi potensial dan kerusakan yang disebabkan oleh tindakan mereka. Meskipun balas dendam mungkin memberikan rasa kepuasan sesaat, jarang menghasilkan solusi atau penyembuhan yang sejati. Ini adalah aspek yang kompleks dan ambigu secara moral dari pengalaman manusia yang mengeksplorasi kedalaman sifat manusia, batasan keadilan, dan biaya balas dendam.",
+    numberOfLikes: 0,
+    numberOfComments: 0,
+  },
   {
     id: 98,
     userId: 10,
     profile: assets.robinProfile,
     name: "Nico Robin",
     username: "nicorobin_16",
-    date: "16 hari",
+    date: "13 hari",
     tweet:
       "Salah satu penemuan terbesar di dunia arkeologi adalah Piramida Mesir Kuno, terutama Piramida Besar Giza yang dibangun sekitar 4.500 tahun yang lalu. Piramida ini merupakan salah satu Keajaiban Dunia Kuno dan merupakan monumen yang luar biasa dalam hal desain, presisi konstruksi, dan kompleksitasnya. Penemuan ini memberikan wawasan yang berharga tentang kebudayaan dan teknologi Mesir Kuno, serta memberikan petunjuk tentang kehidupan dan kepercayaan spiritual mereka. Piramida Giza juga menjadi simbol keabadian dan kekuatan kebudayaan Mesir Kuno yang mendalam. Penemuan ini telah mempengaruhi arkeologi, sejarah, dan studi tentang peradaban kuno secara keseluruhan.",
     numberOfLikes: 0,

@@ -1,26 +1,51 @@
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  FlatList,
-  SectionList,
-} from "react-native";
+import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React, { useEffect, useState } from "react";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
-import { EvilIcons, SimpleLineIcons, MaterialIcons } from "@expo/vector-icons";
+import { EvilIcons, SimpleLineIcons } from "@expo/vector-icons";
 
-import { loggedInUser } from "../hooks";
+import { loggedInUser, modalPopupConfig } from "../hooks";
 import {
   ProfileInfo,
   ButtonGray,
   TweetCard,
   NoTweets,
   BadgeNotif,
+  SeeProfileModal,
 } from "../components";
 import { bottomModalConfig } from "../hooks";
 import { styles } from "../style/Global";
 import { TWEETS } from "../constant";
+
+const Header = ({ username, goToUploadTweet }) => {
+  const { bottomSheetModalRef, snapPoints, openModal, renderBackdrop } =
+    bottomModalConfig(["30%"]);
+  return (
+    <>
+      <View className={`flex-row ${styles.flexBetween} my-1 px-3`}>
+        <Text className="font-InterBold text-xl tracking-wide">{username}</Text>
+        <View className={`flex-row items-center space-x-4`}>
+          <TouchableOpacity onPress={goToUploadTweet}>
+            <EvilIcons name="plus" size={39} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={openModal}>
+            <SimpleLineIcons name="menu" size={28} />
+            <BadgeNotif num={1} />
+          </TouchableOpacity>
+        </View>
+      </View>
+      {/* bottom modal */}
+      <BottomSheetModal
+        ref={bottomSheetModalRef}
+        index={0}
+        snapPoints={snapPoints}
+        backdropComponent={renderBackdrop}
+      >
+        <BottomMenu />
+      </BottomSheetModal>
+    </>
+  );
+};
 
 const BottomMenu = () => {
   const options = [
@@ -71,36 +96,6 @@ const BottomMenu = () => {
   );
 };
 
-const Header = ({ username, goToUploadTweet }) => {
-  const { bottomSheetModalRef, snapPoints, openModal, renderBackdrop } =
-    bottomModalConfig(["30%"]);
-  return (
-    <>
-      <View className={`flex-row ${styles.flexBetween} my-1 px-3`}>
-        <Text className="font-InterBold text-xl tracking-wide">{username}</Text>
-        <View className={`flex-row items-center space-x-4`}>
-          <TouchableOpacity onPress={goToUploadTweet}>
-            <EvilIcons name="plus" size={39} />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={openModal}>
-            <SimpleLineIcons name="menu" size={28} />
-            <BadgeNotif num={1} />
-          </TouchableOpacity>
-        </View>
-      </View>
-      {/* bottom modal */}
-      <BottomSheetModal
-        ref={bottomSheetModalRef}
-        index={0}
-        snapPoints={snapPoints}
-        backdropComponent={renderBackdrop}
-      >
-        <BottomMenu />
-      </BottomSheetModal>
-    </>
-  );
-};
-
 const Profile = ({ navigation }) => {
   const goToUploadTweet = () => navigation.navigate("UploadTweetScreen");
 
@@ -111,6 +106,8 @@ const Profile = ({ navigation }) => {
     const filter = TWEETS.filter((item) => item.userId === data.id);
     setTweets(filter);
   }, []);
+
+  const { isModalOpen, openModal, closeModal } = modalPopupConfig();
 
   return (
     <SafeAreaView className="flex-1">
@@ -126,6 +123,7 @@ const Profile = ({ navigation }) => {
                 numberOfTweets={tweets.length}
                 numberOfFollowers={data.followers}
                 numberOfFollowing={data.following}
+                openModal={openModal}
               />
             </View>
             {/* button */}
@@ -153,6 +151,12 @@ const Profile = ({ navigation }) => {
         ListEmptyComponent={
           <NoTweets text="Ketika Anda membuat tweet, itu akan muncul di sini" />
         }
+      />
+      {/* when user long press the profile this will triggered */}
+      <SeeProfileModal
+        isModalOpen={isModalOpen}
+        closeModal={closeModal}
+        profileUrl={{ uri: data.profile }}
       />
     </SafeAreaView>
   );
