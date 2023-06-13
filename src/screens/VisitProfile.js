@@ -52,6 +52,7 @@ const VisitProfile = ({ route }) => {
     setData(filterProfile[0]);
   }, [id]);
 
+  // this configuration is just for a while
   const [isFollow, setIsFollow] = useState(false);
   const handleFollow = () => setIsFollow(!isFollow);
 

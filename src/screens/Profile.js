@@ -1,8 +1,8 @@
-import { View, Text, TouchableOpacity, FlatList } from "react-native";
+import { View, Text, TouchableOpacity, FlatList, SectionList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React, { useEffect, useState } from "react";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
-import { EvilIcons, SimpleLineIcons } from "@expo/vector-icons";
+import { EvilIcons, SimpleLineIcons, MaterialIcons } from "@expo/vector-icons";
 
 import { loggedInUser, modalPopupConfig } from "../hooks";
 import {

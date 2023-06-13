@@ -533,6 +533,18 @@ The protagonist, Monkey D. Luffy, and his crew, the Straw Hat Pirates, embark on
     title: "Naruto Shippuden",
     data: [
       {
+        id: 97,
+        userId: 11,
+        profile: assets.sasukeProfile,
+        name: "Sasuke Uchiha",
+        username: "sasuke_",
+        date: "10 hari",
+        tweet:
+          "Balas dendam adalah emosi manusia yang kuat dan kompleks yang didorong oleh keinginan untuk membalas dendam dan mendapatkan keadilan. Ini adalah respons yang tertanam dalam diri seseorang terhadap perlakuan yang dianggap salah atau merugikan terhadap diri sendiri atau orang terdekat. Didorong oleh perasaan kemarahan, pengkhianatan, atau kehilangan, upaya membalas dendam sering melibatkan pencarian tanpa henti untuk menyebabkan rasa sakit atau penderitaan pada pelaku yang dianggap bertanggung jawab. Namun, balas dendam adalah pisau bermata dua yang dapat menghabiskan individu, membawanya ke jalan kegelapan dan ambiguitas moral. Ini adalah perjalanan emosional yang dapat mengubah persepsi seseorang tentang benar dan salah, membuat mereka buta terhadap konsekuensi potensial dan kerusakan yang disebabkan oleh tindakan mereka. Meskipun balas dendam mungkin memberikan rasa kepuasan sesaat, jarang menghasilkan solusi atau penyembuhan yang sejati. Ini adalah aspek yang kompleks dan ambigu secara moral dari pengalaman manusia yang mengeksplorasi kedalaman sifat manusia, batasan keadilan, dan biaya balas dendam.",
+        numberOfLikes: 0,
+        numberOfComments: 0,
+      },
+      {
         id: 100,
         userId: 7,
         profile: assets.narutoProfile,
