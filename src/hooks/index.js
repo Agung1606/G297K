@@ -9,17 +9,22 @@ export const loggedInUser = () => {
   return { data };
 };
 
-export const flatListScrollToTopConfig = () => {
+export const scrollToTopConfig = ({ kind }) => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const flatListRef = useRef(null);
+  const reference = useRef(null);
   const handleScroll = (event) => {
     const offsetY = event.nativeEvent.contentOffset.y;
     setIsScrolled(offsetY > 0);
   };
-  const scrollToTop = () =>
-    flatListRef.current.scrollToOffset({ offset: 0, animated: true });
+  const scrollToTop = () => {
+    if (kind === "FlatList") {
+      reference.current.scrollToOffset({ offset: 0, animated: true });
+    } else {
+      reference.current.scrollToLocation({ sectionIndex: 0, itemIndex: 0 });
+    }
+  };
 
-  return { isScrolled, flatListRef, handleScroll, scrollToTop };
+  return { isScrolled, reference, handleScroll, scrollToTop };
 };
 
 export const useKeyboardVisible = () => {

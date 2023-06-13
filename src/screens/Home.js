@@ -3,7 +3,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
 
 import { TWEETS } from "../constant";
-import { flatListScrollToTopConfig } from "../hooks";
+import { scrollToTopConfig } from "../hooks";
 import { TweetCard, BadgeNotif, ScrollToTop } from "../components";
 import { styles } from "../style/Global";
 import { EvilIcons, Fontisto } from "@expo/vector-icons";
@@ -29,14 +29,14 @@ const Home = ({ navigation }) => {
   const goToMessage = () => navigation.navigate("MessageScreen");
   const goToUploadTweet = () => navigation.navigate("UploadTweetScreen");
 
-  const { isScrolled, flatListRef, handleScroll, scrollToTop } =
-    flatListScrollToTopConfig();
+  const { isScrolled, reference, handleScroll, scrollToTop } =
+    scrollToTopConfig({ kind: "FlatList" });
 
   return (
     <SafeAreaView className="flex-1">
       <Header goToMessage={goToMessage} goToUploadTweet={goToUploadTweet} />
       <FlatList
-        ref={flatListRef}
+        ref={reference}
         onScroll={handleScroll}
         data={TWEETS}
         renderItem={({ item }) => <TweetCard item={item} />}

@@ -13,7 +13,8 @@ import { styled } from "nativewind";
 const StyledPressable = styled(Pressable);
 
 import { styles } from "../style/Global";
-import { TrendingListCard, TweetCard } from "../components";
+import { scrollToTopConfig } from "../hooks";
+import { TrendingListCard, TweetCard, ScrollToTop } from "../components";
 import { TRENDINGLISTS, EXPLORETWEETS } from "../constant";
 
 const Explore = ({ navigation }) => {
@@ -21,10 +22,15 @@ const Explore = ({ navigation }) => {
   const goToTrendingListScreen = () =>
     navigation.navigate("TrendingListScreen");
 
+  const { isScrolled, reference, handleScroll, scrollToTop } =
+    scrollToTopConfig({ kind: "SectionList" });
+
   return (
     <SafeAreaView className="flex-1">
       <SearchBar onPress={goToSearchScreen} />
       <SectionList
+        ref={reference}
+        onScroll={handleScroll}
         ListHeaderComponent={
           <ListOfTrendingTweets
             goToTrendingListScreen={goToTrendingListScreen}
@@ -44,6 +50,7 @@ const Explore = ({ navigation }) => {
         renderItem={({ item }) => <TweetCard item={item} />}
         keyExtractor={(item) => `basicListEntry-${item.id}`}
       />
+      {isScrolled && <ScrollToTop onPress={scrollToTop} />}
     </SafeAreaView>
   );
 };
