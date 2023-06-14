@@ -1,4 +1,10 @@
-import { View, Text, TouchableOpacity, FlatList, SectionList } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  FlatList,
+  SectionList,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React, { useEffect, useState } from "react";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
@@ -107,7 +113,11 @@ const Profile = ({ navigation }) => {
     setTweets(filter);
   }, []);
 
-  const { isModalOpen, openModal, closeModal } = modalPopupConfig();
+  const {
+    isModalOpen,
+    openModal: openDetailProfile,
+    closeModal: closeDetailProfile,
+  } = modalPopupConfig();
 
   return (
     <SafeAreaView className="flex-1">
@@ -123,7 +133,7 @@ const Profile = ({ navigation }) => {
                 numberOfTweets={tweets.length}
                 numberOfFollowers={data.followers}
                 numberOfFollowing={data.following}
-                openModal={openModal}
+                openDetailProfile={openDetailProfile}
               />
             </View>
             {/* button */}
@@ -155,7 +165,7 @@ const Profile = ({ navigation }) => {
       {/* when user long press the profile this will triggered */}
       <SeeProfileModal
         isModalOpen={isModalOpen}
-        closeModal={closeModal}
+        closeModal={closeDetailProfile}
         profileUrl={{ uri: data.profile }}
       />
     </SafeAreaView>

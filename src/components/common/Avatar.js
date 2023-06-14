@@ -4,10 +4,9 @@ import React from "react";
 import { styled } from "nativewind";
 const SyledPressable = styled(Pressable);
 
-const Avatar = ({ imgUrl, size, onPress, onLongPress }) => (
+const Avatar = ({ imgUrl, size, onPress }) => (
   <SyledPressable
     onPress={onPress}
-    onLongPress={onLongPress}
     className="active:scale-95"
   >
     <Image

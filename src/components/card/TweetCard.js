@@ -19,7 +19,12 @@ import { styles } from "../../style/Global";
 import { styled } from "nativewind";
 const StyledPressable = styled(Pressable);
 
-const TweetCard = ({ item }) => {
+/* React.memo is a handy tool to optimize functional components in React by 
+reducing unnecessary re-renders. It's especially useful when dealing with 
+components that receive props that don't change frequently or are expensive 
+to compute. */
+
+const TweetCard = React.memo(({ item }) => {
   const navigation = useNavigation();
   const goToDetails = () =>
     navigation.navigate("DetailsTweetScreen", { param: item });
@@ -66,7 +71,7 @@ const TweetCard = ({ item }) => {
       </View>
     </StyledPressable>
   );
-};
+});
 
 export const Interaction = ({ id, name, numberOfLikes, numberOfComments }) => {
   const { data: loggedInUserData } = loggedInUser();

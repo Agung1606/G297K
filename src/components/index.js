@@ -1,6 +1,6 @@
 import TweetCard, { Interaction } from "./card/TweetCard";
 import TweetDetailCard from "./card/TweetDetailCard";
-import TrendingListCard from "./card/TrendingListCard";
+import TrendingCard from "./card/TrendingCard";
 import CommentCard from "./card/CommentCard";
 
 import {
@@ -21,7 +21,7 @@ import { EmailRegisterScreen, PasswordRegisterScreen, SearchScreen } from "./scr
 export {
   TweetCard,
   TweetDetailCard,
-  TrendingListCard,
+  TrendingCard,
   CommentCard,
   Interaction,
   ButtonBlue,
@@ -38,5 +38,5 @@ export {
   SeeProfileModal,
   EmailRegisterScreen,
   PasswordRegisterScreen,
-  SearchScreen
+  SearchScreen,
 };

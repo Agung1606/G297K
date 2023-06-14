@@ -14,7 +14,7 @@ const StyledPressable = styled(Pressable);
 
 import { styles } from "../style/Global";
 import { scrollToTopConfig } from "../hooks";
-import { TrendingListCard, TweetCard, ScrollToTop } from "../components";
+import { TrendingCard, TweetCard, ScrollToTop } from "../components";
 import { TRENDINGLISTS, EXPLORETWEETS } from "../constant";
 
 const Explore = ({ navigation }) => {
@@ -79,7 +79,7 @@ const ListOfTrendingTweets = ({ goToTrendingListScreen }) => {
       <View className="my-2">
         {/* only take the first 5 off list */}
         {TRENDINGLISTS.slice(0, 5).map((item) => (
-          <TrendingListCard
+          <TrendingCard
             key={item.id}
             trendingOn={item.trendingOn}
             trendingKeywords={item.trendingKeywords}

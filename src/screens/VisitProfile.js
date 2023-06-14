@@ -56,7 +56,11 @@ const VisitProfile = ({ route }) => {
   const [isFollow, setIsFollow] = useState(false);
   const handleFollow = () => setIsFollow(!isFollow);
 
-  const { isModalOpen, openModal, closeModal } = modalPopupConfig();
+  const {
+    isModalOpen,
+    openModal: openDetailProfile,
+    closeModal: closeDetailProfile,
+  } = modalPopupConfig();
 
   return (
     <SafeAreaView className="flex-1">
@@ -72,7 +76,7 @@ const VisitProfile = ({ route }) => {
                 numberOfTweets={tweets.length}
                 numberOfFollowers={data.followers}
                 numberOfFollowing={data.following}
-                openModal={openModal}
+                openDetailProfile={openDetailProfile}
               />
             </View>
             {/* button */}
@@ -105,7 +109,7 @@ const VisitProfile = ({ route }) => {
       {/* when user long press the profile this will triggered */}
       <SeeProfileModal
         isModalOpen={isModalOpen}
-        closeModal={closeModal}
+        closeModal={closeDetailProfile}
         profileUrl={data.profile}
       />
     </SafeAreaView>

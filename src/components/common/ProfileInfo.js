@@ -11,7 +11,7 @@ const ProfileInfo = ({
   numberOfTweets,
   numberOfFollowers,
   numberOfFollowing,
-  openModal
+  openDetailProfile,
 }) => {
   const info = [
     {
@@ -39,7 +39,7 @@ const ProfileInfo = ({
   return (
     <>
       <View className={`flex-row ${styles.flexBetween} space-x-10`}>
-        <Avatar imgUrl={profileUrl} size={80} onLongPress={openModal} />
+        <Avatar imgUrl={profileUrl} size={80} onPress={openDetailProfile} />
         <View className={`flex-1 flex-row ${styles.flexBetween}`}>
           {info.map((item) => (
             <View className={styles.flexCenter} key={item.text}>

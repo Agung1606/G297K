@@ -41,7 +41,7 @@ const Home = ({ navigation }) => {
         data={TWEETS}
         renderItem={({ item }) => <TweetCard item={item} />}
         keyExtractor={(item) => item.id}
-        initialNumToRender={20}
+        initialNumToRender={10}
         showsVerticalScrollIndicator={false}
       />
       {isScrolled && <ScrollToTop onPress={scrollToTop} />}

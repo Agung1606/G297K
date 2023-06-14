@@ -4,7 +4,7 @@ import React from 'react'
 import { SimpleLineIcons, AntDesign } from '@expo/vector-icons'
 
 import { styles } from '../style/Global'
-import { TrendingListCard } from '../components'
+import { TrendingCard } from '../components'
 import { TRENDINGLISTS } from '../constant'
 
 const Header = ({ goToPrevScreen }) => (
@@ -31,7 +31,7 @@ const TrendingList = ({ navigation }) => {
       <FlatList
         data={TRENDINGLISTS}
         renderItem={({ item }) => (
-          <TrendingListCard
+          <TrendingCard
             key={item.id}
             trendingOn={item.trendingOn}
             trendingKeywords={item.trendingKeywords}

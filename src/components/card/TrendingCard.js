@@ -7,7 +7,7 @@ const StyledPressable = styled(Pressable);
 
 import { styles } from "../../style/Global";
 
-const TrendingListCard = ({ trendingOn, trendingKeywords, numberOfTweets }) => {
+const TrendingCard = ({ trendingOn, trendingKeywords, numberOfTweets }) => {
   return (
     <StyledPressable className="px-6 py-3 active:bg-gray-300/50">
       <View className={`flex-row ${styles.flexBetween} mb-1`}>
@@ -28,4 +28,4 @@ const TrendingListCard = ({ trendingOn, trendingKeywords, numberOfTweets }) => {
   );
 };
 
-export default TrendingListCard;
+export default TrendingCard;

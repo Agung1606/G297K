@@ -12,7 +12,7 @@ import TrendingList from "./TrendingList";
 
 import Home from "./Home";
 import Explore from "./Explore";
-import Nontification from "./Nontification";
+import Notification from "./Notification";
 import Profile from "./Profile";
 
 const Tab = createBottomTabNavigator();
@@ -53,8 +53,8 @@ const BottomNavTab = () => {
         }}
       />
       <Tab.Screen
-        name="NontificationScreen"
-        component={Nontification}
+        name="NotificationScreen"
+        component={Notification}
         options={{
           tabBarIcon: ({ color }) => (
             <FontAwesome name="bell-o" size={30} color={color} />

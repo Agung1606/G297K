@@ -635,13 +635,13 @@ export const TRENDINGLISTS = [
   {
     id: 3,
     trendingOn: "Teknologi - Trending",
-    trendingKeywords: "artificial intelligence",
+    trendingKeywords: "iPhone 14",
     numberOfTweets: "126K",
   },
   {
     id: 4,
     trendingOn: "Sedang trending di indonesia",
-    trendingKeywords: "Pagi-pagi",
+    trendingKeywords: "One Piece",
     numberOfTweets: "9,215",
   },
   {
@@ -659,7 +659,7 @@ export const TRENDINGLISTS = [
   {
     id: 7,
     trendingOn: "Teknologi - Trending",
-    trendingKeywords: "iPhone 13",
+    trendingKeywords: "artificial intelligence",
     numberOfTweets: "9,152",
   },
   {
