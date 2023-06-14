@@ -14,6 +14,10 @@ import painProfile from '../assets/images/painProfile.jpg'
 import itachiProfile from '../assets/images/itachiProfile.jpg'
 import sasukeProfile from '../assets/images/sasukeProfile.jpg'
 
+import lisaProfile from '../assets/images/lisaProfile.jpg'
+import liamProfile from '../assets/images/liamProfile.jpg'
+import jokowiProfile from '../assets/images/jokowiProfile.jpeg'
+
 export default {
   logoGrk,
   defaultProfile,
@@ -28,4 +32,7 @@ export default {
   painProfile,
   itachiProfile,
   sasukeProfile,
+  lisaProfile,
+  liamProfile,
+  jokowiProfile
 };
