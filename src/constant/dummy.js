@@ -100,6 +100,53 @@ export const PROFILE = [
     following: "0",
     bio: `"My only goal is in the darkness."`,
   },
+  {
+    id: 12,
+    username: "jokowi",
+    name: "Joko Widodo",
+    profile: assets.jokowiProfile,
+    followers: "52.8JT",
+    following: "0",
+    bio: `Akun resmi Presiden Republik Indonesia 
+Joko Widodo 🇮🇩.`,
+  },
+  {
+    id: 13,
+    username: "lalalalisa_m",
+    name: "Lisa",
+    profile: assets.lisaProfile,
+    followers: "94.8JT",
+    following: "0",
+    bio: `❤️❤️`,
+  },
+  {
+    id: 14,
+    username: "liamgallagher",
+    name: "Liam Gallagher",
+    profile: assets.liamProfile,
+    followers: "1.6JT",
+    following: "6",
+    bio: `KNEBWORTH 22.
+The live album, out 11.8.23`,
+  },
+  {
+    id: 15,
+    username: "bebytsabina",
+    name: "Cut Beby Tsabina",
+    profile: assets.bebyProfile,
+    followers: "7.5JT",
+    following: "1,096",
+    bio: `🇮🇩`,
+  },
+  {
+    id: 16,
+    username: "billieeilish",
+    name: "BILLIE EILISH",
+    profile: assets.billieProfile,
+    followers: "109JT",
+    following: "0",
+    bio: `Fans berat One Piece 🏴‍☠️.`,
+  },
 ];
 
 export const TWEETS = [
@@ -715,5 +762,48 @@ export const TRENDINGLISTS = [
     trendingOn: "Trending",
     trendingKeywords: "Sering",
     numberOfTweets: "28.6K",
+  },
+];
+
+export const NOTIFICATION = [
+  {
+    title: "Minggu Ini",
+    data: [
+      {
+        id: 12,
+        profile: assets.jokowiProfile,
+        username: "jokowi",
+        time: "1d",
+      },
+      {
+        id: 13,
+        profile: assets.lisaProfile,
+        username: "lalalalisa_m",
+        time: "1d",
+      },
+      {
+        id: 15,
+        profile: assets.bebyProfile,
+        username: "bebytsabina",
+        time: "2d",
+      },
+      {
+        id: 16,
+        profile: assets.billieProfile,
+        username: "billieeilish",
+        time: "5d",
+      },
+    ],
+  },
+  {
+    title: "Bulan Lalu",
+    data: [
+      {
+        id: 14,
+        profile: assets.liamProfile,
+        username: "liamgallagher",
+        time: "2w",
+      },
+    ],
   },
 ];

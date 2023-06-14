@@ -16,6 +16,8 @@ import sasukeProfile from '../assets/images/sasukeProfile.jpg'
 
 import lisaProfile from '../assets/images/lisaProfile.jpg'
 import liamProfile from '../assets/images/liamProfile.jpg'
+import bebyProfile from '../assets/images/bebyProfile.jpg'
+import billieProfile from '../assets/images/billieProfile.jpg'
 import jokowiProfile from '../assets/images/jokowiProfile.jpeg'
 
 export default {
@@ -34,5 +36,7 @@ export default {
   sasukeProfile,
   lisaProfile,
   liamProfile,
+  bebyProfile,
+  billieProfile,
   jokowiProfile
 };
