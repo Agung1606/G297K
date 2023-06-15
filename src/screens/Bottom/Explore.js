@@ -36,6 +36,7 @@ const Explore = ({ navigation }) => {
             goToTrendingListScreen={goToTrendingListScreen}
           />
         }
+        ListFooterComponent={() => <View className="pb-20" />}
         sections={EXPLORETWEETS}
         renderSectionHeader={({ section }) => (
           <View className="m-2 flex-row items-center space-x-2">

@@ -26,10 +26,8 @@ const Header = ({ goToMessage, goToUploadTweet }) => (
 );
 
 const Home = ({ navigation }) => {
-  const goToMessage = () =>
-    navigation.navigate( "MessageScreen");
-  const goToUploadTweet = () =>
-    navigation.navigate("UploadTweetScreen");
+  const goToMessage = () => navigation.navigate("MessageScreen");
+  const goToUploadTweet = () => navigation.navigate("UploadTweetScreen");
 
   const { isScrolled, reference, handleScroll, scrollToTop } =
     scrollToTopConfig({ kind: "FlatList" });
@@ -45,6 +43,7 @@ const Home = ({ navigation }) => {
         keyExtractor={(item) => item.id}
         initialNumToRender={10}
         showsVerticalScrollIndicator={false}
+        ListFooterComponent={() => <View className="pb-20" />}
       />
       {isScrolled && <ScrollToTop onPress={scrollToTop} />}
     </SafeAreaView>

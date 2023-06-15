@@ -1,7 +1,8 @@
 import React from "react";
-import { View, Text, TouchableOpacity, TextInput } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { MaterialIcons } from "@expo/vector-icons";
+import { View, Text, TouchableOpacity } from "react-native";
+import { TextInput } from "react-native-paper";
 
 import { styles } from "../../style/Global";
 import { loggedInUser } from "../../hooks";
@@ -26,15 +27,33 @@ const EditProfile = () => {
   return (
     <SafeAreaView className="flex-1 p-3">
       <Header />
-      <View className={`mt-8 ${styles.flexCenter} space-y-10`}>
-        <View className="items-center">
-          <Avatar imgUrl={{ uri: data.profile }} size={80} />
-          <Text>Edit picture</Text>
-        </View>
-        {/* text input */}
-        <View className="w-full">
-          <TextInput placeholder="name" className="bg-red-600" />
-        </View>
+      <View className="items-center my-6">
+        <Avatar imgUrl={{ uri: data.profile }} size={90} />
+        <Text className="font-InterMedium text-lg text-grayCustom">
+          Edit gambar
+        </Text>
+      </View>
+      {/* text input */}
+      <View>
+        <TextInput
+          label={"Name"}
+          value={data.name}
+          className="bg-transparent mb-3"
+          underlineColor="#1D7ED8"
+          />
+        <TextInput
+          label={"Username"}
+          value={data.username}
+          className="bg-transparent mb-3"
+          underlineColor="#1D7ED8"
+          />
+        <TextInput
+          label={"Bio"}
+          value={data.bio}
+          multiline={true}
+          className="bg-transparent mb-3"
+          underlineColor="#1D7ED8"
+          />
       </View>
     </SafeAreaView>
   );

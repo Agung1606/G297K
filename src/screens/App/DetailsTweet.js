@@ -9,6 +9,10 @@ import { TweetDetailCard, CommentCard } from "../../components";
 const DetailsTweet = ({ route, navigation }) => {
   const item = route?.params?.param;
   const goToPrevScreen = () => navigation.goBack();
+  const goToVisitProfile = () =>
+    navigation.navigate("VisitProfileScreen", { param: item.userId });
+  const openModalSendComment = () =>
+    navigation.navigate("SendComment", { param: { name: item.name } });
 
   return (
     <SafeAreaView className="flex-1">
@@ -27,6 +31,8 @@ const DetailsTweet = ({ route, navigation }) => {
         ListHeaderComponent={
           <TweetDetailCard
             item={item}
+            goToVisitProfile={goToVisitProfile}
+            openModalSendComment={openModalSendComment}
           />
         }
         // ListFooterComponent={<CommentCard />}

@@ -9,10 +9,9 @@ import {
   VisitProfile,
   DetailsTweet,
   TrendingList,
-  SearchAccount,
   EditProfile,
 } from "../screens/App";
-import { SendComment } from "../screens/Modal";
+import { SendComment, SearchAccount } from "../screens/Modal";
 
 const Routes = () => (
   <Stack.Navigator
@@ -71,13 +70,6 @@ const Routes = () => (
         }}
       />
       <Stack.Screen
-        name="SearchAccountScreen"
-        component={SearchAccount}
-        options={{
-          animation: "none",
-        }}
-      />
-      <Stack.Screen
         name="EditProfileScreen"
         component={EditProfile}
         options={{
@@ -92,6 +84,13 @@ const Routes = () => (
         component={SendComment}
         options={{
           animation: "slide_from_bottom",
+        }}
+      />
+      <Stack.Screen
+        name="SearchAccountScreen"
+        component={SearchAccount}
+        options={{
+          animation: "none",
         }}
       />
     </Stack.Group>

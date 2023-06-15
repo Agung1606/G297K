@@ -1,3 +1,4 @@
 import SendComment from "./SendComment";
+import SearchAccount from "./SearchAccount";
 
-export { SendComment }
+export { SendComment, SearchAccount };
