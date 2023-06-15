@@ -1,7 +1,4 @@
-import TweetCard, { Interaction } from "./card/TweetCard";
-import TweetDetailCard from "./card/TweetDetailCard";
-import TrendingCard from "./card/TrendingCard";
-import CommentCard from "./card/CommentCard";
+import { TweetCard, TweetDetailCard, TrendingCard, CommentCard } from "./card";
 
 import {
   ButtonBlue,
@@ -11,10 +8,15 @@ import {
   ProfileInfo,
   NoTweets,
   Avatar,
-  ScrollToTop
+  ScrollToTop,
 } from "./common";
 
-import { DialogModal, ConfirmModal, BadgeNotif, SeeProfileModal } from "./reactPaper";
+import {
+  DialogModal,
+  ConfirmModal,
+  BadgeNotif,
+  SeeProfileModal,
+} from "./reactPaper";
 
 import { EmailRegisterScreen, PasswordRegisterScreen } from "./screens";
 
@@ -23,7 +25,6 @@ export {
   TweetDetailCard,
   TrendingCard,
   CommentCard,
-  Interaction,
   ButtonBlue,
   ButtonTransparent,
   ButtonGray,

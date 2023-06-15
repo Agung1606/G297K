@@ -9,8 +9,6 @@ import { TweetDetailCard, CommentCard } from "../../components";
 const DetailsTweet = ({ route, navigation }) => {
   const item = route?.params?.param;
   const goToPrevScreen = () => navigation.goBack();
-  const goToVisitProfile = () =>
-    navigation.navigate("VisitProfileScreen", { param: item.userId });
 
   return (
     <SafeAreaView className="flex-1">
@@ -27,7 +25,9 @@ const DetailsTweet = ({ route, navigation }) => {
       {/* this configuration is just for a while */}
       <FlatList
         ListHeaderComponent={
-          <TweetDetailCard item={item} goToVisitProfile={goToVisitProfile} />
+          <TweetDetailCard
+            item={item}
+          />
         }
         // ListFooterComponent={<CommentCard />}
       />

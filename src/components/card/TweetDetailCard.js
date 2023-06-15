@@ -1,14 +1,19 @@
-import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
 
 import { bottomModalConfig } from "../../hooks";
 import { styles } from "../../style/Global";
-import { Interaction } from "./TweetCard";
-import { Avatar } from "../common";
+import { Avatar, Interaction } from "../common";
 
-const TweetDetailCard = ({ item, goToVisitProfile }) => {
+const TweetDetailCard = ({ item }) => {
+  const navigation = useNavigation();
+  const goToVisitProfile = () =>
+    navigation.navigate("VisitProfileScreen", { param: item.userId });
+  const openModalSendComment = () =>
+    navigation.navigate("SendComment", { param: { name: item.name } });
   return (
     <View className="px-3 py-2 mb-2 border-b border-gray-300">
       <View className={`flex-row ${styles.flexBetween} mb-2`}>
@@ -30,9 +35,9 @@ const TweetDetailCard = ({ item, goToVisitProfile }) => {
       <Text className="font-InterRegular text-[17px]">{item.tweet}</Text>
       <View className="my-4">
         <Interaction
-          name={item.name}
           numberOfLikes={item.numberOfLikes}
           numberOfComments={item.numberOfComments}
+          openModalSendComment={openModalSendComment}
         />
       </View>
     </View>
@@ -58,7 +63,7 @@ const ButtonMoreVert = ({ tweetId, username }) => {
       },
     },
     {
-      icon: <MaterialIcons name="report" size={30} color={"red"} />,
+      icon: <MaterialIcons name="report" size={30} />,
       text: "Laporkan tweet ini",
       onPress: () => {
         alert("Report this tweet");

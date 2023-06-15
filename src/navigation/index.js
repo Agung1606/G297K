@@ -10,8 +10,9 @@ import {
   DetailsTweet,
   TrendingList,
   SearchAccount,
-  EditProfile
+  EditProfile,
 } from "../screens/App";
+import { SendComment } from "../screens/Modal";
 
 const Routes = () => (
   <Stack.Navigator
@@ -84,7 +85,17 @@ const Routes = () => (
         }}
       />
     </Stack.Group>
+    {/* common modal screen */}
+    <Stack.Group screenOptions={{ presentation: "modal" }}>
+      <Stack.Screen
+        name="SendComment"
+        component={SendComment}
+        options={{
+          animation: "slide_from_bottom",
+        }}
+      />
+    </Stack.Group>
   </Stack.Navigator>
 );
 
-export default Routes
+export default Routes;
