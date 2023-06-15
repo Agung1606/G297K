@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -7,17 +8,15 @@ import {
   FlatList,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import React, { useEffect, useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
 
 import { styled } from "nativewind";
 const StyledPressable = styled(Pressable);
 
-import { styles } from "../../../style/Global";
-import { PROFILE } from "../../../constant";
-import { modalPopupConfig } from "../../../hooks";
-import { ConfirmModal } from "../../reactPaper";
-import { Avatar } from "../../common";
+import { styles } from "../../style/Global";
+import { PROFILE } from "../../constant";
+import { modalPopupConfig } from "../../hooks";
+import { ConfirmModal, Avatar } from "../../components";
 
 const SearchBar = ({ goBack, query, setQuery }) => (
   <View
@@ -38,7 +37,7 @@ const SearchBar = ({ goBack, query, setQuery }) => (
   </View>
 );
 
-const Search = ({ navigation }) => {
+const SearchAccount = ({ navigation }) => {
   const goBack = () => navigation.goBack();
   const goToProfile = (item) => {
     navigation.navigate("VisitProfileScreen", { param: item.id });
@@ -156,4 +155,4 @@ const Search = ({ navigation }) => {
   );
 };
 
-export default Search;
+export default SearchAccount;

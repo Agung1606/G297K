@@ -1,23 +1,13 @@
-import React from "react";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { FontAwesome } from "@expo/vector-icons";
-
-import Login from "./Login";
-import Register from "./Register";
-import Message from "./Message";
-import UploadTweet from "./UploadTweet";
-import VisitProfile from "./VisitProfile";
-import DetailsTweet from "./DetailsTweet";
-import TrendingList from "./TrendingList";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+const Tab = createBottomTabNavigator();
 
 import Home from "./Home";
 import Explore from "./Explore";
 import Notification from "./Notification";
 import Profile from "./Profile";
 
-const Tab = createBottomTabNavigator();
-
-const BottomNavTab = () => {
+const BottomNavigation = () => {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -72,15 +62,6 @@ const BottomNavTab = () => {
       />
     </Tab.Navigator>
   );
-}
-
-export {
-  Login,
-  Register,
-  Message,
-  UploadTweet,
-  VisitProfile,
-  DetailsTweet,
-  TrendingList,
-  BottomNavTab,
 };
+
+export default BottomNavigation;

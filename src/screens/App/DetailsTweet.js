@@ -3,8 +3,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 
-import { styles } from "../style/Global";
-import { TweetDetailCard, CommentCard } from "../components";
+import { styles } from "../../style/Global";
+import { TweetDetailCard, CommentCard } from "../../components";
 
 const DetailsTweet = ({ route, navigation }) => {
   const item = route?.params?.param;

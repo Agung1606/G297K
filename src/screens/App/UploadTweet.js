@@ -9,9 +9,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 
-import { styles } from "../style/Global";
-import { loggedInUser } from "../hooks";
-import { ButtonBlue, Avatar } from "../components";
+import { styles } from "../../style/Global";
+import { loggedInUser } from "../../hooks";
+import { ButtonBlue, Avatar } from "../../components";
 
 const UploadTweet = ({ navigation }) => {
   const goToPrevScreen = () => navigation.goBack();

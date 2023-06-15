@@ -1,11 +1,11 @@
-import { View, Text, FlatList, TouchableOpacity } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import React from 'react'
-import { SimpleLineIcons, AntDesign } from '@expo/vector-icons'
+import { View, Text, FlatList, TouchableOpacity } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import React from "react";
+import { SimpleLineIcons, AntDesign } from "@expo/vector-icons";
 
-import { styles } from '../style/Global'
-import { TrendingCard } from '../components'
-import { TRENDINGLISTS } from '../constant'
+import { styles } from "../../style/Global";
+import { TrendingCard } from "../../components";
+import { TRENDINGLISTS } from "../../constant";
 
 const Header = ({ goToPrevScreen }) => (
   <View
@@ -42,6 +42,6 @@ const TrendingList = ({ navigation }) => {
       />
     </SafeAreaView>
   );
-}
+};
 
-export default TrendingList
+export default TrendingList;

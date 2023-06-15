@@ -1,9 +1,4 @@
-import {
-  View,
-  Text,
-  SectionList,
-  Pressable,
-} from "react-native";
+import { View, Text, SectionList, Pressable } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -11,9 +6,9 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { styled } from "nativewind";
 const StyledPressable = styled(Pressable);
 
-import { styles } from "../style/Global";
-import { NOTIFICATION } from "../constant";
-import { Avatar, ButtonFollow } from "../components";
+import { styles } from "../../style/Global";
+import { NOTIFICATION } from "../../constant";
+import { Avatar, ButtonFollow } from "../../components";
 
 const Header = ({ goToPrevScreen }) => (
   <View className="flex-row items-center space-x-10 mb-8">
@@ -51,9 +46,7 @@ const Notification = ({ navigation }) => {
               </Text>
             </View>
             <View className="w-24">
-              <ButtonFollow
-                title={"Ikuti Balik"}
-              />
+              <ButtonFollow title={"Ikuti Balik"} />
             </View>
           </StyledPressable>
         )}

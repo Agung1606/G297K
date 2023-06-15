@@ -16,7 +16,7 @@ import {
 
 import { DialogModal, ConfirmModal, BadgeNotif, SeeProfileModal } from "./reactPaper";
 
-import { EmailRegisterScreen, PasswordRegisterScreen, SearchScreen } from "./screens";
+import { EmailRegisterScreen, PasswordRegisterScreen } from "./screens";
 
 export {
   TweetCard,
@@ -38,5 +38,4 @@ export {
   SeeProfileModal,
   EmailRegisterScreen,
   PasswordRegisterScreen,
-  SearchScreen,
 };

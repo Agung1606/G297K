@@ -6,22 +6,20 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { PaperProvider } from "react-native-paper";
 
 import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
-import { persistStore } from "redux-persist";
+// import { PersistGate } from "redux-persist/integration/react";
+// import { persistStore } from "redux-persist";
 import { store } from "./src/redux";
 
+import { Login, Register } from "./src/screens/Auth";
+import BottomNavigation from "./src/screens/Bottom";
 import {
-  Login,
-  Register,
   Message,
   UploadTweet,
   VisitProfile,
   DetailsTweet,
   TrendingList,
-  BottomNavTab,
-} from "./src/screens";
-
-import { SearchScreen } from "./src/components";
+  SearchAccount,
+} from "./src/screens/App";
 
 const theme = {
   ...DefaultTheme,
@@ -39,24 +37,25 @@ const Routes = () => (
       headerShown: false,
     }}
   >
+    {/* auth screens */}
     <Stack.Group>
       <Stack.Screen name="LoginScreen" component={Login} />
       <Stack.Screen name="RegisterScreen" component={Register} />
     </Stack.Group>
+    {/* bottom navigation for Home, Explore, Notification, and Profile */}
+    <Stack.Screen
+      name="BottomNavigation"
+      component={BottomNavigation}
+      options={{
+        animation: "slide_from_right",
+      }}
+    />
+    {/* app navigation */}
     <Stack.Group>
-      <Stack.Screen
-        name="BottomNavTab"
-        component={BottomNavTab}
-        options={{
-          presentation: "modal",
-          animation: "slide_from_right",
-        }}
-      />
       <Stack.Screen
         name="MessageScreen"
         component={Message}
         options={{
-          presentation: "modal",
           animation: "slide_from_right",
         }}
       />
@@ -64,40 +63,35 @@ const Routes = () => (
         name="UploadTweetScreen"
         component={UploadTweet}
         options={{
-          presentation: "modal",
           animation: "slide_from_left",
-        }}
-      />
-      <Stack.Screen
-        name="DetailsTweetScreen"
-        component={DetailsTweet}
-        options={{
-          presentation: "modal",
-          animation: "slide_from_right",
         }}
       />
       <Stack.Screen
         name="VisitProfileScreen"
         component={VisitProfile}
         options={{
-          presentation: "modal",
           animation: "slide_from_right",
         }}
       />
       <Stack.Screen
-        name="SearchScreen"
-        component={SearchScreen}
+        name="DetailsTweetScreen"
+        component={DetailsTweet}
         options={{
-          presentation: "modal",
-          animation: "none",
+          animation: "slide_from_right",
         }}
       />
       <Stack.Screen
         name="TrendingListScreen"
         component={TrendingList}
         options={{
-          presentation: "modal",
           animation: "slide_from_right",
+        }}
+      />
+      <Stack.Screen
+        name="SearchAccountScreen"
+        component={SearchAccount}
+        options={{
+          animation: "none",
         }}
       />
     </Stack.Group>

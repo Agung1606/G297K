@@ -10,7 +10,7 @@ import React, { useEffect, useState } from "react";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import { EvilIcons, SimpleLineIcons, MaterialIcons } from "@expo/vector-icons";
 
-import { loggedInUser, modalPopupConfig } from "../hooks";
+import { loggedInUser, modalPopupConfig } from "../../hooks";
 import {
   ProfileInfo,
   ButtonGray,
@@ -18,10 +18,10 @@ import {
   NoTweets,
   BadgeNotif,
   SeeProfileModal,
-} from "../components";
-import { bottomModalConfig } from "../hooks";
-import { styles } from "../style/Global";
-import { TWEETS } from "../constant";
+} from "../../components";
+import { bottomModalConfig } from "../../hooks";
+import { styles } from "../../style/Global";
+import { TWEETS } from "../../constant";
 
 const Header = ({ username, goToUploadTweet }) => {
   const { bottomSheetModalRef, snapPoints, openModal, renderBackdrop } =

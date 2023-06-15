@@ -1,9 +1,7 @@
-import React from 'react'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
-
-import { EmailRegisterScreen, PasswordRegisterScreen } from '../components'
-
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 const Stack = createNativeStackNavigator();
+
+import { EmailRegisterScreen, PasswordRegisterScreen } from "../../components";
 
 const Register = () => {
   return (
@@ -20,12 +18,11 @@ const Register = () => {
         name="PasswordRegisterScreen"
         component={PasswordRegisterScreen}
         options={{
-          presentation: "modal",
           animation: "slide_from_right",
         }}
       />
     </Stack.Navigator>
   );
-}
+};
 
-export default Register
+export default Register;

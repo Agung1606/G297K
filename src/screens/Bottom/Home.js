@@ -2,10 +2,10 @@ import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
 
-import { TWEETS } from "../constant";
-import { scrollToTopConfig } from "../hooks";
-import { TweetCard, BadgeNotif, ScrollToTop } from "../components";
-import { styles } from "../style/Global";
+import { TWEETS } from "../../constant";
+import { scrollToTopConfig } from "../../hooks";
+import { TweetCard, BadgeNotif, ScrollToTop } from "../../components";
+import { styles } from "../../style/Global";
 import { EvilIcons, Fontisto } from "@expo/vector-icons";
 
 const Header = ({ goToMessage, goToUploadTweet }) => (
@@ -26,8 +26,10 @@ const Header = ({ goToMessage, goToUploadTweet }) => (
 );
 
 const Home = ({ navigation }) => {
-  const goToMessage = () => navigation.navigate("MessageScreen");
-  const goToUploadTweet = () => navigation.navigate("UploadTweetScreen");
+  const goToMessage = () =>
+    navigation.navigate( "MessageScreen");
+  const goToUploadTweet = () =>
+    navigation.navigate("UploadTweetScreen");
 
   const { isScrolled, reference, handleScroll, scrollToTop } =
     scrollToTopConfig({ kind: "FlatList" });

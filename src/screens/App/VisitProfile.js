@@ -4,9 +4,9 @@ import React, { useEffect, useState } from "react";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
-import { styles } from "../style/Global";
-import { PROFILE, TWEETS } from "../constant";
-import { modalPopupConfig } from "../hooks";
+import { styles } from "../../style/Global";
+import { PROFILE, TWEETS } from "../../constant";
+import { modalPopupConfig } from "../../hooks";
 import {
   ButtonGray,
   ButtonFollow,
@@ -14,7 +14,7 @@ import {
   TweetCard,
   NoTweets,
   SeeProfileModal,
-} from "../components";
+} from "../../components";
 
 const Header = ({ username }) => {
   const navigation = useNavigation();

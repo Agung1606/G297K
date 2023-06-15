@@ -2,10 +2,10 @@ import { View, TextInput, Text, TouchableOpacity, Image } from "react-native";
 import React, { useState } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 
-import { ButtonBlue, ButtonTransparent, DialogModal } from "../components";
-import { assets } from "../constant";
-import { styles } from "../style/Global";
-import { useKeyboardVisible, modalPopupConfig } from "../hooks";
+import { ButtonBlue, ButtonTransparent, DialogModal } from "../../components";
+import { assets } from "../../constant";
+import { styles } from "../../style/Global";
+import { useKeyboardVisible, modalPopupConfig } from "../../hooks";
 import { Entypo, AntDesign } from "@expo/vector-icons";
 
 const Login = ({ navigation }) => {
@@ -25,7 +25,7 @@ const Login = ({ navigation }) => {
 
   const handleLogin = () => {
     // if (loginInput.email && loginInput.password) {
-      navigation.navigate("BottomNavTab");
+    navigation.navigate("BottomNavigation", { screen: "HomeScreen" });
     // } else {
     //   setErrorMsg("Please provides phone number, or email to continue :)");
     //   openModal()

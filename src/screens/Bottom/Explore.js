@@ -12,13 +12,13 @@ import { SimpleLineIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { styled } from "nativewind";
 const StyledPressable = styled(Pressable);
 
-import { styles } from "../style/Global";
-import { scrollToTopConfig } from "../hooks";
-import { TrendingCard, TweetCard, ScrollToTop } from "../components";
-import { TRENDINGLISTS, EXPLORETWEETS } from "../constant";
+import { styles } from "../../style/Global";
+import { scrollToTopConfig } from "../../hooks";
+import { TrendingCard, TweetCard, ScrollToTop } from "../../components";
+import { TRENDINGLISTS, EXPLORETWEETS } from "../../constant";
 
 const Explore = ({ navigation }) => {
-  const goToSearchScreen = () => navigation.navigate("SearchScreen");
+  const goToSearchScreen = () => navigation.navigate("SearchAccountScreen");
   const goToTrendingListScreen = () =>
     navigation.navigate("TrendingListScreen");
 
