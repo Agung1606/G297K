@@ -23,7 +23,7 @@ const Notification = ({ navigation }) => {
   const goToPrevScreen = () => navigation.goBack();
 
   return (
-    <SafeAreaView className="flex-1 m-2">
+    <SafeAreaView className="flex-1 p-2">
       <Header goToPrevScreen={goToPrevScreen} />
       <SectionList
         sections={NOTIFICATION}

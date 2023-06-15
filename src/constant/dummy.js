@@ -343,8 +343,7 @@ Penting untuk diingat bahwa konspirasi seringkali didasarkan pada spekulasi, inf
     name: "Pain",
     username: "pain._",
     date: "16 hari",
-    tweet:
-      "Rasa sakit adalah alat yang berguna. Rasa sakit mengajarkan kita sesuatu dan membantu kita tumbuh. Jika kita tidak pernah merasakan rasa sakit, kita tidak akan pernah menghargai kebahagiaan. Dalam penderitaan, kita menemukan kekuatan. Ketika kita kehilangan segalanya, hanya ada satu hal yang bisa kita lakukan: pergi ke depan. Teruslah bergerak maju, meskipun itu sulit. Terimalah rasa sakit, nikmati kehidupan, dan jadilah orang yang lebih baik. Rasa sakit adalah bagian dari hidup, tetapi itu juga menjadikan kita manusia.",
+    tweet: "will you come here and stop this pain tonight?",
     numberOfLikes: 0,
     numberOfComments: 0,
   },

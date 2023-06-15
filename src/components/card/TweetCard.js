@@ -143,7 +143,7 @@ const SendComment = ({ loggedInUserData, name, closeModal }) => {
   };
 
   return (
-    <View className="flex-1 px-2 py-4">
+    <View className="flex-1 px-2 py-4 ">
       {/* top */}
       <View className={`flex-row ${styles.flexBetween} mb-6`}>
         <TouchableOpacity onPress={closeModal}>

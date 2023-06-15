@@ -69,7 +69,7 @@ const SearchAccount = ({ navigation }) => {
   }, [query]);
 
   return (
-    <SafeAreaView className="flex-1">
+    <SafeAreaView className="flex-1 ">
       <SearchBar goBack={goBack} query={query} setQuery={setQuery} />
       {users && query ? (
         <FlatList

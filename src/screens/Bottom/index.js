@@ -29,7 +29,7 @@ const BottomNavigation = () => {
         component={Home}
         options={{
           tabBarIcon: ({ color }) => (
-            <FontAwesome name="home" size={30} color={color} />
+            <FontAwesome name="home" size={28} color={color} />
           ),
         }}
       />
@@ -38,7 +38,7 @@ const BottomNavigation = () => {
         component={Explore}
         options={{
           tabBarIcon: ({ color }) => (
-            <FontAwesome name="search" size={30} color={color} />
+            <FontAwesome name="search" size={28} color={color} />
           ),
         }}
       />
@@ -47,7 +47,7 @@ const BottomNavigation = () => {
         component={Notification}
         options={{
           tabBarIcon: ({ color }) => (
-            <FontAwesome name="bell-o" size={30} color={color} />
+            <FontAwesome name="bell-o" size={28} color={color} />
           ),
         }}
       />
@@ -56,7 +56,7 @@ const BottomNavigation = () => {
         component={Profile}
         options={{
           tabBarIcon: ({ color }) => (
-            <FontAwesome name="user-circle-o" size={30} color={color} />
+            <FontAwesome name="user-circle-o" size={28} color={color} />
           ),
         }}
       />

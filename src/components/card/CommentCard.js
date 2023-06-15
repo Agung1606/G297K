@@ -22,22 +22,7 @@ const CommentCard = () => {
             </TouchableOpacity>
           </View>
           <Text className="font-InterLight text-grayCustom">1 jam</Text>
-          <Text className="font-InterRegular mt-2">
-            Tension, worry, unease, restlessness, fear, panic, apprehension,
-            stress, nervousness, dread, agitation, insomnia, racing thoughts,
-            heart palpitations, shortness of breath, sweating, trembling,
-            irrational thoughts, self-doubt, overwhelming, suffocating,
-            anticipation, uncertainty, hypervigilance, avoidance, social
-            anxiety, phobias, intrusive thoughts, compulsive behaviors,
-            isolation, racing mind, perfectionism, excessive concern, panic
-            attacks, chest tightness, hyperventilation, irrational fears,
-            feeling on edge, difficulty concentrating, excessive worrying,
-            fatigue, irritability, loss of control, self-consciousness,
-            excessive self-criticism, catastrophic thinking, avoidance
-            behaviors, muscle tension, digestive issues, rapid heartbeat,
-            feeling overwhelmed, inner turmoil, second-guessing, self-doubt,
-            constant fear.
-          </Text>
+          <Text className="font-InterRegular mt-2">Lord pain 🔥🔥🔥</Text>
         </View>
         {/* interaction */}
         <CommentInteraction />

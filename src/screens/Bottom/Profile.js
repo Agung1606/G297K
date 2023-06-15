@@ -104,6 +104,7 @@ const BottomMenu = () => {
 
 const Profile = ({ navigation }) => {
   const goToUploadTweet = () => navigation.navigate("UploadTweetScreen");
+  const goToEditProfile = () => navigation.navigate("EditProfileScreen");
 
   const { data } = loggedInUser();
   const [tweets, setTweets] = useState([]);
@@ -142,8 +143,8 @@ const Profile = ({ navigation }) => {
             >
               <View className="flex-1">
                 <ButtonGray
-                  title={"Ubah profil"}
-                  onPress={() => alert("Open edit profile screen!")}
+                  title={"Edit profil"}
+                  onPress={goToEditProfile}
                 />
               </View>
               <View className="flex-1">

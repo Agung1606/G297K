@@ -17,6 +17,7 @@ const Login = ({ navigation }) => {
   const isKeyboardVisible = useKeyboardVisible();
   const { isModalOpen, openModal, closeModal } = modalPopupConfig();
 
+  const [loading, setLoading] = useState(false);
   const [hidePassword, setHidePassword] = useState(true);
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -25,11 +26,17 @@ const Login = ({ navigation }) => {
 
   const handleLogin = () => {
     // if (loginInput.email && loginInput.password) {
-    navigation.navigate("BottomNavigation", { screen: "HomeScreen" });
+    // navigation.navigate("BottomNavigation", { screen: "HomeScreen" });
     // } else {
     //   setErrorMsg("Please provides phone number, or email to continue :)");
     //   openModal()
     // }
+
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      navigation.navigate("BottomNavigation", { screen: "HomeScreen" });
+    }, 200);
   };
 
   return (
@@ -52,7 +59,7 @@ const Login = ({ navigation }) => {
         {/* username */}
         <View className={`${styles.inputStyle} mb-3`}>
           <TextInput
-            placeholder="Email"
+            placeholder="Username"
             className="font-InterBold text-[16px]"
             value={loginInput.email}
             onChangeText={(text) =>
@@ -91,7 +98,10 @@ const Login = ({ navigation }) => {
           </View>
         </View>
         {/* button login */}
-        <ButtonBlue title={"Masuk"} onPress={handleLogin} />
+        <ButtonBlue
+          title={loading ? "Tunggu..." : "Masuk"}
+          onPress={handleLogin}
+        />
       </View>
       {/* forget password */}
       <TouchableOpacity>

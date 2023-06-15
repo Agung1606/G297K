@@ -4,6 +4,7 @@ import VisitProfile from "./VisitProfile";
 import DetailsTweet from "./DetailsTweet";
 import TrendingList from "./TrendingList";
 import SearchAccount from "./SearchAccount";
+import EditProfile from "./EditProfile";
 
 export {
   Message,
@@ -12,4 +13,5 @@ export {
   DetailsTweet,
   TrendingList,
   SearchAccount,
+  EditProfile,
 };
