@@ -8,7 +8,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import React, { useEffect, useState } from "react";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
-import { EvilIcons, SimpleLineIcons, MaterialIcons } from "@expo/vector-icons";
+import { SimpleLineIcons, MaterialIcons } from "@expo/vector-icons";
 
 import { loggedInUser, modalPopupConfig } from "../../hooks";
 import {
@@ -23,22 +23,17 @@ import { bottomModalConfig } from "../../hooks";
 import { styles } from "../../style/Global";
 import { TWEETS } from "../../constant";
 
-const Header = ({ username, goToUploadTweet }) => {
+const Header = ({ username }) => {
   const { bottomSheetModalRef, snapPoints, openModal, renderBackdrop } =
     bottomModalConfig(["30%"]);
   return (
     <>
       <View className={`flex-row ${styles.flexBetween} my-1 px-3`}>
         <Text className="font-InterBold text-xl tracking-wide">{username}</Text>
-        <View className={`flex-row items-center space-x-4`}>
-          <TouchableOpacity onPress={goToUploadTweet}>
-            <EvilIcons name="plus" size={39} />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={openModal}>
-            <SimpleLineIcons name="menu" size={28} />
-            <BadgeNotif num={1} />
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity onPress={openModal}>
+          <SimpleLineIcons name="menu" size={28} />
+          <BadgeNotif num={1} />
+        </TouchableOpacity>
       </View>
       {/* bottom modal */}
       <BottomSheetModal
@@ -103,7 +98,6 @@ const BottomMenu = () => {
 };
 
 const Profile = ({ navigation }) => {
-  const goToUploadTweet = () => navigation.navigate("UploadTweetScreen");
   const goToEditProfile = () => navigation.navigate("EditProfileScreen");
 
   const { data } = loggedInUser();
@@ -122,7 +116,7 @@ const Profile = ({ navigation }) => {
 
   return (
     <SafeAreaView className="flex-1">
-      <Header username={data.username} goToUploadTweet={goToUploadTweet} />
+      <Header username={data.username} />
       <FlatList
         ListHeaderComponent={() => (
           <View className="mb-4 pb-4 border-b border-gray-600">
@@ -142,10 +136,7 @@ const Profile = ({ navigation }) => {
               className={`flex-row ${styles.flexBetween} space-x-2 mt-1 px-3`}
             >
               <View className="flex-1">
-                <ButtonGray
-                  title={"Edit profil"}
-                  onPress={goToEditProfile}
-                />
+                <ButtonGray title={"Edit profil"} onPress={goToEditProfile} />
               </View>
               <View className="flex-1">
                 <ButtonGray

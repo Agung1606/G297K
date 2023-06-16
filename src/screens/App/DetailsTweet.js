@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
-import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialIcons, FontAwesome } from "@expo/vector-icons";
 
 import { styles } from "../../style/Global";
 import { COMMENTS } from "../../constant";
@@ -49,10 +49,14 @@ const DetailsTweet = ({ route, navigation }) => {
       />
       {/* comment button that always there */}
       <View className="p-2 border-t border-grayCustom">
-        <Pressable onPress={openModalSendComment} className="py-2 border-b-2 border-blue">
+        <Pressable
+          onPress={openModalSendComment}
+          className={`flex-row ${styles.flexBetween} py-2 border-b-2 border-blue`}
+        >
           <Text className="text-grayCustom font-InterMedium">
             Kirim komentar Anda
           </Text>
+          <FontAwesome name="comments-o" size={20} color={"#1D7ED8"} />
         </Pressable>
       </View>
     </SafeAreaView>

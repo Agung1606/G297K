@@ -8,33 +8,27 @@ import { TweetCard, BadgeNotif, ScrollToTop } from "../../components";
 import { styles } from "../../style/Global";
 import { EvilIcons, Fontisto } from "@expo/vector-icons";
 
-const Header = ({ goToMessage, goToUploadTweet }) => (
+const Header = ({ goToMessage }) => (
   <View
     className={`flex-row ${styles.flexBetween} py-1 px-3 border-b border-b-gray-600`}
   >
     <Text className="font-LoraBold text-3xl tracking-wider">G297K</Text>
-    <View className={`flex-row ${styles.flexBetween} space-x-4`}>
-      <TouchableOpacity onPress={goToUploadTweet}>
-        <EvilIcons name="plus" size={39} />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={goToMessage}>
-        <Fontisto name="email" size={30} />
-        <BadgeNotif num={99} />
-      </TouchableOpacity>
-    </View>
+    <TouchableOpacity onPress={goToMessage}>
+      <Fontisto name="email" size={30} />
+      <BadgeNotif num={99} />
+    </TouchableOpacity>
   </View>
 );
 
 const Home = ({ navigation }) => {
   const goToMessage = () => navigation.navigate("MessageScreen");
-  const goToUploadTweet = () => navigation.navigate("UploadTweetScreen");
 
   const { isScrolled, reference, handleScroll, scrollToTop } =
     scrollToTopConfig({ kind: "FlatList" });
 
   return (
     <SafeAreaView className="flex-1">
-      <Header goToMessage={goToMessage} goToUploadTweet={goToUploadTweet} />
+      <Header goToMessage={goToMessage} />
       <FlatList
         ref={reference}
         onScroll={handleScroll}

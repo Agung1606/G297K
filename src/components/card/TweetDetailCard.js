@@ -49,7 +49,7 @@ const ButtonMoreVert = ({ tweetId, username }) => {
 
   const options = [
     {
-      icon: <MaterialIcons name="person-add" size={30} />,
+      icon: <MaterialIcons name="person-add" size={30} color={"#7d7d7d"} />,
       text: `Ikuti @${username}`,
       onPress: () => {
         alert(`Followed ${username}`);
@@ -57,7 +57,7 @@ const ButtonMoreVert = ({ tweetId, username }) => {
       },
     },
     {
-      icon: <MaterialIcons name="report" size={30} />,
+      icon: <MaterialIcons name="report" size={30} color={"#7d7d7d"} />,
       text: "Laporkan tweet ini",
       onPress: () => {
         alert("Report this tweet");

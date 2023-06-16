@@ -5,7 +5,6 @@ import { Login, Register } from "../screens/Auth";
 import BottomNavigation from "../screens/Bottom";
 import {
   Message,
-  UploadTweet,
   VisitProfile,
   DetailsTweet,
   TrendingList,
@@ -39,13 +38,6 @@ const Routes = () => (
         component={Message}
         options={{
           animation: "slide_from_right",
-        }}
-      />
-      <Stack.Screen
-        name="UploadTweetScreen"
-        component={UploadTweet}
-        options={{
-          animation: "slide_from_left",
         }}
       />
       <Stack.Screen

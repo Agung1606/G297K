@@ -1,4 +1,4 @@
-import { FontAwesome } from "@expo/vector-icons";
+import { FontAwesome, EvilIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 const Tab = createBottomTabNavigator();
 
@@ -6,6 +6,7 @@ import Home from "./Home";
 import Explore from "./Explore";
 import Notification from "./Notification";
 import Profile from "./Profile";
+import UploadTweet from "./UploadTweet";
 
 const BottomNavigation = () => {
   return (
@@ -39,6 +40,15 @@ const BottomNavigation = () => {
         options={{
           tabBarIcon: ({ color }) => (
             <FontAwesome name="search" size={28} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="UploadTweetScreen"
+        component={UploadTweet}
+        options={{
+          tabBarIcon: () => (
+            <EvilIcons name="plus" size={50} color={"#1D7ED8"} />
           ),
         }}
       />
