@@ -9,6 +9,7 @@ import NoTweets from "./NoTweets";
 import Avatar from "./Avatar";
 import ScrollToTop from "./ScrollToTop";
 import TweetInteraction from "./TweetInteraction";
+import CommentInteraction from "./CommentInteraction";
 
 export {
   ButtonBlue,
@@ -20,4 +21,5 @@ export {
   Avatar,
   ScrollToTop,
   TweetInteraction,
+  CommentInteraction
 };

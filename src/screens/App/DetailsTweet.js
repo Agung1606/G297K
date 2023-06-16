@@ -1,4 +1,10 @@
-import { View, Text, TouchableOpacity, FlatList } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  FlatList,
+  Pressable,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -37,9 +43,18 @@ const DetailsTweet = ({ route, navigation }) => {
           />
         }
         data={COMMENTS}
-        renderItem={({ item }) => <CommentCard item={item} /> }
+        renderItem={({ item }) => <CommentCard item={item} />}
         keyExtractor={(item) => item.id}
+        ListFooterComponent={() => <View className="my-5" />}
       />
+      {/* comment button that always there */}
+      <View className="p-2 border-t border-grayCustom">
+        <Pressable onPress={openModalSendComment} className="py-2 border-b-2 border-blue">
+          <Text className="text-grayCustom font-InterMedium">
+            Kirim komentar Anda
+          </Text>
+        </Pressable>
+      </View>
     </SafeAreaView>
   );
 };
