@@ -4,6 +4,7 @@ import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 
 import { styles } from "../../style/Global";
+import { COMMENTS } from "../../constant";
 import { TweetDetailCard, CommentCard } from "../../components";
 
 const DetailsTweet = ({ route, navigation }) => {
@@ -35,7 +36,9 @@ const DetailsTweet = ({ route, navigation }) => {
             openModalSendComment={openModalSendComment}
           />
         }
-        // ListFooterComponent={<CommentCard />}
+        data={COMMENTS}
+        renderItem={({ item }) => <CommentCard item={item} /> }
+        keyExtractor={(item) => item.id}
       />
     </SafeAreaView>
   );

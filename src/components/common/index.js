@@ -8,7 +8,7 @@ import ProfileInfo from "./ProfileInfo";
 import NoTweets from "./NoTweets";
 import Avatar from "./Avatar";
 import ScrollToTop from "./ScrollToTop";
-import Interaction from "./Interaction";
+import TweetInteraction from "./TweetInteraction";
 
 export {
   ButtonBlue,
@@ -19,5 +19,5 @@ export {
   NoTweets,
   Avatar,
   ScrollToTop,
-  Interaction
-}
+  TweetInteraction,
+};

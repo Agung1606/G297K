@@ -663,7 +663,62 @@ Teori Newton menghasilkan pemahaman baru tentang gerak, gravitasi, dan fenomena 
   },
 ];
 
-export const COMMENTS = [];
+export const COMMENTS = [
+  {
+    id: 1,
+    userId: 15,
+    tweetId: undefined,
+    name: "Cut Beby Tsabina",
+    profile: assets.bebyProfile,
+    date: "baru saja",
+    comment: "❤️❤️❤️❤️❤️❤️",
+  },
+  {
+    id: 2,
+    userId: 15,
+    tweetId: undefined,
+    name: "Cut Beby Tsabina",
+    profile: assets.bebyProfile,
+    date: "baru saja",
+    comment: "❤️❤️❤️❤️❤️❤️",
+  },
+  {
+    id: 3,
+    userId: 15,
+    tweetId: undefined,
+    name: "Cut Beby Tsabina",
+    profile: assets.bebyProfile,
+    date: "baru saja",
+    comment: "❤️❤️❤️❤️❤️❤️",
+  },
+  {
+    id: 4,
+    userId: 15,
+    tweetId: undefined,
+    name: "Cut Beby Tsabina",
+    profile: assets.bebyProfile,
+    date: "baru saja",
+    comment: "❤️❤️❤️❤️❤️❤️",
+  },
+  {
+    id: 5,
+    userId: 16,
+    tweetId: undefined,
+    name: "BILLIE EILISH",
+    profile: assets.billieProfile,
+    date: "29 detik",
+    comment: "🔥🔥🔥🔥🔥🔥",
+  },
+  {
+    id: 6,
+    userId: 16,
+    tweetId: undefined,
+    name: "BILLIE EILISH",
+    profile: assets.billieProfile,
+    date: "29 detik",
+    comment: "🔥🔥🔥🔥🔥🔥",
+  },
+];
 
 export const TRENDINGLISTS = [
   {

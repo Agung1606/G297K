@@ -6,7 +6,7 @@ import {
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
-import { Avatar, Interaction } from "../common";
+import { Avatar, TweetInteraction } from "../common";
 
 import { styled } from "nativewind";
 const StyledPressable = styled(Pressable);
@@ -56,7 +56,7 @@ const TweetCard = React.memo(({ item }) => {
           )}
         </Text>
         {/* like, comment, and share */}
-        <Interaction
+        <TweetInteraction
           numberOfLikes={item.numberOfLikes}
           numberOfComments={item.numberOfComments}
           openModalSendComment={openModalSendComment}

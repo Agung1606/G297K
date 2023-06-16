@@ -4,7 +4,7 @@ import { FontAwesome, Feather } from "@expo/vector-icons";
 
 import { styles } from "../../style/Global";
 
-const Interaction = ({
+const TweetInteraction = ({
   numberOfLikes,
   numberOfComments,
   openModalSendComment,
@@ -23,6 +23,13 @@ const Interaction = ({
 
   return (
     <View className={`flex-row ${styles.flexBetween}`}>
+      {/* comment */}
+      <View className={`${styles.iconInteractionWrapper}`}>
+        <TouchableOpacity onPress={openModalSendComment}>
+          <FontAwesome name="comment-o" size={22} color="#7d7d7d" />
+        </TouchableOpacity>
+        <Text className="text-grayCustom">{numberOfComments}</Text>
+      </View>
       {/* like */}
       <View className={`${styles.iconInteractionWrapper}`}>
         <TouchableOpacity onPress={handleLike}>
@@ -34,13 +41,6 @@ const Interaction = ({
         </TouchableOpacity>
         <Text className="text-grayCustom">{likesCount}</Text>
       </View>
-      {/* comment */}
-      <View className={`${styles.iconInteractionWrapper}`}>
-        <TouchableOpacity onPress={openModalSendComment}>
-          <FontAwesome name="comment-o" size={22} color="#7d7d7d" />
-        </TouchableOpacity>
-        <Text className="text-grayCustom">{numberOfComments}</Text>
-      </View>
       {/* share */}
       <TouchableOpacity>
         <Feather name="share-2" size={22} color="#7d7d7d" />
@@ -49,4 +49,4 @@ const Interaction = ({
   );
 };
 
-export default Interaction;
+export default TweetInteraction;

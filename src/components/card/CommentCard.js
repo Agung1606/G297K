@@ -1,31 +1,31 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import { MaterialIcons, SimpleLineIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 import { styles } from "../../style/Global";
-import { loggedInUser } from "../../hooks";
 import { Avatar } from "../common";
 
-const CommentCard = () => {
-  // this is just for a while
-  const { data: loggedInUserData } = loggedInUser();
+const CommentCard = ({ item }) => {
+  const navigation = useNavigation();
+  const goToVisitProfile = () =>
+    navigation.navigate("VisitProfileScreen", { param: item.userId });
 
   return (
     <View className="p-2 flex-row space-x-2">
-      <Avatar imgUrl={{ uri: loggedInUserData.profile }} size={40} />
+      <Avatar imgUrl={item.profile} size={40} onPress={goToVisitProfile} />
       <View className="flex-1">
         <View className="bg-gray-200/70 rounded-md p-2">
           <View className={`flex-row ${styles.flexBetween}`}>
-            <Text className="font-InterSemiBold">{loggedInUserData.name}</Text>
+            <Text className="font-InterSemiBold">{item.name}</Text>
             <TouchableOpacity>
               <MaterialIcons name="more-vert" size={20} />
             </TouchableOpacity>
           </View>
-          <Text className="font-InterLight text-grayCustom">1 jam</Text>
-          <Text className="font-InterRegular mt-2">Lord pain 🔥🔥🔥</Text>
+          <Text className="font-InterLight text-grayCustom">{item.date}</Text>
+          <Text className="font-InterRegular mt-2">{item.comment}</Text>
         </View>
-        {/* interaction */}
-        <CommentInteraction />
+      <CommentInteraction />
       </View>
     </View>
   );

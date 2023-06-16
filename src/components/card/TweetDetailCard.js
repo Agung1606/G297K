@@ -5,7 +5,7 @@ import { BottomSheetModal } from "@gorhom/bottom-sheet";
 
 import { bottomModalConfig } from "../../hooks";
 import { styles } from "../../style/Global";
-import { Avatar, Interaction } from "../common";
+import { Avatar, TweetInteraction } from "../common";
 
 const TweetDetailCard = ({ item, goToVisitProfile, openModalSendComment }) => {
   return (
@@ -28,7 +28,7 @@ const TweetDetailCard = ({ item, goToVisitProfile, openModalSendComment }) => {
       {/* tweets */}
       <Text className="font-InterRegular text-[17px]">{item.tweet}</Text>
       <View className="my-4">
-        <Interaction
+        <TweetInteraction
           numberOfLikes={item.numberOfLikes}
           numberOfComments={item.numberOfComments}
           openModalSendComment={openModalSendComment}
