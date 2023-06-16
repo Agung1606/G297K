@@ -48,9 +48,13 @@ const BottomNavigation = () => {
         name="UploadTweetScreen"
         component={UploadTweet}
         options={{
+          unmountOnBlur: true,
           tabBarIcon: () => (
             <EvilIcons name="plus" size={50} color={"#1D7ED8"} />
           ),
+          tabBarStyle: {
+            display: "none"
+          }
         }}
       />
       <Tab.Screen

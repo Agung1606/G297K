@@ -6,7 +6,7 @@ import { TWEETS } from "../../constant";
 import { scrollToTopConfig } from "../../hooks";
 import { TweetCard, BadgeNotif, ScrollToTop } from "../../components";
 import { styles } from "../../style/Global";
-import { EvilIcons, Fontisto } from "@expo/vector-icons";
+import { Fontisto } from "@expo/vector-icons";
 
 const Header = ({ goToMessage }) => (
   <View
