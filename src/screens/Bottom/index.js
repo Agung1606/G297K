@@ -9,6 +9,7 @@ import Profile from "./Profile";
 import UploadTweet from "./UploadTweet";
 
 const BottomNavigation = () => {
+
   return (
     <Tab.Navigator
       screenOptions={{

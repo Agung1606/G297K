@@ -21,30 +21,45 @@ const TweetInteraction = ({
     }
   };
 
+  const options = [
+    {
+      name: "comment",
+      icon: <FontAwesome name="comment-o" size={22} color={"#7d7d7d"} />,
+      text: numberOfComments,
+      onPress: openModalSendComment,
+    },
+    {
+      name: "likes",
+      icon: isLiked ? (
+        <FontAwesome name="heart" size={22} color="red" />
+      ) : (
+        <FontAwesome name="heart-o" size={22} color="#7d7d7d" />
+      ),
+      text: likesCount,
+      onPress: handleLike,
+    },
+    {
+      name: "share",
+      icon: <Feather name="share-2" size={22} color="#7d7d7d" />,
+      text: "",
+      onPress: () => alert("Share this tweet"),
+    },
+  ];
+
   return (
     <View className={`flex-row ${styles.flexBetween}`}>
-      {/* comment */}
-      <View className={`${styles.iconInteractionWrapper}`}>
-        <TouchableOpacity onPress={openModalSendComment}>
-          <FontAwesome name="comment-o" size={22} color="#7d7d7d" />
+      {options.map((item) => (
+        <TouchableOpacity
+          key={item.name}
+          className="flex-1 py-1"
+          onPress={item.onPress}
+        >
+          <View className="flex-row items-center space-x-1">
+            {item.icon}
+            <Text className="text-grayCustom">{item.text}</Text>
+          </View>
         </TouchableOpacity>
-        <Text className="text-grayCustom">{numberOfComments}</Text>
-      </View>
-      {/* like */}
-      <View className={`${styles.iconInteractionWrapper}`}>
-        <TouchableOpacity onPress={handleLike}>
-          {isLiked ? (
-            <FontAwesome name="heart" size={22} color="red" />
-          ) : (
-            <FontAwesome name="heart-o" size={22} color="#7d7d7d" />
-          )}
-        </TouchableOpacity>
-        <Text className="text-grayCustom">{likesCount}</Text>
-      </View>
-      {/* share */}
-      <TouchableOpacity>
-        <Feather name="share-2" size={22} color="#7d7d7d" />
-      </TouchableOpacity>
+      ))}
     </View>
   );
 };
