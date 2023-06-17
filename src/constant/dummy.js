@@ -819,6 +819,25 @@ export const TRENDINGLISTS = [
   },
 ];
 
+export const MESSAGE = [
+  {
+    id: 1,
+    profile: assets.bebyProfile,
+    name: "Cut Beby Tsabina",
+    msgText: "Mentioned you in their story",
+    date: "1w",
+    isRead: false,
+  },
+  {
+    id: 2,
+    profile: assets.billieProfile,
+    name: "BILLIE EILISH",
+    msgText: "Mentioned you in their story",
+    date: "1w",
+    isRead: false,
+  },
+];
+
 export const NOTIFICATION = [
   {
     title: "Minggu Ini",

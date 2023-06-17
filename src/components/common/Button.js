@@ -1,6 +1,5 @@
 import React from "react";
 import { Text, ActivityIndicator, Pressable, View } from "react-native";
-import { RadioButton } from "react-native-paper";
 import { MaterialIcons, Ionicons } from "@expo/vector-icons";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
 
