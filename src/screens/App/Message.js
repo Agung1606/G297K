@@ -17,12 +17,12 @@ import { loggedInUser } from "../../hooks";
 import { Avatar } from "../../components";
 import { MESSAGE } from "../../constant";
 
-const Header = ({ username }) => (
+const Header = ({ username, goToPrevScreen }) => (
   <View
     className={`flex-row ${styles.flexBetween} p-2 mb-4 border-b border-gray-200`}
   >
     <View className="flex-row items-center space-x-10">
-      <TouchableOpacity>
+      <TouchableOpacity onPress={goToPrevScreen}>
         <MaterialIcons name="arrow-back" size={30} />
       </TouchableOpacity>
       <Text className="font-InterSemiBold text-xl">{username}</Text>
@@ -33,27 +33,55 @@ const Header = ({ username }) => (
   </View>
 );
 
-const Message = () => {
+const Message = ({ navigation }) => {
   const { data: loggedInUserData } = loggedInUser();
+  const goToPrevScreen = () => navigation.goBack();
 
   return (
     <SafeAreaView className="flex-1">
-      <Header username={loggedInUserData.username} />
+      <Header
+        username={loggedInUserData.username}
+        goToPrevScreen={goToPrevScreen}
+      />
       <FlatList
         data={MESSAGE}
         renderItem={({ item }) => (
-          <StyledPressable className={`flex-row ${styles.flexBetween} p-2 active:bg-gray-200`}>
+          <StyledPressable
+            className={`flex-row ${styles.flexBetween} p-2 active:bg-gray-200`}
+          >
             <View className="flex-row items-center space-x-5">
-              <Avatar imgUrl={item.profile} size={60} />
+              <Avatar
+                imgUrl={item.profile}
+                size={60}
+                onPress={() =>
+                  navigation.navigate("VisitProfileScreen", {
+                    param: item.userId,
+                  })
+                }
+              />
               <View>
-                <Text className="font-InterSemiBold w-52" numberOfLines={1}>
+                <Text
+                  className="font-InterSemiBold max-w-[200px]"
+                  numberOfLines={1}
+                >
                   {item.name}
                 </Text>
                 <View className="flex-row space-x-1">
-                  <Text className="font-InterMedium w-40" numberOfLines={1}>
+                  <Text
+                    className={`font-InterMedium max-w-[160px] ${
+                      item.isRead && "text-grayCustom"
+                    }`}
+                    numberOfLines={1}
+                  >
                     {item.msgText}
                   </Text>
-                  <Text className="font-InterMedium">{item.date}</Text>
+                  <Text
+                    className={`font-InterMedium ${
+                      item.isRead && "text-grayCustom"
+                    }`}
+                  >
+                    • {item.date}
+                  </Text>
                 </View>
               </View>
             </View>

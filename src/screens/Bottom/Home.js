@@ -21,7 +21,7 @@ const Header = ({ goToMessage }) => (
     <Text className="font-LoraBold text-3xl tracking-wider text-blue">G297K</Text>
     <TouchableOpacity onPress={goToMessage}>
       <Fontisto name="email" size={30} />
-      <BadgeNotif num={99} />
+      <BadgeNotif num={5} />
     </TouchableOpacity>
   </View>
 );
