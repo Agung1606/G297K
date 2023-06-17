@@ -17,10 +17,31 @@ export const ButtonUploadType = () => {
     openModal,
     closeModal,
     renderBackdrop,
-  } = bottomModalConfig(["22%"]);
+  } = bottomModalConfig(["30%"]);
 
-  const [type, setType] = React.useState("Publik");
-  
+  const [type, setType] = React.useState("Private");
+
+  const options = [
+    {
+      id: 1,
+      type: "Publik",
+      iconName: "people",
+      onPress: () => {
+        setType("Publik");
+        closeModal();
+      },
+    },
+    {
+      id: 2,
+      type: "Private",
+      iconName: "lock-closed",
+      onPress: () => {
+        setType("Private");
+        closeModal();
+      },
+    },
+  ];
+
   return (
     <>
       <StyledPressable
@@ -35,47 +56,33 @@ export const ButtonUploadType = () => {
         index={0}
         snapPoints={snapPoints}
         backdropComponent={renderBackdrop}
-        >
+      >
         <View className="flex-1 p-2 space-y-2">
-          <StyledPressable>
-            <Ionicons name="people" size={22} />
-          </StyledPressable>
+          {options.map((item) => (
+            <StyledPressable
+              key={item.id}
+              className={`py-2 flex-row items-center space-x-4 active:bg-gray-200`}
+              onPress={item.onPress}
+            >
+              <Ionicons
+                name={item.iconName}
+                size={30}
+                color={type === item.type ? "#1D7ED8" : "#7D7D7D"}
+              />
+              <Text
+                className={`font-InterSemiBold text-lg ${
+                  type === item.type ? "text-blue" : "text-grayCustom"
+                }`}
+              >
+                {item.type}
+              </Text>
+            </StyledPressable>
+          ))}
         </View>
       </BottomSheetModal>
     </>
   );
 };
-// const options = [
-//   {
-//     id: 1,
-//     value: "Publik",
-//     onPress: () => {
-//       setChecked("Publik");
-//       closeModal();
-//     }
-//   },
-//   {
-//     id: 2,
-//     value: "Private",
-//     onPress: () => {
-//       setChecked("Private");
-//       closeModal();
-//     }
-//   },
-// ];
-
-// {options.map((item) => (
-//   <View key={item.id}>
-//     <RadioButton
-//       value={item.value}
-//       status={checked === item.value ? "checked" : "unchecked"}
-//       onPress={item.onPress}
-//     />
-//     <Text className="absolute top-1 left-12 font-InterSemiBold text-lg">
-//       {item.value}
-//     </Text>
-//   </View>
-// ))}
 
 export const ButtonFollow = ({ title, onPress, isFollow }) => (
   <StyledPressable
