@@ -11,7 +11,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 
 import { styles } from "../../style/Global";
 import { loggedInUser } from "../../hooks";
-import { ButtonBlue, Avatar } from "../../components";
+import { ButtonBlue, ButtonUploadType, Avatar } from "../../components";
 
 const UploadTweet = ({ navigation }) => {
   const goToPrevScreen = () => navigation.goBack();
@@ -39,18 +39,7 @@ const UploadTweet = ({ navigation }) => {
         </View>
         <View className="flex-1 space-y-2">
           {/* this button is just for a while  */}
-          <TouchableOpacity
-            className={`flex-row ${styles.flexCenter} space-x-1 border border-blue rounded-full w-24 p-[7px]`}
-          >
-            <Text className="font-InterMedium text-blue text-center">
-              Publik
-            </Text>
-            <MaterialIcons
-              name="keyboard-arrow-down"
-              size={20}
-              color={"#1D7ED8"}
-            />
-          </TouchableOpacity>
+          <ButtonUploadType />
           <ScrollView className="mb-20">
             <TextInput
               placeholder="Apa yang terjadi?"

@@ -3,6 +3,7 @@ import {
   ButtonTransparent,
   ButtonGray,
   ButtonFollow,
+  ButtonUploadType,
 } from "./Button";
 import ProfileInfo from "./ProfileInfo";
 import NoTweets from "./NoTweets";
@@ -16,6 +17,7 @@ export {
   ButtonTransparent,
   ButtonGray,
   ButtonFollow,
+  ButtonUploadType,
   ProfileInfo,
   NoTweets,
   Avatar,
