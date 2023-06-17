@@ -19,7 +19,7 @@ export const ButtonUploadType = () => {
     renderBackdrop,
   } = bottomModalConfig(["30%"]);
 
-  const [type, setType] = React.useState("Private");
+  const [type, setType] = React.useState("Publik");
 
   const options = [
     {

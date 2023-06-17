@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import {
   View,
   TouchableOpacity,
   Pressable,
   Text,
   SectionList,
+  RefreshControl,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { SimpleLineIcons, MaterialCommunityIcons } from "@expo/vector-icons";
@@ -24,6 +25,15 @@ const Explore = ({ navigation }) => {
 
   const { isScrolled, reference, handleScroll, scrollToTop } =
     scrollToTopConfig({ kind: "SectionList" });
+
+  // refresh configuration
+  const [refreshing, setRefreshing] = useState(false);
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 2000);
+  }, []);
 
   return (
     <SafeAreaView className="flex-1">
@@ -50,6 +60,13 @@ const Explore = ({ navigation }) => {
         )}
         renderItem={({ item }) => <TweetCard item={item} />}
         keyExtractor={(item) => `basicListEntry-${item.id}`}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            colors={["#1D7ED8"]}
+          />
+        }
       />
       {isScrolled && <ScrollToTop onPress={scrollToTop} />}
     </SafeAreaView>
