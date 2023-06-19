@@ -1,4 +1,5 @@
 import assets from "./assets";
+import { MaterialIcons, Entypo, Ionicons, Feather } from "@expo/vector-icons";
 
 export const PROFILE = [
   {
@@ -950,6 +951,67 @@ export const NOTIFICATION = [
         profile: assets.liamProfile,
         username: "liamgallagher",
         time: "2w",
+      },
+    ],
+  },
+];
+
+export const SETTINGOPTIONS = [
+  {
+    id: 1,
+    title: "Bagaimana Anda menggunakan G297K",
+    data: [
+      {
+        id: 1,
+        text: "Notifikasi",
+        icon: <Entypo name="bell" size={25} />,
+      },
+      {
+        id: 2,
+        text: "Waktu yang dihabiskan",
+        icon: <MaterialIcons name="access-time" size={25} />,
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: "Apa yang Anda lihat",
+    data: [
+      {
+        id: 1,
+        text: "Favorit",
+        icon: <Feather name="star" size={24} />,
+      },
+      {
+        id: 2,
+        text: "Akun disenyapkan",
+        icon: <Feather name="bell-off" size={24} />,
+      },
+      {
+        id: 3,
+        text: "Sembunyikan suka",
+        icon: <Ionicons name="heart-dislike-outline" size={25} />,
+      },
+    ],
+  },
+  {
+    id: 3,
+    title: "Siapa yang bisa melihat konten Anda",
+    data: [
+      {
+        id: 1,
+        text: "Privasi akun",
+        icon: <Ionicons name="md-lock-closed-outline" size={25} />,
+      },
+      {
+        id: 2,
+        text: "Teman Dekat",
+        icon: <MaterialIcons name="stars" size={25} />,
+      },
+      {
+        id: 3,
+        text: "Diblokir",
+        icon: <MaterialIcons name="block-flipped" size={25} />,
       },
     ],
   },

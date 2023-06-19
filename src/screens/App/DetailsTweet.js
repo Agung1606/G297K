@@ -1,13 +1,12 @@
 import {
   View,
   Text,
-  TouchableOpacity,
   FlatList,
   Pressable,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
-import { MaterialIcons, FontAwesome } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 
 import { styles } from "../../style/Global";
 import { COMMENTS } from "../../constant";

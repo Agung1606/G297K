@@ -30,7 +30,7 @@ const HeaderProfile = ({ username, goToSettings }) => {
     openModal,
     closeModal,
     renderBackdrop,
-  } = bottomModalConfig(["30%"]);
+  } = bottomModalConfig(["35%"]);
   return (
     <>
       <View className={`flex-row ${styles.flexBetween} py-2 px-4`}>
@@ -60,12 +60,12 @@ const BottomMenu = ({ goToSettings, closeModal }) => {
       data: [
         {
           text: "G297K untuk Professional",
-          icon: <SimpleLineIcons name="rocket" size={18} />,
+          icon: <SimpleLineIcons name="rocket" size={22} />,
           onPress: () => {},
         },
         {
           text: "Monetisasi",
-          icon: <MaterialIcons name="attach-money" size={20} />,
+          icon: <MaterialIcons name="attach-money" size={26} />,
           onPress: () => {},
         },
       ],
@@ -75,7 +75,7 @@ const BottomMenu = ({ goToSettings, closeModal }) => {
       data: [
         {
           text: "Pengaturan dan Privasi",
-          icon: <SimpleLineIcons name="settings" size={18} />,
+          icon: <SimpleLineIcons name="settings" size={22} />,
           onPress: () => {
             goToSettings();
             closeModal();
@@ -83,7 +83,7 @@ const BottomMenu = ({ goToSettings, closeModal }) => {
         },
         {
           text: "Pusat Bantuan",
-          icon: <MaterialIcons name="help-outline" size={20} />,
+          icon: <MaterialIcons name="help-outline" size={26} />,
           onPress: () => {},
         },
       ],
@@ -94,7 +94,7 @@ const BottomMenu = ({ goToSettings, closeModal }) => {
     <SectionList
       sections={options}
       renderSectionHeader={({ section }) => (
-        <Text className="px-6 py-2 font-InterSemiBold text-lg">
+        <Text className="px-6 py-2 font-InterMedium text-xl">
           {section.title}
         </Text>
       )}
@@ -104,7 +104,7 @@ const BottomMenu = ({ goToSettings, closeModal }) => {
           className="flex-row items-center px-8 pb-2 space-x-2"
         >
           {item.icon}
-          <Text className="font-InterMedium">{item.text}</Text>
+          <Text className="font-InterRegular text-lg">{item.text}</Text>
         </TouchableOpacity>
       )}
       keyExtractor={(item) => `basicListEntry-${item.text}`}

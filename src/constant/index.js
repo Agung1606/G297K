@@ -7,6 +7,7 @@ import {
   TRENDINGLISTS,
   NOTIFICATION,
   MESSAGE,
+  SETTINGOPTIONS
 } from "./dummy";
 
 export {
@@ -18,4 +19,5 @@ export {
   TRENDINGLISTS,
   NOTIFICATION,
   MESSAGE,
+  SETTINGOPTIONS
 };
