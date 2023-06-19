@@ -1,3 +1,5 @@
+import Header from "./Header";
+import HeaderRegister from "./HeaderRegister";
 import {
   ButtonBlue,
   ButtonTransparent,
@@ -13,6 +15,8 @@ import TweetInteraction from "./TweetInteraction";
 import CommentInteraction from "./CommentInteraction";
 
 export {
+  Header,
+  HeaderRegister,
   ButtonBlue,
   ButtonTransparent,
   ButtonGray,

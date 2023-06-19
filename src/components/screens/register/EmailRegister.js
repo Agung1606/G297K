@@ -4,7 +4,7 @@ import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
 
-import HeaderRegister from "../../common/HeaderRegister";
+import { HeaderRegister } from "../../common";
 import { ButtonBlue } from "../../common/Button";
 import { styles } from "../../../style/Global";
 

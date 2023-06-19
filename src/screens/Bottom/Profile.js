@@ -23,12 +23,17 @@ import { bottomModalConfig } from "../../hooks";
 import { styles } from "../../style/Global";
 import { TWEETS } from "../../constant";
 
-const Header = ({ username }) => {
-  const { bottomSheetModalRef, snapPoints, openModal, renderBackdrop } =
-    bottomModalConfig(["30%"]);
+const HeaderProfile = ({ username, goToSettings }) => {
+  const {
+    bottomSheetModalRef,
+    snapPoints,
+    openModal,
+    closeModal,
+    renderBackdrop,
+  } = bottomModalConfig(["30%"]);
   return (
     <>
-      <View className={`flex-row ${styles.flexBetween} my-1 px-3`}>
+      <View className={`flex-row ${styles.flexBetween} py-2 px-4 bg-red-600`}>
         <Text className="font-InterBold text-xl tracking-wide">{username}</Text>
         <TouchableOpacity onPress={openModal}>
           <SimpleLineIcons name="menu" size={28} />
@@ -42,13 +47,13 @@ const Header = ({ username }) => {
         snapPoints={snapPoints}
         backdropComponent={renderBackdrop}
       >
-        <BottomMenu />
+        <BottomMenu goToSettings={goToSettings} closeModal={closeModal} />
       </BottomSheetModal>
     </>
   );
 };
 
-const BottomMenu = () => {
+const BottomMenu = ({ goToSettings, closeModal }) => {
   const options = [
     {
       title: "Alat Profesional",
@@ -56,10 +61,12 @@ const BottomMenu = () => {
         {
           text: "G297K untuk Professional",
           icon: <SimpleLineIcons name="rocket" size={18} />,
+          onPress: () => {},
         },
         {
           text: "Monetisasi",
           icon: <MaterialIcons name="attach-money" size={20} />,
+          onPress: () => {},
         },
       ],
     },
@@ -69,10 +76,15 @@ const BottomMenu = () => {
         {
           text: "Pengaturan dan Privasi",
           icon: <SimpleLineIcons name="settings" size={18} />,
+          onPress: () => {
+            goToSettings();
+            closeModal();
+          },
         },
         {
           text: "Pusat Bantuan",
           icon: <MaterialIcons name="help-outline" size={20} />,
+          onPress: () => {},
         },
       ],
     },
@@ -87,7 +99,10 @@ const BottomMenu = () => {
         </Text>
       )}
       renderItem={({ item }) => (
-        <TouchableOpacity className="flex-row items-center px-8 pb-2 space-x-2">
+        <TouchableOpacity
+          onPress={item.onPress}
+          className="flex-row items-center px-8 pb-2 space-x-2"
+        >
           {item.icon}
           <Text className="font-InterMedium">{item.text}</Text>
         </TouchableOpacity>
@@ -99,6 +114,7 @@ const BottomMenu = () => {
 
 const Profile = ({ navigation }) => {
   const goToEditProfile = () => navigation.navigate("EditProfileScreen");
+  const goToSettings = () => navigation.navigate("SettingsScreen");
 
   const { data } = loggedInUser();
   const [tweets, setTweets] = useState([]);
@@ -116,25 +132,21 @@ const Profile = ({ navigation }) => {
 
   return (
     <SafeAreaView className="flex-1">
-      <Header username={data.username} />
+      <HeaderProfile goToSettings={goToSettings} username={data.username} />
       <FlatList
         ListHeaderComponent={() => (
-          <View className="mb-4 pb-4 border-b border-gray-600">
-            <View className="mt-4 px-3">
-              <ProfileInfo
-                profileUrl={{ uri: data.profile }}
-                name={data.name}
-                bio={data.bio}
-                numberOfTweets={tweets.length}
-                numberOfFollowers={data.followers}
-                numberOfFollowing={data.following}
-                openDetailProfile={openDetailProfile}
-              />
-            </View>
+          <View className="my-2 p-2 border-b border-gray-600">
+            <ProfileInfo
+              profileUrl={{ uri: data.profile }}
+              name={data.name}
+              bio={data.bio}
+              numberOfTweets={tweets.length}
+              numberOfFollowers={data.followers}
+              numberOfFollowing={data.following}
+              openDetailProfile={openDetailProfile}
+            />
             {/* button */}
-            <View
-              className={`flex-row ${styles.flexBetween} space-x-2 mt-1 px-3`}
-            >
+            <View className={`flex-row ${styles.flexBetween} space-x-2 mt-1`}>
               <View className="flex-1">
                 <ButtonGray title={"Edit profil"} onPress={goToEditProfile} />
               </View>
@@ -154,7 +166,7 @@ const Profile = ({ navigation }) => {
           <NoTweets text="Ketika Anda membuat tweet, itu akan muncul di sini" />
         }
       />
-      {/* when user long press the profile this will triggered */}
+      {/* when user press the profile this will triggered */}
       <SeeProfileModal
         isModalOpen={isModalOpen}
         closeModal={closeDetailProfile}

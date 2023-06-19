@@ -16,7 +16,7 @@ import {
   SeeProfileModal,
 } from "../../components";
 
-const Header = ({ username }) => {
+const HeaderVisitProfile = ({ username }) => {
   const navigation = useNavigation();
   const goToPrevScreen = () => navigation.goBack();
 
@@ -64,25 +64,21 @@ const VisitProfile = ({ route }) => {
 
   return (
     <SafeAreaView className="flex-1">
-      <Header username={data.username} />
+      <HeaderVisitProfile username={data.username} />
       <FlatList
         ListHeaderComponent={() => (
-          <View className="mb-4 pb-4 border-b border-gray-600">
-            <View className="mt-4 px-3">
-              <ProfileInfo
-                profileUrl={data.profile}
-                name={data.name}
-                bio={data.bio}
-                numberOfTweets={tweets.length}
-                numberOfFollowers={data.followers}
-                numberOfFollowing={data.following}
-                openDetailProfile={openDetailProfile}
-              />
-            </View>
+          <View className="my-2 p-2 border-b border-gray-600">
+            <ProfileInfo
+              profileUrl={data.profile}
+              name={data.name}
+              bio={data.bio}
+              numberOfTweets={tweets.length}
+              numberOfFollowers={data.followers}
+              numberOfFollowing={data.following}
+              openDetailProfile={openDetailProfile}
+            />
             {/* button */}
-            <View
-              className={`flex-row ${styles.flexBetween} space-x-2 mt-1 px-3`}
-            >
+            <View className={`flex-row ${styles.flexBetween} space-x-2 mt-1`}>
               <View className="flex-1">
                 <ButtonFollow
                   title={isFollow ? "Mengikuti" : "Ikuti"}

@@ -9,7 +9,6 @@ import Profile from "./Profile";
 import UploadTweet from "./UploadTweet";
 
 const BottomNavigation = () => {
-
   return (
     <Tab.Navigator
       screenOptions={{
@@ -50,11 +49,11 @@ const BottomNavigation = () => {
         options={{
           unmountOnBlur: true,
           tabBarIcon: () => (
-            <EvilIcons name="plus" size={50} color={"#1D7ED8"} />
+            <FontAwesome name="plus-square" size={35} color={"#1D7ED8"} />
           ),
           tabBarStyle: {
-            display: "none"
-          }
+            display: "none",
+          },
         }}
       />
       <Tab.Screen

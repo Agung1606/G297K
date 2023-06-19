@@ -9,6 +9,7 @@ import {
   DetailsTweet,
   TrendingList,
   EditProfile,
+  Settings
 } from "../screens/App";
 import { SendComment, SearchAccount } from "../screens/Modal";
 
@@ -64,6 +65,13 @@ const Routes = () => (
       <Stack.Screen
         name="EditProfileScreen"
         component={EditProfile}
+        options={{
+          animation: "slide_from_right",
+        }}
+      />
+      <Stack.Screen
+        name="SettingsScreen"
+        component={Settings}
         options={{
           animation: "slide_from_right",
         }}
