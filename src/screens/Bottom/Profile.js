@@ -33,7 +33,7 @@ const HeaderProfile = ({ username, goToSettings }) => {
   } = bottomModalConfig(["30%"]);
   return (
     <>
-      <View className={`flex-row ${styles.flexBetween} py-2 px-4 bg-red-600`}>
+      <View className={`flex-row ${styles.flexBetween} py-2 px-4`}>
         <Text className="font-InterBold text-xl tracking-wide">{username}</Text>
         <TouchableOpacity onPress={openModal}>
           <SimpleLineIcons name="menu" size={28} />
