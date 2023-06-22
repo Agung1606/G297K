@@ -29,7 +29,7 @@ const UsernameRegister = () => {
       <View className="mt-8 mx-3 space-y-5">
         <HeaderRegister
           title="Buat username"
-          subtitle="Buat username yang unik dan berbeda dari orang lain"
+          subtitle="Tambahkan username. Kamu bisa merubah ini kapanpun."
         />
         <View>
           <View className={`${styles.inputStyle} mb-3`}>
