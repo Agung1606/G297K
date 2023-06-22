@@ -1,5 +1,11 @@
 import assets from "./assets";
-import { MaterialIcons, Entypo, Ionicons, Feather } from "@expo/vector-icons";
+import {
+  MaterialIcons,
+  Entypo,
+  Ionicons,
+  Feather,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
 
 export const PROFILE = [
   {
@@ -151,18 +157,6 @@ The live album, out 11.8.23`,
 ];
 
 export const TWEETS = [
-  {
-    id: 97,
-    userId: 11,
-    profile: assets.sasukeProfile,
-    name: "Sasuke Uchiha",
-    username: "sasuke_",
-    date: "10 hari",
-    tweet:
-      "Balas dendam adalah emosi manusia yang kuat dan kompleks yang didorong oleh keinginan untuk membalas dendam dan mendapatkan keadilan. Ini adalah respons yang tertanam dalam diri seseorang terhadap perlakuan yang dianggap salah atau merugikan terhadap diri sendiri atau orang terdekat. Didorong oleh perasaan kemarahan, pengkhianatan, atau kehilangan, upaya membalas dendam sering melibatkan pencarian tanpa henti untuk menyebabkan rasa sakit atau penderitaan pada pelaku yang dianggap bertanggung jawab. Namun, balas dendam adalah pisau bermata dua yang dapat menghabiskan individu, membawanya ke jalan kegelapan dan ambiguitas moral. Ini adalah perjalanan emosional yang dapat mengubah persepsi seseorang tentang benar dan salah, membuat mereka buta terhadap konsekuensi potensial dan kerusakan yang disebabkan oleh tindakan mereka. Meskipun balas dendam mungkin memberikan rasa kepuasan sesaat, jarang menghasilkan solusi atau penyembuhan yang sejati. Ini adalah aspek yang kompleks dan ambigu secara moral dari pengalaman manusia yang mengeksplorasi kedalaman sifat manusia, batasan keadilan, dan biaya balas dendam.",
-    numberOfLikes: 0,
-    numberOfComments: 0,
-  },
   {
     id: 98,
     userId: 10,
@@ -396,6 +390,18 @@ Penting untuk diingat bahwa konspirasi seringkali didasarkan pada spekulasi, inf
 Poneglyphs are extremely rare and difficult to find, as they were created by the ancient civilization known as the "Ancient Kingdom." The World Government has made it illegal to study or decipher the Poneglyphs, as they fear the revelation of their secrets. Only a select few, known as the "Ohara Scholars," dedicated their lives to studying and deciphering the Poneglyphs, but their efforts were met with persecution and eventually led to the destruction of their island.
 
 The protagonist, Monkey D. Luffy, and his crew, the Straw Hat Pirates, embark on a grand adventure in search of the Poneglyphs, as they believe that uncovering the truth hidden within them will lead them to the ultimate treasure, the One Piece.`,
+    numberOfLikes: 0,
+    numberOfComments: 0,
+  },
+  {
+    id: 116,
+    userId: 11,
+    profile: assets.sasukeProfile,
+    name: "Sasuke Uchiha",
+    username: "sasuke_",
+    date: "10 hari",
+    tweet:
+      "Balas dendam adalah emosi manusia yang kuat dan kompleks yang didorong oleh keinginan untuk membalas dendam dan mendapatkan keadilan. Ini adalah respons yang tertanam dalam diri seseorang terhadap perlakuan yang dianggap salah atau merugikan terhadap diri sendiri atau orang terdekat. Didorong oleh perasaan kemarahan, pengkhianatan, atau kehilangan, upaya membalas dendam sering melibatkan pencarian tanpa henti untuk menyebabkan rasa sakit atau penderitaan pada pelaku yang dianggap bertanggung jawab. Namun, balas dendam adalah pisau bermata dua yang dapat menghabiskan individu, membawanya ke jalan kegelapan dan ambiguitas moral. Ini adalah perjalanan emosional yang dapat mengubah persepsi seseorang tentang benar dan salah, membuat mereka buta terhadap konsekuensi potensial dan kerusakan yang disebabkan oleh tindakan mereka. Meskipun balas dendam mungkin memberikan rasa kepuasan sesaat, jarang menghasilkan solusi atau penyembuhan yang sejati. Ini adalah aspek yang kompleks dan ambigu secara moral dari pengalaman manusia yang mengeksplorasi kedalaman sifat manusia, batasan keadilan, dan biaya balas dendam.",
     numberOfLikes: 0,
     numberOfComments: 0,
   },
@@ -826,7 +832,7 @@ export const MESSAGE = [
     userId: 15,
     profile: assets.bebyProfile,
     name: "Cut Beby Tsabina",
-    msgText: "iyaiya",
+    msgText: "iyaiyaaa",
     date: "20 menit",
     isRead: false,
   },
@@ -853,7 +859,7 @@ export const MESSAGE = [
     userId: 13,
     profile: assets.lisaProfile,
     name: "Lisa",
-    msgText: "okeoke abis isya",
+    msgText: "okeoke",
     date: "1 hari",
     isRead: true,
   },
@@ -1012,6 +1018,53 @@ export const SETTINGOPTIONS = [
         id: 3,
         text: "Diblokir",
         icon: <MaterialIcons name="block-flipped" size={25} />,
+      },
+    ],
+  },
+  {
+    id: 4,
+    title: "Aplikasi dan media Anda",
+    data: [
+      {
+        id: 1,
+        text: "Mengarsipkan dan mengunduh",
+        icon: <MaterialCommunityIcons name="arrow-collapse-down" size={22} />,
+      },
+      {
+        id: 2,
+        text: "Aksesibilitas",
+        icon: <MaterialIcons name="accessibility" size={25} />,
+      },
+      {
+        id: 3,
+        text: "Bahasa",
+        icon: <Entypo name="language" size={25} />,
+      },
+      {
+        id: 4,
+        text: "Penggunaan data dan kualitas media",
+        icon: <MaterialIcons name="signal-cellular-alt" size={25} />,
+      },
+      {
+        id: 5,
+        text: "Izin situs web",
+        icon: <MaterialIcons name="computer" size={25} />,
+      },
+    ],
+  },
+  {
+    id: 5,
+    title: "Login",
+    data: [
+      {
+        id: 1,
+        text: "Keluar agngsptra._",
+        isLogout: true
+      },
+      {
+        id: 2,
+        text: "Keluar dari semua akun",
+        isLogout: true
       },
     ],
   },
