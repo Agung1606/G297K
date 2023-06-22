@@ -89,7 +89,6 @@ const VisitProfile = ({ route }) => {
               <View className="flex-1">
                 <ButtonGray
                   title={"Kirim pesan"}
-                  onPress={() => alert("Message!")}
                 />
               </View>
             </View>

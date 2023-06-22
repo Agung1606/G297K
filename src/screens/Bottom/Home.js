@@ -14,7 +14,7 @@ import { TweetCard, BadgeNotif, ScrollToTop } from "../../components";
 import { styles } from "../../style/Global";
 import { Fontisto } from "@expo/vector-icons";
 
-const Header = ({ goToMessage }) => (
+const HeaderHome = ({ goToMessage }) => (
   <View
     className={`flex-row ${styles.flexBetween} py-1 px-3 border-b border-b-gray-600`}
   >
@@ -43,7 +43,7 @@ const Home = ({ navigation }) => {
 
   return (
     <SafeAreaView className="flex-1">
-      <Header goToMessage={goToMessage} />
+      <HeaderHome goToMessage={goToMessage} />
       <FlatList
         ref={reference}
         onScroll={handleScroll}

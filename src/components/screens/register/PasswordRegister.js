@@ -22,7 +22,7 @@ const PasswordRegister = () => {
     <SafeAreaView className="flex-1">
       <LinearGradient
         // Background Linear Gradient
-        colors={["#f3fffb", "#defff8"]}
+        colors={["#DCF8EF", "#D5FEFD"]}
         start={[0.2, 0]}
         end={[1, 1]}
         className="absolute top-0 bottom-0 left-0 right-0"

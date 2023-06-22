@@ -153,7 +153,6 @@ const Profile = ({ navigation }) => {
               <View className="flex-1">
                 <ButtonGray
                   title={"Bagikan profil"}
-                  onPress={() => alert("Share profile!")}
                 />
               </View>
             </View>
