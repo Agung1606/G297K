@@ -8,7 +8,6 @@ const StyledPressable = styled(Pressable);
 
 import { Header } from "../../components";
 import { SETTINGOPTIONS } from "../../constant";
-import { styles } from "../../style/Global";
 
 const Settings = ({ navigation }) => {
   const goToPrevScreen = () => navigation.goBack();
@@ -26,7 +25,7 @@ const Settings = ({ navigation }) => {
             {section.data.map((item) => (
               <StyledPressable
                 key={item.id}
-                className={`flex-row ${styles.flexBetween} py-2 px-4 active:bg-gray-200`}
+                className={`flex-row justify-between items-center py-2 px-4 active:bg-gray-200`}
               >
                 <View className="flex-row items-center space-x-2">
                   {item.icon}

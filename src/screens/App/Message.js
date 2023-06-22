@@ -12,14 +12,13 @@ import { EvilIcons, MaterialIcons, SimpleLineIcons } from "@expo/vector-icons";
 import { styled } from "nativewind";
 const StyledPressable = styled(Pressable);
 
-import { styles } from "../../style/Global";
 import { loggedInUser } from "../../hooks";
 import { Avatar } from "../../components";
 import { MESSAGE } from "../../constant";
 
 const Header = ({ username, goToPrevScreen }) => (
   <View
-    className={`flex-row ${styles.flexBetween} p-2 mb-4 border-b border-gray-200`}
+    className="flex-row justify-between items-center p-2 mb-4 border-b border-gray-200"
   >
     <View className="flex-row items-center space-x-10">
       <TouchableOpacity onPress={goToPrevScreen}>
@@ -47,7 +46,7 @@ const Message = ({ navigation }) => {
         data={MESSAGE}
         renderItem={({ item }) => (
           <StyledPressable
-            className={`flex-row ${styles.flexBetween} p-2 active:bg-gray-200`}
+            className={`flex-row justify-between items-center p-2 active:bg-gray-200`}
           >
             <View className="flex-row items-center space-x-5">
               <Avatar

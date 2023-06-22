@@ -13,14 +13,13 @@ import { AntDesign } from "@expo/vector-icons";
 import { styled } from "nativewind";
 const StyledPressable = styled(Pressable);
 
-import { styles } from "../../style/Global";
 import { PROFILE } from "../../constant";
 import { modalPopupConfig } from "../../hooks";
 import { ConfirmModal, Avatar } from "../../components";
 
 const SearchBar = ({ goBack, query, setQuery }) => (
   <View
-    className={`flex-row ${styles.flexBetween} py-2 px-4 border-b border-gray-600`}
+    className={`flex-row justify-between items-center py-2 px-4 border-b border-gray-600`}
   >
     <TouchableOpacity onPress={goBack}>
       <AntDesign name="arrowleft" size={22} />
@@ -95,7 +94,7 @@ const SearchAccount = ({ navigation }) => {
         <View className="m-2">
           {/* for remove history */}
           {history.length > 0 && (
-            <View className={`mb-2 flex-row ${styles.flexBetween}`}>
+            <View className={`mb-2 flex-row justify-between items-center`}>
               <Text className="font-InterSemiBold text-lg text-grayCustom">
                 Baru saja
               </Text>

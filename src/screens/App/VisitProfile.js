@@ -1,10 +1,9 @@
+import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import React, { useEffect, useState } from "react";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
-import { styles } from "../../style/Global";
 import { PROFILE, TWEETS } from "../../constant";
 import { modalPopupConfig } from "../../hooks";
 import {
@@ -21,14 +20,14 @@ const HeaderVisitProfile = ({ username }) => {
   const goToPrevScreen = () => navigation.goBack();
 
   return (
-    <View className={`flex-row ${styles.flexBetween} my-1 px-3`}>
-      <View className={`flex-row ${styles.flexBetween} space-x-6`}>
+    <View className={`flex-row justify-between items-center my-1 px-3`}>
+      <View className={`flex-row justify-between items-center space-x-6`}>
         <TouchableOpacity onPress={goToPrevScreen}>
           <MaterialIcons name="arrow-back" size={30} />
         </TouchableOpacity>
         <Text className="font-InterBold text-lg tracking-wide">{username}</Text>
       </View>
-      <View className={`flex-row ${styles.flexBetween} space-x-6`}>
+      <View className={`flex-row justify-between items-center space-x-6`}>
         <TouchableOpacity>
           <FontAwesome name="bell-o" size={25} />
         </TouchableOpacity>
@@ -78,7 +77,7 @@ const VisitProfile = ({ route }) => {
               openDetailProfile={openDetailProfile}
             />
             {/* button */}
-            <View className={`flex-row ${styles.flexBetween} space-x-2 mt-1`}>
+            <View className={`flex-row justify-between items-center space-x-2 mt-1`}>
               <View className="flex-1">
                 <ButtonFollow
                   title={isFollow ? "Mengikuti" : "Ikuti"}

@@ -9,7 +9,6 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { MaterialIcons } from "@expo/vector-icons";
 
-import { styles } from "../../style/Global";
 import { loggedInUser } from "../../hooks";
 import { ButtonBlue, Avatar } from "../../components";
 
@@ -19,18 +18,12 @@ const SendComment = ({ route, navigation }) => {
   const goToPrevScreen = () => navigation.goBack();
 
   const [commentInput, setCommentInput] = useState("");
-  const handleComment = () => {
-    if (!commentInput) {
-      alert("Give me some word");
-    } else {
-      alert("Send to database");
-    }
-  };
+  const handleComment = () => {};
 
   return (
     <SafeAreaView className="flex-1 px-2 py-4 ">
       {/* top */}
-      <View className={`flex-row ${styles.flexBetween} mb-6`}>
+      <View className={`flex-row justify-between items-center mb-6`}>
         <TouchableOpacity onPress={goToPrevScreen}>
           <MaterialIcons name="close" size={35} />
         </TouchableOpacity>

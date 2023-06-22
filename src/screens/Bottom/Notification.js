@@ -5,7 +5,6 @@ import React from "react";
 import { styled } from "nativewind";
 const StyledPressable = styled(Pressable);
 
-import { styles } from "../../style/Global";
 import { NOTIFICATION } from "../../constant";
 import { Header, Avatar, ButtonFollow } from "../../components";
 
@@ -25,7 +24,7 @@ const Notification = ({ navigation }) => {
             onPress={() =>
               navigation.navigate("VisitProfileScreen", { param: item.id })
             }
-            className={`mb-3 p-3 flex-row ${styles.flexBetween} active:bg-gray-600/50`}
+            className={`mb-3 p-3 flex-row justify-between items-center active:bg-gray-600/50`}
           >
             <View className="flex-row items-center space-x-4">
               <Avatar imgUrl={item.profile} size={50} />

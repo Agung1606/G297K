@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { FontAwesome, Feather } from "@expo/vector-icons";
 
-import { styles } from "../../style/Global";
-
 const TweetInteraction = ({
   numberOfLikes,
   numberOfComments,
@@ -47,7 +45,7 @@ const TweetInteraction = ({
   ];
 
   return (
-    <View className={`flex-row ${styles.flexBetween}`}>
+    <View className={`flex-row justify-between items-center`}>
       {options.map((item) => (
         <TouchableOpacity
           key={item.name}

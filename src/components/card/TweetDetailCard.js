@@ -4,13 +4,12 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
 
 import { bottomModalConfig } from "../../hooks";
-import { styles } from "../../style/Global";
 import { Avatar, TweetInteraction } from "../common";
 
 const TweetDetailCard = ({ item, goToVisitProfile, openModalSendComment }) => {
   return (
     <View className="px-3 py-2 mb-2 border-b border-gray-300">
-      <View className={`flex-row ${styles.flexBetween} mb-2`}>
+      <View className="flex-row justify-between items-center mb-2">
         <View className="flex-row items-center space-x-4">
           <Avatar imgUrl={item.profile} size={50} onPress={goToVisitProfile} />
           <View>

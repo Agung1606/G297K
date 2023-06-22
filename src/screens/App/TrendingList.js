@@ -3,13 +3,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
 import { SimpleLineIcons, AntDesign } from "@expo/vector-icons";
 
-import { styles } from "../../style/Global";
 import { TrendingCard } from "../../components";
 import { TRENDINGLISTS } from "../../constant";
 
 const Header = ({ goToPrevScreen }) => (
   <View
-    className={`flex-row ${styles.flexBetween} px-4 py-2 border-b border-gray-600`}
+    className={`flex-row justify-between items-center px-4 py-2 border-b border-gray-600`}
   >
     <View className="flex-row items-center space-x-10">
       <TouchableOpacity onPress={goToPrevScreen}>

@@ -1,12 +1,10 @@
 import { View, Text } from "react-native";
 import React from "react";
 
-import { styles } from "../../style/Global";
-
 const NoTweets = ({ text }) => {
   return (
-    <View className={`${styles.flexCenter} mt-10`}>
-      <View className={`w-[70%] ${styles.flexCenter}`}>
+    <View className="justify-center items-center mt-10">
+      <View className="w-[70%] justify-center items-center">
         <Text className="font-InterSemiBold text-xl text-grayCustom">
         Tidak ada tweet
         </Text>

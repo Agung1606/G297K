@@ -3,7 +3,6 @@ import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
-import { styles } from "../../style/Global";
 import { Avatar, CommentInteraction } from "../common";
 
 const CommentCard = ({ item }) => {
@@ -16,7 +15,7 @@ const CommentCard = ({ item }) => {
       <Avatar imgUrl={item.profile} size={40} onPress={goToVisitProfile} />
       <View className="flex-1">
         <View className="bg-gray-200/70 rounded-md p-2">
-          <View className={`flex-row ${styles.flexBetween}`}>
+          <View className="flex-row justify-between items-center">
             <Text className="font-InterSemiBold">{item.name}</Text>
             <TouchableOpacity>
               <MaterialIcons name="more-vert" size={20} />

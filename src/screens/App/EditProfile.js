@@ -4,12 +4,11 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { View, Text, TouchableOpacity } from "react-native";
 import { TextInput } from "react-native-paper";
 
-import { styles } from "../../style/Global";
 import { loggedInUser } from "../../hooks";
 import { Avatar } from "../../components";
 
 const Header = () => (
-  <View className={`flex-row ${styles.flexBetween}`}>
+  <View className={`flex-row justify-between items-center`}>
     <View className="flex-row items-center space-x-10">
       <TouchableOpacity>
         <MaterialIcons name="close" size={35} />

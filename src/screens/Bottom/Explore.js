@@ -13,7 +13,6 @@ import { SimpleLineIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { styled } from "nativewind";
 const StyledPressable = styled(Pressable);
 
-import { styles } from "../../style/Global";
 import { scrollToTopConfig } from "../../hooks";
 import { TrendingCard, TweetCard, ScrollToTop } from "../../components";
 import { TRENDINGLISTS, EXPLORETWEETS } from "../../constant";
@@ -75,7 +74,7 @@ const Explore = ({ navigation }) => {
 
 const SearchBar = ({ onPress }) => (
   <View
-    className={`flex-row ${styles.flexBetween} py-2 px-4 border-b border-gray-600`}
+    className={`flex-row justify-between items-center py-2 px-4 border-b border-gray-600`}
   >
     <TouchableOpacity>
       <SimpleLineIcons name="settings" size={22} />

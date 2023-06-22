@@ -5,12 +5,10 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { styled } from "nativewind";
 const StyledPressable = styled(Pressable);
 
-import { styles } from "../../style/Global";
-
 const TrendingCard = ({ trendingOn, trendingKeywords, numberOfTweets }) => {
   return (
     <StyledPressable className="px-6 py-3 active:bg-gray-300/50">
-      <View className={`flex-row ${styles.flexBetween} mb-1`}>
+      <View className="flex-row justify-between items-center mb-1">
         <Text className="font-InterSemiBold text-grayCustom">{trendingOn}</Text>
         <TouchableOpacity>
           <MaterialIcons name="more-vert" size={22} />

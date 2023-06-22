@@ -20,7 +20,6 @@ import {
   SeeProfileModal,
 } from "../../components";
 import { bottomModalConfig } from "../../hooks";
-import { styles } from "../../style/Global";
 import { TWEETS } from "../../constant";
 
 const HeaderProfile = ({ username, goToSettings }) => {
@@ -33,7 +32,7 @@ const HeaderProfile = ({ username, goToSettings }) => {
   } = bottomModalConfig(["35%"]);
   return (
     <>
-      <View className={`flex-row ${styles.flexBetween} py-2 px-4`}>
+      <View className={`flex-row justify-between items-center py-2 px-4`}>
         <Text className="font-InterBold text-xl tracking-wide">{username}</Text>
         <TouchableOpacity onPress={openModal}>
           <SimpleLineIcons name="menu" size={28} />
@@ -146,7 +145,7 @@ const Profile = ({ navigation }) => {
               openDetailProfile={openDetailProfile}
             />
             {/* button */}
-            <View className={`flex-row ${styles.flexBetween} space-x-2 mt-1`}>
+            <View className={`flex-row justify-between items-center space-x-2 mt-1`}>
               <View className="flex-1">
                 <ButtonGray title={"Edit profil"} onPress={goToEditProfile} />
               </View>

@@ -8,7 +8,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
 import { FontAwesome } from "@expo/vector-icons";
 
-import { styles } from "../../style/Global";
 import { COMMENTS } from "../../constant";
 import { Header, TweetDetailCard, CommentCard } from "../../components";
 
@@ -41,7 +40,7 @@ const DetailsTweet = ({ route, navigation }) => {
       <View className="p-2 border-t border-grayCustom">
         <Pressable
           onPress={openModalSendComment}
-          className={`flex-row ${styles.flexBetween} py-2 border-b-2 border-blue`}
+          className={`flex-row justify-between items-center py-2 border-b-2 border-blue`}
         >
           <Text className="text-grayCustom font-InterMedium">
             Kirim komentar Anda

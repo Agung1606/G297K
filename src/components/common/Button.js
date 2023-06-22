@@ -16,7 +16,7 @@ export const ButtonUploadType = () => {
     openModal,
     closeModal,
     renderBackdrop,
-  } = bottomModalConfig(["30%"]);
+  } = bottomModalConfig(["40%"]);
 
   const [type, setType] = React.useState("Publik");
 
@@ -24,6 +24,7 @@ export const ButtonUploadType = () => {
     {
       id: 1,
       type: "Publik",
+      desc: "Semua orang bisa melihat.",
       iconName: "people",
       onPress: () => {
         setType("Publik");
@@ -33,6 +34,7 @@ export const ButtonUploadType = () => {
     {
       id: 2,
       type: "Private",
+      desc: "Tidak seorangpun yang bisa melihat kecuali kamu.",
       iconName: "lock-closed",
       onPress: () => {
         setType("Private");
@@ -44,7 +46,7 @@ export const ButtonUploadType = () => {
   return (
     <>
       <StyledPressable
-        className={`${styles.pressableEffect} flex-row ${styles.flexCenter} space-x-1 border border-blue rounded-full w-24 p-[7px]`}
+        className={`${styles.pressableEffect} flex-row justify-center items-center space-x-1 border border-blue rounded-full w-24 p-[7px]`}
         onPress={openModal}
       >
         <Text className="font-InterMedium text-blue text-center">{type}</Text>
@@ -68,13 +70,22 @@ export const ButtonUploadType = () => {
                 size={30}
                 color={type === item.type ? "#1D7ED8" : "#7D7D7D"}
               />
-              <Text
-                className={`font-InterSemiBold text-lg ${
-                  type === item.type ? "text-blue" : "text-grayCustom"
-                }`}
-              >
-                {item.type}
-              </Text>
+              <View className="w-8/12">
+                <Text
+                  className={`font-InterSemiBold text-lg ${
+                    type === item.type ? "text-blue" : "text-grayCustom"
+                  }`}
+                >
+                  {item.type}
+                </Text>
+                <Text
+                  className={`font-InterRegular ${
+                    type === item.type ? "text-blue" : "text-grayCustom"
+                  }`}
+                >
+                  {item.desc}
+                </Text>
+              </View>
             </StyledPressable>
           ))}
         </View>
@@ -86,7 +97,7 @@ export const ButtonUploadType = () => {
 export const ButtonFollow = ({ title, onPress, isFollow }) => (
   <StyledPressable
     onPress={onPress}
-    className={`w-full h-[35px] ${styles.flexCenter} ${
+    className={`w-full h-[35px] justify-center items-center ${
       isFollow ? "bg-gray-300/50" : "bg-blue"
     } rounded-lg ${styles.pressableEffect}`}
   >
@@ -101,7 +112,7 @@ export const ButtonFollow = ({ title, onPress, isFollow }) => (
 export const ButtonGray = ({ title, onPress }) => (
   <StyledPressable
     onPress={onPress}
-    className={`w-full h-[35px] ${styles.flexCenter} bg-gray-300/50 rounded-lg ${styles.pressableEffect}`}
+    className={`w-full h-[35px] justify-center items-center bg-gray-300/50 rounded-lg ${styles.pressableEffect}`}
   >
     <Text className="font-InterSemiBold text-[16px]">{title}</Text>
   </StyledPressable>
@@ -110,7 +121,7 @@ export const ButtonGray = ({ title, onPress }) => (
 export const ButtonBlue = ({ title, onPress, loading }) => (
   <StyledPressable
     onPress={onPress}
-    className={`w-full h-[42px] ${styles.flexCenter} rounded-full bg-blue shadow-md shadow-black ${styles.pressableEffect}`}
+    className={`w-full h-[42px] justify-center items-center rounded-full bg-blue shadow-md shadow-black ${styles.pressableEffect}`}
   >
     {loading ? (
       <ActivityIndicator size={"large"} color={"#FFF"} />
@@ -123,7 +134,7 @@ export const ButtonBlue = ({ title, onPress, loading }) => (
 export const ButtonTransparent = ({ title, onPress, borderColor }) => (
   <StyledPressable
     onPress={onPress}
-    className={`w-full h-[45px] ${styles.flexCenter} border-[1.5px] ${borderColor} rounded-2xl ${styles.pressableEffect}`}
+    className={`w-full h-[45px] justify-center items-center border-[1.5px] ${borderColor} rounded-2xl ${styles.pressableEffect}`}
   >
     <Text className={`text-[16px] font-InterSemiBold`}>{title}</Text>
   </StyledPressable>

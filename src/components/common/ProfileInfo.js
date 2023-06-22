@@ -38,11 +38,11 @@ const ProfileInfo = ({
   };
   return (
     <>
-      <View className={`flex-row ${styles.flexBetween} space-x-10`}>
+      <View className={`flex-row justify-between items-center space-x-10`}>
         <Avatar imgUrl={profileUrl} size={80} onPress={openDetailProfile} />
-        <View className={`flex-1 flex-row ${styles.flexBetween}`}>
+        <View className={`flex-1 flex-row justify-between items-center`}>
           {info.map((item) => (
-            <View className={styles.flexCenter} key={item.text}>
+            <View className="justify-center items-center" key={item.text}>
               <Text className="font-InterSemiBold text-lg">{item.number}</Text>
               <Text className="font-InterMedium">{item.text}</Text>
             </View>

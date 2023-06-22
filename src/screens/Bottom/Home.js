@@ -1,3 +1,4 @@
+import React, { useState, useCallback } from "react";
 import {
   View,
   Text,
@@ -6,17 +7,15 @@ import {
   RefreshControl,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import React, { useState, useCallback } from "react";
+import { Fontisto } from "@expo/vector-icons";
 
 import { TWEETS } from "../../constant";
 import { scrollToTopConfig } from "../../hooks";
 import { TweetCard, BadgeNotif, ScrollToTop } from "../../components";
-import { styles } from "../../style/Global";
-import { Fontisto } from "@expo/vector-icons";
 
 const HeaderHome = ({ goToMessage }) => (
   <View
-    className={`flex-row ${styles.flexBetween} py-1 px-3 border-b border-b-gray-600`}
+    className={`flex-row justify-between items-center py-1 px-3 border-b border-b-gray-600`}
   >
     <Text className="font-LoraBold text-3xl tracking-wider text-blue">G297K</Text>
     <TouchableOpacity onPress={goToMessage}>
