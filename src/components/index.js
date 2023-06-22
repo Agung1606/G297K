@@ -20,7 +20,11 @@ import {
   SeeProfileModal,
 } from "./reactPaper";
 
-import { EmailRegisterScreen, PasswordRegisterScreen } from "./screens";
+import {
+  EmailRegisterScreen,
+  PasswordRegisterScreen,
+  UsernameRegisterScreen,
+} from "./screens";
 
 export {
   TweetCard,
@@ -43,4 +47,5 @@ export {
   SeeProfileModal,
   EmailRegisterScreen,
   PasswordRegisterScreen,
+  UsernameRegisterScreen,
 };

@@ -4,8 +4,7 @@ import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
 
-import { HeaderRegister } from "../../common";
-import { ButtonBlue } from "../../common/Button";
+import { HeaderRegister, ButtonBlue } from "../../common";
 import { styles } from "../../../style/Global";
 
 const EmailRegister = () => {
@@ -28,6 +27,7 @@ const EmailRegister = () => {
           title="Apa email Anda?"
           subtitle="Silakan masukkan email yang sering Anda gunakan, email Anda akan digunakan jika sewaktu-waktu Anda lupa kata sandi Anda."
           onPress={goToLogin}
+          showBtn
         />
         <View>
           <View className={`${styles.inputStyle} mb-3`}>

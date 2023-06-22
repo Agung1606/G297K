@@ -1,17 +1,18 @@
+import React, { useState } from "react";
 import { View, TextInput, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
-import React, { useState } from "react";
 import { Entypo } from "@expo/vector-icons";
 
-import { HeaderRegister } from "../../common";
+import { HeaderRegister, ButtonBlue } from "../../common";
 import { styles } from "../../../style/Global";
-import { ButtonBlue } from "../../common/Button";
 
 const PasswordRegister = () => {
   const navigation = useNavigation();
   const goToPrevScreen = () => navigation.goBack();
+  const goToUsernameRegister = () =>
+    navigation.navigate("UsernameRegisterScreen");
 
   const [passwordInput, setPasswordInput] = useState("");
 
@@ -31,6 +32,7 @@ const PasswordRegister = () => {
           title="Buat kata sandi"
           subtitle="Buat kata sandi dengan setidaknya 6 huruf dan angka. Itu harus menjadi sesuatu yang tidak bisa ditebak orang lain."
           onPress={goToPrevScreen}
+          showBtn
         />
         <View>
           {/* password input */}
@@ -54,7 +56,7 @@ const PasswordRegister = () => {
               )}
             </View>
           </View>
-          <ButtonBlue title={"Buat akun"} />
+          <ButtonBlue title={"Buat akun"} onPress={goToUsernameRegister} />
         </View>
       </View>
     </SafeAreaView>

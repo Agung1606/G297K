@@ -1,7 +1,11 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 const Stack = createNativeStackNavigator();
 
-import { EmailRegisterScreen, PasswordRegisterScreen } from "../../components";
+import {
+  EmailRegisterScreen,
+  PasswordRegisterScreen,
+  UsernameRegisterScreen,
+} from "../../components";
 
 const Register = () => {
   return (
@@ -17,6 +21,13 @@ const Register = () => {
       <Stack.Screen
         name="PasswordRegisterScreen"
         component={PasswordRegisterScreen}
+        options={{
+          animation: "slide_from_right",
+        }}
+      />
+      <Stack.Screen
+        name="UsernameRegisterScreen"
+        component={UsernameRegisterScreen}
         options={{
           animation: "slide_from_right",
         }}
