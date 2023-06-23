@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, ActivityIndicator, Pressable, View } from "react-native";
-import { MaterialIcons, Ionicons } from "@expo/vector-icons";
+import { MaterialIcons, Ionicons, AntDesign } from "@expo/vector-icons";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
 
 import { styles } from "../../style/Global";
@@ -93,6 +93,15 @@ export const ButtonUploadType = () => {
     </>
   );
 };
+
+export const ButtonScrollToTop = ({ onPress }) => (
+  <StyledPressable
+    onPress={onPress}
+    className={`${styles.pressableEffect} bg-blue rounded-full p-2`}
+  >
+    <AntDesign name="arrowup" size={24} color="white" />
+  </StyledPressable>
+);
 
 export const ButtonFollow = ({ title, onPress, isFollow }) => (
   <StyledPressable

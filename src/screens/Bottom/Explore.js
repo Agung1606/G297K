@@ -14,7 +14,11 @@ import { styled } from "nativewind";
 const StyledPressable = styled(Pressable);
 
 import { scrollToTopConfig } from "../../hooks";
-import { TrendingCard, TweetCard, ScrollToTop } from "../../components";
+import {
+  TrendingCard,
+  TweetCard,
+  ButtonScrollToTop,
+} from "../../components";
 import { TRENDINGLISTS, EXPLORETWEETS } from "../../constant";
 
 const Explore = ({ navigation }) => {
@@ -67,7 +71,11 @@ const Explore = ({ navigation }) => {
           />
         }
       />
-      {isScrolled && <ScrollToTop onPress={scrollToTop} />}
+      {isScrolled && (
+        <View className="absolute bottom-6 right-2">
+          <ButtonScrollToTop onPress={scrollToTop} />
+        </View>
+      )}
     </SafeAreaView>
   );
 };

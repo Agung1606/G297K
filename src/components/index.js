@@ -7,10 +7,10 @@ import {
   ButtonGray,
   ButtonFollow,
   ButtonUploadType,
+  ButtonScrollToTop,
   ProfileInfo,
   NoTweets,
   Avatar,
-  ScrollToTop,
 } from "./common";
 
 import {
@@ -37,10 +37,10 @@ export {
   ButtonGray,
   ButtonFollow,
   ButtonUploadType,
+  ButtonScrollToTop,
   ProfileInfo,
   NoTweets,
   Avatar,
-  ScrollToTop,
   DialogModal,
   ConfirmModal,
   BadgeNotif,

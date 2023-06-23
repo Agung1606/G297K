@@ -11,13 +11,19 @@ import { Fontisto } from "@expo/vector-icons";
 
 import { TWEETS } from "../../constant";
 import { scrollToTopConfig } from "../../hooks";
-import { TweetCard, BadgeNotif, ScrollToTop } from "../../components";
+import {
+  TweetCard,
+  BadgeNotif,
+  ButtonScrollToTop,
+} from "../../components";
 
 const HeaderHome = ({ goToMessage }) => (
   <View
     className={`flex-row justify-between items-center py-1 px-3 border-b border-b-gray-600`}
   >
-    <Text className="font-LoraBold text-3xl tracking-wider text-blue">G297K</Text>
+    <Text className="font-LoraBold text-3xl tracking-wider text-blue">
+      G297K
+    </Text>
     <TouchableOpacity onPress={goToMessage}>
       <Fontisto name="email" size={30} />
       <BadgeNotif num={5} />
@@ -33,12 +39,12 @@ const Home = ({ navigation }) => {
 
   // refresh configuration
   const [refreshing, setRefreshing] = useState(false);
-    const onRefresh = useCallback(() => {
-      setRefreshing(true);
-      setTimeout(() => {
-        setRefreshing(false);
-      }, 2000);
-    }, []);
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 2000);
+  }, []);
 
   return (
     <SafeAreaView className="flex-1">
@@ -60,7 +66,11 @@ const Home = ({ navigation }) => {
           />
         }
       />
-      {isScrolled && <ScrollToTop onPress={scrollToTop} />}
+      {isScrolled && (
+        <View className="absolute bottom-6 right-2">
+          <ButtonScrollToTop onPress={scrollToTop} />
+        </View>
+      )}
     </SafeAreaView>
   );
 };

@@ -6,11 +6,11 @@ import {
   ButtonGray,
   ButtonFollow,
   ButtonUploadType,
+  ButtonScrollToTop
 } from "./Button";
 import ProfileInfo from "./ProfileInfo";
 import NoTweets from "./NoTweets";
 import Avatar from "./Avatar";
-import ScrollToTop from "./ScrollToTop";
 import TweetInteraction from "./TweetInteraction";
 import CommentInteraction from "./CommentInteraction";
 
@@ -22,10 +22,10 @@ export {
   ButtonGray,
   ButtonFollow,
   ButtonUploadType,
+  ButtonScrollToTop,
   ProfileInfo,
   NoTweets,
   Avatar,
-  ScrollToTop,
   TweetInteraction,
   CommentInteraction
 };
