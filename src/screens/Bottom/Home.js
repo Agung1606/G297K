@@ -17,12 +17,12 @@ import {
   ButtonScrollToTop,
 } from "../../components";
 
-const HeaderHome = ({ goToMessage }) => (
+const HeaderHome = ({ title, goToMessage }) => (
   <View
     className={`flex-row justify-between items-center py-1 px-3 border-b border-b-gray-600`}
   >
     <Text className="font-LoraBold text-3xl tracking-wider text-blue">
-      G297K
+      {title}
     </Text>
     <TouchableOpacity onPress={goToMessage}>
       <Fontisto name="email" size={30} />
@@ -48,7 +48,7 @@ const Home = ({ navigation }) => {
 
   return (
     <SafeAreaView className="flex-1">
-      <HeaderHome goToMessage={goToMessage} />
+      <HeaderHome title={"G297K"} goToMessage={goToMessage} />
       <FlatList
         ref={reference}
         onScroll={handleScroll}
