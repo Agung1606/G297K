@@ -4,14 +4,22 @@ import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
 
+import { Formik } from "formik";
+import { emailValidation } from "../../../utils";
+
 import { HeaderRegister, ButtonBlue } from "../../common";
 import { styles } from "../../../style/Global";
+
 
 const EmailRegister = () => {
   const navigation = useNavigation();
   const goToLogin = () => navigation.navigate("LoginScreen");
-  const goToPasswordRegister = () =>
-    navigation.navigate("PasswordRegisterScreen");
+
+  const handleEmailSubmit = (values) => {
+    navigation.navigate("PasswordRegisterScreen", {
+      param: { emailInput: values.email },
+    });
+  };
 
   return (
     <SafeAreaView className="flex-1">
@@ -29,15 +37,36 @@ const EmailRegister = () => {
           onPress={goToLogin}
           showBtn
         />
-        <View>
-          <View className={`${styles.inputStyle} mb-3`}>
-            <TextInput
-              placeholder="Email"
-              className="font-InterBold text-[16px]"
-            />
-          </View>
-          <ButtonBlue title={"Berikutnya"} onPress={goToPasswordRegister} />
-        </View>
+        <Formik
+          initialValues={{ email: "" }}
+          validationSchema={emailValidation}
+          onSubmit={handleEmailSubmit}
+        >
+          {({ handleChange, handleSubmit, values, errors, isValid }) => (
+            <>
+              <View className="my-3">
+                <View className={`${styles.inputStyle}`}>
+                  <TextInput
+                    placeholder="Email"
+                    className="font-InterBold text-[16px]"
+                    value={values.email}
+                    onChangeText={handleChange("email")}
+                  />
+                </View>
+                {errors.email && (
+                  <Text className="text-red-600 font-InterLight">
+                    {errors.email}
+                  </Text>
+                )}
+              </View>
+              <ButtonBlue
+                title={"Berikutnya"}
+                onPress={handleSubmit}
+                disabled={!isValid}
+              />
+            </>
+          )}
+        </Formik>
       </View>
       {/* btn have account */}
       <View className="absolute bottom-8 w-full">

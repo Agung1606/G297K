@@ -1,12 +1,12 @@
 import { View, TextInput, Text, TouchableOpacity, Image } from "react-native";
 import React, { useState } from "react";
 import { LinearGradient } from "expo-linear-gradient";
+import { Entypo, AntDesign } from "@expo/vector-icons";
 
 import { ButtonBlue, ButtonTransparent, DialogModal } from "../../components";
 import { assets } from "../../constant";
 import { styles } from "../../style/Global";
 import { useKeyboardVisible, modalPopupConfig } from "../../hooks";
-import { Entypo, AntDesign } from "@expo/vector-icons";
 
 const Login = ({ navigation }) => {
   const [loginInput, setLoginInput] = useState({

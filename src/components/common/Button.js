@@ -127,8 +127,9 @@ export const ButtonGray = ({ title, onPress }) => (
   </StyledPressable>
 );
 
-export const ButtonBlue = ({ title, onPress, loading }) => (
+export const ButtonBlue = ({ title, onPress, loading, disabled }) => (
   <StyledPressable
+    disabled={disabled}
     onPress={onPress}
     className={`w-full h-[42px] justify-center items-center rounded-full bg-blue shadow-md shadow-black ${styles.pressableEffect}`}
   >
