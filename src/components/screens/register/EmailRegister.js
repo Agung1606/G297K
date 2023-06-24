@@ -10,14 +10,13 @@ import { emailValidation } from "../../../utils";
 import { HeaderRegister, ButtonBlue } from "../../common";
 import { styles } from "../../../style/Global";
 
-
 const EmailRegister = () => {
   const navigation = useNavigation();
   const goToLogin = () => navigation.navigate("LoginScreen");
 
   const handleEmailSubmit = (values) => {
     navigation.navigate("PasswordRegisterScreen", {
-      param: { emailInput: values.email },
+      param: { email: values.email },
     });
   };
 

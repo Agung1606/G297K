@@ -14,19 +14,19 @@ import { styles } from "../../../style/Global";
 const PasswordRegister = ({ route }) => {
   const navigation = useNavigation();
   const goToPrevScreen = () => navigation.goBack();
-  const goToUsernameRegister = () =>
-    navigation.navigate("UsernameRegisterScreen");
 
-  const { emailInput } = route?.params?.param;
+  const { email } = route?.params?.param;
+  const [hidePassword, setHidePassword] = useState(true);
+
+  const handleHidePassword = () => setHidePassword(!hidePassword);
   const handleCreateAccount = (values) => {
-    console.log({
-      email: emailInput,
-      password: values.password,
+    navigation.navigate("UsernameRegisterScreen", {
+      param: {
+        email,
+        password: values.password,
+      },
     });
   };
-
-  const [hidePassword, setHidePassword] = useState(true);
-  const handleHidePassword = () => setHidePassword(!hidePassword);
 
   return (
     <SafeAreaView className="flex-1">
@@ -80,7 +80,7 @@ const PasswordRegister = ({ route }) => {
                 )}
               </View>
               <ButtonBlue
-                title={"Buat akun"}
+                title={"Berikutnya"}
                 onPress={handleSubmit}
                 disabled={!isValid}
               />

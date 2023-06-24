@@ -2,21 +2,40 @@ import React, { useState } from "react";
 import { View, TextInput } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { LinearGradient } from "expo-linear-gradient";
-import { useNavigation } from "@react-navigation/native";
 
 import { HeaderRegister, ButtonBlue } from "../../common";
 import { styles } from "../../../style/Global";
+import { generateRandomUsername } from "../../../utils";
 
-const UsernameRegister = () => {
+import { FIREBASE_AUTH } from "../../../../firebaseConfig";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+
+const UsernameRegister = ({ route }) => {
+  const { email, password } = route?.params?.param;
+  const [username, setUsername] = useState(
+    generateRandomUsername(email.match(/^([^@]+)/)[1])
+  );
+
   const [loading, setLoading] = useState(false);
-  const navigation = useNavigation();
-  const goToHomeScreen = () => {
+  const handleCreateAccount = async () => {
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false)
-      navigation.navigate("BottomNavigation", { screen: "HomeScreen" });
-    }, 200);
+    try {
+      const response = await createUserWithEmailAndPassword(
+        FIREBASE_AUTH,
+        email,
+        password
+      );
+      if (response.user) {
+        console.log(response.user);
+      }
+    } catch (error) {
+      console.error(error.code);
+      console.error(error.message);
+    } finally {
+      setLoading(false);
+    }
   };
+
   return (
     <SafeAreaView className="flex-1">
       <LinearGradient
@@ -36,11 +55,13 @@ const UsernameRegister = () => {
             <TextInput
               placeholder="Username"
               className="font-InterBold text-[16px]"
+              value={username}
+              onChangeText={(text) => setUsername(text)}
             />
           </View>
           <ButtonBlue
-            title={loading ? "Tunggu..." : "Berikutnya"}
-            onPress={goToHomeScreen}
+            title={loading ? "Tunggu..." : "Buat akun"}
+            onPress={handleCreateAccount}
           />
         </View>
       </View>
@@ -49,3 +70,13 @@ const UsernameRegister = () => {
 };
 
 export default UsernameRegister;
+
+// const [loading, setLoading] = useState(false);
+// const navigation = useNavigation();
+// const goToHomeScreen = () => {
+//   setLoading(true);
+//   setTimeout(() => {
+//     setLoading(false)
+//     navigation.navigate("BottomNavigation", { screen: "HomeScreen" });
+//   }, 200);
+// };

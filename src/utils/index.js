@@ -13,3 +13,8 @@ export const passwordValidation = yup.object().shape({
     .required("Password dibutuhkan")
     .min(6, ({ min }) => `Kata sandi harus setidaknya ${min} karakter`),
 });
+
+export function generateRandomUsername(name) {
+  const randomNumber = Math.floor(Math.random() * 1000);
+  return `${name}${randomNumber}`;
+}
