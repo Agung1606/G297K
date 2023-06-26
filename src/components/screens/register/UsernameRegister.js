@@ -62,6 +62,7 @@ const UsernameRegister = ({ route }) => {
               setLogin({
                 user: res.docs.map((doc) => ({
                   id: doc.id,
+                  email: doc.data().email,
                   username: doc.data().username,
                   name: doc.data().name,
                   profile: doc.data().profile,

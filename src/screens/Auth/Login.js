@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { Entypo, AntDesign } from "@expo/vector-icons";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setLogin } from "../../redux/globalSlice";
 
 import { ButtonBlue, ButtonTransparent, DialogModal } from "../../components";
@@ -16,9 +16,10 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 
 const Login = ({ navigation }) => {
+  const persistedEmail = useSelector((state) => state.global.user?.email);
   const dispatch = useDispatch();
   const [loginInput, setLoginInput] = useState({
-    email: "",
+    email: persistedEmail,
     password: "",
   });
 
@@ -50,6 +51,7 @@ const Login = ({ navigation }) => {
             setLogin({
               user: res.docs.map((doc) => ({
                 id: doc.id,
+                email: doc.data().email,
                 username: doc.data().username,
                 name: doc.data().name,
                 profile: doc.data().profile,

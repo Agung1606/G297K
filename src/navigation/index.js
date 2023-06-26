@@ -11,9 +11,8 @@ import {
   DetailsTweet,
   TrendingList,
   EditProfile,
-  Settings,
 } from "../screens/App";
-import { SendComment, SearchAccount } from "../screens/Modal";
+import { SendComment, SearchAccount, Settings } from "../screens/Modal";
 
 const Routes = () => {
   const token = useSelector((state) => state.global.token);
@@ -76,13 +75,6 @@ const Routes = () => {
                 animation: "slide_from_right",
               }}
             />
-            <Stack.Screen
-              name="SettingsScreen"
-              component={Settings}
-              options={{
-                animation: "slide_from_right",
-              }}
-            />
           </Stack.Group>
           {/* common modal screen */}
           <Stack.Group screenOptions={{ presentation: "modal" }}>
@@ -98,6 +90,13 @@ const Routes = () => {
               component={SearchAccount}
               options={{
                 animation: "none",
+              }}
+            />
+            <Stack.Screen
+              name="SettingsScreen"
+              component={Settings}
+              options={{
+                animation: "slide_from_right",
               }}
             />
           </Stack.Group>
