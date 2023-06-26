@@ -43,11 +43,8 @@ const UsernameRegister = ({ route }) => {
         password
       );
       if (response.user) {
-        let q = query(
-          collection(FIREBASE_FIRESTORE, "users"),
-          where("username", "==", username)
-        );
         await addDoc(collection(FIREBASE_FIRESTORE, "users"), {
+          email: email,
           username: username,
           name: username,
           profile:
@@ -56,6 +53,10 @@ const UsernameRegister = ({ route }) => {
           following: 0,
           bio: "",
         }).then(() => {
+          let q = query(
+            collection(FIREBASE_FIRESTORE, "users"),
+            where("email", "==", email)
+          );
           onSnapshot(q, (res) => {
             dispatch(
               setLogin({
@@ -77,8 +78,8 @@ const UsernameRegister = ({ route }) => {
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
         setErrorMsg("Email sudah digunakan 😢");
-        openModal();
       }
+      openModal();
     } finally {
       setLoading(false);
     }

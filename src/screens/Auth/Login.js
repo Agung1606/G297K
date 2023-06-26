@@ -3,12 +3,20 @@ import React, { useState } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { Entypo, AntDesign } from "@expo/vector-icons";
 
+import { useDispatch } from "react-redux";
+import { setLogin } from "../../redux/globalSlice";
+
 import { ButtonBlue, ButtonTransparent, DialogModal } from "../../components";
 import { assets } from "../../constant";
 import { styles } from "../../style/Global";
 import { useKeyboardVisible, modalPopupConfig } from "../../hooks";
 
+import { FIREBASE_AUTH, FIREBASE_FIRESTORE } from "../../../firebaseConfig";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
+
 const Login = ({ navigation }) => {
+  const dispatch = useDispatch();
   const [loginInput, setLoginInput] = useState({
     email: "",
     password: "",
@@ -24,19 +32,50 @@ const Login = ({ navigation }) => {
   const handleHidePassword = () => setHidePassword(!hidePassword);
   const removeUsername = () => setLoginInput({ ...loginInput, email: "" });
 
-  const handleLogin = () => {
-    // if (loginInput.email && loginInput.password) {
-    // navigation.navigate("BottomNavigation", { screen: "HomeScreen" });
-    // } else {
-    //   setErrorMsg("Please provides phone number, or email to continue :)");
-    //   openModal()
-    // }
-
+  const handleLogin = async () => {
     setLoading(true);
-    setTimeout(() => {
+    try {
+      const response = await signInWithEmailAndPassword(
+        FIREBASE_AUTH,
+        loginInput.email,
+        loginInput.password
+      );
+      if (response.user) {
+        let q = query(
+          collection(FIREBASE_FIRESTORE, "users"),
+          where("email", "==", loginInput.email)
+        );
+        onSnapshot(q, (res) => {
+          dispatch(
+            setLogin({
+              user: res.docs.map((doc) => ({
+                id: doc.id,
+                username: doc.data().username,
+                name: doc.data().name,
+                profile: doc.data().profile,
+                followers: doc.data().followers,
+                following: doc.data().following,
+                bio: doc.data().bio,
+              }))[0],
+              token: response.user.accessToken,
+            })
+          );
+        });
+      }
+    } catch (error) {
+      if (error.code === "auth/invalid-email") {
+        setErrorMsg("Email tidak valid❗");
+      } else if (error.code === "auth/missing-password") {
+        setErrorMsg("Tolong masukan password 🙏");
+      } else if (error.code === "auth/wrong-password") {
+        setErrorMsg("Password salah❗");
+      } else if (error.code === "auth/user-not-found") {
+        setErrorMsg("User tidak ditemukan 😭");
+      }
+      openModal();
+    } finally {
       setLoading(false);
-      navigation.navigate("BottomNavigation", { screen: "HomeScreen" });
-    }, 200);
+    }
   };
 
   return (
@@ -57,10 +96,10 @@ const Login = ({ navigation }) => {
       />
       {/* form login wrapper */}
       <View className="w-full h-auto p-4">
-        {/* username */}
+        {/* email */}
         <View className={`${styles.inputStyle} mb-3`}>
           <TextInput
-            placeholder="Username"
+            placeholder="Email"
             className="font-InterBold text-[16px]"
             value={loginInput.email}
             onChangeText={(text) =>
