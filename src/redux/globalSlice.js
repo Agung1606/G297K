@@ -23,8 +23,11 @@ export const globalSlice = createSlice({
       state.user = action.payload.user;
       state.token = action.payload.token;
     },
+    setLogout: (state) => {
+      state.token = null;
+    },
   },
 });
 
-export const { setLogin } = globalSlice.actions;
+export const { setLogin, setLogout } = globalSlice.actions;
 export default globalSlice.reducer;
