@@ -11,11 +11,7 @@ import { Fontisto } from "@expo/vector-icons";
 
 import { TWEETS } from "../../constant";
 import { scrollToTopConfig } from "../../hooks";
-import {
-  TweetCard,
-  BadgeNotif,
-  ButtonScrollToTop,
-} from "../../components";
+import { TweetCard, BadgeNotif, ButtonScrollToTop } from "../../components";
 
 const HeaderHome = ({ title, goToMessage }) => (
   <View

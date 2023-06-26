@@ -4,10 +4,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { LinearGradient } from "expo-linear-gradient";
 
 import { HeaderRegister, ButtonBlue } from "../../common";
+import { DialogModal } from "../../reactPaper";
 import { styles } from "../../../style/Global";
 import { generateRandomUsername } from "../../../utils";
 
 import { useDispatch } from "react-redux";
+import { modalPopupConfig } from "../../../hooks";
 import { setLogin } from "../../../redux/globalSlice";
 
 import { FIREBASE_AUTH, FIREBASE_FIRESTORE } from "../../../../firebaseConfig";
@@ -21,13 +23,17 @@ import {
 } from "firebase/firestore";
 
 const UsernameRegister = ({ route }) => {
+  const dispatch = useDispatch();
+  const { isModalOpen, openModal, closeModal } = modalPopupConfig();
+
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+
   const { email, password } = route?.params?.param;
   const [username, setUsername] = useState(
     generateRandomUsername(email.match(/^([^@]+)/)[1])
   );
 
-  const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false);
   const handleCreateAccount = async () => {
     setLoading(true);
     try {
@@ -69,8 +75,10 @@ const UsernameRegister = ({ route }) => {
         });
       }
     } catch (error) {
-      console.error(error.code);
-      console.error(error.message);
+      if (error.code === "auth/email-already-in-use") {
+        setErrorMsg("Email sudah digunakan 😢");
+        openModal();
+      }
     } finally {
       setLoading(false);
     }
@@ -105,6 +113,12 @@ const UsernameRegister = ({ route }) => {
           />
         </View>
       </View>
+      {/* modal */}
+      <DialogModal
+        isModalOpen={isModalOpen}
+        msg={errorMsg}
+        closeModal={closeModal}
+      />
     </SafeAreaView>
   );
 };

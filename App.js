@@ -5,10 +5,9 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { PaperProvider } from "react-native-paper";
 
 import { Provider } from "react-redux";
-// import { PersistGate } from "redux-persist/integration/react";
-// import { persistStore } from "redux-persist";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from "redux-persist";
 import { store } from "./src/redux";
-
 
 import Routes from "./src/navigation";
 
@@ -37,15 +36,15 @@ export default function App() {
   return (
     <Provider store={store}>
       {/* <PersistGate loading={null} persistor={persistStore(store)}> */}
-      <GestureHandlerRootView className="flex-1">
-        <BottomSheetModalProvider>
-          <PaperProvider>
-            <NavigationContainer theme={theme}>
-              <Routes />
-            </NavigationContainer>
-          </PaperProvider>
-        </BottomSheetModalProvider>
-      </GestureHandlerRootView>
+        <GestureHandlerRootView className="flex-1">
+          <BottomSheetModalProvider>
+            <PaperProvider>
+              <NavigationContainer theme={theme}>
+                <Routes />
+              </NavigationContainer>
+            </PaperProvider>
+          </BottomSheetModalProvider>
+        </GestureHandlerRootView>
       {/* </PersistGate> */}
     </Provider>
   );
