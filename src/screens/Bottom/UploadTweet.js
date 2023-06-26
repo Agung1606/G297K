@@ -6,17 +6,17 @@ import {
   TextInput,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 
-import { loggedInUser } from "../../hooks";
 import { ButtonBlue, ButtonUploadType, Avatar } from "../../components";
+import { useSelector } from "react-redux";
 
 const UploadTweet = ({ navigation }) => {
-  const { data: loggedInUserData } = loggedInUser();
+  const loggedInUserData = useSelector((state) => state.global.user);
   const goToPrevScreen = () => navigation.goBack();
 
-  const [tweetInput, setTweetInput] = useState('');
+  const [tweetInput, setTweetInput] = useState("");
 
   return (
     <SafeAreaView className="flex-1 px-2 py-4">

@@ -1,13 +1,6 @@
 import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { Keyboard } from "react-native";
 import { BottomSheetBackdrop } from "@gorhom/bottom-sheet";
-import { useSelector } from "react-redux";
-
-export const loggedInUser = () => {
-  const data = useSelector((state) => state.global.user);
-
-  return { data };
-};
 
 export const scrollToTopConfig = ({ kind }) => {
   const [isScrolled, setIsScrolled] = useState(false);

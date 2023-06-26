@@ -4,8 +4,8 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { View, Text, TouchableOpacity } from "react-native";
 import { TextInput } from "react-native-paper";
 
-import { loggedInUser } from "../../hooks";
 import { Avatar } from "../../components";
+import { useSelector } from "react-redux";
 
 const Header = () => (
   <View className={`flex-row justify-between items-center`}>
@@ -22,12 +22,12 @@ const Header = () => (
 );
 
 const EditProfile = () => {
-  const { data } = loggedInUser();
+  const loggedInUserData = useSelector((state) => state.global.user);
   return (
     <SafeAreaView className="flex-1 p-3">
       <Header />
       <View className="items-center my-6">
-        <Avatar imgUrl={{ uri: data.profile }} size={90} />
+        <Avatar imgUrl={{ uri: loggedInUserData.profile }} size={90} />
         <Text className="font-InterMedium text-lg text-grayCustom">
           Edit gambar
         </Text>
@@ -36,23 +36,23 @@ const EditProfile = () => {
       <View>
         <TextInput
           label={"Name"}
-          value={data.name}
+          value={loggedInUserData.name}
           className="bg-transparent mb-3"
           underlineColor="#1D7ED8"
-          />
+        />
         <TextInput
           label={"Username"}
-          value={data.username}
+          value={loggedInUserData.username}
           className="bg-transparent mb-3"
           underlineColor="#1D7ED8"
-          />
+        />
         <TextInput
           label={"Bio"}
-          value={data.bio}
+          value={loggedInUserData.bio}
           multiline={true}
           className="bg-transparent mb-3"
           underlineColor="#1D7ED8"
-          />
+        />
       </View>
     </SafeAreaView>
   );

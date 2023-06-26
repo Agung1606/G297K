@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import {
   View,
   Text,
@@ -9,11 +10,10 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { MaterialIcons } from "@expo/vector-icons";
 
-import { loggedInUser } from "../../hooks";
 import { ButtonBlue, Avatar } from "../../components";
 
 const SendComment = ({ route, navigation }) => {
-  const { data: loggedInUserData } = loggedInUser();
+  const loggedInUserData = useSelector((state) => state.global.user);
   const { name } = route?.params?.param;
   const goToPrevScreen = () => navigation.goBack();
 

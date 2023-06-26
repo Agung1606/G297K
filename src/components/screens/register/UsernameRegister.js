@@ -7,8 +7,18 @@ import { HeaderRegister, ButtonBlue } from "../../common";
 import { styles } from "../../../style/Global";
 import { generateRandomUsername } from "../../../utils";
 
-import { FIREBASE_AUTH } from "../../../../firebaseConfig";
+import { useDispatch } from "react-redux";
+import { setLogin } from "../../../redux/globalSlice";
+
+import { FIREBASE_AUTH, FIREBASE_FIRESTORE } from "../../../../firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  addDoc,
+  collection,
+  onSnapshot,
+  query,
+  where,
+} from "firebase/firestore";
 
 const UsernameRegister = ({ route }) => {
   const { email, password } = route?.params?.param;
@@ -16,6 +26,7 @@ const UsernameRegister = ({ route }) => {
     generateRandomUsername(email.match(/^([^@]+)/)[1])
   );
 
+  const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const handleCreateAccount = async () => {
     setLoading(true);
@@ -26,7 +37,36 @@ const UsernameRegister = ({ route }) => {
         password
       );
       if (response.user) {
-        console.log(response.user);
+        let q = query(
+          collection(FIREBASE_FIRESTORE, "users"),
+          where("username", "==", username)
+        );
+        await addDoc(collection(FIREBASE_FIRESTORE, "users"), {
+          username: username,
+          name: username,
+          profile:
+            "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FdefaultProfile.jpg?alt=media&token=00865e31-d1d6-4556-9130-fcd2a3b8ea6d",
+          followers: 0,
+          following: 0,
+          bio: "",
+        }).then(() => {
+          onSnapshot(q, (res) => {
+            dispatch(
+              setLogin({
+                user: res.docs.map((doc) => ({
+                  id: doc.id,
+                  username: doc.data().username,
+                  name: doc.data().name,
+                  profile: doc.data().profile,
+                  followers: doc.data().followers,
+                  following: doc.data().following,
+                  bio: doc.data().bio,
+                }))[0],
+                token: response.user.accessToken,
+              })
+            );
+          });
+        });
       }
     } catch (error) {
       console.error(error.code);
@@ -48,7 +88,7 @@ const UsernameRegister = ({ route }) => {
       <View className="mt-8 mx-3 space-y-5">
         <HeaderRegister
           title="Buat username"
-          subtitle="Tambahkan username. Kamu bisa merubah ini kapanpun."
+          subtitle="Tambahkan username atau gunakan saran kami. Kamu bisa merubah ini kapanpun."
         />
         <View>
           <View className={`${styles.inputStyle} mb-3`}>
@@ -70,13 +110,3 @@ const UsernameRegister = ({ route }) => {
 };
 
 export default UsernameRegister;
-
-// const [loading, setLoading] = useState(false);
-// const navigation = useNavigation();
-// const goToHomeScreen = () => {
-//   setLoading(true);
-//   setTimeout(() => {
-//     setLoading(false)
-//     navigation.navigate("BottomNavigation", { screen: "HomeScreen" });
-//   }, 200);
-// };

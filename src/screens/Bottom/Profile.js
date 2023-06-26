@@ -5,12 +5,13 @@ import {
   FlatList,
   SectionList,
 } from "react-native";
+import { useSelector } from "react-redux";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React, { useEffect, useState } from "react";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import { SimpleLineIcons, MaterialIcons } from "@expo/vector-icons";
 
-import { loggedInUser, modalPopupConfig } from "../../hooks";
+import { modalPopupConfig } from "../../hooks";
 import {
   ProfileInfo,
   ButtonGray,
@@ -115,11 +116,11 @@ const Profile = ({ navigation }) => {
   const goToEditProfile = () => navigation.navigate("EditProfileScreen");
   const goToSettings = () => navigation.navigate("SettingsScreen");
 
-  const { data } = loggedInUser();
+  const loggedInUserData = useSelector((state) => state.global.user);
   const [tweets, setTweets] = useState([]);
 
   useEffect(() => {
-    const filter = TWEETS.filter((item) => item.userId === data.id);
+    const filter = TWEETS.filter((item) => item.userId === loggedInUserData.id);
     setTweets(filter);
   }, []);
 
@@ -131,28 +132,31 @@ const Profile = ({ navigation }) => {
 
   return (
     <SafeAreaView className="flex-1">
-      <HeaderProfile goToSettings={goToSettings} username={data.username} />
+      <HeaderProfile
+        goToSettings={goToSettings}
+        username={loggedInUserData.username}
+      />
       <FlatList
         ListHeaderComponent={() => (
           <View className="my-2 p-2 border-b border-gray-600">
             <ProfileInfo
-              profileUrl={{ uri: data.profile }}
-              name={data.name}
-              bio={data.bio}
+              profileUrl={{ uri: loggedInUserData.profile }}
+              name={loggedInUserData.name}
+              bio={loggedInUserData.bio}
               numberOfTweets={tweets.length}
-              numberOfFollowers={data.followers}
-              numberOfFollowing={data.following}
+              numberOfFollowers={loggedInUserData.followers}
+              numberOfFollowing={loggedInUserData.following}
               openDetailProfile={openDetailProfile}
             />
             {/* button */}
-            <View className={`flex-row justify-between items-center space-x-2 mt-1`}>
+            <View
+              className={`flex-row justify-between items-center space-x-2 mt-1`}
+            >
               <View className="flex-1">
                 <ButtonGray title={"Edit profil"} onPress={goToEditProfile} />
               </View>
               <View className="flex-1">
-                <ButtonGray
-                  title={"Bagikan profil"}
-                />
+                <ButtonGray title={"Bagikan profil"} />
               </View>
             </View>
           </View>
@@ -168,7 +172,7 @@ const Profile = ({ navigation }) => {
       <SeeProfileModal
         isModalOpen={isModalOpen}
         closeModal={closeDetailProfile}
-        profileUrl={{ uri: data.profile }}
+        profileUrl={{ uri: loggedInUserData.profile }}
       />
     </SafeAreaView>
   );
