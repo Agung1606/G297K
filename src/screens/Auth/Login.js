@@ -84,8 +84,7 @@ const Login = ({ navigation }) => {
     <View className="flex-1 justify-center items-center px-[6px]">
       <LinearGradient
         // Background Linear Gradient
-        // colors={["#FEE2F8", "#DCF8EF"]}
-        colors={["#DCF8EF", "#D5FEFD"]}
+        colors={["#C9D6FF", "#E2E2E2"]}
         start={[0.2, 0]}
         end={[1, 1]}
         className="absolute top-0 bottom-0 left-0 right-0"
