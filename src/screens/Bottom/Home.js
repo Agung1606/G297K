@@ -17,7 +17,7 @@ const HeaderHome = ({ title, goToMessage }) => (
   <View
     className={`flex-row justify-between items-center py-1 px-3 border-b border-b-gray-600`}
   >
-    <Text className="font-LoraBold text-3xl tracking-wider text-blue">
+    <Text className="font-LoraBold text-3xl tracking-wider">
       {title}
     </Text>
     <TouchableOpacity onPress={goToMessage}>

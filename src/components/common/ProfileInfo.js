@@ -2,7 +2,7 @@ import { View, Text } from "react-native";
 import React, { useState } from "react";
 
 import Avatar from "./Avatar";
-import { styles } from "../../style/Global";
+import { changeFormat } from "../../utils";
 
 const ProfileInfo = ({
   profileUrl,
@@ -15,15 +15,15 @@ const ProfileInfo = ({
 }) => {
   const info = [
     {
-      number: numberOfTweets,
+      number: changeFormat(numberOfTweets),
       text: "Tweet",
     },
     {
-      number: numberOfFollowers,
+      number: changeFormat(numberOfFollowers),
       text: "Pengikut",
     },
     {
-      number: numberOfFollowing,
+      number: changeFormat(numberOfFollowing),
       text: "Mengikuti",
     },
   ];

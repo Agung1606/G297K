@@ -127,11 +127,17 @@ export const ButtonGray = ({ title, onPress }) => (
   </StyledPressable>
 );
 
-export const ButtonBlue = ({ title, onPress, loading, disabled }) => (
+export const ButtonBlue = ({
+  heightBtn,
+  title,
+  onPress,
+  loading,
+  disabled,
+}) => (
   <StyledPressable
     disabled={disabled}
     onPress={onPress}
-    className={`w-full h-[42px] justify-center items-center rounded-full bg-blue shadow-md shadow-black ${styles.pressableEffect}`}
+    className={`w-full py-[6px] justify-center items-center rounded-full bg-blue shadow-md shadow-black ${styles.pressableEffect}`}
   >
     {loading ? (
       <ActivityIndicator size={"large"} color={"#FFF"} />
@@ -144,7 +150,7 @@ export const ButtonBlue = ({ title, onPress, loading, disabled }) => (
 export const ButtonTransparent = ({ title, onPress, borderColor }) => (
   <StyledPressable
     onPress={onPress}
-    className={`w-full h-[45px] justify-center items-center border-[1.5px] ${borderColor} rounded-2xl ${styles.pressableEffect}`}
+    className={`w-full py-[10px] justify-center items-center border-[1.5px] ${borderColor} rounded-2xl ${styles.pressableEffect}`}
   >
     <Text className={`text-[16px] font-InterSemiBold`}>{title}</Text>
   </StyledPressable>

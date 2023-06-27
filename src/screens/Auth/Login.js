@@ -116,7 +116,7 @@ const Login = ({ navigation }) => {
           </View>
         </View>
         {/* password */}
-        <View className={`${styles.inputStyle} mb-6`}>
+        <View className={`${styles.inputStyle} mb-5`}>
           <TextInput
             placeholder="Kata sandi"
             className="font-InterBold text-[16px]"
