@@ -6,20 +6,18 @@ import {
   FlatList,
   Pressable,
 } from "react-native";
+import { useSelector } from "react-redux";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { EvilIcons, MaterialIcons, SimpleLineIcons } from "@expo/vector-icons";
 
 import { styled } from "nativewind";
 const StyledPressable = styled(Pressable);
 
-import { loggedInUser } from "../../hooks";
 import { Avatar } from "../../components";
 import { MESSAGE } from "../../constant";
 
 const Header = ({ username, goToPrevScreen }) => (
-  <View
-    className="flex-row justify-between items-center p-2 mb-4 border-b border-gray-200"
-  >
+  <View className="flex-row justify-between items-center p-2 mb-4 border-b border-gray-200">
     <View className="flex-row items-center space-x-10">
       <TouchableOpacity onPress={goToPrevScreen}>
         <MaterialIcons name="arrow-back" size={30} />
@@ -33,7 +31,7 @@ const Header = ({ username, goToPrevScreen }) => (
 );
 
 const Message = ({ navigation }) => {
-  const { data: loggedInUserData } = loggedInUser();
+  const loggedInUserData = useSelector((state) => state.global.user);
   const goToPrevScreen = () => navigation.goBack();
 
   return (
