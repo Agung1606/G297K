@@ -11,13 +11,13 @@ import { assets } from "../../constant";
 import { styles } from "../../style/Global";
 import { useKeyboardVisible, modalPopupConfig } from "../../hooks";
 
-// import { FIREBASE_AUTH, FIREBASE_FIRESTORE } from "../../../firebaseConfig";
-// import { signInWithEmailAndPassword } from "firebase/auth";
-// import { collection, onSnapshot, query, where } from "firebase/firestore";
+import { FIREBASE_AUTH, FIREBASE_FIRESTORE } from "../../../firebaseConfig";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
 
 const Login = ({ navigation }) => {
   const persistedEmail = useSelector((state) => state.global.user?.email);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [loginInput, setLoginInput] = useState({
     email: persistedEmail,
     password: "",
@@ -33,60 +33,53 @@ const Login = ({ navigation }) => {
   const handleHidePassword = () => setHidePassword(!hidePassword);
   const removeUsername = () => setLoginInput({ ...loginInput, email: "" });
 
-  // const handleLogin = async () => {
-  //   setLoading(true);
-  //   try {
-  //     const response = await signInWithEmailAndPassword(
-  //       FIREBASE_AUTH,
-  //       loginInput.email,
-  //       loginInput.password
-  //     );
-  //     if (response.user) {
-  //       let q = query(
-  //         collection(FIREBASE_FIRESTORE, "users"),
-  //         where("email", "==", loginInput.email)
-  //       );
-  //       onSnapshot(q, (res) => {
-  //         dispatch(
-  //           setLogin({
-  //             user: res.docs.map((doc) => ({
-  //               id: doc.id,
-  //               email: doc.data().email,
-  //               username: doc.data().username,
-  //               name: doc.data().name,
-  //               profile: doc.data().profile,
-  //               followers: doc.data().followers,
-  //               following: doc.data().following,
-  //               bio: doc.data().bio,
-  //             }))[0],
-  //             token: response.user.accessToken,
-  //           })
-  //         );
-  //       });
-  //     }
-  //   } catch (error) {
-  //     if (error.code === "auth/invalid-email") {
-  //       setErrorMsg("Email tidak valid❗");
-  //     } else if (error.code === "auth/missing-password") {
-  //       setErrorMsg("Tolong masukan password 🙏");
-  //     } else if (error.code === "auth/wrong-password") {
-  //       setErrorMsg("Password salah❗");
-  //     } else if (error.code === "auth/user-not-found") {
-  //       setErrorMsg("User tidak ditemukan 😭");
-  //     }
-  //     openModal();
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
-  const handleLogin = () => {
-    setLoading(true)
-    setTimeout(() => {
+  const handleLogin = async () => {
+    setLoading(true);
+    try {
+      const response = await signInWithEmailAndPassword(
+        FIREBASE_AUTH,
+        loginInput.email,
+        loginInput.password
+      );
+      if (response.user) {
+        let q = query(
+          collection(FIREBASE_FIRESTORE, "users"),
+          where("email", "==", loginInput.email)
+        );
+        onSnapshot(q, (res) => {
+          dispatch(
+            setLogin({
+              user: res.docs.map((doc) => ({
+                id: doc.id,
+                email: doc.data().email,
+                username: doc.data().username,
+                name: doc.data().name,
+                profile: doc.data().profile,
+                followers: doc.data().followers,
+                following: doc.data().following,
+                bio: doc.data().bio,
+              }))[0],
+              token: response.user.accessToken,
+            })
+          );
+        });
+      }
+    } catch (error) {
+      if (error.code === "auth/invalid-email") {
+        setErrorMsg("Email tidak valid❗");
+      } else if (error.code === "auth/missing-password") {
+        setErrorMsg("Tolong masukan password 🙏");
+      } else if (error.code === "auth/wrong-password") {
+        setErrorMsg("Password salah❗");
+      } else if (error.code === "auth/user-not-found") {
+        setErrorMsg("User tidak ditemukan 😭");
+      }
+      openModal();
+    } finally {
       setLoading(false);
-      navigation.navigate("BottomNavigation", { screen: "HomeScreen" });
-    }, 200);
+    }
   };
+
   return (
     <View className="flex-1 justify-center items-center px-[6px]">
       <LinearGradient

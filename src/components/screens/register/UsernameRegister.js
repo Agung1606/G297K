@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { View, TextInput } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { LinearGradient } from "expo-linear-gradient";
-import { useNavigation } from "@react-navigation/native";
 
 import { HeaderRegister, ButtonBlue } from "../../common";
 import { DialogModal } from "../../reactPaper";
@@ -13,18 +12,17 @@ import { useDispatch } from "react-redux";
 import { modalPopupConfig } from "../../../hooks";
 import { setLogin } from "../../../redux/globalSlice";
 
-// import { FIREBASE_AUTH, FIREBASE_FIRESTORE } from "../../../../firebaseConfig";
-// import { createUserWithEmailAndPassword } from "firebase/auth";
-// import {
-//   addDoc,
-//   collection,
-//   onSnapshot,
-//   query,
-//   where,
-// } from "firebase/firestore";
+import { FIREBASE_AUTH, FIREBASE_FIRESTORE } from "../../../../firebaseConfig";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  addDoc,
+  collection,
+  onSnapshot,
+  query,
+  where,
+} from "firebase/firestore";
 
 const UsernameRegister = ({ route }) => {
-  const navigation = useNavigation();
   const dispatch = useDispatch();
   const { isModalOpen, openModal, closeModal } = modalPopupConfig();
 
@@ -36,65 +34,58 @@ const UsernameRegister = ({ route }) => {
     generateRandomUsername(email.match(/^([^@]+)/)[1])
   );
 
-  // const handleCreateAccount = async () => {
-  //   setLoading(true);
-  //   try {
-  //     const response = await createUserWithEmailAndPassword(
-  //       FIREBASE_AUTH,
-  //       email,
-  //       password
-  //     );
-  //     if (response.user) {
-  //       await addDoc(collection(FIREBASE_FIRESTORE, "users"), {
-  //         email: email,
-  //         username: username,
-  //         name: username,
-  //         profile:
-  //           "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FdefaultProfile.jpg?alt=media&token=00865e31-d1d6-4556-9130-fcd2a3b8ea6d",
-  //         followers: 0,
-  //         following: 0,
-  //         bio: "",
-  //       }).then(() => {
-  //         let q = query(
-  //           collection(FIREBASE_FIRESTORE, "users"),
-  //           where("email", "==", email)
-  //         );
-  //         onSnapshot(q, (res) => {
-  //           dispatch(
-  //             setLogin({
-  //               user: res.docs.map((doc) => ({
-  //                 id: doc.id,
-  //                 email: doc.data().email,
-  //                 username: doc.data().username,
-  //                 name: doc.data().name,
-  //                 profile: doc.data().profile,
-  //                 followers: doc.data().followers,
-  //                 following: doc.data().following,
-  //                 bio: doc.data().bio,
-  //               }))[0],
-  //               token: response.user.accessToken,
-  //             })
-  //           );
-  //         });
-  //       });
-  //     }
-  //   } catch (error) {
-  //     if (error.code === "auth/email-already-in-use") {
-  //       setErrorMsg("Email sudah digunakan 😢");
-  //     }
-  //     openModal();
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
-  const handleCreateAccount = () => {
-     setLoading(true);
-     setTimeout(() => {
-       setLoading(false);
-       navigation.navigate("BottomNavigation", { screen: "HomeScreen" });
-     }, 200);
+  const handleCreateAccount = async () => {
+    setLoading(true);
+    try {
+      const response = await createUserWithEmailAndPassword(
+        FIREBASE_AUTH,
+        email,
+        password
+      );
+      if (response.user) {
+        await addDoc(collection(FIREBASE_FIRESTORE, "users"), {
+          email: email,
+          username: username,
+          name: username,
+          profile:
+            "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FdefaultProfile.jpg?alt=media&token=00865e31-d1d6-4556-9130-fcd2a3b8ea6d",
+          followers: 0,
+          following: 0,
+          bio: "",
+        }).then(() => {
+          let q = query(
+            collection(FIREBASE_FIRESTORE, "users"),
+            where("email", "==", email)
+          );
+          onSnapshot(q, (res) => {
+            dispatch(
+              setLogin({
+                user: res.docs.map((doc) => ({
+                  id: doc.id,
+                  email: doc.data().email,
+                  username: doc.data().username,
+                  name: doc.data().name,
+                  profile: doc.data().profile,
+                  followers: doc.data().followers,
+                  following: doc.data().following,
+                  bio: doc.data().bio,
+                }))[0],
+                token: response.user.accessToken,
+              })
+            );
+          });
+        });
+      }
+    } catch (error) {
+      if (error.code === "auth/email-already-in-use") {
+        setErrorMsg("Email sudah digunakan 😢");
+      }
+      openModal();
+    } finally {
+      setLoading(false);
+    }
   };
+
   return (
     <SafeAreaView className="flex-1">
       <LinearGradient
