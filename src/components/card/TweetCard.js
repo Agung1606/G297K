@@ -1,8 +1,4 @@
-import {
-  View,
-  Text,
-  Pressable,
-} from "react-native";
+import { View, Text, Pressable } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
@@ -21,7 +17,9 @@ const TweetCard = React.memo(({ item }) => {
   const goToDetails = () =>
     navigation.navigate("DetailsTweetScreen", { param: item });
   const goToVisitProfile = () =>
-    navigation.navigate("VisitProfileScreen", { param: item.userId });
+    navigation.navigate("VisitProfileScreen", {
+      param: { username: item.username },
+    });
   const openModalSendComment = () =>
     navigation.navigate("SendComment", { param: { name: item.name } });
 

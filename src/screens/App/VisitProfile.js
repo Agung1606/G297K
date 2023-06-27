@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
-import { PROFILE, TWEETS } from "../../constant";
+import { TWEETS } from "../../constant";
 import { modalPopupConfig } from "../../hooks";
 import {
   ButtonGray,
@@ -14,6 +14,9 @@ import {
   NoTweets,
   SeeProfileModal,
 } from "../../components";
+
+import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
+import { onSnapshot, query, where, collection } from "firebase/firestore";
 
 const HeaderVisitProfile = ({ username }) => {
   const navigation = useNavigation();
@@ -40,16 +43,29 @@ const HeaderVisitProfile = ({ username }) => {
 };
 
 const VisitProfile = ({ route }) => {
-  const id = route?.params?.param;
+  const { username } = route?.params?.param;
   const [data, setData] = useState({});
   const [tweets, setTweets] = useState([]);
 
-  useEffect(() => {
-    const filterProfile = PROFILE.filter((item) => item.id === id);
-    const filterTweets = TWEETS.filter((item) => item.userId === id);
+  useMemo(() => {
+    let q = query(
+      collection(FIREBASE_FIRESTORE, "users"),
+      where("username", "==", username)
+    );
+    onSnapshot(q, (res) => {
+      setData(
+        res.docs.map((doc) => {
+          return {
+            id: doc.id,
+            ...doc.data(),
+          };
+        })[0]
+      );
+    });
+
+    const filterTweets = TWEETS.filter((item) => item.username === username);
     setTweets(filterTweets);
-    setData(filterProfile[0]);
-  }, [id]);
+  }, [username]);
 
   // this configuration is just for a while
   const [isFollow, setIsFollow] = useState(false);
@@ -63,21 +79,23 @@ const VisitProfile = ({ route }) => {
 
   return (
     <SafeAreaView className="flex-1">
-      <HeaderVisitProfile username={data.username} />
+      <HeaderVisitProfile username={data?.username} />
       <FlatList
         ListHeaderComponent={() => (
           <View className="my-2 p-2 border-b border-gray-600">
             <ProfileInfo
-              profileUrl={data.profile}
-              name={data.name}
-              bio={data.bio}
+              profileUrl={{ uri: data?.profile }}
+              name={data?.name}
+              bio={data?.bio}
               numberOfTweets={tweets.length}
-              numberOfFollowers={data.followers}
-              numberOfFollowing={data.following}
+              numberOfFollowers={data?.followers}
+              numberOfFollowing={data?.following}
               openDetailProfile={openDetailProfile}
             />
             {/* button */}
-            <View className={`flex-row justify-between items-center space-x-2 mt-1`}>
+            <View
+              className={`flex-row justify-between items-center space-x-2 mt-1`}
+            >
               <View className="flex-1">
                 <ButtonFollow
                   title={isFollow ? "Mengikuti" : "Ikuti"}
@@ -86,9 +104,7 @@ const VisitProfile = ({ route }) => {
                 />
               </View>
               <View className="flex-1">
-                <ButtonGray
-                  title={"Kirim pesan"}
-                />
+                <ButtonGray title={"Kirim pesan"} />
               </View>
             </View>
           </View>
@@ -104,7 +120,7 @@ const VisitProfile = ({ route }) => {
       <SeeProfileModal
         isModalOpen={isModalOpen}
         closeModal={closeDetailProfile}
-        profileUrl={data.profile}
+        profileUrl={{ uri: data?.profile }}
       />
     </SafeAreaView>
   );

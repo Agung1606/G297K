@@ -152,7 +152,7 @@ The live album, out 11.8.23`,
 export const TWEETS = [
   {
     id: 98,
-    userId: 10,
+    userId: "rnZdU9qeotjA2KNqmknC",
     profile: assets.robinProfile,
     name: "Nico Robin",
     username: "nicorobin_16",
@@ -164,7 +164,7 @@ export const TWEETS = [
   },
   {
     id: 99,
-    userId: 1,
+    userId: "Rm0CNJNGzr5TWgP8p0Uz",
     profile: assets.luffyProfile,
     name: "Monkey D Luffy",
     username: "raja.bajak.laut16_",
@@ -176,7 +176,7 @@ export const TWEETS = [
   },
   {
     id: 100,
-    userId: 7,
+    userId: "tcbS6f43N9lctj3d8wta",
     profile: assets.narutoProfile,
     name: "Naruto Uzumaki",
     username: "uzumakinaruto_",
@@ -197,7 +197,7 @@ Teori Newton menghasilkan pemahaman baru tentang gerak, gravitasi, dan fenomena 
   },
   {
     id: 101,
-    userId: 3,
+    userId: "8YPJj7UtzPYStYc2lYrG",
     profile: assets.sanjiProfile,
     name: "Vinsmoke Sanji",
     username: "vnskmj_sanji",
@@ -218,7 +218,7 @@ In the end, love is a celebration of the human experience. It is a reminder that
   },
   {
     id: 102,
-    userId: 1,
+    userId: "Rm0CNJNGzr5TWgP8p0Uz",
     profile: assets.luffyProfile,
     name: "Monkey D Luffy",
     username: "raja.bajak.laut16_",
@@ -229,7 +229,7 @@ In the end, love is a celebration of the human experience. It is a reminder that
   },
   {
     id: 103,
-    userId: 2,
+    userId: "3350TMI3mpSFCSTYEGVP",
     profile: assets.zoroProfile,
     name: "Roronoa Zoro",
     username: "rrnoazoro",
@@ -241,7 +241,7 @@ In the end, love is a celebration of the human experience. It is a reminder that
   },
   {
     id: 104,
-    userId: 3,
+    userId: "8YPJj7UtzPYStYc2lYrG",
     profile: assets.sanjiProfile,
     name: "Vinsmoke Sanji",
     username: "vnskmj_sanji",
@@ -253,7 +253,7 @@ In the end, love is a celebration of the human experience. It is a reminder that
   },
   {
     id: 105,
-    userId: 4,
+    userId: "7ViKt2dsZLSciTqk8wvq",
     profile: assets.usopProfile,
     name: "Usoop",
     username: "usoopppp297_",
@@ -265,7 +265,7 @@ In the end, love is a celebration of the human experience. It is a reminder that
   },
   {
     id: 106,
-    userId: 5,
+    userId: "AWZjjSbtRDUnxzzhTws4",
     profile: assets.coperProfile,
     name: "Tony Chooper",
     username: "coper12",
@@ -277,7 +277,7 @@ In the end, love is a celebration of the human experience. It is a reminder that
   },
   {
     id: 107,
-    userId: 6,
+    userId: "HbuMPvZI03GfPaCdgfg8",
     profile: assets.jinbeiProfile,
     name: "Jinbei",
     username: "jinbei_",
@@ -289,7 +289,7 @@ In the end, love is a celebration of the human experience. It is a reminder that
   },
   {
     id: 108,
-    userId: 1,
+    userId: "Rm0CNJNGzr5TWgP8p0Uz",
     profile: assets.luffyProfile,
     name: "Monkey D Luffy",
     username: "raja.bajak.laut16_",
@@ -301,7 +301,7 @@ In the end, love is a celebration of the human experience. It is a reminder that
   },
   {
     id: 109,
-    userId: 4,
+    userId: "7ViKt2dsZLSciTqk8wvq",
     profile: assets.usopProfile,
     name: "Usoop",
     username: "usoopppp297_",
@@ -313,7 +313,7 @@ In the end, love is a celebration of the human experience. It is a reminder that
   },
   {
     id: 110,
-    userId: 4,
+    userId: "7ViKt2dsZLSciTqk8wvq",
     profile: assets.usopProfile,
     name: "Usoop",
     username: "usoopppp297_",
@@ -326,7 +326,7 @@ Penting untuk diingat bahwa konspirasi seringkali didasarkan pada spekulasi, inf
   },
   {
     id: 111,
-    userId: 8,
+    userId: "7j6S4FDCxuV3a69xJpZp",
     profile: assets.painProfile,
     name: "Pain",
     username: "pain._",
@@ -337,7 +337,7 @@ Penting untuk diingat bahwa konspirasi seringkali didasarkan pada spekulasi, inf
   },
   {
     id: 112,
-    userId: 9,
+    userId: "m1tj99Qed8iShRntjYDq",
     profile: assets.itachiProfile,
     name: "Itachi Uchiha",
     username: "itachi297._",
@@ -349,7 +349,7 @@ Penting untuk diingat bahwa konspirasi seringkali didasarkan pada spekulasi, inf
   },
   {
     id: 113,
-    userId: 8,
+    userId: "7j6S4FDCxuV3a69xJpZp",
     profile: assets.painProfile,
     name: "Pain",
     username: "pain._",
@@ -361,7 +361,7 @@ Penting untuk diingat bahwa konspirasi seringkali didasarkan pada spekulasi, inf
   },
   {
     id: 114,
-    userId: 7,
+    userId: "tcbS6f43N9lctj3d8wta",
     profile: assets.narutoProfile,
     name: "Naruto Uzumaki",
     username: "uzumakinaruto_",
@@ -373,7 +373,7 @@ Penting untuk diingat bahwa konspirasi seringkali didasarkan pada spekulasi, inf
   },
   {
     id: 115,
-    userId: 10,
+    userId: "rnZdU9qeotjA2KNqmknC",
     profile: assets.robinProfile,
     name: "Nico Robin",
     username: "nicorobin_16",
@@ -388,7 +388,7 @@ The protagonist, Monkey D. Luffy, and his crew, the Straw Hat Pirates, embark on
   },
   {
     id: 116,
-    userId: 11,
+    userId: "WvwMHRD9rMj01RLECpXH",
     profile: assets.sasukeProfile,
     name: "Sasuke Uchiha",
     username: "sasuke_",

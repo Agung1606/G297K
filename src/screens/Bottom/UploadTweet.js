@@ -38,8 +38,9 @@ const UploadTweet = ({ navigation }) => {
           </Text>
         </View>
         <View className="flex-1 space-y-2">
-          {/* this button is just for a while  */}
-          <ButtonUploadType />
+          <View className="w-24">
+            <ButtonUploadType />
+          </View>
           <ScrollView className="mb-20">
             <TextInput
               placeholder={`Apa yang terjadi?`}

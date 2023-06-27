@@ -1,9 +1,4 @@
-import {
-  View,
-  Text,
-  FlatList,
-  Pressable,
-} from "react-native";
+import { View, Text, FlatList, Pressable } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
 import { FontAwesome } from "@expo/vector-icons";
@@ -15,7 +10,9 @@ const DetailsTweet = ({ route, navigation }) => {
   const item = route?.params?.param;
   const goToPrevScreen = () => navigation.goBack();
   const goToVisitProfile = () =>
-    navigation.navigate("VisitProfileScreen", { param: item.userId });
+    navigation.navigate("VisitProfileScreen", {
+      param: { username: item.username },
+    });
   const openModalSendComment = () =>
     navigation.navigate("SendComment", { param: { name: item.name } });
 

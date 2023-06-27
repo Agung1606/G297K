@@ -46,7 +46,7 @@ export const ButtonUploadType = () => {
   return (
     <>
       <StyledPressable
-        className={`${styles.pressableEffect} flex-row justify-center items-center space-x-1 border border-blue rounded-full w-24 p-[7px]`}
+        className={`w-full py-[7px] ${styles.pressableEffect} flex-row justify-center items-center space-x-1 border border-blue rounded-full`}
         onPress={openModal}
       >
         <Text className="font-InterMedium text-blue text-center">{type}</Text>
@@ -106,7 +106,7 @@ export const ButtonScrollToTop = ({ onPress }) => (
 export const ButtonFollow = ({ title, onPress, isFollow }) => (
   <StyledPressable
     onPress={onPress}
-    className={`w-full h-[35px] justify-center items-center ${
+    className={`w-full py-[6px] justify-center items-center ${
       isFollow ? "bg-gray-300/50" : "bg-blue"
     } rounded-lg ${styles.pressableEffect}`}
   >
@@ -121,14 +121,13 @@ export const ButtonFollow = ({ title, onPress, isFollow }) => (
 export const ButtonGray = ({ title, onPress }) => (
   <StyledPressable
     onPress={onPress}
-    className={`w-full h-[35px] justify-center items-center bg-gray-300/50 rounded-lg ${styles.pressableEffect}`}
+    className={`w-full py-[6px] justify-center items-center bg-gray-300/50 rounded-lg ${styles.pressableEffect}`}
   >
     <Text className="font-InterSemiBold text-[16px]">{title}</Text>
   </StyledPressable>
 );
 
 export const ButtonBlue = ({
-  heightBtn,
   title,
   onPress,
   loading,
