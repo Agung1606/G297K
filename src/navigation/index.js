@@ -15,21 +15,21 @@ import {
 import { SendComment, SearchAccount, Settings } from "../screens/Modal";
 
 const Routes = () => {
-  const token = useSelector((state) => state.global.token);
+  // const token = useSelector((state) => state.global.token);
   return (
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
       }}
     >
-      {!token ? (
-        /* auth screens */
+      {/* {!token ? ( */}
+          {/* auth screens */}
         <Stack.Group>
           <Stack.Screen name="LoginScreen" component={Login} />
           <Stack.Screen name="RegisterScreen" component={Register} />
         </Stack.Group>
-      ) : (
-        <>
+      {/* ) : ( */}
+        {/* <> */}
           {/* bottom navigation for Home, Explore, Notification, and Profile */}
           <Stack.Screen
             name="BottomNavigation"
@@ -100,8 +100,8 @@ const Routes = () => {
               }}
             />
           </Stack.Group>
-        </>
-      )}
+        {/* </> */}
+      {/* )} */}
     </Stack.Navigator>
   );
 };

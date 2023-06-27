@@ -5,14 +5,14 @@ import { persistReducer } from "redux-persist";
 import globalSlice from "./globalSlice";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const persistConfig = {
-  key: "root",
-  storage: AsyncStorage,
-};
-const persistedReducer = persistReducer(persistConfig, globalSlice);
+// const persistConfig = {
+//   key: "root",
+//   storage: AsyncStorage,
+// };
+// const persistedReducer = persistReducer(persistConfig, globalSlice);
 
 export const store = configureStore({
-  reducer: { global: persistedReducer },
+  reducer: { global: globalSlice },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
