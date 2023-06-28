@@ -1,15 +1,15 @@
 import { View, TextInput, Text, TouchableOpacity, Image } from "react-native";
 import React, { useState } from "react";
 import { LinearGradient } from "expo-linear-gradient";
-import { Entypo, AntDesign } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
 
 import { useDispatch, useSelector } from "react-redux";
 import { setLogin } from "../../redux/globalSlice";
 
 import { ButtonBlue, ButtonTransparent, DialogModal } from "../../components";
+import { useKeyboardVisible, modalPopupConfig } from "../../hooks";
 import { assets } from "../../constant";
 import { styles } from "../../style/Global";
-import { useKeyboardVisible, modalPopupConfig } from "../../hooks";
 
 import { FIREBASE_AUTH, FIREBASE_FIRESTORE } from "../../../firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -31,8 +31,6 @@ const Login = ({ navigation }) => {
   const [errorMsg, setErrorMsg] = useState("");
 
   const handleHidePassword = () => setHidePassword(!hidePassword);
-  const removeUsername = () => setLoginInput({ ...loginInput, email: "" });
-
   const handleLogin = async () => {
     setLoading(true);
     try {
@@ -107,13 +105,6 @@ const Login = ({ navigation }) => {
               setLoginInput({ ...loginInput, email: text })
             }
           />
-          <View className="absolute right-4">
-            {loginInput.username && (
-              <TouchableOpacity onPress={removeUsername}>
-                <AntDesign name={"close"} size={22} color={styles.gray} />
-              </TouchableOpacity>
-            )}
-          </View>
         </View>
         {/* password */}
         <View className={`${styles.inputStyle} mb-5`}>

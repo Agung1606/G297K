@@ -13,8 +13,8 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { ButtonBlue, Avatar } from "../../components";
 
 const SendComment = ({ route, navigation }) => {
+  const item = route?.params?.param;
   const loggedInUserData = useSelector((state) => state.global.user);
-  const { name } = route?.params?.param;
   const goToPrevScreen = () => navigation.goBack();
 
   const [commentInput, setCommentInput] = useState("");
@@ -42,7 +42,7 @@ const SendComment = ({ route, navigation }) => {
         <View className="flex-1 space-y-2">
           <Text className="font-InterRegular text-gray-600">
             Membalas{" "}
-            <Text className="text-blue font-InterSemiBold">@{name}</Text>
+            <Text className="text-blue font-InterSemiBold">@{item.name}</Text>
           </Text>
           <ScrollView className="mb-20">
             <TextInput

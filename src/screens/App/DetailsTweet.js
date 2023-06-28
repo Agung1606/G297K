@@ -14,7 +14,7 @@ const DetailsTweet = ({ route, navigation }) => {
       param: { username: item.username },
     });
   const openModalSendComment = () =>
-    navigation.navigate("SendComment", { param: { name: item.name } });
+    navigation.navigate("SendComment", { param: item });
 
   return (
     <SafeAreaView className="flex-1">

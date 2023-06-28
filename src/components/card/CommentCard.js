@@ -24,7 +24,7 @@ const CommentCard = ({ item }) => {
           <Text className="font-InterLight text-grayCustom">{item.date}</Text>
           <Text className="font-InterRegular mt-2">{item.comment}</Text>
         </View>
-        <CommentInteraction />
+        <CommentInteraction numberOfLikes={item.numberOfLikes} />
       </View>
     </View>
   );
