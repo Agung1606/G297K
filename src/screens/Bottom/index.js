@@ -8,6 +8,8 @@ import Notification from "./Notification";
 import Profile from "./Profile";
 import UploadTweet from "./UploadTweet";
 
+import AddedDummyData from "./AddedDummyData";
+
 const BottomNavigation = () => {
   return (
     <Tab.Navigator
@@ -74,6 +76,15 @@ const BottomNavigation = () => {
           ),
         }}
       />
+      {/* <Tab.Screen
+        name="AddedDummyDataScreen"
+        component={AddedDummyData}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="address-book-o" size={28} color={color} />
+          ),
+        }}
+      /> */}
     </Tab.Navigator>
   );
 };

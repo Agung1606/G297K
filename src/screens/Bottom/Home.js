@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import {
   View,
   Text,
@@ -9,17 +9,17 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Fontisto } from "@expo/vector-icons";
 
-import { TWEETS } from "../../constant";
 import { scrollToTopConfig } from "../../hooks";
 import { TweetCard, BadgeNotif, ButtonScrollToTop } from "../../components";
+
+import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
+import { onSnapshot, collection, query, orderBy } from "firebase/firestore";
 
 const HeaderHome = ({ title, goToMessage }) => (
   <View
     className={`flex-row justify-between items-center py-1 px-3 border-b border-b-gray-600`}
   >
-    <Text className="font-LoraBold text-3xl tracking-wider">
-      {title}
-    </Text>
+    <Text className="font-LoraBold text-3xl tracking-wider">{title}</Text>
     <TouchableOpacity onPress={goToMessage}>
       <Fontisto name="email" size={30} />
       <BadgeNotif num={5} />
@@ -28,6 +28,8 @@ const HeaderHome = ({ title, goToMessage }) => (
 );
 
 const Home = ({ navigation }) => {
+  const [dataTweets, setDataTweets] = useState([]);
+
   const goToMessage = () => navigation.navigate("MessageScreen");
 
   const { isScrolled, reference, handleScroll, scrollToTop } =
@@ -42,13 +44,33 @@ const Home = ({ navigation }) => {
     }, 2000);
   }, []);
 
+  useMemo(() => {
+    let q = query(collection(FIREBASE_FIRESTORE, "tweets"), orderBy("date", "desc"));
+    onSnapshot(q, (response) => {
+      setDataTweets(
+        response.docs.map((docs) => {
+          return { ...docs.data(), id: docs.id };
+        })
+      );
+    });
+  }, []);
+
+  // loading....
+  if (dataTweets.length === 0) {
+    return (
+      <View className="flex-1 justify-center items-center">
+        <Text className="font-InterMedium text-lg">Tunggu....</Text>
+      </View>
+    );
+  }
+
   return (
     <SafeAreaView className="flex-1">
       <HeaderHome title={"G297K"} goToMessage={goToMessage} />
       <FlatList
         ref={reference}
         onScroll={handleScroll}
-        data={TWEETS}
+        data={dataTweets}
         renderItem={({ item }) => <TweetCard item={item} />}
         keyExtractor={(item) => item.id}
         initialNumToRender={10}

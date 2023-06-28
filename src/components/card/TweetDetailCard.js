@@ -11,7 +11,11 @@ const TweetDetailCard = ({ item, goToVisitProfile, openModalSendComment }) => {
     <View className="px-3 py-2 mb-2 border-b border-gray-300">
       <View className="flex-row justify-between items-center mb-2">
         <View className="flex-row items-center space-x-4">
-          <Avatar imgUrl={item.profile} size={50} onPress={goToVisitProfile} />
+          <Avatar
+            imgUrl={{ uri: item.profile }}
+            size={50}
+            onPress={goToVisitProfile}
+          />
           <View>
             <View className="flex-row items-center space-x-1">
               <Text className="font-InterBold">{item.name}</Text>

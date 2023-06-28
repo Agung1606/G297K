@@ -30,7 +30,7 @@ const TweetCard = React.memo(({ item }) => {
     >
       {/* profile */}
       <View>
-        <Avatar imgUrl={item.profile} size={50} onPress={goToVisitProfile} />
+        <Avatar imgUrl={{uri: item.profile}} size={50} onPress={goToVisitProfile} />
       </View>
       {/* wrapper */}
       <View className="flex-1">
