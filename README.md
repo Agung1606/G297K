@@ -4,8 +4,7 @@
   - I created this social media for the purpose of learning and exploring technology
   - The technology behind the scenes is React Native and Firebase
 
-# Features
-
+## Features
 * Authentication
   - Users can create an account by providing their email and password.
   - Firebase Authentication is used to handle user registration and login.
