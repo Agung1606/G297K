@@ -17,12 +17,16 @@ const Notification = ({ navigation }) => {
       <SectionList
         sections={NOTIFICATION}
         renderSectionHeader={({ section }) => (
-          <Text className="font-InterMedium text-lg mb-2 px-2">{section.title}</Text>
+          <Text className="font-InterMedium text-lg mb-2 px-2">
+            {section.title}
+          </Text>
         )}
         renderItem={({ item }) => (
           <StyledPressable
             onPress={() =>
-              navigation.navigate("VisitProfileScreen", { param: item.username })
+              navigation.navigate("VisitProfileScreen", {
+                param: { username: item.username, userId: item.userId },
+              })
             }
             className={`mb-3 p-3 flex-row justify-between items-center active:bg-gray-600/50`}
           >

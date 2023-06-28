@@ -11,7 +11,7 @@ const DetailsTweet = ({ route, navigation }) => {
   const goToPrevScreen = () => navigation.goBack();
   const goToVisitProfile = () =>
     navigation.navigate("VisitProfileScreen", {
-      param: item.username,
+      param: { username: item.username, userId: item.userId },
     });
   const openModalSendComment = () =>
     navigation.navigate("SendComment", { param: item });

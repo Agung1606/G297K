@@ -52,7 +52,7 @@ const Message = ({ navigation }) => {
                 size={60}
                 onPress={() =>
                   navigation.navigate("VisitProfileScreen", {
-                    param: item.username,
+                    param: { username: item.username, userId: item.userId },
                   })
                 }
               />

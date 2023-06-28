@@ -43,16 +43,16 @@ const HeaderVisitProfile = ({ username }) => {
 };
 
 const VisitProfile = ({ route }) => {
-  const username = route?.params?.param;
+  const { username, userId } = route?.params?.param;
   const [data, setData] = useState({});
   const [tweets, setTweets] = useState([]);
 
   useMemo(() => {
-    let q = query(
+    let qUser = query(
       collection(FIREBASE_FIRESTORE, "users"),
       where("username", "==", username)
     );
-    onSnapshot(q, (res) => {
+    onSnapshot(qUser, (res) => {
       setData(
         res.docs.map((doc) => {
           return {
@@ -63,9 +63,18 @@ const VisitProfile = ({ route }) => {
       );
     });
 
-    const filterTweets = TWEETS.filter((item) => item.username === username);
-    setTweets(filterTweets);
-  }, [username]);
+    let qTweets = query(
+      collection(FIREBASE_FIRESTORE, "tweets"),
+      where("userId", "==", userId)
+    );
+    onSnapshot(qTweets, (response) => {
+      setTweets(
+        response.docs.map((docs) => {
+          return { ...docs.data(), id: docs.id };
+        })
+      );
+    });
+  }, [username, userId]);
 
   // this configuration is just for a while
   const [isFollow, setIsFollow] = useState(false);

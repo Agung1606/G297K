@@ -8,7 +8,9 @@ import { Avatar, CommentInteraction } from "../common";
 const CommentCard = ({ item }) => {
   const navigation = useNavigation();
   const goToVisitProfile = () =>
-    navigation.navigate("VisitProfileScreen", { param: item.username });
+    navigation.navigate("VisitProfileScreen", {
+      param: { username: item.username, userId: item.userId },
+    });
 
   return (
     <View className="p-2 flex-row space-x-2">

@@ -19,7 +19,7 @@ const TweetCard = React.memo(({ item }) => {
     navigation.navigate("DetailsTweetScreen", { param: item });
   const goToVisitProfile = () =>
     navigation.navigate("VisitProfileScreen", {
-      param: item.username,
+      param: { username: item.username, userId: item.userId },
     });
   const openModalSendComment = () =>
     navigation.navigate("SendComment", { param: item });
