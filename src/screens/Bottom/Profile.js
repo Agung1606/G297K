@@ -140,7 +140,7 @@ const Profile = ({ navigation }) => {
         ListHeaderComponent={() => (
           <View className="my-2 p-2 border-b border-gray-600">
             <ProfileInfo
-              profileUrl={{ uri: loggedInUserData.profile }}
+              profileUrl={loggedInUserData.profile}
               name={loggedInUserData.name}
               bio={loggedInUserData.bio}
               numberOfTweets={tweets.length}
@@ -172,7 +172,7 @@ const Profile = ({ navigation }) => {
       <SeeProfileModal
         isModalOpen={isModalOpen}
         closeModal={closeDetailProfile}
-        profileUrl={{ uri: loggedInUserData.profile }}
+        profileUrl={loggedInUserData.profile}
       />
     </SafeAreaView>
   );

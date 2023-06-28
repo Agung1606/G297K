@@ -5,12 +5,9 @@ import { styled } from "nativewind";
 const SyledPressable = styled(Pressable);
 
 const Avatar = ({ imgUrl, size, onPress }) => (
-  <SyledPressable
-    onPress={onPress}
-    className="active:scale-95"
-  >
+  <SyledPressable onPress={onPress} className="active:scale-95">
     <Image
-      source={imgUrl}
+      source={{ uri: imgUrl }}
       alt="img"
       style={{
         width: size,

@@ -2,153 +2,168 @@ import assets from "./assets";
 
 export const PROFILE = [
   {
-    id: 1,
+    id: "Rm0CNJNGzr5TWgP8p0Uz",
     username: "raja.bajak.laut16_",
     name: "Monkey D Luffy",
-    profile: assets.luffyProfile,
+    profile:
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FluffyProfile.jpg?alt=media&token=cc999bf3-f569-4e8b-ac7f-04543bfa3a70",
     followers: 124235,
     following: 131,
     bio: "Screw the consequences, I'll do what I want!",
   },
   {
-    id: 2,
+    id: "3350TMI3mpSFCSTYEGVP",
     username: "rrnoazoro",
     name: "Roronoa Zoro",
-    profile: assets.zoroProfile,
+    profile:
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FzoroProfile.jpg?alt=media&token=88fe7f5b-0538-4af9-b332-9c3c35813b43",
     followers: 89242,
     following: 0,
     bio: "The only thing I can do is cut down what's in front of me.",
   },
   {
-    id: 3,
+    id: "8YPJj7UtzPYStYc2lYrG",
     username: "vnskmj_sanji",
     name: "Vinsmoke Sanji",
-    profile: assets.sanjiProfile,
+    profile:
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FsanjiProfile.jpg?alt=media&token=b39924fd-03fd-450c-a58b-28478c7bb96c",
     followers: 53872,
     following: 0,
     bio: "Women are a chef's inspiration!",
   },
   {
-    id: 4,
+    id: "7ViKt2dsZLSciTqk8wvq",
     username: "usoopppp297_",
     name: "Usoop",
-    profile: assets.usopProfile,
+    profile:
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FusopProfile.jpg?alt=media&token=5da389f7-feb6-4b1d-bd88-0bdbb651dc93",
     followers: 349823,
     following: 16,
     bio: "There comes a time when a man has to stand and fight!",
   },
   {
-    id: 5,
+    id: "AWZjjSbtRDUnxzzhTws4",
     username: "coper12",
     name: "Tony Chooper",
-    profile: assets.coperProfile,
+    profile:
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FcoperProfile.png?alt=media&token=8ce24eb3-9ef3-46a2-a243-fbbafcf5257f",
     followers: 3521,
     following: "212",
     bio: "A doctor's job is to save lives!",
   },
   {
-    id: 6,
+    id: "HbuMPvZI03GfPaCdgfg8",
     username: "jinbei_",
     name: "Jinbei",
-    profile: assets.jinbeiProfile,
+    profile:
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FjinbeiProfile.jpg?alt=media&token=d36f99fe-0174-41f5-9073-b7a8755f6fe2",
     followers: 329842,
     following: 421,
     bio: "Strength isn't just about physical power. It's also about the strength of one's heart and convictions.",
   },
   {
-    id: 7,
+    id: "tcbS6f43N9lctj3d8wta",
     username: "uzumakinaruto_",
     name: "Naruto Uzumaki",
-    profile: assets.narutoProfile,
+    profile:
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FnarutoProfile.jpg?alt=media&token=3539f164-9752-4bea-aca9-7e2d6dda8c97",
     followers: 342124,
     following: 234,
     bio: "🔥I'm not gonna die, 'cause I'm gonna be the Hokage!🔥",
   },
   {
-    id: 8,
+    id: "7j6S4FDCxuV3a69xJpZp",
     username: "pain._",
     name: "Pain",
-    profile: assets.painProfile,
+    profile:
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FpainProfile.jpg?alt=media&token=a407b767-12d9-44eb-980f-da90e0f3ae85",
     followers: 5476123,
     following: 32,
     bio: "❗Pain is inevitable, suffering is optional❗",
   },
   {
-    id: 9,
+    id: "m1tj99Qed8iShRntjYDq",
     username: "itachi297._",
     name: "Itachi Uchiha",
-    profile: assets.itachiProfile,
+    profile:
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FitachiProfile.jpg?alt=media&token=19cb8f61-216c-4480-8915-2d52b5c0128b",
     followers: 23532,
     following: 235,
     bio: "Those who forgive themselves, and are able to accept their true nature... They are the strong ones!",
   },
   {
-    id: 10,
+    id: "rnZdU9qeotjA2KNqmknC",
     username: "nicorobin_16",
     name: "Nico Robin",
-    profile: assets.robinProfile,
+    profile:
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FrobinProfile.jpg?alt=media&token=5dc0809c-fa3f-4fb3-83e8-3ac131b1c2f1",
     followers: 421213,
     following: 311,
     bio: `"The existence of the Poneglyphs will shake the world to its core! I want to learn the true history! I want to know what happened during the Void Century!"`,
   },
   {
-    id: 11,
+    id: "WvwMHRD9rMj01RLECpXH",
     username: "sasuke_",
     name: "Sasuke Uchiha",
-    profile: assets.sasukeProfile,
+    profile:
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FsasukeProfile.jpg?alt=media&token=c55b8ad0-d282-4029-83b0-956edd008368",
     followers: 87987,
     following: 0,
     bio: `"My only goal is in the darkness."`,
   },
   {
-    id: 12,
+    id: "qE7FIcpKVVlbT0IPuRNy",
     username: "jokowi",
     name: "Joko Widodo",
-    profile: assets.jokowiProfile,
+    profile:
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FjokowiProfile.jpeg?alt=media&token=12c8f7b5-d6e9-4040-b7cf-f28b60ca45ae",
     followers: 123213,
     following: 5434,
     bio: `Akun resmi Presiden Republik Indonesia 
 Joko Widodo 🇮🇩.`,
   },
   {
-    id: 13,
+    id: "Fm2YBBlp4X8DXVhaI7yp",
     username: "lalalalisa_m",
     name: "Lisa",
-    profile: assets.lisaProfile,
+    profile:
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FlisaProfile.jpg?alt=media&token=e704b377-7ade-4f06-9b01-3faa6887142b",
     followers: 97898,
     following: 0,
     bio: `❤️❤️`,
   },
   {
-    id: 14,
+    id: "BD5xEJmUFNzDFRmFRQEt",
     username: "liamgallagher",
     name: "Liam Gallagher",
-    profile: assets.liamProfile,
+    profile:
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FliamProfile.jpg?alt=media&token=df6623b1-58b1-420e-8773-ed152d1bded8",
     followers: 342343,
     following: 8,
     bio: `KNEBWORTH 22.
 The live album, out 11.8.23`,
   },
   {
-    id: 15,
+    id: "m241t434TUwsopXdftrO",
     username: "bebytsabina",
     name: "Cut Beby Tsabina",
-    profile: assets.bebyProfile,
+    profile:
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FbebyProfile.jpg?alt=media&token=7f880749-1d1e-4507-814e-f176b037baf7",
     followers: 454332543,
     following: 121,
     bio: `🇮🇩`,
   },
   {
-    id: 16,
+    id: "la7ejHn4LnTE6ldJ7jQu",
     username: "billieeilish",
     name: "BILLIE EILISH",
-    profile: assets.billieProfile,
-    followers: 989832922,
+    profile:
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FbillieProfile.jpg?alt=media&token=c88489d7-4cc1-43c7-b2de-b06d9bd6bb6a",
+    followers: 98983922,
     following: 0,
     bio: `Fans berat One Piece 🏴‍☠️.`,
   },
 ];
-
 
 export const TWEETS = [
   {
@@ -426,8 +441,9 @@ export const EXPLORETWEETS = [
     data: [
       {
         id: 98,
-        userId: 10,
-        profile: assets.robinProfile,
+        userId: "rnZdU9qeotjA2KNqmknC",
+        profile:
+          "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FrobinProfile.jpg?alt=media&token=5dc0809c-fa3f-4fb3-83e8-3ac131b1c2f1",
         name: "Nico Robin",
         username: "nicorobin_16",
         date: "16 hari",
@@ -438,8 +454,9 @@ export const EXPLORETWEETS = [
       },
       {
         id: 99,
-        userId: 1,
-        profile: assets.luffyProfile,
+        userId: "Rm0CNJNGzr5TWgP8p0Uz",
+        profile:
+          "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FluffyProfile.jpg?alt=media&token=cc999bf3-f569-4e8b-ac7f-04543bfa3a70",
         name: "Monkey D Luffy",
         username: "raja.bajak.laut16_",
         date: "16 hari",
@@ -450,8 +467,9 @@ export const EXPLORETWEETS = [
       },
       {
         id: 101,
-        userId: 3,
-        profile: assets.sanjiProfile,
+        userId: "8YPJj7UtzPYStYc2lYrG",
+        profile:
+          "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FsanjiProfile.jpg?alt=media&token=b39924fd-03fd-450c-a58b-28478c7bb96c",
         name: "Vinsmoke Sanji",
         username: "vnskmj_sanji",
         date: "16 hari",
@@ -471,8 +489,9 @@ In the end, love is a celebration of the human experience. It is a reminder that
       },
       {
         id: 102,
-        userId: 1,
-        profile: assets.luffyProfile,
+        userId: "Rm0CNJNGzr5TWgP8p0Uz",
+        profile:
+          "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FluffyProfile.jpg?alt=media&token=cc999bf3-f569-4e8b-ac7f-04543bfa3a70",
         name: "Monkey D Luffy",
         username: "raja.bajak.laut16_",
         date: "16 hari",
@@ -483,8 +502,9 @@ In the end, love is a celebration of the human experience. It is a reminder that
       },
       {
         id: 103,
-        userId: 2,
-        profile: assets.zoroProfile,
+        userId: "3350TMI3mpSFCSTYEGVP",
+        profile:
+          "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FzoroProfile.jpg?alt=media&token=88fe7f5b-0538-4af9-b332-9c3c35813b43",
         name: "Roronoa Zoro",
         username: "rrnoazoro",
         date: "16 hari",
@@ -495,8 +515,9 @@ In the end, love is a celebration of the human experience. It is a reminder that
       },
       {
         id: 104,
-        userId: 3,
-        profile: assets.sanjiProfile,
+        userId: "8YPJj7UtzPYStYc2lYrG",
+        profile:
+          "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FsanjiProfile.jpg?alt=media&token=b39924fd-03fd-450c-a58b-28478c7bb96c",
         name: "Vinsmoke Sanji",
         username: "vnskmj_sanji",
         date: "16 hari",
@@ -507,8 +528,9 @@ In the end, love is a celebration of the human experience. It is a reminder that
       },
       {
         id: 105,
-        userId: 4,
-        profile: assets.usopProfile,
+        userId: "7ViKt2dsZLSciTqk8wvq",
+        profile:
+          "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FusopProfile.jpg?alt=media&token=5da389f7-feb6-4b1d-bd88-0bdbb651dc93",
         name: "Usoop",
         username: "usoopppp297_",
         date: "16 hari",
@@ -519,8 +541,9 @@ In the end, love is a celebration of the human experience. It is a reminder that
       },
       {
         id: 106,
-        userId: 5,
-        profile: assets.coperProfile,
+        userId: "AWZjjSbtRDUnxzzhTws4",
+        profile:
+          "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FcoperProfile.png?alt=media&token=8ce24eb3-9ef3-46a2-a243-fbbafcf5257f",
         name: "Tony Chooper",
         username: "coper12",
         date: "16 hari",
@@ -531,8 +554,9 @@ In the end, love is a celebration of the human experience. It is a reminder that
       },
       {
         id: 107,
-        userId: 6,
-        profile: assets.jinbeiProfile,
+        userId: "HbuMPvZI03GfPaCdgfg8",
+        profile:
+          "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FjinbeiProfile.jpg?alt=media&token=d36f99fe-0174-41f5-9073-b7a8755f6fe2",
         name: "Jinbei",
         username: "jinbei_",
         date: "16 hari",
@@ -543,8 +567,9 @@ In the end, love is a celebration of the human experience. It is a reminder that
       },
       {
         id: 108,
-        userId: 1,
-        profile: assets.luffyProfile,
+        userId: "Rm0CNJNGzr5TWgP8p0Uz",
+        profile:
+          "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FluffyProfile.jpg?alt=media&token=cc999bf3-f569-4e8b-ac7f-04543bfa3a70",
         name: "Monkey D Luffy",
         username: "raja.bajak.laut16_",
         date: "16 hari",
@@ -555,8 +580,9 @@ In the end, love is a celebration of the human experience. It is a reminder that
       },
       {
         id: 109,
-        userId: 4,
-        profile: assets.usopProfile,
+        userId: "7ViKt2dsZLSciTqk8wvq",
+        profile:
+          "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FusopProfile.jpg?alt=media&token=5da389f7-feb6-4b1d-bd88-0bdbb651dc93",
         name: "Usoop",
         username: "usoopppp297_",
         date: "16 hari",
@@ -567,8 +593,9 @@ In the end, love is a celebration of the human experience. It is a reminder that
       },
       {
         id: 110,
-        userId: 4,
-        profile: assets.usopProfile,
+        userId: "7ViKt2dsZLSciTqk8wvq",
+        profile:
+          "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FusopProfile.jpg?alt=media&token=5da389f7-feb6-4b1d-bd88-0bdbb651dc93",
         name: "Usoop",
         username: "usoopppp297_",
         date: "16 hari",
@@ -580,8 +607,9 @@ Penting untuk diingat bahwa konspirasi seringkali didasarkan pada spekulasi, inf
       },
       {
         id: 115,
-        userId: 10,
-        profile: assets.robinProfile,
+        userId: "rnZdU9qeotjA2KNqmknC",
+        profile:
+          "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FrobinProfile.jpg?alt=media&token=5dc0809c-fa3f-4fb3-83e8-3ac131b1c2f1",
         name: "Nico Robin",
         username: "nicorobin_16",
         date: "16 hari",
@@ -600,8 +628,9 @@ The protagonist, Monkey D. Luffy, and his crew, the Straw Hat Pirates, embark on
     data: [
       {
         id: 97,
-        userId: 11,
-        profile: assets.sasukeProfile,
+        userId: "WvwMHRD9rMj01RLECpXH",
+        profile:
+          "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FsasukeProfile.jpg?alt=media&token=c55b8ad0-d282-4029-83b0-956edd008368",
         name: "Sasuke Uchiha",
         username: "sasuke_",
         date: "10 hari",
@@ -612,8 +641,9 @@ The protagonist, Monkey D. Luffy, and his crew, the Straw Hat Pirates, embark on
       },
       {
         id: 100,
-        userId: 7,
-        profile: assets.narutoProfile,
+        userId: "tcbS6f43N9lctj3d8wta",
+        profile:
+          "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FnarutoProfile.jpg?alt=media&token=3539f164-9752-4bea-aca9-7e2d6dda8c97",
         name: "Naruto Uzumaki",
         username: "uzumakinaruto_",
         date: "16 hari",
@@ -633,8 +663,9 @@ Teori Newton menghasilkan pemahaman baru tentang gerak, gravitasi, dan fenomena 
       },
       {
         id: 111,
-        userId: 8,
-        profile: assets.painProfile,
+        userId: "7j6S4FDCxuV3a69xJpZp",
+        profile:
+          "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FpainProfile.jpg?alt=media&token=a407b767-12d9-44eb-980f-da90e0f3ae85",
         name: "Pain",
         username: "pain._",
         date: "16 hari",
@@ -645,8 +676,9 @@ Teori Newton menghasilkan pemahaman baru tentang gerak, gravitasi, dan fenomena 
       },
       {
         id: 112,
-        userId: 9,
-        profile: assets.itachiProfile,
+        userId: "m1tj99Qed8iShRntjYDq",
+        profile:
+          "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FitachiProfile.jpg?alt=media&token=19cb8f61-216c-4480-8915-2d52b5c0128b",
         name: "Itachi Uchiha",
         username: "itachi297._",
         date: "16 hari",
@@ -657,8 +689,9 @@ Teori Newton menghasilkan pemahaman baru tentang gerak, gravitasi, dan fenomena 
       },
       {
         id: 113,
-        userId: 8,
-        profile: assets.painProfile,
+        userId: "7j6S4FDCxuV3a69xJpZp",
+        profile:
+          "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FpainProfile.jpg?alt=media&token=a407b767-12d9-44eb-980f-da90e0f3ae85",
         name: "Pain",
         username: "pain._",
         date: "16 hari",
@@ -669,8 +702,9 @@ Teori Newton menghasilkan pemahaman baru tentang gerak, gravitasi, dan fenomena 
       },
       {
         id: 114,
-        userId: 7,
-        profile: assets.narutoProfile,
+        userId: "tcbS6f43N9lctj3d8wta",
+        profile:
+          "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FnarutoProfile.jpg?alt=media&token=3539f164-9752-4bea-aca9-7e2d6dda8c97",
         name: "Naruto Uzumaki",
         username: "uzumakinaruto_",
         date: "16 hari",
@@ -688,8 +722,10 @@ export const COMMENTS = [
     id: 1,
     userId: "la7ejHn4LnTE6ldJ7jQu",
     tweetId: undefined,
+    username: "billieeilish",
     name: "BILLIE EILISH",
-    profile: assets.billieProfile,
+    profile:
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FbillieProfile.jpg?alt=media&token=c88489d7-4cc1-43c7-b2de-b06d9bd6bb6a",
     date: "29 detik",
     comment: "🔥🔥❤️",
     numberOfLikes: 4,
@@ -698,8 +734,10 @@ export const COMMENTS = [
     id: 2,
     userId: "m241t434TUwsopXdftrO",
     tweetId: undefined,
+    username: "bebytsabina",
     name: "Cut Beby Tsabina",
-    profile: assets.bebyProfile,
+    profile:
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FbebyProfile.jpg?alt=media&token=7f880749-1d1e-4507-814e-f176b037baf7",
     date: "baru saja",
     comment: "❤️❤️❤️",
     numberOfLikes: 2,
@@ -708,8 +746,10 @@ export const COMMENTS = [
     id: 3,
     userId: "Fm2YBBlp4X8DXVhaI7yp",
     tweetId: undefined,
+    username: "lalalalisa_m",
     name: "Lisa",
-    profile: assets.lisaProfile,
+    profile:
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FlisaProfile.jpg?alt=media&token=e704b377-7ade-4f06-9b01-3faa6887142b",
     date: "baru saja",
     comment: "tester",
     numberOfLikes: 6,
@@ -818,8 +858,10 @@ export const TRENDINGLISTS = [
 export const MESSAGE = [
   {
     id: 1,
-    userId: 15,
-    profile: assets.bebyProfile,
+    userId: "m241t434TUwsopXdftrO",
+    profile:
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FbebyProfile.jpg?alt=media&token=7f880749-1d1e-4507-814e-f176b037baf7",
+    username: "bebytsabina",
     name: "Cut Beby Tsabina",
     msgText: "iyaiyaaa",
     date: "20 menit",
@@ -827,8 +869,10 @@ export const MESSAGE = [
   },
   {
     id: 2,
-    userId: 16,
-    profile: assets.billieProfile,
+    userId: "la7ejHn4LnTE6ldJ7jQu",
+    profile:
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FbillieProfile.jpg?alt=media&token=c88489d7-4cc1-43c7-b2de-b06d9bd6bb6a",
+    username: "billieeilish",
     name: "BILLIE EILISH",
     msgText: "Menyebut Anda dalam cerita mereka",
     date: "5 jam",
@@ -836,8 +880,10 @@ export const MESSAGE = [
   },
   {
     id: 3,
-    userId: 11,
-    profile: assets.sasukeProfile,
+    userId: "WvwMHRD9rMj01RLECpXH",
+    profile:
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FsasukeProfile.jpg?alt=media&token=c55b8ad0-d282-4029-83b0-956edd008368",
+    username: "sasuke_",
     name: "Sasuke Uchiha",
     msgText: "Dilihat",
     date: "8 jam",
@@ -845,8 +891,10 @@ export const MESSAGE = [
   },
   {
     id: 4,
-    userId: 13,
-    profile: assets.lisaProfile,
+    userId: "Fm2YBBlp4X8DXVhaI7yp",
+    profile:
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FlisaProfile.jpg?alt=media&token=e704b377-7ade-4f06-9b01-3faa6887142b",
+    username: "lalalalisa_m",
     name: "Lisa",
     msgText: "okeoke",
     date: "1 hari",
@@ -854,8 +902,10 @@ export const MESSAGE = [
   },
   {
     id: 5,
-    userId: 1,
-    profile: assets.luffyProfile,
+    userId: "Rm0CNJNGzr5TWgP8p0Uz",
+    profile:
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FluffyProfile.jpg?alt=media&token=cc999bf3-f569-4e8b-ac7f-04543bfa3a70",
+    username: "raja.bajak.laut16_",
     name: "Monkey D Luffy",
     msgText: "Mao ga jadi kru bajak laut gue?",
     date: "1 hari",
@@ -863,8 +913,10 @@ export const MESSAGE = [
   },
   {
     id: 6,
-    userId: 7,
-    profile: assets.narutoProfile,
+    userId: "tcbS6f43N9lctj3d8wta",
+    profile:
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FnarutoProfile.jpg?alt=media&token=3539f164-9752-4bea-aca9-7e2d6dda8c97",
+    username: "uzumakinaruto_",
     name: "Naruto Uzumaki",
     msgText: "Dikirim",
     date: "2 hari",
@@ -872,8 +924,10 @@ export const MESSAGE = [
   },
   {
     id: 7,
-    userId: 14,
-    profile: assets.liamProfile,
+    userId: "BD5xEJmUFNzDFRmFRQEt",
+    profile:
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FliamProfile.jpg?alt=media&token=df6623b1-58b1-420e-8773-ed152d1bded8",
+    username: "liamgallagher",
     name: "Liam Gallagher",
     msgText: "Kiw",
     date: "2 hari",
@@ -881,8 +935,10 @@ export const MESSAGE = [
   },
   {
     id: 8,
-    userId: 12,
-    profile: assets.jokowiProfile,
+    userId: "qE7FIcpKVVlbT0IPuRNy",
+    profile:
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FjokowiProfile.jpeg?alt=media&token=12c8f7b5-d6e9-4040-b7cf-f28b60ca45ae",
+    username: "jokowi",
     name: "joko Widodo",
     msgText: "Dikirim",
     date: "4 hari",
@@ -890,8 +946,10 @@ export const MESSAGE = [
   },
   {
     id: 9,
-    userId: 3,
-    profile: assets.sanjiProfile,
+    userId: "8YPJj7UtzPYStYc2lYrG",
+    profile:
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FsanjiProfile.jpg?alt=media&token=b39924fd-03fd-450c-a58b-28478c7bb96c",
+    username: "vnskmj_sanji",
     name: "Vinsmoke Sanji",
     msgText: "Gung",
     date: "7 hari",
@@ -899,8 +957,10 @@ export const MESSAGE = [
   },
   {
     id: 10,
-    userId: 2,
-    profile: assets.zoroProfile,
+    userId: "3350TMI3mpSFCSTYEGVP",
+    profile:
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FzoroProfile.jpg?alt=media&token=88fe7f5b-0538-4af9-b332-9c3c35813b43",
+    username: "rrnoazoro",
     name: "Roronoa Zoro",
     msgText: "Dilihat",
     date: "12 minggu",
@@ -913,26 +973,34 @@ export const NOTIFICATION = [
     title: "Minggu Ini",
     data: [
       {
-        id: 12,
-        profile: assets.jokowiProfile,
+        id: 1,
+        userId: "qE7FIcpKVVlbT0IPuRNy",
+        profile:
+          "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FjokowiProfile.jpeg?alt=media&token=12c8f7b5-d6e9-4040-b7cf-f28b60ca45ae",
         username: "jokowi",
         time: "1d",
       },
       {
-        id: 13,
-        profile: assets.lisaProfile,
+        id: 2,
+        userId: "Fm2YBBlp4X8DXVhaI7yp",
+        profile:
+          "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FlisaProfile.jpg?alt=media&token=e704b377-7ade-4f06-9b01-3faa6887142b",
         username: "lalalalisa_m",
         time: "1d",
       },
       {
-        id: 15,
-        profile: assets.bebyProfile,
+        id: 3,
+        userId: "m241t434TUwsopXdftrO",
+        profile:
+          "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FbebyProfile.jpg?alt=media&token=7f880749-1d1e-4507-814e-f176b037baf7",
         username: "bebytsabina",
         time: "2d",
       },
       {
-        id: 16,
-        profile: assets.billieProfile,
+        id: 4,
+        userId: "la7ejHn4LnTE6ldJ7jQu",
+        profile:
+          "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FbillieProfile.jpg?alt=media&token=c88489d7-4cc1-43c7-b2de-b06d9bd6bb6a",
         username: "billieeilish",
         time: "5d",
       },
@@ -942,8 +1010,10 @@ export const NOTIFICATION = [
     title: "Bulan Lalu",
     data: [
       {
-        id: 14,
-        profile: assets.liamProfile,
+        id: 5,
+        userId: "BD5xEJmUFNzDFRmFRQEt",
+        profile:
+          "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FliamProfile.jpg?alt=media&token=df6623b1-58b1-420e-8773-ed152d1bded8",
         username: "liamgallagher",
         time: "2w",
       },
