@@ -3,6 +3,7 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
 import { Avatar, TweetInteraction } from "../common";
+import { formatRelativeTime } from "../../utils";
 
 import { styled } from "nativewind";
 const StyledPressable = styled(Pressable);
@@ -18,7 +19,7 @@ const TweetCard = React.memo(({ item }) => {
     navigation.navigate("DetailsTweetScreen", { param: item });
   const goToVisitProfile = () =>
     navigation.navigate("VisitProfileScreen", {
-      param: { username: item.username },
+      param: item.username,
     });
   const openModalSendComment = () =>
     navigation.navigate("SendComment", { param: item });
@@ -30,7 +31,7 @@ const TweetCard = React.memo(({ item }) => {
     >
       {/* profile */}
       <View>
-        <Avatar imgUrl={{uri: item.profile}} size={50} onPress={goToVisitProfile} />
+        <Avatar imgUrl={item.profile} size={50} onPress={goToVisitProfile} />
       </View>
       {/* wrapper */}
       <View className="flex-1">
@@ -42,7 +43,9 @@ const TweetCard = React.memo(({ item }) => {
               @{item.username}
             </Text>
           </View>
-          <Text className="text-[12px] text-gray-400">{item.date}</Text>
+          <Text className="text-[12px] text-gray-400">
+            {formatRelativeTime(item.date)}
+          </Text>
         </View>
         {/* tweets, Note: this is a little bit tricky code */}
         <Text className="mb-2">

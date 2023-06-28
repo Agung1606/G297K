@@ -39,7 +39,7 @@ const SearchBar = ({ goBack, query, setQuery }) => (
 const SearchAccount = ({ navigation }) => {
   const goBack = () => navigation.goBack();
   const goToProfile = (item) => {
-    navigation.navigate("VisitProfileScreen", { param: item.id });
+    navigation.navigate("VisitProfileScreen", { param: item.username });
     handleHistory(item);
   };
 

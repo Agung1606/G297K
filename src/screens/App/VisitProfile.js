@@ -43,7 +43,7 @@ const HeaderVisitProfile = ({ username }) => {
 };
 
 const VisitProfile = ({ route }) => {
-  const { username } = route?.params?.param;
+  const username = route?.params?.param;
   const [data, setData] = useState({});
   const [tweets, setTweets] = useState([]);
 
@@ -84,7 +84,7 @@ const VisitProfile = ({ route }) => {
         ListHeaderComponent={() => (
           <View className="my-2 p-2 border-b border-gray-600">
             <ProfileInfo
-              profileUrl={{ uri: data?.profile }}
+              profileUrl={data?.profile}
               name={data?.name}
               bio={data?.bio}
               numberOfTweets={tweets.length}
@@ -120,7 +120,7 @@ const VisitProfile = ({ route }) => {
       <SeeProfileModal
         isModalOpen={isModalOpen}
         closeModal={closeDetailProfile}
-        profileUrl={{ uri: data?.profile }}
+        profileUrl={data?.profile}
       />
     </SafeAreaView>
   );

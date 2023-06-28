@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   FlatList,
   RefreshControl,
+  ActivityIndicator
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Fontisto } from "@expo/vector-icons";
@@ -59,7 +60,7 @@ const Home = ({ navigation }) => {
   if (dataTweets.length === 0) {
     return (
       <View className="flex-1 justify-center items-center">
-        <Text className="font-InterMedium text-lg">Tunggu....</Text>
+        <ActivityIndicator size="large" color="#1D7ED8" />
       </View>
     );
   }
