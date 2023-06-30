@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -67,7 +67,7 @@ const SearchAccount = ({ navigation }) => {
     }
   };
 
-  useMemo(() => {
+  useEffect(() => {
     if (query) {
       const filtered = PROFILE.filter((user) =>
         user.username.toLowerCase().includes(query.toLowerCase())
