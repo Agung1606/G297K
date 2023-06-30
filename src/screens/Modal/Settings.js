@@ -12,6 +12,9 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { setLogout } from "../../redux/globalSlice";
 
+import { modalPopupConfig } from "../../hooks";
+import { ConfirmModal } from "../../components";
+
 import { styled } from "nativewind";
 const StyledPressable = styled(Pressable);
 
@@ -21,6 +24,8 @@ const Settings = ({ navigation }) => {
   const dispatch = useDispatch();
   const loggedInUserData = useSelector((state) => state.global.user);
   const goToPrevScreen = () => navigation.goBack();
+
+  const { isModalOpen, openModal, closeModal } = modalPopupConfig();
 
   const SETTINGOPTIONS = [
     {
@@ -120,7 +125,7 @@ const Settings = ({ navigation }) => {
           id: 1,
           text: `Keluar ${loggedInUserData.username}`,
           isLogout: true,
-          onPress: () => dispatch(setLogout()),
+          onPress: openModal,
         },
       ],
     },
@@ -159,6 +164,15 @@ const Settings = ({ navigation }) => {
           </View>
         ))}
       </ScrollView>
+      {/* confirm modal to make sure you really wanna logout*/}
+      <ConfirmModal
+        isModalOpen={isModalOpen}
+        onCancel={closeModal}
+        onOk={() => dispatch(setLogout())}
+        title={"Keluar dari akun Anda?"}
+        textBtnOk={"Keluar"}
+        textBtnCancel={"Batal"}
+      />
     </SafeAreaView>
   );
 };
