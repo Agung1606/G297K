@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   FlatList,
   RefreshControl,
-  ActivityIndicator
+  ActivityIndicator,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Fontisto } from "@expo/vector-icons";
@@ -41,12 +41,15 @@ const Home = ({ navigation }) => {
   const onRefresh = useCallback(() => {
     setRefreshing(true);
     setTimeout(() => {
-      setRefreshing(false);
-    }, 2000);
+      setRefreshing(false)
+    }, 1000);   
   }, []);
 
   useMemo(() => {
-    let q = query(collection(FIREBASE_FIRESTORE, "tweets"), orderBy("date", "desc"));
+    let q = query(
+      collection(FIREBASE_FIRESTORE, "tweets"),
+      orderBy("date", "desc")
+    );
     onSnapshot(q, (response) => {
       setDataTweets(
         response.docs.map((docs) => {
@@ -56,35 +59,32 @@ const Home = ({ navigation }) => {
     });
   }, []);
 
-  // loading....
-  if (dataTweets.length === 0) {
-    return (
-      <View className="flex-1 justify-center items-center">
-        <ActivityIndicator size="large" color="#1D7ED8" />
-      </View>
-    );
-  }
-
   return (
     <SafeAreaView className="flex-1">
       <HeaderHome title={"G297K"} goToMessage={goToMessage} />
-      <FlatList
-        ref={reference}
-        onScroll={handleScroll}
-        data={dataTweets}
-        renderItem={({ item }) => <TweetCard item={item} />}
-        keyExtractor={(item) => item.id}
-        initialNumToRender={10}
-        showsVerticalScrollIndicator={false}
-        ListFooterComponent={() => <View className="pb-20" />}
-        refreshControl={
-          <RefreshControl
-            refreshing={refreshing}
-            onRefresh={onRefresh}
-            colors={["#1D7ED8"]}
-          />
-        }
-      />
+      {dataTweets.length === 0 ? (
+        <View className="flex-1 justify-center items-center">
+          <ActivityIndicator size="large" color="#1D7ED8" />
+        </View>
+      ) : (
+        <FlatList
+          ref={reference}
+          onScroll={handleScroll}
+          data={dataTweets}
+          renderItem={({ item }) => <TweetCard item={item} />}
+          keyExtractor={(item) => item.id}
+          initialNumToRender={10}
+          showsVerticalScrollIndicator={false}
+          ListFooterComponent={() => <View className="pb-20" />}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={onRefresh}
+              colors={["#1D7ED8"]}
+            />
+          }
+        />
+      )}
       {isScrolled && (
         <View className="absolute bottom-6 right-2">
           <ButtonScrollToTop onPress={scrollToTop} />

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useMemo, useState } from "react";
 import {
   View,
   Text,
@@ -9,6 +9,9 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { AntDesign } from "@expo/vector-icons";
+
+import { useSelector, useDispatch } from "react-redux";
+import { setUserSearchHistory } from "../../redux/globalSlice";
 
 import { styled } from "nativewind";
 const StyledPressable = styled(Pressable);
@@ -37,6 +40,8 @@ const SearchBar = ({ goBack, query, setQuery }) => (
 );
 
 const SearchAccount = ({ navigation }) => {
+  const dispatch = useDispatch();
+
   const goBack = () => navigation.goBack();
   const goToProfile = (item) => {
     navigation.navigate("VisitProfileScreen", {
@@ -49,16 +54,20 @@ const SearchAccount = ({ navigation }) => {
 
   const [query, setQuery] = useState("");
   const [users, setUsers] = useState([]);
-  const [history, setHistory] = useState([]);
+  const userSearchHistory = useSelector(
+    (state) => state.global.userSearchHistory
+  );
 
   const handleHistory = (item) => {
-    const isUserAlreadyExist = history.some((user) => user.id === item.id);
+    const isUserAlreadyExist = userSearchHistory.some(
+      (user) => user?.id === item.id
+    );
     if (!isUserAlreadyExist) {
-      setHistory([item, ...history]);
+      dispatch(setUserSearchHistory([item, ...userSearchHistory]));
     }
   };
 
-  useEffect(() => {
+  useMemo(() => {
     if (query) {
       const filtered = PROFILE.filter((user) =>
         user.username.toLowerCase().includes(query.toLowerCase())
@@ -94,46 +103,49 @@ const SearchAccount = ({ navigation }) => {
         />
       ) : (
         <View className="m-2">
-          {/* for remove history */}
-          {history.length > 0 && (
-            <View className={`mb-2 flex-row justify-between items-center`}>
-              <Text className="font-InterSemiBold text-lg text-grayCustom">
-                Baru saja
-              </Text>
-              <TouchableOpacity onPress={openModal}>
-                <AntDesign name="closecircle" size={20} />
-              </TouchableOpacity>
-            </View>
-          )}
-          <FlatList
-            data={history}
-            renderItem={({ item }) => (
-              <StyledPressable
-                onPress={() => goToProfile(item)}
-                key={item.id}
-                className="mr-6 p-2 items-center active:bg-gray-200 rounded-lg"
-              >
-                <Avatar
-                  imgUrl={item.profile}
-                  size={40}
-                  onPress={() => goToProfile(item)}
-                />
-                <View className="items-center">
-                  <Text className="font-InterMedium">{item.name}</Text>
-                  <Text className="font-InterRegular text-grayCustom">
-                    @{item.username}
+          {userSearchHistory[0] !== null && (
+            <>
+              {userSearchHistory.length > 0 && (
+                <View className={`mb-2 flex-row justify-between items-center`}>
+                  <Text className="font-InterSemiBold text-lg text-grayCustom">
+                    Baru saja
                   </Text>
+                  <TouchableOpacity onPress={openModal}>
+                    <AntDesign name="closecircle" size={20} />
+                  </TouchableOpacity>
                 </View>
-              </StyledPressable>
-            )}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            keyExtractor={(item) => item.id}
-          />
-          {history.length === 0 && (
-            <Text className="font-InterSemiBold text-center text-grayCustom">
-              Coba telusuri orang
-            </Text>
+              )}
+              <FlatList
+                data={userSearchHistory}
+                renderItem={({ item }) => (
+                  <StyledPressable
+                    onPress={() => goToProfile(item)}
+                    key={item.id}
+                    className="mr-6 p-2 items-center active:bg-gray-200 rounded-lg"
+                  >
+                    <Avatar
+                      imgUrl={item.profile}
+                      size={40}
+                      onPress={() => goToProfile(item)}
+                    />
+                    <View className="items-center">
+                      <Text className="font-InterMedium">{item.name}</Text>
+                      <Text className="font-InterRegular text-grayCustom">
+                        @{item.username}
+                      </Text>
+                    </View>
+                  </StyledPressable>
+                )}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                keyExtractor={(item) => item.id}
+              />
+              {userSearchHistory.length === 0 && (
+                <Text className="font-InterSemiBold text-center text-grayCustom">
+                  Coba telusuri orang
+                </Text>
+              )}
+            </>
           )}
         </View>
       )}
@@ -142,7 +154,7 @@ const SearchAccount = ({ navigation }) => {
         isModalOpen={isModalOpen}
         onCancel={closeModal}
         onOk={() => {
-          setHistory([]);
+          dispatch(setUserSearchHistory([]));
           closeModal();
         }}
         title={"Hapus semua pencarian terbaru?"}

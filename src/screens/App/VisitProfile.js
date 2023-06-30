@@ -4,7 +4,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
-import { TWEETS } from "../../constant";
 import { modalPopupConfig } from "../../hooks";
 import {
   ButtonGray,
@@ -88,17 +87,17 @@ const VisitProfile = ({ route }) => {
 
   return (
     <SafeAreaView className="flex-1">
-      <HeaderVisitProfile username={data?.username} />
+      <HeaderVisitProfile username={data.username} />
       <FlatList
         ListHeaderComponent={() => (
           <View className="my-2 p-2 border-b border-gray-600">
             <ProfileInfo
-              profileUrl={data?.profile}
-              name={data?.name}
-              bio={data?.bio}
+              profileUrl={data.profile}
+              name={data.name}
+              bio={data.bio}
               numberOfTweets={tweets.length}
-              numberOfFollowers={data?.followers}
-              numberOfFollowing={data?.following}
+              numberOfFollowers={data.followers}
+              numberOfFollowing={data.following}
               openDetailProfile={openDetailProfile}
             />
             {/* button */}
@@ -129,7 +128,7 @@ const VisitProfile = ({ route }) => {
       <SeeProfileModal
         isModalOpen={isModalOpen}
         closeModal={closeDetailProfile}
-        profileUrl={data?.profile}
+        profileUrl={data.profile}
       />
     </SafeAreaView>
   );

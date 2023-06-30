@@ -10,13 +10,9 @@ module.exports = {
         InterRegular: ["InterRegular", "sans-serif"],
         InterLight: ["InterLight", "sans-serif"],
         LoraBold: ["LoraBold", "sans-serif"],
-        LoraSemiBold: ["LoraSemiBold", "sans-serif"],
-        LoraMedium: ["LoraMedium", "sans-serif"],
-        LoraRegular: ["LoraRegular", "sans-serif"],
       },
       colors: {
         blue: "#1D7ED8",
-        darkBlue: "#00008b",
         grayCustom: "#7d7d7d",
       },
     },

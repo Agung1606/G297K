@@ -27,11 +27,7 @@ export default function App() {
     InterRegular: require("./src/assets/fonts/Inter-Regular.ttf"),
     InterLight: require("./src/assets/fonts/Inter-Light.ttf"),
     LoraBold: require("./src/assets/fonts/Lora-Bold.ttf"),
-    LoraSemiBold: require("./src/assets/fonts/Lora-SemiBold.ttf"),
-    LoraMedium: require("./src/assets/fonts/Lora-Medium.ttf"),
-    LoraRegular: require("./src/assets/fonts/Lora-Regular.ttf"),
   });
-
   if (!loaded) return null; // wait until the fonts loaded
   return (
     <Provider store={store}>

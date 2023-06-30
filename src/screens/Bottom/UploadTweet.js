@@ -32,7 +32,7 @@ const UploadTweet = ({ navigation }) => {
       {/* main */}
       <View className="flex-row space-x-3">
         <View className="space-y-2">
-          <Avatar imgUrl={{ uri: loggedInUserData.profile }} size={55} />
+          <Avatar imgUrl={loggedInUserData.profile} size={55} />
           <Text className="text-center text-[10px] font-InterLight text-grayCustom">
             {tweetInput.length}/2000
           </Text>

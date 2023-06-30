@@ -15,100 +15,19 @@ import { modalPopupConfig } from "../../hooks";
 import {
   ProfileInfo,
   ButtonGray,
+  ButtonBurgerProfile,
   TweetCard,
   NoTweets,
-  BadgeNotif,
   SeeProfileModal,
 } from "../../components";
-import { bottomModalConfig } from "../../hooks";
 import { TWEETS } from "../../constant";
 
 const HeaderProfile = ({ username, goToSettings }) => {
-  const {
-    bottomSheetModalRef,
-    snapPoints,
-    openModal,
-    closeModal,
-    renderBackdrop,
-  } = bottomModalConfig(["35%"]);
   return (
-    <>
-      <View className={`flex-row justify-between items-center py-2 px-4`}>
-        <Text className="font-InterBold text-xl tracking-wide">{username}</Text>
-        <TouchableOpacity onPress={openModal}>
-          <SimpleLineIcons name="menu" size={28} />
-          <BadgeNotif num={1} />
-        </TouchableOpacity>
-      </View>
-      {/* bottom modal */}
-      <BottomSheetModal
-        ref={bottomSheetModalRef}
-        index={0}
-        snapPoints={snapPoints}
-        backdropComponent={renderBackdrop}
-      >
-        <BottomMenu goToSettings={goToSettings} closeModal={closeModal} />
-      </BottomSheetModal>
-    </>
-  );
-};
-
-const BottomMenu = ({ goToSettings, closeModal }) => {
-  const options = [
-    {
-      title: "Alat Profesional",
-      data: [
-        {
-          text: "G297K untuk Professional",
-          icon: <SimpleLineIcons name="rocket" size={22} />,
-          onPress: () => {},
-        },
-        {
-          text: "Monetisasi",
-          icon: <MaterialIcons name="attach-money" size={26} />,
-          onPress: () => {},
-        },
-      ],
-    },
-    {
-      title: "Pengaturan & Dukungan",
-      data: [
-        {
-          text: "Pengaturan dan Privasi",
-          icon: <SimpleLineIcons name="settings" size={22} />,
-          onPress: () => {
-            goToSettings();
-            closeModal();
-          },
-        },
-        {
-          text: "Pusat Bantuan",
-          icon: <MaterialIcons name="help-outline" size={26} />,
-          onPress: () => {},
-        },
-      ],
-    },
-  ];
-
-  return (
-    <SectionList
-      sections={options}
-      renderSectionHeader={({ section }) => (
-        <Text className="px-6 py-2 font-InterMedium text-xl">
-          {section.title}
-        </Text>
-      )}
-      renderItem={({ item }) => (
-        <TouchableOpacity
-          onPress={item.onPress}
-          className="flex-row items-center px-8 pb-2 space-x-2"
-        >
-          {item.icon}
-          <Text className="font-InterRegular text-lg">{item.text}</Text>
-        </TouchableOpacity>
-      )}
-      keyExtractor={(item) => `basicListEntry-${item.text}`}
-    />
+    <View className={`flex-row justify-between items-center py-2 px-4`}>
+      <Text className="font-InterBold text-xl tracking-wide">{username}</Text>
+      <ButtonBurgerProfile goToSettings={goToSettings} />
+    </View>
   );
 };
 
