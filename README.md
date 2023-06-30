@@ -1,4 +1,4 @@
-# G297K
+# G297K - (Social Media App)
 
 * Introduction
   - I created this social media for the purpose of learning and exploring technology
