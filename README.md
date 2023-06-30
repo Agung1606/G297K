@@ -17,4 +17,9 @@
   - Posts are fetched from Firestore and displayed in a scrollable list.
   - Users can like, comment on, and share posts.
 
+* Profile
+  - Users can view their profile picture, name, username, bio, follower count, following count, and other relavant information.
+  - Users can edit their name, username, profile picture.
+  - Users can follow or unfollow other users directly from their profile page.
+
 ![icon](https://github.com/Agung1606/G297K/assets/107747646/6bf41bca-be61-4acd-88f7-caee5c3fff60)
