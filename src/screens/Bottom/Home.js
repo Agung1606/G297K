@@ -28,10 +28,9 @@ const HeaderHome = ({ title, goToMessage }) => (
 );
 
 const Home = ({ navigation }) => {
-  const [dataTweets, setDataTweets] = useState([]);
-
   const goToMessage = () => navigation.navigate("MessageScreen");
-
+  
+  const [dataTweets, setDataTweets] = useState([]);
   const { isScrolled, reference, handleScroll, scrollToTop } =
     scrollToTopConfig({ kind: "FlatList" });
 

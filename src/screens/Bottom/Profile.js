@@ -3,11 +3,12 @@ import { useSelector } from "react-redux";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React, { useMemo, useState } from "react";
 
-import { modalPopupConfig } from "../../hooks";
+import { modalPopupConfig, scrollToTopConfig } from "../../hooks";
 import {
   ProfileInfo,
   ButtonGray,
   ButtonBurgerProfile,
+  ButtonScrollToTop,
   TweetCard,
   NoTweets,
   SeeProfileModal,
@@ -29,6 +30,8 @@ const Profile = ({ navigation }) => {
   const goToEditProfile = () => navigation.navigate("EditProfileScreen");
   const goToSettings = () => navigation.navigate("SettingsScreen");
 
+  const { isScrolled, reference, handleScroll, scrollToTop } =
+    scrollToTopConfig({ kind: "FlatList" });
   const {
     isModalOpen,
     openModal: openDetailProfile,
@@ -59,6 +62,12 @@ const Profile = ({ navigation }) => {
         username={loggedInUserData.username}
       />
       <FlatList
+        ref={reference}
+        onScroll={handleScroll}
+        showsVerticalScrollIndicator={false}
+        data={tweets}
+        renderItem={({ item }) => <TweetCard item={item} />}
+        keyExtractor={(item) => item.id}
         ListHeaderComponent={() => (
           <View className="my-2 p-2 border-b border-gray-600">
             <ProfileInfo
@@ -83,9 +92,7 @@ const Profile = ({ navigation }) => {
             </View>
           </View>
         )}
-        data={tweets}
-        renderItem={({ item }) => <TweetCard item={item} />}
-        keyExtractor={(item) => item.id}
+        ListFooterComponent={() => <View className="pb-20" />}
         ListEmptyComponent={
           <NoTweets text="Ketika Anda membuat tweet, itu akan muncul di sini" />
         }
@@ -96,6 +103,11 @@ const Profile = ({ navigation }) => {
         closeModal={closeDetailProfile}
         profileUrl={loggedInUserData.profile}
       />
+      {isScrolled && (
+        <View className="absolute bottom-6 right-2">
+          <ButtonScrollToTop onPress={scrollToTop} />
+        </View>
+      )}
     </SafeAreaView>
   );
 };

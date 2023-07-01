@@ -23,7 +23,7 @@ const TweetInteraction = ({
     {
       name: "comment",
       icon: <FontAwesome name="comment-o" size={22} color={"#7d7d7d"} />,
-      text: numberOfComments,
+      num: numberOfComments,
       onPress: openModalSendComment,
     },
     {
@@ -33,7 +33,7 @@ const TweetInteraction = ({
       ) : (
         <FontAwesome name="heart-o" size={22} color="#7d7d7d" />
       ),
-      text: likesCount,
+      num: likesCount,
       onPress: handleLike,
     },
     {
@@ -49,13 +49,10 @@ const TweetInteraction = ({
       {options.map((item) => (
         <TouchableOpacity
           key={item.name}
-          className="flex-1 py-1"
-          onPress={item.onPress}
+          className="flex-1 flex-row items-center space-x-1 py-1"
         >
-          <View className="flex-row items-center space-x-1">
-            {item.icon}
-            <Text className="text-grayCustom">{item.text}</Text>
-          </View>
+          {item.icon}
+          <Text className="font-InterRegular text-grayCustom">{item.num}</Text>
         </TouchableOpacity>
       ))}
     </View>

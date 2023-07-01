@@ -17,33 +17,37 @@ const CommentInteraction = ({ numberOfLikes }) => {
 
   const options = [
     {
+      name: "comment",
+      icon: <FontAwesome name="comment-o" size={22} color={"#7d7d7d"} />,
+      onPress: () => {},
+    },
+    {
       name: "like",
       num: likesCount,
       icon: isLiked ? (
-        <FontAwesome name="heart" size={18} color="red" />
+        <FontAwesome name="heart" size={22} color="red" />
       ) : (
-        <FontAwesome name="heart-o" size={18} color="#7d7d7d" />
+        <FontAwesome name="heart-o" size={22} color="#7d7d7d" />
       ),
       onPress: handleLike,
-    },
-    {
-      name: "comment",
-      icon: <FontAwesome name="comment-o" size={18} color={"#7d7d7d"} />,
-      onPress: () => {},
     },
   ];
 
   return (
     <View className="m-1 flex-row items-center space-x-4">
       {options.map((item) => (
-        <View key={item.name} className="flex-row items-center space-x-2">
-          <TouchableOpacity onPress={item.onPress}>{item.icon}</TouchableOpacity>
+        <TouchableOpacity
+          key={item.name}
+          onPress={item.onPress}
+          className="w-14 flex-row items-center space-x-1"
+        >
+          {item.icon}
           {item.num && (
             <Text className="font-InterRegular text-grayCustom">
               {item.num}
             </Text>
           )}
-        </View>
+        </TouchableOpacity>
       ))}
     </View>
   );
