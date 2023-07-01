@@ -6,7 +6,8 @@ import { TextInput } from "react-native-paper";
 import { useSelector, useDispatch } from "react-redux";
 import { setUpdateUser } from "../../redux/globalSlice";
 
-import { Avatar, Header, ButtonBlue } from "../../components";
+import { Avatar, Header, ButtonBlue, DialogModal } from "../../components";
+import { modalPopupConfig } from "../../hooks";
 
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
 import { doc, collection, updateDoc } from "firebase/firestore";
@@ -17,14 +18,19 @@ const EditProfile = ({ navigation }) => {
   const dispatch = useDispatch();
   const loggedInUserData = useSelector((state) => state.global.user);
 
+  const { isModalOpen, openModal, closeModal } = modalPopupConfig();
+
+  const [errorMsg, setErrorMsg] = useState("");
   const [loading, setLoading] = useState(false);
+
   const [name, setName] = useState(loggedInUserData.name);
   const [username, setUsername] = useState(loggedInUserData.username);
   const [bio, setBio] = useState(loggedInUserData.bio);
 
   const handleEdit = async () => {
     if (name === "" || username === "") {
-      alert("Please provide name or username");
+      setErrorMsg("Nama atau username dibutuhkan 🙏");
+      openModal();
     } else {
       setLoading(true);
       try {
@@ -59,7 +65,7 @@ const EditProfile = ({ navigation }) => {
       {/* text input */}
       <View>
         <TextInput
-          label={"Name"}
+          label={"Nama"}
           value={name}
           onChangeText={(text) => setName(text)}
           className="bg-transparent mb-3"
@@ -92,6 +98,12 @@ const EditProfile = ({ navigation }) => {
           />
         </View>
       </View>
+      {/* simple modal */}
+      <DialogModal
+        isModalOpen={isModalOpen}
+        msg={errorMsg}
+        closeModal={closeModal}
+      />
     </SafeAreaView>
   );
 };
