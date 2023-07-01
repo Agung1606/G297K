@@ -208,7 +208,9 @@ export const ButtonBlue = ({ title, onPress, loading, disabled }) => (
   <StyledPressable
     disabled={disabled}
     onPress={onPress}
-    className={`w-full py-[6px] justify-center items-center rounded-full bg-blue shadow-md shadow-black ${styles.pressableEffect}`}
+    className={`w-full py-[6px] justify-center items-center rounded-full ${
+      disabled ? "bg-blue/50" : "bg-blue"
+    } shadow-md shadow-black ${styles.pressableEffect}`}
   >
     {loading ? (
       <ActivityIndicator size={"large"} color={"#FFF"} />

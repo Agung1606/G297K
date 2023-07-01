@@ -131,6 +131,7 @@ const Login = ({ navigation }) => {
         </View>
         {/* button login */}
         <ButtonBlue
+          disabled={!loginInput.email}
           title={loading ? "Tunggu..." : "Masuk"}
           onPress={handleLogin}
         />

@@ -159,7 +159,7 @@ const SearchAccount = ({ navigation }) => {
         }}
         title={"Hapus semua pencarian terbaru?"}
         subtitle={
-          "Tindakan ini tidak dapat dibatalkan dan Anda akan menghapus semua penelusuran terbaru"
+          "Tindakan ini menghapus semua penelusuran terbaru"
         }
         textBtnCancel={"Batal"}
         textBtnOk={"Hapus"}

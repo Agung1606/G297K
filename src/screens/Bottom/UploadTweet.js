@@ -26,7 +26,7 @@ const UploadTweet = ({ navigation }) => {
           <MaterialIcons name="close" size={35} />
         </TouchableOpacity>
         <View className="w-[110px]">
-          <ButtonBlue title="Tweet" />
+          <ButtonBlue disabled={!tweetInput} title="Tweet" />
         </View>
       </View>
       {/* main */}

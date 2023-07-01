@@ -28,7 +28,11 @@ const SendComment = ({ route, navigation }) => {
           <MaterialIcons name="close" size={35} />
         </TouchableOpacity>
         <View className="w-[110px]">
-          <ButtonBlue title="Kirim" onPress={handleComment} />
+          <ButtonBlue
+            disabled={!commentInput}
+            title="Kirim"
+            onPress={handleComment}
+          />
         </View>
       </View>
       {/* main */}

@@ -1,33 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { MaterialIcons } from "@expo/vector-icons";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text } from "react-native";
 import { TextInput } from "react-native-paper";
 
-import { Avatar } from "../../components";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setUpdateUser } from "../../redux/globalSlice";
 
-const Header = () => (
-  <View className={`flex-row justify-between items-center`}>
-    <View className="flex-row items-center space-x-10">
-      <TouchableOpacity>
-        <MaterialIcons name="close" size={35} />
-      </TouchableOpacity>
-      <Text className="font-InterSemiBold text-xl">Edit profile</Text>
-    </View>
-    <TouchableOpacity>
-      <MaterialIcons name="check" size={35} color={"#1D7ED8"} />
-    </TouchableOpacity>
-  </View>
-);
+import { Avatar, Header, ButtonBlue } from "../../components";
 
-const EditProfile = () => {
+import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
+import { doc, collection, updateDoc } from "firebase/firestore";
+
+const EditProfile = ({ navigation }) => {
+  const goToPrevScreen = () => navigation.goBack();
+
+  const dispatch = useDispatch();
   const loggedInUserData = useSelector((state) => state.global.user);
+
+  const [loading, setLoading] = useState(false);
+  const [name, setName] = useState(loggedInUserData.name);
+  const [username, setUsername] = useState(loggedInUserData.username);
+  const [bio, setBio] = useState(loggedInUserData.bio);
+
+  const handleEdit = async () => {
+    if (name === "" || username === "") {
+      alert("Please provide name or username");
+    } else {
+      setLoading(true);
+      try {
+        let userToEdit = doc(
+          collection(FIREBASE_FIRESTORE, "users"),
+          loggedInUserData.id
+        );
+        await updateDoc(userToEdit, {
+          name,
+          username,
+          bio,
+        });
+        dispatch(setUpdateUser({ name, username, bio }));
+        goToPrevScreen();
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+  };
+
   return (
     <SafeAreaView className="flex-1 p-3">
-      <Header />
+      <Header onPress={goToPrevScreen} text={"Edit Profile"} />
       <View className="items-center my-6">
-        <Avatar imgUrl={{ uri: loggedInUserData.profile }} size={90} />
+        <Avatar imgUrl={loggedInUserData.profile} size={90} />
         <Text className="font-InterMedium text-lg text-grayCustom">
           Edit gambar
         </Text>
@@ -36,23 +60,37 @@ const EditProfile = () => {
       <View>
         <TextInput
           label={"Name"}
-          value={loggedInUserData.name}
+          value={name}
+          onChangeText={(text) => setName(text)}
           className="bg-transparent mb-3"
           underlineColor="#1D7ED8"
         />
         <TextInput
           label={"Username"}
-          value={loggedInUserData.username}
+          value={username}
+          onChangeText={(text) => setUsername(text)}
           className="bg-transparent mb-3"
           underlineColor="#1D7ED8"
         />
         <TextInput
           label={"Bio"}
-          value={loggedInUserData.bio}
+          value={bio}
+          onChangeText={(text) => setBio(text)}
           multiline={true}
           className="bg-transparent mb-3"
           underlineColor="#1D7ED8"
         />
+        <View className="mt-4">
+          <ButtonBlue
+            title={loading ? "Tunggu..." : "Edit"}
+            onPress={handleEdit}
+            disabled={
+              name === loggedInUserData.name &&
+              username === loggedInUserData.username &&
+              bio === loggedInUserData.bio
+            }
+          />
+        </View>
       </View>
     </SafeAreaView>
   );

@@ -50,14 +50,16 @@ const ProfileInfo = ({
         </View>
       </View>
       <Text className="font-InterBold">{name}</Text>
-      <Text className="text-[15px] text-justify">
-        {text}
-        {bio?.length > 100 && !readMore && (
-          <Text onPress={handleReadMore} className="text-gray-600">
-            ...more
-          </Text>
-        )}
-      </Text>
+      {bio && (
+        <Text className="text-[15px] text-justify">
+          {text}
+          {bio?.length > 100 && !readMore && (
+            <Text onPress={handleReadMore} className="text-gray-600">
+              ...more
+            </Text>
+          )}
+        </Text>
+      )}
     </>
   );
 };

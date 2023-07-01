@@ -17,7 +17,6 @@ const ConfirmModal = ({
   return (
     <Modal
       visible={isModalOpen}
-      onDismiss={onCancel}
       contentContainerStyle={{
         backgroundColor: "#d8d8d8",
         marginHorizontal: 50,
