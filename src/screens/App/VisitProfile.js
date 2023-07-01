@@ -68,8 +68,8 @@ const VisitProfile = ({ route }) => {
     );
     onSnapshot(qTweets, (response) => {
       setTweets(
-        response.docs.map((docs) => {
-          return { ...docs.data(), id: docs.id };
+        response.docs.map((doc) => {
+          return { ...doc.data(), id: doc.id };
         })
       );
     });

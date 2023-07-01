@@ -1,15 +1,7 @@
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  FlatList,
-  SectionList,
-} from "react-native";
+import { View, Text, FlatList } from "react-native";
 import { useSelector } from "react-redux";
 import { SafeAreaView } from "react-native-safe-area-context";
-import React, { useEffect, useState } from "react";
-import { BottomSheetModal } from "@gorhom/bottom-sheet";
-import { SimpleLineIcons, MaterialIcons } from "@expo/vector-icons";
+import React, { useMemo, useState } from "react";
 
 import { modalPopupConfig } from "../../hooks";
 import {
@@ -20,7 +12,9 @@ import {
   NoTweets,
   SeeProfileModal,
 } from "../../components";
-import { TWEETS } from "../../constant";
+
+import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
+import { query, collection, where, onSnapshot } from "firebase/firestore";
 
 const HeaderProfile = ({ username, goToSettings }) => {
   return (
@@ -35,19 +29,28 @@ const Profile = ({ navigation }) => {
   const goToEditProfile = () => navigation.navigate("EditProfileScreen");
   const goToSettings = () => navigation.navigate("SettingsScreen");
 
-  const loggedInUserData = useSelector((state) => state.global.user);
-  const [tweets, setTweets] = useState([]);
-
-  useEffect(() => {
-    const filter = TWEETS.filter((item) => item.userId === loggedInUserData.id);
-    setTweets(filter);
-  }, []);
-
   const {
     isModalOpen,
     openModal: openDetailProfile,
     closeModal: closeDetailProfile,
   } = modalPopupConfig();
+
+  const loggedInUserData = useSelector((state) => state.global.user);
+  const [tweets, setTweets] = useState([]);
+
+  useMemo(() => {
+    let q = query(
+      collection(FIREBASE_FIRESTORE, "tweets"),
+      where("userId", "==", loggedInUserData.id)
+    );
+    onSnapshot(q, (response) => {
+      setTweets(
+        response.docs.map((doc) => {
+          return { ...doc.data(), id: doc.id };
+        })
+      );
+    });
+  }, []);
 
   return (
     <SafeAreaView className="flex-1">

@@ -10,7 +10,14 @@ import { Avatar, Header, ButtonBlue, DialogModal } from "../../components";
 import { modalPopupConfig } from "../../hooks";
 
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
-import { doc, collection, updateDoc } from "firebase/firestore";
+import {
+  doc,
+  collection,
+  updateDoc,
+  where,
+  query,
+  getDocs,
+} from "firebase/firestore";
 
 const EditProfile = ({ navigation }) => {
   const goToPrevScreen = () => navigation.goBack();
@@ -43,6 +50,38 @@ const EditProfile = ({ navigation }) => {
           username,
           bio,
         });
+
+        let tweetsUserToUpdate = query(
+          collection(FIREBASE_FIRESTORE, "tweets"),
+          where("userId", "==", loggedInUserData.id)
+        );
+        getDocs(tweetsUserToUpdate)
+          .then((querySnapshot) => {
+            // create an array to store update promises
+            const updatePromises = [];
+
+            // update each document
+            querySnapshot.forEach((doc) => {
+              const docRef = doc.ref;
+              const updateData = {
+                name,
+                username,
+              };
+
+              const updatePromise = updateDoc(docRef, updateData);
+              updatePromises.push(updatePromise);
+            });
+
+            // wait for all update promises to complete
+            return Promise.all(updatePromises);
+          })
+          .then(() => {
+            // console.log("Documents updated successfully.");
+          })
+          .catch((error) => {
+            // console.error("Error updating documents:", error);
+          });
+
         dispatch(setUpdateUser({ name, username, bio }));
         goToPrevScreen();
       } catch (error) {
