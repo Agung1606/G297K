@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useState, useCallback, useMemo, useEffect } from "react";
 import {
   View,
   Text,
@@ -13,7 +13,12 @@ import { scrollToTopConfig } from "../../hooks";
 import { TweetCard, BadgeNotif, ButtonScrollToTop } from "../../components";
 
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
-import { onSnapshot, collection, query, orderBy } from "firebase/firestore";
+import {
+  onSnapshot,
+  collection,
+  query,
+  orderBy,
+} from "firebase/firestore";
 
 const HeaderHome = ({ title, goToMessage }) => (
   <View
@@ -29,7 +34,7 @@ const HeaderHome = ({ title, goToMessage }) => (
 
 const Home = ({ navigation }) => {
   const goToMessage = () => navigation.navigate("MessageScreen");
-  
+
   const [dataTweets, setDataTweets] = useState([]);
   const { isScrolled, reference, handleScroll, scrollToTop } =
     scrollToTopConfig({ kind: "FlatList" });
@@ -50,8 +55,8 @@ const Home = ({ navigation }) => {
     );
     onSnapshot(q, (response) => {
       setDataTweets(
-        response.docs.map((docs) => {
-          return { ...docs.data(), id: docs.id };
+        response.docs.map((doc) => {
+          return { ...doc.data(), id: doc.id };
         })
       );
     });

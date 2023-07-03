@@ -17,6 +17,7 @@ import {
   where,
   query,
   getDocs,
+  onSnapshot,
 } from "firebase/firestore";
 
 const EditProfile = ({ navigation }) => {

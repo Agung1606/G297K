@@ -13,7 +13,12 @@ import { styles } from "../../style/Global";
 
 import { FIREBASE_AUTH, FIREBASE_FIRESTORE } from "../../../firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { collection, onSnapshot, query, where } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 
 const Login = ({ navigation }) => {
   const persistedEmail = useSelector((state) => state.global.user?.email);
@@ -40,27 +45,33 @@ const Login = ({ navigation }) => {
         loginInput.password
       );
       if (response.user) {
-        let q = query(
-          collection(FIREBASE_FIRESTORE, "users"),
-          where("email", "==", loginInput.email)
+        const userQuerySnapShot = await getDocs(
+          query(
+            collection(FIREBASE_FIRESTORE, "users"),
+            where("email", "==", loginInput.email)
+          )
         );
-        onSnapshot(q, (res) => {
+
+        if (!userQuerySnapShot.empty) {
+          const userId = userQuerySnapShot.docs[0].id;
+          const userData = userQuerySnapShot.docs[0].data();
+
           dispatch(
             setLogin({
-              user: res.docs.map((doc) => ({
-                id: doc.id,
-                email: doc.data().email,
-                username: doc.data().username,
-                name: doc.data().name,
-                profile: doc.data().profile,
-                followers: doc.data().followers,
-                following: doc.data().following,
-                bio: doc.data().bio,
-              }))[0],
+              user: {
+                id: userId,
+                email: userData.email,
+                username: userData.username,
+                name: userData.name,
+                profile: userData.profile,
+                followers: userData.followers,
+                following: userData.following,
+                bio: userData.bio,
+              },
               token: response.user.accessToken,
             })
           );
-        });
+        }
       }
     } catch (error) {
       if (error.code === "auth/invalid-email") {
