@@ -1,10 +1,7 @@
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
-import { BottomSheetModal } from "@gorhom/bottom-sheet";
+import { View, Text } from "react-native";
 
-import { bottomModalConfig } from "../../hooks";
-import { Avatar, TweetInteraction } from "../common";
+import { Avatar, TweetInteraction, ButtonSettingTweetCard } from "../common";
 import { formatRelativeTime } from "../../utils";
 
 const TweetDetailCard = ({ item, goToVisitProfile, openModalSendComment }) => {
@@ -25,7 +22,7 @@ const TweetDetailCard = ({ item, goToVisitProfile, openModalSendComment }) => {
             </Text>
           </View>
         </View>
-        <ButtonMoreVert tweetId={item.id} username={item.username} />
+        <ButtonSettingTweetCard userId={item.userId} tweetId={item.id} />
       </View>
       {/* tweets */}
       <Text className="font-InterRegular text-[17px]">{item.tweet}</Text>
@@ -37,62 +34,6 @@ const TweetDetailCard = ({ item, goToVisitProfile, openModalSendComment }) => {
         />
       </View>
     </View>
-  );
-};
-
-const ButtonMoreVert = ({ tweetId, username }) => {
-  const {
-    bottomSheetModalRef,
-    snapPoints,
-    openModal,
-    closeModal,
-    renderBackdrop,
-  } = bottomModalConfig(["15%"]);
-
-  const options = [
-    {
-      icon: <MaterialIcons name="person-add" size={30} color={"#7d7d7d"} />,
-      text: `Ikuti @${username}`,
-      onPress: () => {
-        alert(`Followed ${username}`);
-        closeModal();
-      },
-    },
-    {
-      icon: <MaterialIcons name="report" size={30} color={"#7d7d7d"} />,
-      text: "Laporkan tweet ini",
-      onPress: () => {
-        alert("Report this tweet");
-        closeModal();
-      },
-    },
-  ];
-
-  return (
-    <>
-      <TouchableOpacity onPress={openModal}>
-        <MaterialIcons name="more-vert" size={25} />
-      </TouchableOpacity>
-      <BottomSheetModal
-        ref={bottomSheetModalRef}
-        index={0}
-        snapPoints={snapPoints}
-        backdropComponent={renderBackdrop}
-      >
-        <View className="px-6 space-y-3">
-          {options.map((item) => (
-            <TouchableOpacity
-              key={item.text}
-              className="flex-row items-center space-x-2"
-              onPress={item.onPress}
-            >
-              {item.icon}
-              <Text className="font-InterMedium text-[16px]">{item.text}</Text>
-            </TouchableOpacity>
-          ))}
-        </View>
-      </BottomSheetModal>
-    </>
   );
 };
 

@@ -97,17 +97,17 @@ const Profile = ({ navigation }) => {
           <NoTweets text="Ketika Anda membuat tweet, itu akan muncul di sini" />
         }
       />
+      {isScrolled && (
+        <View className="absolute bottom-6 right-2">
+          <ButtonScrollToTop onPress={scrollToTop} />
+        </View>
+      )}
       {/* when user press the profile this will triggered */}
       <SeeProfileModal
         isModalOpen={isModalOpen}
         closeModal={closeDetailProfile}
         profileUrl={loggedInUserData.profile}
       />
-      {isScrolled && (
-        <View className="absolute bottom-6 right-2">
-          <ButtonScrollToTop onPress={scrollToTop} />
-        </View>
-      )}
     </SafeAreaView>
   );
 };

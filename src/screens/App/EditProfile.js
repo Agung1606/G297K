@@ -40,22 +40,23 @@ const EditProfile = ({ navigation }) => {
       openModal();
     } else {
       setLoading(true);
+
+      const collectionUserRef = collection(FIREBASE_FIRESTORE, "users");
+      const collectionTweetRef = collection(FIREBASE_FIRESTORE, "tweets");
+
+      let queryUser = doc(collectionUserRef, loggedInUserData.id);
+      let queryTweets = query(
+        collectionTweetRef,
+        where("userId", "==", loggedInUserData.id)
+      );
       try {
-        let userToEdit = doc(
-          collection(FIREBASE_FIRESTORE, "users"),
-          loggedInUserData.id
-        );
-        await updateDoc(userToEdit, {
+        await updateDoc(queryUser, {
           name,
           username,
           bio,
         });
 
-        let tweetsUserToUpdate = query(
-          collection(FIREBASE_FIRESTORE, "tweets"),
-          where("userId", "==", loggedInUserData.id)
-        );
-        getDocs(tweetsUserToUpdate).then((querySnapshot) => {
+        getDocs(queryTweets).then((querySnapshot) => {
           // create an array to store update promises
           const updatePromises = [];
 

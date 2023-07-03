@@ -49,6 +49,7 @@ const TweetInteraction = ({
       {options.map((item) => (
         <TouchableOpacity
           key={item.name}
+          onPress={item.onPress}
           className="flex-1 flex-row items-center space-x-1 py-1"
         >
           {item.icon}

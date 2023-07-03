@@ -2,7 +2,7 @@ import { View, Text, Pressable } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
-import { Avatar, TweetInteraction } from "../common";
+import { Avatar, TweetInteraction, ButtonSettingTweetCard } from "../common";
 import { formatRelativeTime } from "../../utils";
 
 import { styled } from "nativewind";
@@ -12,7 +12,6 @@ const StyledPressable = styled(Pressable);
 reducing unnecessary re-renders. It's especially useful when dealing with 
 components that receive props that don't change frequently or are expensive 
 to compute. */
-
 const TweetCard = React.memo(({ item }) => {
   const navigation = useNavigation();
   const goToDetails = () =>
@@ -27,7 +26,7 @@ const TweetCard = React.memo(({ item }) => {
   return (
     <StyledPressable
       onPress={goToDetails}
-      className="flex-row space-x-2 active:bg-gray-600/30 p-2 border-b border-gray-300"
+      className="flex-row space-x-2 active:bg-grayCustom/10 p-2 border-b border-gray-300"
     >
       {/* profile */}
       <View>
@@ -37,11 +36,14 @@ const TweetCard = React.memo(({ item }) => {
       <View className="flex-1">
         {/* username and date */}
         <View className="mb-1">
-          <View className="flex-row items-center space-x-1">
-            <Text className="font-InterBold">{item.name}</Text>
-            <Text className="font-InterRegular text-xs text-grayCustom">
-              @{item.username}
-            </Text>
+          <View className="flex-row justify-between items-center">
+            <View className="flex-row items-center space-x-1">
+              <Text className="font-InterBold">{item.name}</Text>
+              <Text className="font-InterRegular text-xs text-grayCustom">
+                @{item.username}
+              </Text>
+            </View>
+            <ButtonSettingTweetCard userId={item.userId} tweetId={item.id} />
           </View>
           <Text className="text-[12px] text-gray-400">
             {formatRelativeTime(item.date)}
