@@ -18,6 +18,7 @@ import {
   getDocs,
   query,
   where,
+  onSnapshot,
 } from "firebase/firestore";
 
 const Login = ({ navigation }) => {
@@ -45,33 +46,28 @@ const Login = ({ navigation }) => {
         loginInput.password
       );
       if (response.user) {
-        const userQuerySnapShot = await getDocs(
-          query(
-            collection(FIREBASE_FIRESTORE, "users"),
-            where("email", "==", loginInput.email)
-          )
+        const q = query(
+          collection(FIREBASE_FIRESTORE, "users"),
+          where("email", "==", loginInput.email)
         );
 
-        if (!userQuerySnapShot.empty) {
-          const userId = userQuerySnapShot.docs[0].id;
-          const userData = userQuerySnapShot.docs[0].data();
-
+        onSnapshot(q, (res) => {
           dispatch(
             setLogin({
-              user: {
-                id: userId,
-                email: userData.email,
-                username: userData.username,
-                name: userData.name,
-                profile: userData.profile,
-                followers: userData.followers,
-                following: userData.following,
-                bio: userData.bio,
-              },
+              user: res.docs.map((doc) => ({
+                id: doc.id,
+                email: doc.data().email,
+                username: doc.data().username,
+                name: doc.data().name,
+                profile: doc.data().profile,
+                followers: doc.data().followers,
+                following: doc.data().following,
+                bio: doc.data().bio,
+              }))[0],
               token: response.user.accessToken,
             })
           );
-        }
+        });
       }
     } catch (error) {
       if (error.code === "auth/invalid-email") {
@@ -175,3 +171,31 @@ const Login = ({ navigation }) => {
 };
 
 export default Login;
+
+// const userQuerySnapShot = await getDocs(
+//   query(
+//     collection(FIREBASE_FIRESTORE, "users"),
+//     where("email", "==", loginInput.email)
+//   )
+// );
+
+// if (!userQuerySnapShot.empty) {
+//   const userId = userQuerySnapShot.docs[0].id;
+//   const userData = userQuerySnapShot.docs[0].data();
+
+//   dispatch(
+//     setLogin({
+//       user: {
+//         id: userId,
+//         email: userData.email,
+//         username: userData.username,
+//         name: userData.name,
+//         profile: userData.profile,
+//         followers: userData.followers,
+//         following: userData.following,
+//         bio: userData.bio,
+//       },
+//       token: response.user.accessToken,
+//     })
+//   );
+// }
