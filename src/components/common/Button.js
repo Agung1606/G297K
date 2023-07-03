@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Text,
   ActivityIndicator,
@@ -23,6 +23,9 @@ import { bottomModalConfig } from "../../hooks";
 import { styled } from "nativewind";
 const StyledPressable = styled(Pressable);
 
+import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
+import { doc, collection, deleteDoc } from "firebase/firestore";
+
 export const ButtonSettingTweetCard = ({ userId, tweetId }) => {
   const {
     bottomSheetModalRef,
@@ -33,6 +36,16 @@ export const ButtonSettingTweetCard = ({ userId, tweetId }) => {
   } = bottomModalConfig(["10%"]);
   const loggedInUserId = useSelector((state) => state.global.user.id);
 
+  const handleDeleteTweet = async () => {
+    const documentRef = doc(collection(FIREBASE_FIRESTORE, "tweets"), tweetId);
+    try {
+      await deleteDoc(documentRef);
+      console.log("Document successfully deleted!");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const options = [
     {
       icon:
@@ -42,7 +55,10 @@ export const ButtonSettingTweetCard = ({ userId, tweetId }) => {
           <MaterialIcons name="report" size={30} color={"#7d7d7d"} />
         ),
       text: loggedInUserId === userId ? "Hapus" : "Laporkan tweet ini",
-      onPress: () => {},
+      onPress: () => {
+        if (loggedInUserId === userId) handleDeleteTweet();
+        else alert("Report...");
+      },
     },
   ];
 
@@ -83,7 +99,7 @@ export const ButtonUploadType = () => {
     renderBackdrop,
   } = bottomModalConfig(["40%"]);
 
-  const [type, setType] = React.useState("Publik");
+  const [type, setType] = useState("Publik");
 
   const options = [
     {
