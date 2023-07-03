@@ -13,13 +13,7 @@ import { styles } from "../../style/Global";
 
 import { FIREBASE_AUTH, FIREBASE_FIRESTORE } from "../../../firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import {
-  collection,
-  getDocs,
-  query,
-  where,
-  onSnapshot,
-} from "firebase/firestore";
+import { collection, query, where, onSnapshot } from "firebase/firestore";
 
 const Login = ({ navigation }) => {
   const persistedEmail = useSelector((state) => state.global.user?.email);
@@ -45,28 +39,36 @@ const Login = ({ navigation }) => {
         loginInput.email,
         loginInput.password
       );
+
       if (response.user) {
-        const q = query(
-          collection(FIREBASE_FIRESTORE, "users"),
+        const usersCollectionRef = collection(FIREBASE_FIRESTORE, "users");
+        const userQuery = query(
+          usersCollectionRef,
           where("email", "==", loginInput.email)
         );
+        onSnapshot(userQuery, (snapshot) => {
+          const userDoc = snapshot.docs[0];
 
-        onSnapshot(q, (res) => {
-          dispatch(
-            setLogin({
-              user: res.docs.map((doc) => ({
-                id: doc.id,
-                email: doc.data().email,
-                username: doc.data().username,
-                name: doc.data().name,
-                profile: doc.data().profile,
-                followers: doc.data().followers,
-                following: doc.data().following,
-                bio: doc.data().bio,
-              }))[0],
-              token: response.user.accessToken,
-            })
-          );
+          if (userDoc) {
+            const userId = userDoc.id;
+            const userData = userDoc.data();
+
+            dispatch(
+              setLogin({
+                user: {
+                  id: userId,
+                  email: userData.email,
+                  username: userData.username,
+                  name: userData.name,
+                  profile: userData.profile,
+                  followers: userData.followers,
+                  following: userData.following,
+                  bio: userData.bio,
+                },
+                token: response.user.accessToken,
+              })
+            );
+          }
         });
       }
     } catch (error) {
@@ -171,31 +173,3 @@ const Login = ({ navigation }) => {
 };
 
 export default Login;
-
-// const userQuerySnapShot = await getDocs(
-//   query(
-//     collection(FIREBASE_FIRESTORE, "users"),
-//     where("email", "==", loginInput.email)
-//   )
-// );
-
-// if (!userQuerySnapShot.empty) {
-//   const userId = userQuerySnapShot.docs[0].id;
-//   const userData = userQuerySnapShot.docs[0].data();
-
-//   dispatch(
-//     setLogin({
-//       user: {
-//         id: userId,
-//         email: userData.email,
-//         username: userData.username,
-//         name: userData.name,
-//         profile: userData.profile,
-//         followers: userData.followers,
-//         following: userData.following,
-//         bio: userData.bio,
-//       },
-//       token: response.user.accessToken,
-//     })
-//   );
-// }

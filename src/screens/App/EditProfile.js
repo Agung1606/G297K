@@ -88,7 +88,6 @@ const EditProfile = ({ navigation }) => {
       setLoading(false);
     }
   };
-
   return (
     <SafeAreaView className="flex-1 p-3">
       <Header onPress={goToPrevScreen} text={"Edit Profile"} />
