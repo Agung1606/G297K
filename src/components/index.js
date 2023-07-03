@@ -1,4 +1,10 @@
-import { TweetCard, TweetDetailCard, TrendingCard, CommentCard } from "./card";
+import {
+  TweetCard,
+  TweetDetailCard,
+  TrendingCard,
+  CommentCard,
+  SplashTweetCard,
+} from "./card";
 
 import {
   Header,
@@ -32,6 +38,7 @@ export {
   TweetDetailCard,
   TrendingCard,
   CommentCard,
+  SplashTweetCard,
   Header,
   ButtonBlue,
   ButtonTransparent,

@@ -1,24 +1,25 @@
-import React, { useState, useCallback, useMemo, useEffect } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import {
   View,
   Text,
   TouchableOpacity,
   FlatList,
   RefreshControl,
+  ScrollView,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Fontisto } from "@expo/vector-icons";
 
 import { scrollToTopConfig } from "../../hooks";
-import { TweetCard, BadgeNotif, ButtonScrollToTop } from "../../components";
+import {
+  TweetCard,
+  SplashTweetCard,
+  BadgeNotif,
+  ButtonScrollToTop,
+} from "../../components";
 
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
-import {
-  onSnapshot,
-  collection,
-  query,
-  orderBy,
-} from "firebase/firestore";
+import { onSnapshot, collection, query, orderBy } from "firebase/firestore";
 
 const HeaderHome = ({ title, goToMessage }) => (
   <View
@@ -66,9 +67,15 @@ const Home = ({ navigation }) => {
     <SafeAreaView className="flex-1">
       <HeaderHome title={"G297K"} goToMessage={goToMessage} />
       {dataTweets.length === 0 ? (
-        <View className="flex-1 justify-center items-center">
-          <Text className="font-InterRegular text-lg">Tunggu bentar...</Text>
-        </View>
+        <>
+          <ScrollView>
+            <SplashTweetCard />
+            <SplashTweetCard />
+            <SplashTweetCard />
+            <SplashTweetCard />
+            <SplashTweetCard />
+          </ScrollView>
+        </>
       ) : (
         <FlatList
           ref={reference}
