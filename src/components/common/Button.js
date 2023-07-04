@@ -15,80 +15,11 @@ import {
 } from "@expo/vector-icons";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
 
-import { useSelector } from "react-redux";
-
 import { styles } from "../../style/Global";
 import { bottomModalConfig } from "../../hooks";
 
 import { styled } from "nativewind";
 const StyledPressable = styled(Pressable);
-
-import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
-import { doc, collection, deleteDoc } from "firebase/firestore";
-
-export const ButtonSettingTweetCard = ({ userId, tweetId }) => {
-  const {
-    bottomSheetModalRef,
-    snapPoints,
-    openModal,
-    closeModal,
-    renderBackdrop,
-  } = bottomModalConfig(["10%"]);
-  const loggedInUserId = useSelector((state) => state.global.user.id);
-
-  const handleDeleteTweet = async () => {
-    const documentRef = doc(collection(FIREBASE_FIRESTORE, "tweets"), tweetId);
-    try {
-      await deleteDoc(documentRef);
-      console.log("Document successfully deleted!");
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const options = [
-    {
-      icon:
-        loggedInUserId === userId ? (
-          <Ionicons name="trash-outline" size={30} color={"#7d7d7d"} />
-        ) : (
-          <MaterialIcons name="report" size={30} color={"#7d7d7d"} />
-        ),
-      text: loggedInUserId === userId ? "Hapus" : "Laporkan tweet ini",
-      onPress: () => {
-        if (loggedInUserId === userId) handleDeleteTweet();
-        else alert("Report...");
-      },
-    },
-  ];
-
-  return (
-    <>
-      <TouchableOpacity onPress={openModal}>
-        <MaterialIcons name="more-vert" size={25} />
-      </TouchableOpacity>
-      <BottomSheetModal
-        ref={bottomSheetModalRef}
-        index={0}
-        snapPoints={snapPoints}
-        backdropComponent={renderBackdrop}
-      >
-        <View className="px-6 space-y-3">
-          {options.map((item) => (
-            <TouchableOpacity
-              key={item.text}
-              className="flex-row items-center space-x-2"
-              onPress={item.onPress}
-            >
-              {item.icon}
-              <Text className="font-InterMedium text-[16px]">{item.text}</Text>
-            </TouchableOpacity>
-          ))}
-        </View>
-      </BottomSheetModal>
-    </>
-  );
-};
 
 export const ButtonUploadType = () => {
   const {

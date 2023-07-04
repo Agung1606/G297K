@@ -8,7 +8,6 @@ import {
   ButtonUploadType,
   ButtonScrollToTop,
   ButtonBurgerProfile,
-  ButtonSettingTweetCard,
 } from "./Button";
 import ProfileInfo from "./ProfileInfo";
 import NoTweets from "./NoTweets";
@@ -26,7 +25,6 @@ export {
   ButtonUploadType,
   ButtonScrollToTop,
   ButtonBurgerProfile,
-  ButtonSettingTweetCard,
   ProfileInfo,
   NoTweets,
   Avatar,

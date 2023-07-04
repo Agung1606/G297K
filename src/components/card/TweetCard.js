@@ -1,8 +1,8 @@
+import React, { useCallback } from "react";
 import { View, Text, Pressable } from "react-native";
-import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
-import { Avatar, TweetInteraction, ButtonSettingTweetCard } from "../common";
+import { Avatar, TweetInteraction } from "../common";
 import { formatRelativeTime } from "../../utils";
 
 import { styled } from "nativewind";
@@ -14,14 +14,17 @@ components that receive props that don't change frequently or are expensive
 to compute. */
 const TweetCard = React.memo(({ item }) => {
   const navigation = useNavigation();
-  const goToDetails = () =>
+  const goToDetails = useCallback(() => {
     navigation.navigate("DetailsTweetScreen", { param: item });
-  const goToVisitProfile = () =>
+  }, [navigation, item]);
+  const goToVisitProfile = useCallback(() => {
     navigation.navigate("VisitProfileScreen", {
       param: { username: item.username, userId: item.userId },
     });
-  const openModalSendComment = () =>
+  }, [navigation, item]);
+  const openModalSendComment = useCallback(() => {
     navigation.navigate("SendComment", { param: item });
+  }, [navigation, item]);
 
   return (
     <StyledPressable
@@ -36,14 +39,11 @@ const TweetCard = React.memo(({ item }) => {
       <View className="flex-1">
         {/* username and date */}
         <View className="mb-1">
-          <View className="flex-row justify-between items-center">
-            <View className="flex-row items-center space-x-1">
-              <Text className="font-InterBold">{item.name}</Text>
-              <Text className="font-InterRegular text-xs text-grayCustom">
-                @{item.username}
-              </Text>
-            </View>
-            <ButtonSettingTweetCard userId={item.userId} tweetId={item.id} />
+          <View className="flex-row items-center space-x-1">
+            <Text className="font-InterBold">{item.name}</Text>
+            <Text className="font-InterRegular text-xs text-grayCustom">
+              @{item.username}
+            </Text>
           </View>
           <Text className="text-[12px] text-gray-400">
             {formatRelativeTime(item.date)}

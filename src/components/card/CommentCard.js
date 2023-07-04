@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, Pressable } from "react-native";
 import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
@@ -19,9 +19,9 @@ const CommentCard = ({ item }) => {
         <View className="bg-gray-200/70 rounded-md p-2">
           <View className="flex-row justify-between items-center">
             <Text className="font-InterSemiBold">{item.name}</Text>
-            <TouchableOpacity>
+            <Pressable>
               <MaterialIcons name="more-vert" size={20} />
-            </TouchableOpacity>
+            </Pressable>
           </View>
           <Text className="font-InterLight text-grayCustom">{item.date}</Text>
           <Text className="font-InterRegular mt-2">{item.comment}</Text>

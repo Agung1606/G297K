@@ -1,10 +1,16 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Pressable } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
 
-import { Avatar, TweetInteraction, ButtonSettingTweetCard } from "../common";
+import { Avatar, TweetInteraction } from "../common";
 import { formatRelativeTime } from "../../utils";
 
-const TweetDetailCard = ({ item, goToVisitProfile, openModalSendComment }) => {
+const TweetDetailCard = ({
+  item,
+  goToVisitProfile,
+  openBottomModal,
+  openModalSendComment,
+}) => {
   return (
     <View className="px-3 py-2 mb-2 border-b border-gray-300">
       <View className="flex-row justify-between items-center mb-2">
@@ -22,7 +28,9 @@ const TweetDetailCard = ({ item, goToVisitProfile, openModalSendComment }) => {
             </Text>
           </View>
         </View>
-        <ButtonSettingTweetCard userId={item.userId} tweetId={item.id} />
+        <Pressable onPress={openBottomModal}>
+          <MaterialIcons name="more-vert" size={25} />
+        </Pressable>
       </View>
       {/* tweets */}
       <Text className="font-InterRegular text-[17px]">{item.tweet}</Text>
