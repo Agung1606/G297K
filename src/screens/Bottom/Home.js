@@ -67,15 +67,13 @@ const Home = ({ navigation }) => {
     <SafeAreaView className="flex-1">
       <HeaderHome title={"G297K"} goToMessage={goToMessage} />
       {dataTweets.length === 0 ? (
-        <>
-          <ScrollView>
-            <SplashTweetCard />
-            <SplashTweetCard />
-            <SplashTweetCard />
-            <SplashTweetCard />
-            <SplashTweetCard />
-          </ScrollView>
-        </>
+        <ScrollView>
+          <SplashTweetCard />
+          <SplashTweetCard />
+          <SplashTweetCard />
+          <SplashTweetCard />
+          <SplashTweetCard />
+        </ScrollView>
       ) : (
         <FlatList
           ref={reference}
@@ -104,4 +102,4 @@ const Home = ({ navigation }) => {
   );
 };
 
-export default Home;
+export default React.memo(Home);

@@ -1,9 +1,10 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { View, Text, FlatList, Pressable } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import { FontAwesome, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
+import Spinner from "react-native-loading-spinner-overlay";
 
 import { COMMENTS } from "../../constant";
 import { bottomModalConfig, modalPopupConfig } from "../../hooks";
@@ -20,6 +21,7 @@ import { doc, collection, deleteDoc } from "firebase/firestore";
 const DetailsTweet = ({ route, navigation }) => {
   const item = route?.params?.param;
   const loggedInUserId = useSelector((state) => state.global.user.id);
+  const [loading, setLoading] = useState(false);
 
   const goToPrevScreen = useCallback(() => navigation.goBack(), [navigation]);
   const goToVisitProfile = useCallback(() => {
@@ -46,12 +48,15 @@ const DetailsTweet = ({ route, navigation }) => {
 
   const handleDeleteTweet = useCallback(async () => {
     const documentRef = doc(collection(FIREBASE_FIRESTORE, "tweets"), item.id);
+    closeConfirmModal();
+    setLoading(true);
     try {
       await deleteDoc(documentRef);
-      console.log("Document successfully deleted!");
       navigation.goBack();
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   }, [navigation, item.id]);
 
@@ -78,6 +83,8 @@ const DetailsTweet = ({ route, navigation }) => {
 
   return (
     <SafeAreaView className="flex-1">
+      {/* loading spinner */}
+      <Spinner visible={loading} />
       <Header onPress={goToPrevScreen} text="Tweet" />
       {/* this configuration is just for a while */}
       <FlatList
@@ -139,4 +146,4 @@ const DetailsTweet = ({ route, navigation }) => {
   );
 };
 
-export default DetailsTweet;
+export default React.memo(DetailsTweet);
