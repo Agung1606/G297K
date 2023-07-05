@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import {
   View,
   Text,
@@ -49,7 +49,7 @@ const Home = ({ navigation }) => {
     }, 1000);
   }, []);
 
-  useMemo(() => {
+  useEffect(() => {
     let q = query(
       collection(FIREBASE_FIRESTORE, "tweets"),
       orderBy("date", "desc")

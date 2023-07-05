@@ -138,9 +138,9 @@ export const ButtonBurgerProfile = ({ goToSettings }) => {
 
   return (
     <>
-      <TouchableOpacity onPress={openModal}>
+      <Pressable onPress={openModal}>
         <SimpleLineIcons name="menu" size={28} />
-      </TouchableOpacity>
+      </Pressable>
       {/* bottom modal */}
       <BottomSheetModal
         ref={bottomSheetModalRef}

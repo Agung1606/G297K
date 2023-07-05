@@ -1,5 +1,5 @@
-import React, { useMemo, useState } from "react";
-import { View, Text, TouchableOpacity, FlatList } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, Text, Pressable, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
@@ -24,18 +24,18 @@ const HeaderVisitProfile = ({ username }) => {
   return (
     <View className={`flex-row justify-between items-center my-1 px-3`}>
       <View className={`flex-row justify-between items-center space-x-6`}>
-        <TouchableOpacity onPress={goToPrevScreen}>
+        <Pressable onPress={goToPrevScreen}>
           <MaterialIcons name="arrow-back" size={30} />
-        </TouchableOpacity>
+        </Pressable>
         <Text className="font-InterBold text-lg tracking-wide">{username}</Text>
       </View>
       <View className={`flex-row justify-between items-center space-x-6`}>
-        <TouchableOpacity>
+        <Pressable>
           <FontAwesome name="bell-o" size={25} />
-        </TouchableOpacity>
-        <TouchableOpacity>
+        </Pressable>
+        <Pressable>
           <MaterialIcons name="more-vert" size={25} />
-        </TouchableOpacity>
+        </Pressable>
       </View>
     </View>
   );
@@ -46,7 +46,7 @@ const VisitProfile = ({ route }) => {
   const [data, setData] = useState({});
   const [tweets, setTweets] = useState([]);
 
-  useMemo(() => {
+  useEffect(() => {
     let qUser = query(
       collection(FIREBASE_FIRESTORE, "users"),
       where("username", "==", username)

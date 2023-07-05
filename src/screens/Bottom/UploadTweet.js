@@ -6,27 +6,67 @@ import {
   TextInput,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
+import Spinner from "react-native-loading-spinner-overlay";
 
 import { ButtonBlue, ButtonUploadType, Avatar } from "../../components";
 import { useSelector } from "react-redux";
 
+import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
+import { addDoc, collection } from "firebase/firestore";
+
 const UploadTweet = ({ navigation }) => {
   const loggedInUserData = useSelector((state) => state.global.user);
-  const goToPrevScreen = () => navigation.goBack();
+  const goToPrevScreen = useCallback(() => {
+    navigation.goBack();
+  }, [navigation]);
 
+  const [loading, setLoading] = useState(false);
   const [tweetInput, setTweetInput] = useState("");
+
+  const handleUploadTweet = async () => {
+    const currentDate = new Date();
+    const dateString = currentDate.toDateString();
+    const timeString = currentDate.toTimeString().split(" ")[0];
+    const timeZoneString = currentDate.toTimeString().split(" ")[1];
+
+    const data = {
+      userId: loggedInUserData.id,
+      name: loggedInUserData.name,
+      username: loggedInUserData.username,
+      profile: loggedInUserData.profile,
+      tweet: tweetInput,
+      date: `${dateString} ${timeString} ${timeZoneString}`,
+      numberOfLikes: 0,
+      numberOfComments: 0,
+    };
+
+    setLoading(true);
+    try {
+      await addDoc(collection(FIREBASE_FIRESTORE, "tweets"), data);
+      navigation.goBack();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <SafeAreaView className="flex-1 px-2 py-4">
+      <Spinner visible={loading} />
       {/* top */}
       <View className={`flex-row justify-between items-center mb-6`}>
         <TouchableOpacity onPress={goToPrevScreen}>
           <MaterialIcons name="close" size={35} />
         </TouchableOpacity>
         <View className="w-[110px]">
-          <ButtonBlue disabled={!tweetInput} title="Tweet" />
+          <ButtonBlue
+            disabled={!tweetInput}
+            title="Tweet"
+            onPress={handleUploadTweet}
+          />
         </View>
       </View>
       {/* main */}
