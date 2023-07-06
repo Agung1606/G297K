@@ -20,19 +20,6 @@ export function generateRandomUsername(name) {
 }
 
 export function changeFormat(number) {
-  // from chatGPT
-  // if (number < 1000) {
-  //   return number.toString();
-  // } else if (number < 1000000) {
-  //   const roundedNumber = Math.round(number / 1000);
-  //   return `${roundedNumber}K`;
-  // } else if (number < 1000000000) {
-  //   const roundedNumber = Math.round(number / 1000000);
-  //   return `${roundedNumber}M`;
-  // } else {
-  //   const roundedNumber = Math.round(number / 1000000000);
-  //   return `${roundedNumber}B`;
-  // }
   if (number < 1000) {
     return number.toString();
   } else if (number < 10000) {
@@ -43,9 +30,16 @@ export function changeFormat(number) {
     );
   } else if (number < 1000000) {
     return number.toString().slice(0, 3) + "RB";
+  } else if (number < 10000000) {
+    return (
+      number.toString().slice(0, 1) + "." + number.toString().slice(1, 2) + "JT"
+    );
+  } else if (number < 100000000) {
+    return (
+      number.toString().slice(0, 2) + "." + number.toString().slice(2, 3) + "JT"
+    );
   } else {
-    const roundedNumber = Math.round(number / 1000000);
-    return `${roundedNumber}JT`;
+    return number.toString().slice(0, 3) + "JT";
   }
 }
 
