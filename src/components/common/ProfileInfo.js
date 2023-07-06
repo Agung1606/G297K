@@ -16,7 +16,7 @@ const ProfileInfo = ({
   const info = [
     {
       number: changeFormat(numberOfTweets),
-      text: "Tweet",
+      text: "Post",
     },
     {
       number: changeFormat(numberOfFollowers),

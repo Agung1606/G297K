@@ -55,7 +55,7 @@ const UploadTweet = ({ navigation }) => {
 
   return (
     <SafeAreaView className="flex-1 px-2 py-4">
-      <Spinner visible={loading} />
+      <Spinner visible={loading} textContent="Tunggu..." />
       {/* top */}
       <View className={`flex-row justify-between items-center mb-6`}>
         <TouchableOpacity onPress={goToPrevScreen}>
@@ -64,7 +64,7 @@ const UploadTweet = ({ navigation }) => {
         <View className="w-[110px]">
           <ButtonBlue
             disabled={!tweetInput}
-            title="Tweet"
+            title="Upload"
             onPress={handleUploadTweet}
           />
         </View>

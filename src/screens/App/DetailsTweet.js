@@ -84,7 +84,7 @@ const DetailsTweet = ({ route, navigation }) => {
   return (
     <SafeAreaView className="flex-1">
       {/* loading spinner */}
-      <Spinner visible={loading} />
+      <Spinner visible={loading} textContent="Menghapus postingan" />
       <Header onPress={goToPrevScreen} text="Tweet" />
       {/* this configuration is just for a while */}
       <FlatList
@@ -138,7 +138,7 @@ const DetailsTweet = ({ route, navigation }) => {
         isModalOpen={isModalOpen}
         onCancel={closeConfirmModal}
         onOk={handleDeleteTweet}
-        title={"Hapus tweet?"}
+        title={"Hapus postingan?"}
         textBtnOk={"Hapus"}
         textBtnCancel={"Batal"}
       />

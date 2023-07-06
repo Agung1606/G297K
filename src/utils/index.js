@@ -20,26 +20,37 @@ export function generateRandomUsername(name) {
 }
 
 export function changeFormat(number) {
-  if (number < 1000) {
-    return number.toString();
-  } else if (number < 10000) {
-    return number.toString().slice(0, 1) + "," + number.toString().slice(1);
-  } else if (number < 100000) {
-    return (
-      number.toString().slice(0, 2) + "." + number.toString().slice(2, 3) + "RB"
-    );
-  } else if (number < 1000000) {
-    return number.toString().slice(0, 3) + "RB";
-  } else if (number < 10000000) {
-    return (
-      number.toString().slice(0, 1) + "." + number.toString().slice(1, 2) + "JT"
-    );
-  } else if (number < 100000000) {
-    return (
-      number.toString().slice(0, 2) + "." + number.toString().slice(2, 3) + "JT"
-    );
-  } else {
-    return number.toString().slice(0, 3) + "JT";
+  if (number !== undefined) {
+    if (number < 1000) {
+      return number.toString();
+    } else if (number < 10000) {
+      return number.toString().slice(0, 1) + "," + number.toString().slice(1);
+    } else if (number < 100000) {
+      return (
+        number.toString().slice(0, 2) +
+        "." +
+        number.toString().slice(2, 3) +
+        "RB"
+      );
+    } else if (number < 1000000) {
+      return number.toString().slice(0, 3) + "RB";
+    } else if (number < 10000000) {
+      return (
+        number.toString().slice(0, 1) +
+        "." +
+        number.toString().slice(1, 2) +
+        "JT"
+      );
+    } else if (number < 100000000) {
+      return (
+        number.toString().slice(0, 2) +
+        "." +
+        number.toString().slice(2, 3) +
+        "JT"
+      );
+    } else {
+      return number.toString().slice(0, 3) + "JT";
+    }
   }
 }
 

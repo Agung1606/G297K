@@ -121,7 +121,7 @@ const VisitProfile = ({ route }) => {
         renderItem={({ item }) => <TweetCard item={item} />}
         keyExtractor={(item) => item.id}
         ListEmptyComponent={
-          <NoTweets text="Sepertinya orang ini belum membuat tweet" />
+          <NoTweets text="Sepertinya orang ini belum membuat postingan" />
         }
       />
       {/* when user long press the profile this will triggered */}

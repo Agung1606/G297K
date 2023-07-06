@@ -94,7 +94,7 @@ const Profile = ({ navigation }) => {
         )}
         ListFooterComponent={() => <View className="pb-20" />}
         ListEmptyComponent={
-          <NoTweets text="Ketika Anda membuat tweet, itu akan muncul di sini" />
+          <NoTweets text="Ketika Anda membuat postingan, itu akan muncul di sini" />
         }
       />
       {isScrolled && (

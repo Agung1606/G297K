@@ -5,7 +5,6 @@ import {
   Pressable,
   View,
   SectionList,
-  TouchableOpacity,
 } from "react-native";
 import {
   MaterialIcons,
@@ -113,7 +112,7 @@ export const ButtonBurgerProfile = ({ goToSettings }) => {
     openModal,
     closeModal,
     renderBackdrop,
-  } = bottomModalConfig(["20%"]);
+  } = bottomModalConfig(["22%"]);
 
   const options = [
     {
@@ -151,18 +150,18 @@ export const ButtonBurgerProfile = ({ goToSettings }) => {
         <SectionList
           sections={options}
           renderSectionHeader={({ section }) => (
-            <Text className="px-6 py-2 font-InterMedium text-xl">
+            <Text className="px-6 py-2 font-InterRegular text-lg">
               {section.title}
             </Text>
           )}
           renderItem={({ item }) => (
-            <TouchableOpacity
+            <StyledPressable
               onPress={item.onPress}
-              className="flex-row items-center px-8 pb-2 space-x-2"
+              className={`flex-row items-center px-8 pb-4 space-x-2 ${styles.pressableEffect}`}
             >
               {item.icon}
-              <Text className="font-InterRegular text-lg">{item.text}</Text>
-            </TouchableOpacity>
+              <Text className="font-InterRegular">{item.text}</Text>
+            </StyledPressable>
           )}
           keyExtractor={(item) => `basicListEntry-${item.text}`}
         />

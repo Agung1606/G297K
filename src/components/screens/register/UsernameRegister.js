@@ -89,7 +89,7 @@ const UsernameRegister = ({ route }) => {
 
   return (
     <SafeAreaView className="flex-1">
-      <Spinner visible={loading} textContent="Tunggu..." />
+      <Spinner visible={loading} textContent="Membuat akun..." />
       <LinearGradient
         // Background Linear Gradient
         colors={["#C9D6FF", "#E2E2E2"]}

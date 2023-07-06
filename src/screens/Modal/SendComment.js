@@ -50,7 +50,7 @@ const SendComment = ({ route, navigation }) => {
           </Text>
           <ScrollView className="mb-20">
             <TextInput
-              placeholder="Tweet balasan Anda"
+              placeholder="Kirim balasan Anda"
               className="font-InterRegular text-lg"
               value={commentInput}
               onChangeText={(input) => setCommentInput(input)}
