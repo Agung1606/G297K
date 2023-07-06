@@ -2,6 +2,7 @@ import { View, TextInput, Text, TouchableOpacity, Image } from "react-native";
 import React, { useState } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { Entypo } from "@expo/vector-icons";
+import Spinner from "react-native-loading-spinner-overlay";
 
 import { useDispatch, useSelector } from "react-redux";
 import { setLogin } from "../../redux/globalSlice";
@@ -89,6 +90,7 @@ const Login = ({ navigation }) => {
 
   return (
     <View className="flex-1 justify-center items-center px-[6px]">
+      <Spinner visible={loading} textContent="Tunggu..." />
       <LinearGradient
         // Background Linear Gradient
         colors={["#C9D6FF", "#E2E2E2"]}
@@ -141,7 +143,7 @@ const Login = ({ navigation }) => {
         {/* button login */}
         <ButtonBlue
           disabled={!loginInput.email}
-          title={loading ? "Tunggu..." : "Masuk"}
+          title={"Masuk"}
           onPress={handleLogin}
         />
       </View>

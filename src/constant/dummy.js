@@ -955,17 +955,17 @@ export const MESSAGE = [
     date: "7 hari",
     isRead: false,
   },
-  {
-    id: 10,
-    userId: "3350TMI3mpSFCSTYEGVP",
-    profile:
-      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FzoroProfile.jpg?alt=media&token=88fe7f5b-0538-4af9-b332-9c3c35813b43",
-    username: "rrnoazoro",
-    name: "Roronoa Zoro",
-    msgText: "Dilihat",
-    date: "12 minggu",
-    isRead: true,
-  },
+  // {
+  //   id: 10,
+  //   userId: "3350TMI3mpSFCSTYEGVP",
+  //   profile:
+  //     "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FzoroProfile.jpg?alt=media&token=88fe7f5b-0538-4af9-b332-9c3c35813b43",
+  //   username: "rrnoazoro",
+  //   name: "Roronoa Zoro",
+  //   msgText: "Dilihat",
+  //   date: "12 minggu",
+  //   isRead: true,
+  // },
 ];
 
 export const NOTIFICATION = [

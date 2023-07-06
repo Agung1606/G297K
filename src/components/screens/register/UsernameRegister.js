@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, TextInput } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { LinearGradient } from "expo-linear-gradient";
+import Spinner from "react-native-loading-spinner-overlay";
 
 import { HeaderRegister, ButtonBlue } from "../../common";
 import { DialogModal } from "../../reactPaper";
@@ -88,6 +89,7 @@ const UsernameRegister = ({ route }) => {
 
   return (
     <SafeAreaView className="flex-1">
+      <Spinner visible={loading} textContent="Tunggu..." />
       <LinearGradient
         // Background Linear Gradient
         colors={["#C9D6FF", "#E2E2E2"]}
@@ -110,7 +112,7 @@ const UsernameRegister = ({ route }) => {
             />
           </View>
           <ButtonBlue
-            title={loading ? "Tunggu..." : "Buat akun"}
+            title={"Buat akun"}
             onPress={handleCreateAccount}
           />
         </View>
