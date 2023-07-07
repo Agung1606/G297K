@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { FontAwesome, Feather } from "@expo/vector-icons";
 
 const TweetInteraction = ({
+  numsLike,
   isLiked,
   handleLike,
   numberOfComments,
@@ -22,7 +23,7 @@ const TweetInteraction = ({
       ) : (
         <FontAwesome name="heart-o" size={22} color="#7d7d7d" />
       ),
-      num: 0,
+      num: numsLike,
       onPress: handleLike,
     },
     {
