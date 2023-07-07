@@ -36,7 +36,8 @@ const TweetDetailCard = ({
       <Text className="font-InterRegular text-[17px]">{item.tweet}</Text>
       <View className="my-4">
         <TweetInteraction
-          numberOfLikes={item.numberOfLikes}
+          // numberOfLikes={item.numberOfLikes}
+          tweetId={item.id}
           numberOfComments={item.numberOfComments}
           openModalSendComment={openModalSendComment}
         />

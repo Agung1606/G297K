@@ -38,7 +38,7 @@ const UploadTweet = ({ navigation }) => {
       profile: loggedInUserData.profile,
       tweet: tweetInput,
       date: `${dateString} ${timeString} ${timeZoneString}`,
-      numberOfLikes: 0,
+      // numberOfLikes: 0,
       numberOfComments: 0,
     };
 

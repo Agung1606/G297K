@@ -68,7 +68,7 @@ const AddedDummyData = () => {
   const handle = async () => {
     try {
       console.log("wait...");
-      for (const data of agungTweets) {
+      for (const data of TWEETS) {
         await addDoc(collection(FIREBASE_FIRESTORE, "tweets"), {
           userId: data.userId,
           profile: data.profile,
@@ -76,7 +76,7 @@ const AddedDummyData = () => {
           username: data.username,
           date: data.date,
           tweet: data.tweet,
-          numberOfLikes: data.numberOfLikes,
+          // numberOfLikes: data.numberOfLikes,
           numberOfComments: data.numberOfComments,
         });
       }

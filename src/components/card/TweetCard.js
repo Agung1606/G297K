@@ -1,12 +1,25 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { View, Text, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+
+import { useSelector } from "react-redux";
 
 import { Avatar, TweetInteraction } from "../common";
 import { formatRelativeTime } from "../../utils";
 
 import { styled } from "nativewind";
 const StyledPressable = styled(Pressable);
+
+import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
+import {
+  query,
+  collection,
+  onSnapshot,
+  addDoc,
+  doc,
+  deleteDoc,
+  getDocs,
+} from "firebase/firestore";
 
 const TweetCard = ({ item }) => {
   const navigation = useNavigation();
@@ -21,6 +34,54 @@ const TweetCard = ({ item }) => {
   const openModalSendComment = useCallback(() => {
     navigation.navigate("SendComment", { param: item });
   }, [navigation, item]);
+
+  const loggedInUserData = useSelector((state) => state.global.user);
+  const [isLiked, setIsLiked] = useState(false);
+
+  const handleLike = async () => {
+    const likesCollection = collection(
+      FIREBASE_FIRESTORE,
+      `tweets/${item.id}/likes`
+    );
+    try {
+      if (isLiked) {
+        getDocs(likesCollection)
+          .then((response) => {
+            let id;
+            response.docs.map((doc) => {
+              if (doc.data().userId === loggedInUserData.id) {
+                id = doc.id;
+              }
+            });
+            return id;
+          })
+          .then((response) => {
+            const docRef = doc(
+              collection(FIREBASE_FIRESTORE, `tweets/${item.id}/likes`),
+              response
+            );
+            deleteDoc(docRef);
+          });
+      } else {
+        await addDoc(likesCollection, {
+          name: loggedInUserData.name,
+          userId: loggedInUserData.id,
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useMemo(() => {
+    let q = query(collection(FIREBASE_FIRESTORE, `tweets/${item.id}/likes`));
+    onSnapshot(q, (response) => {
+      let likes = response.docs.map((doc) => doc.data());
+      const isLiked = likes.some((like) => like.userId === loggedInUserData.id);
+
+      setIsLiked(isLiked);
+    });
+  });
 
   return (
     <StyledPressable
@@ -56,7 +117,8 @@ const TweetCard = ({ item }) => {
         </Text>
         {/* like, comment, and share */}
         <TweetInteraction
-          numberOfLikes={item.numberOfLikes}
+          isLiked={isLiked}
+          handleLike={handleLike}
           numberOfComments={item.numberOfComments}
           openModalSendComment={openModalSendComment}
         />

@@ -1,24 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { FontAwesome, Feather } from "@expo/vector-icons";
 
 const TweetInteraction = ({
-  numberOfLikes,
+  isLiked,
+  handleLike,
   numberOfComments,
   openModalSendComment,
 }) => {
-  const [likesCount, setLikesCount] = useState(numberOfLikes);
-  const [isLiked, setIsLiked] = useState(false);
-  const handleLike = () => {
-    if (isLiked) {
-      setIsLiked(false);
-      setLikesCount((prev) => prev - 1);
-    } else {
-      setIsLiked(true);
-      setLikesCount((prev) => prev + 1);
-    }
-  };
-
   const options = [
     {
       name: "comment",
@@ -33,7 +22,7 @@ const TweetInteraction = ({
       ) : (
         <FontAwesome name="heart-o" size={22} color="#7d7d7d" />
       ),
-      num: likesCount,
+      num: 0,
       onPress: handleLike,
     },
     {

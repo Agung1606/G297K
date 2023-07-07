@@ -176,7 +176,7 @@ export const TWEETS = [
     date: Date(new Date().getTime() - 60 * 60 * 1000),
     tweet:
       "Salah satu penemuan terbesar di dunia arkeologi adalah Piramida Mesir Kuno, terutama Piramida Besar Giza yang dibangun sekitar 4.500 tahun yang lalu. Piramida ini merupakan salah satu Keajaiban Dunia Kuno dan merupakan monumen yang luar biasa dalam hal desain, presisi konstruksi, dan kompleksitasnya. Penemuan ini memberikan wawasan yang berharga tentang kebudayaan dan teknologi Mesir Kuno, serta memberikan petunjuk tentang kehidupan dan kepercayaan spiritual mereka. Piramida Giza juga menjadi simbol keabadian dan kekuatan kebudayaan Mesir Kuno yang mendalam. Penemuan ini telah mempengaruhi arkeologi, sejarah, dan studi tentang peradaban kuno secara keseluruhan.",
-    numberOfLikes: 0,
+    // numberOfLikes: 0,
     numberOfComments: 0,
   },
   {
@@ -189,7 +189,7 @@ export const TWEETS = [
     date: Date(new Date().getTime() - 60 * 60 * 2000),
     tweet:
       "Menjadi Raja Bajak Laut adalah hal yang paling berarti bagiku di dunia ini. Aku akan bertarung, bertahan, dan tidak pernah menyerah sampai aku mencapai tujuan itu. Mungkin aku bukan yang terkuat, paling pintar, atau paling mahir, tapi aku memiliki kru teman yang percaya padaku. Bersama-sama, kita akan menguasai Grand Line, menghadapi segala tantangan yang datang, dan membuktikan bahwa mimpi dapat menjadi kenyataan. Aku mungkin ceroboh, agak gila, dan selalu lapar, tapi aku akan tetap menjadi diriku sendiri. Aku akan melindungi teman-temanku, berdiri untuk kebenaran, dan menjalani kehidupan yang penuh kebebasan dan petualangan. Itulah cara Bajak Laut Topi Jerami, dan itulah jalan yang kutemui sebagai Monkey D. Luffy!",
-    numberOfLikes: 0,
+    // numberOfLikes: 0,
     numberOfComments: 0,
   },
   {
@@ -211,7 +211,7 @@ export const TWEETS = [
 4. Spektrum Cahaya: Newton melakukan eksperimen dengan memecah cahaya putih menggunakan prisma dan menemukan bahwa cahaya terdiri dari berbagai warna yang membentuk spektrum. Penemuan ini menjadi dasar dalam memahami sifat-sifat cahaya.
 
 Teori Newton menghasilkan pemahaman baru tentang gerak, gravitasi, dan fenomena alam lainnya. Kontribusinya terhadap ilmu fisika telah memberikan landasan penting bagi perkembangan ilmu pengetahuan selanjutnya.`,
-    numberOfLikes: 0,
+    // numberOfLikes: 0,
     numberOfComments: 0,
   },
   {
@@ -233,7 +233,7 @@ Love is not without its challenges. It requires effort, compromise, and understa
 But despite the challenges, love is a beautiful and transformative force. It has the power to heal wounds, mend broken hearts, and create a sense of belonging and purpose. Love gives us the strength to overcome adversity and the courage to face life's uncertainties.
 
 In the end, love is a celebration of the human experience. It is a reminder that, amidst the chaos of the world, there is a profound connection that binds us all together. Love is a gift that should be cherished, nurtured, and shared with others. It is a reminder that, in the presence of love, anything is possible.`,
-    numberOfLikes: 0,
+    // numberOfLikes: 0,
     numberOfComments: 0,
   },
   {
@@ -245,22 +245,22 @@ In the end, love is a celebration of the human experience. It is a reminder that
     username: "raja.bajak.laut16_",
     date: Date(new Date().getTime() - 60 * 60 * 5000),
     tweet: "Who needs a plan when you can punch your way through everything?",
-    numberOfLikes: 0,
+    // numberOfLikes: 0,
     numberOfComments: 0,
   },
-  {
-    id: 103,
-    userId: "3350TMI3mpSFCSTYEGVP",
-    profile:
-      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FzoroProfile.jpg?alt=media&token=88fe7f5b-0538-4af9-b332-9c3c35813b43",
-    name: "Roronoa Zoro",
-    username: "rrnoazoro",
-    date: Date(new Date().getTime() - 60 * 60 * 6000),
-    tweet:
-      "Dunia ini adalah tempat yang luas dan penuh dengan keindahan yang luar biasa. Di dalamnya terdapat keanekaragaman budaya, keajaiban alam, dan kehidupan yang beragam. Dari pegunungan yang menjulang tinggi hingga lautan yang luas, setiap sudut dunia ini memiliki cerita unik yang menarik. Indonesia, sebagai salah satu negara di dunia, memiliki kekayaan alam yang melimpah, mulai dari hutan tropis yang rimbun, pantai yang indah, hingga gunung-gunung yang menantang. Selain itu, Indonesia juga memiliki keanekaragaman budaya yang kaya, dengan berbagai suku, bahasa, dan adat istiadat yang berbeda-beda. Dunia ini begitu indah dan menakjubkan, memberikan kita kesempatan untuk menjelajahi, belajar, dan menghargai keajaiban yang ada di sekeliling kita.",
-    numberOfLikes: 0,
-    numberOfComments: 0,
-  },
+  // {
+  //   id: 103,
+  //   userId: "3350TMI3mpSFCSTYEGVP",
+  //   profile:
+  //     "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FzoroProfile.jpg?alt=media&token=88fe7f5b-0538-4af9-b332-9c3c35813b43",
+  //   name: "Roronoa Zoro",
+  //   username: "rrnoazoro",
+  //   date: Date(new Date().getTime() - 60 * 60 * 6000),
+  //   tweet:
+  //     "Dunia ini adalah tempat yang luas dan penuh dengan keindahan yang luar biasa. Di dalamnya terdapat keanekaragaman budaya, keajaiban alam, dan kehidupan yang beragam. Dari pegunungan yang menjulang tinggi hingga lautan yang luas, setiap sudut dunia ini memiliki cerita unik yang menarik. Indonesia, sebagai salah satu negara di dunia, memiliki kekayaan alam yang melimpah, mulai dari hutan tropis yang rimbun, pantai yang indah, hingga gunung-gunung yang menantang. Selain itu, Indonesia juga memiliki keanekaragaman budaya yang kaya, dengan berbagai suku, bahasa, dan adat istiadat yang berbeda-beda. Dunia ini begitu indah dan menakjubkan, memberikan kita kesempatan untuk menjelajahi, belajar, dan menghargai keajaiban yang ada di sekeliling kita.",
+  //   // numberOfLikes: 0,
+  //   numberOfComments: 0,
+  // },
   {
     id: 104,
     userId: "8YPJj7UtzPYStYc2lYrG",
@@ -271,7 +271,7 @@ In the end, love is a celebration of the human experience. It is a reminder that
     date: Date(new Date().getTime() - 60 * 60 * 7000),
     tweet:
       "I don't care who you are, what you've done, or who you've aligned yourself with. If you lay a finger on a lady, I won't forgive you.",
-    numberOfLikes: 0,
+    // numberOfLikes: 0,
     numberOfComments: 0,
   },
   {
@@ -284,7 +284,7 @@ In the end, love is a celebration of the human experience. It is a reminder that
     date: Date(new Date().getTime() - 60 * 60 * 8000),
     tweet:
       "Anxiety is a common emotion that often creeps up on people in various situations. It feels like a heavy burden on the chest, making the breath shallow and the mind racing. Anxiety causes the heart to race, cold sweats to flow, and the body to feel tense. Negative thoughts and worries haunt you, making it difficult to concentrate and get restful sleep. Anxiety is like a monster in the mind that is hard to overcome, always lurking and disrupting your peace. However, it's important to remember that anxiety doesn't have to control your life. With the right support, stress management strategies, and positive mindset shifts, you can overcome anxiety and regain a more peaceful and happy life.",
-    numberOfLikes: 0,
+    // numberOfLikes: 0,
     numberOfComments: 0,
   },
   {
@@ -297,7 +297,7 @@ In the end, love is a celebration of the human experience. It is a reminder that
     date: Date(new Date().getTime() - 60 * 60 * 9000),
     tweet:
       "Japan, known as the Land of the Rising Sun, is a captivating blend of ancient traditions and modern innovation. From the serene beauty of its cherry blossoms to the bustling streets of Tokyo, Japan offers a rich tapestry of cultural wonders. Its harmonious fusion of tradition and technology is evident in its impressive architecture, exquisite cuisine, and renowned art forms such as tea ceremonies, Kabuki theater, and anime. With a deep respect for nature, Japan boasts breathtaking landscapes, from majestic mountains to tranquil gardens. The warmth and politeness of its people add to the charm of this remarkable nation, making it a destination that captivates the senses and leaves an indelible impression.",
-    numberOfLikes: 0,
+    // numberOfLikes: 0,
     numberOfComments: 0,
   },
   {
@@ -310,7 +310,7 @@ In the end, love is a celebration of the human experience. It is a reminder that
     date: Date(new Date().getTime() - 60 * 60 * 10000),
     tweet:
       "You have power over your mind - not outside events. Realize this, and you will find strength.",
-    numberOfLikes: 0,
+    // numberOfLikes: 0,
     numberOfComments: 0,
   },
   {
@@ -323,7 +323,7 @@ In the end, love is a celebration of the human experience. It is a reminder that
     date: Date(new Date().getTime() - 60 * 60 * 11000),
     tweet:
       "I may be a pirate, but I've got a heart of gold and a crew that's willing to give everything for our dreams. I'll never back down, no matter how tough the challenge, because I believe in the power of friendship and the strength within me. Get ready, world, 'cause Monkey D. Luffy is here to shake things up and have the adventure of a lifetime!",
-    numberOfLikes: 0,
+    // numberOfLikes: 0,
     numberOfComments: 0,
   },
   {
@@ -336,7 +336,7 @@ In the end, love is a celebration of the human experience. It is a reminder that
     date: Date(new Date().getTime() - 60 * 60 * 12000),
     tweet:
       "Konsep Parisi di Indonesia merujuk pada gaya hidup yang santai, bebas, dan tidak terlalu formal. Orang-orang Indonesia cenderung lebih mengutamakan keakraban dan kehangatan dalam interaksi sosial. Konsiparsi di Indonesia juga mencerminkan adanya keberagaman budaya dan adat istiadat di setiap daerah, yang memberikan warna dan keunikan dalam berbagai acara dan perayaan. Konsiparsi di Indonesia sering kali melibatkan makanan lezat, tawa, dan kebersamaan yang erat antara keluarga, teman, dan tetangga. Dalam konsiparsi di Indonesia, pentingnya menjaga hubungan sosial yang harmonis dan saling mendukung menjadi nilai yang dijunjung tinggi.",
-    numberOfLikes: 0,
+    // numberOfLikes: 0,
     numberOfComments: 0,
   },
   {
@@ -350,7 +350,7 @@ In the end, love is a celebration of the human experience. It is a reminder that
     tweet: `Konspirasi di dunia ini merujuk pada teori-teori yang mengklaim adanya tindakan tersembunyi atau rencana jahat yang dilakukan oleh pihak-pihak tertentu dengan tujuan mempengaruhi atau mengendalikan kehidupan manusia. Konspirasi dapat melibatkan berbagai topik seperti politik, ekonomi, ilmu pengetahuan, teknologi, kesehatan, dan sebagainya. Contoh konspirasi yang populer antara lain teori bahwa pemerintahan atau kelompok-kelompok tertentu mengendalikan media massa, teori pembuatan senjata rahasia, atau teori bahwa kejadian-kejadian besar seperti serangan teroris atau pandemi dibuat dengan sengaja.
 
 Penting untuk diingat bahwa konspirasi seringkali didasarkan pada spekulasi, informasi yang tidak terverifikasi, atau penggambaran yang tidak akurat. Banyak konspirasi yang tidak memiliki bukti yang kuat dan dapat dijelaskan dengan penelitian ilmiah atau investigasi yang objektif. Namun demikian, minat terhadap konspirasi dapat memunculkan pertanyaan, mencari kebenaran, atau mempertanyakan narasi resmi. Penting bagi setiap individu untuk memeriksa dan mengevaluasi informasi dengan kritis, menggunakan sumber yang terpercaya, dan berpikir secara rasional sebelum menerima klaim konspirasi tanpa bukti yang kuat.`,
-    numberOfLikes: 0,
+    // numberOfLikes: 0,
     numberOfComments: 0,
   },
   {
@@ -362,7 +362,7 @@ Penting untuk diingat bahwa konspirasi seringkali didasarkan pada spekulasi, inf
     username: "pain._",
     date: Date(new Date().getTime() - 60 * 60 * 14000),
     tweet: "will you come here and stop this pain tonight?",
-    numberOfLikes: 0,
+    // numberOfLikes: 0,
     numberOfComments: 0,
   },
   {
@@ -375,7 +375,7 @@ Penting untuk diingat bahwa konspirasi seringkali didasarkan pada spekulasi, inf
     date: Date(new Date().getTime() - 60 * 60 * 15000),
     tweet:
       "Ketakutan adalah sebuah penyusun penting dalam kehidupan. Tanpa rasa takut, kita tidak bisa menjadi kuat. Ketika kita menghadapi ketakutan kita, kita bisa menemukan keberanian yang sejati. Ketakutan adalah pilihan, keberanian adalah tanggapan. Jangan biarkan ketakutan menghentikanmu, hadapilah dengan kepala tegak. Kadang-kadang kita harus berkorban demi keadilan. Itulah arti menjadi seorang ninja. Hidup itu seperti permata yang berkilau di malam hari. Kehidupan tidak berharga jika tidak ada cobaan dan penderitaan. Dan aku akan terus berjalan, menuju cahaya di ujung jalan yang panjang ini.",
-    numberOfLikes: 0,
+    // numberOfLikes: 0,
     numberOfComments: 0,
   },
   {
@@ -388,7 +388,7 @@ Penting untuk diingat bahwa konspirasi seringkali didasarkan pada spekulasi, inf
     date: Date(new Date().getTime() - 60 * 60 * 16000),
     tweet:
       "The pain of being alone... is not an easy one to bear. Why is it... that I can understand your pain? But... I already have many people who are important to me now... and I can't let you hurt any of them. Even if I have to kill you!😊",
-    numberOfLikes: 0,
+    // numberOfLikes: 0,
     numberOfComments: 0,
   },
   {
@@ -401,7 +401,7 @@ Penting untuk diingat bahwa konspirasi seringkali didasarkan pada spekulasi, inf
     date: Date(new Date().getTime() - 60 * 60 * 17000),
     tweet:
       "Kedamaian adalah sebuah keadaan harmoni yang mendalam yang melampaui konflik dan mendorong keadaan ketenangan dalam diri individu maupun komunitas. Ini adalah aspirasi kolektif untuk membangun dunia di mana perbedaan diterima dengan tulus, dan persatuan menguasai. Kedamaian sejati meliputi bukan hanya ketiadaan kekerasan, tetapi juga keberadaan keadilan, kesetaraan, dan penghargaan terhadap semua makhluk. Ini adalah keadaan keseimbangan di mana belas kasihan menang atas kebencian, pemahaman menang atas kebodohan, dan kerja sama menang atas perpecahan. Kedamaian dimulai dari dalam diri masing-masing dari kita, saat kita mengembangkan kebaikan, empati, dan kemauan untuk mendengarkan orang lain. Melalui upaya kolektif kita, berlandaskan cinta dan pemahaman, kita dapat menciptakan dunia di mana kedamaian menjadi kenyataan bersama bagi generasi mendatang.",
-    numberOfLikes: 0,
+    // numberOfLikes: 0,
     numberOfComments: 0,
   },
   {
@@ -417,7 +417,7 @@ Penting untuk diingat bahwa konspirasi seringkali didasarkan pada spekulasi, inf
 Poneglyphs are extremely rare and difficult to find, as they were created by the ancient civilization known as the "Ancient Kingdom." The World Government has made it illegal to study or decipher the Poneglyphs, as they fear the revelation of their secrets. Only a select few, known as the "Ohara Scholars," dedicated their lives to studying and deciphering the Poneglyphs, but their efforts were met with persecution and eventually led to the destruction of their island.
 
 The protagonist, Monkey D. Luffy, and his crew, the Straw Hat Pirates, embark on a grand adventure in search of the Poneglyphs, as they believe that uncovering the truth hidden within them will lead them to the ultimate treasure, the One Piece.`,
-    numberOfLikes: 0,
+    // numberOfLikes: 0,
     numberOfComments: 0,
   },
   {
@@ -430,7 +430,7 @@ The protagonist, Monkey D. Luffy, and his crew, the Straw Hat Pirates, embark on
     date: Date(new Date().getTime() - 60 * 60 * 19000),
     tweet:
       "Balas dendam adalah emosi manusia yang kuat dan kompleks yang didorong oleh keinginan untuk membalas dendam dan mendapatkan keadilan. Ini adalah respons yang tertanam dalam diri seseorang terhadap perlakuan yang dianggap salah atau merugikan terhadap diri sendiri atau orang terdekat. Didorong oleh perasaan kemarahan, pengkhianatan, atau kehilangan, upaya membalas dendam sering melibatkan pencarian tanpa henti untuk menyebabkan rasa sakit atau penderitaan pada pelaku yang dianggap bertanggung jawab. Namun, balas dendam adalah pisau bermata dua yang dapat menghabiskan individu, membawanya ke jalan kegelapan dan ambiguitas moral. Ini adalah perjalanan emosional yang dapat mengubah persepsi seseorang tentang benar dan salah, membuat mereka buta terhadap konsekuensi potensial dan kerusakan yang disebabkan oleh tindakan mereka. Meskipun balas dendam mungkin memberikan rasa kepuasan sesaat, jarang menghasilkan solusi atau penyembuhan yang sejati. Ini adalah aspek yang kompleks dan ambigu secara moral dari pengalaman manusia yang mengeksplorasi kedalaman sifat manusia, batasan keadilan, dan biaya balas dendam.",
-    numberOfLikes: 0,
+    // numberOfLikes: 0,
     numberOfComments: 0,
   },
 ];
