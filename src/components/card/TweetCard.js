@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { View, Text, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
@@ -60,7 +60,6 @@ const TweetCard = ({ item }) => {
           userId: loggedInUserData.id,
         });
       }
-      setIsLiked((prevIsLiked) => !prevIsLiked);
     } catch (error) {
       console.error(error);
     }
@@ -71,7 +70,7 @@ const TweetCard = ({ item }) => {
       FIREBASE_FIRESTORE,
       `tweets/${item.id}/likes`
     );
-    const unsubscribe = onSnapshot(likesCollection, (response) => {
+    const unsubcribe = onSnapshot(likesCollection, (response) => {
       const likes = response.docs.map((doc) => doc.data());
       const isLiked = likes.some((like) => like.userId === loggedInUserData.id);
 
@@ -79,7 +78,7 @@ const TweetCard = ({ item }) => {
       setIsLiked(isLiked);
     });
 
-    return () => unsubscribe(); // Unsubscribe the listener when the component unmounts
+    return () => unsubcribe();
   }, [item.id, loggedInUserData.id]);
 
   return (
@@ -95,12 +94,7 @@ const TweetCard = ({ item }) => {
       <View className="flex-1">
         {/* username and date */}
         <View className="mb-1">
-          <View className="flex-row items-center space-x-1">
-            <Text className="font-InterBold">{item.name}</Text>
-            <Text className="font-InterRegular text-xs text-grayCustom">
-              @{item.username}
-            </Text>
-          </View>
+          <Text className="font-InterBold">{item.username}</Text>
           <Text className="text-[12px] text-gray-400">
             {formatRelativeTime(item.date)}
           </Text>

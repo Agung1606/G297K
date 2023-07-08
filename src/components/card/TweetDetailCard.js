@@ -17,12 +17,7 @@ const TweetDetailCard = ({
         <View className="flex-row items-center space-x-4">
           <Avatar imgUrl={item.profile} size={50} onPress={goToVisitProfile} />
           <View>
-            <View className="flex-row items-center space-x-1">
-              <Text className="font-InterBold">{item.name}</Text>
-              <Text className="font-InterRegular text-xs text-grayCustom">
-                @{item.username}
-              </Text>
-            </View>
+            <Text className="font-InterBold">{item.username}</Text>
             <Text className="text-[12px] text-grayCustom">
               {formatRelativeTime(item.date)}
             </Text>
@@ -36,7 +31,6 @@ const TweetDetailCard = ({
       <Text className="font-InterRegular text-[17px]">{item.tweet}</Text>
       <View className="my-4">
         <TweetInteraction
-          // numberOfLikes={item.numberOfLikes}
           tweetId={item.id}
           numberOfComments={item.numberOfComments}
           openModalSendComment={openModalSendComment}

@@ -24,11 +24,13 @@ const DetailsTweet = ({ route, navigation }) => {
   const [loading, setLoading] = useState(false);
 
   const goToPrevScreen = useCallback(() => navigation.goBack(), [navigation]);
+
   const goToVisitProfile = useCallback(() => {
     navigation.navigate("VisitProfileScreen", {
       param: { username: item.username, userId: item.userId },
     });
   }, [navigation, item]);
+  
   const openModalSendComment = useCallback(() => {
     navigation.navigate("SendComment", { param: item });
   }, [navigation, item]);

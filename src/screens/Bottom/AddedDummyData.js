@@ -72,11 +72,9 @@ const AddedDummyData = () => {
         await addDoc(collection(FIREBASE_FIRESTORE, "tweets"), {
           userId: data.userId,
           profile: data.profile,
-          name: data.name,
           username: data.username,
           date: data.date,
           tweet: data.tweet,
-          // numberOfLikes: data.numberOfLikes,
           numberOfComments: data.numberOfComments,
         });
       }
