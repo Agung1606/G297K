@@ -84,7 +84,7 @@ const TweetDetailCard = ({
         </Pressable>
       </View>
       {/* tweets */}
-      <Text className="font-InterRegular text-[17px]">{item.tweet}</Text>
+      <Text className="font-RobotoRegular text-[16px]">{item.tweet}</Text>
       <View className="my-2">
         <TweetInteraction
           numsLike={numsLike}

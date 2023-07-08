@@ -46,12 +46,14 @@ const SendComment = ({ route, navigation }) => {
         <View className="flex-1 space-y-2">
           <Text className="font-InterRegular text-gray-600">
             Membalas{" "}
-            <Text className="text-blue font-InterSemiBold">@{item.name}</Text>
+            <Text className="text-blue font-InterSemiBold">
+              {item.username}
+            </Text>
           </Text>
           <ScrollView className="mb-20">
             <TextInput
               placeholder="Kirim balasan Anda"
-              className="font-InterRegular text-lg"
+              className="font-RobotoRegular text-[15px]"
               value={commentInput}
               onChangeText={(input) => setCommentInput(input)}
               autoFocus={true}

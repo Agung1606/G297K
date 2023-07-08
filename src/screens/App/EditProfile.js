@@ -59,17 +59,16 @@ const EditProfile = ({ navigation }) => {
     );
 
     const usernameChanged = username !== loggedInUserData.username;
-    const nameChanged = name !== loggedInUserData.name;
+    // const nameChanged = name !== loggedInUserData.name;
 
     try {
-      if (nameChanged || usernameChanged) {
+      if (usernameChanged) {
         const tweetsQuerySnapshot = await getDocs(
           query(collectionTweetRef, where("userId", "==", loggedInUserData.id))
         );
         const tweetUpdatePromise = tweetsQuerySnapshot.docs.map((doc) => {
           const docRef = doc.ref;
           const updateData = {
-            name,
             username,
           };
 

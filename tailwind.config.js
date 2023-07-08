@@ -10,6 +10,7 @@ module.exports = {
         InterRegular: ["InterRegular", "sans-serif"],
         InterLight: ["InterLight", "sans-serif"],
         LoraBold: ["LoraBold", "sans-serif"],
+        RobotoRegular: ["RobotoRegular", "sans-serif"],
       },
       colors: {
         blue: "#1D7ED8",
@@ -19,4 +20,3 @@ module.exports = {
   },
   plugins: [],
 };
-

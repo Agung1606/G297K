@@ -69,7 +69,7 @@ const Profile = ({ navigation }) => {
         renderItem={({ item }) => <TweetCard item={item} />}
         keyExtractor={(item) => item.id}
         ListHeaderComponent={() => (
-          <View className="my-2 p-2 border-b border-gray-600">
+          <View className="mb-2 p-2 border-b border-gray-600">
             <ProfileInfo
               profileUrl={loggedInUserData.profile}
               name={loggedInUserData.name}

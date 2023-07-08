@@ -1,4 +1,4 @@
-import { FontAwesome } from "@expo/vector-icons";
+import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 const Tab = createBottomTabNavigator();
 
@@ -31,18 +31,24 @@ const BottomNavigation = () => {
         name="HomeScreen"
         component={Home}
         options={{
-          tabBarIcon: ({ color }) => (
-            <FontAwesome name="home" size={28} color={color} />
-          ),
+          tabBarIcon: ({ color, focused }) =>
+            focused ? (
+              <Ionicons name="home-sharp" size={28} color={color} />
+            ) : (
+              <Ionicons name="home-outline" size={28} color={color} />
+            ),
         }}
       />
       <Tab.Screen
         name="ExploreScreen"
         component={Explore}
         options={{
-          tabBarIcon: ({ color }) => (
-            <FontAwesome name="search" size={28} color={color} />
-          ),
+          tabBarIcon: ({ color, focused }) =>
+            focused ? (
+              <Ionicons name="search-sharp" size={28} color={color} />
+            ) : (
+              <Ionicons name="search-outline" size={28} color={color} />
+            ),
         }}
       />
       <Tab.Screen
@@ -51,7 +57,7 @@ const BottomNavigation = () => {
         options={{
           unmountOnBlur: true,
           tabBarIcon: () => (
-            <FontAwesome name="plus-square" size={35} color={"#1D7ED8"} />
+            <Ionicons name="md-add-circle" size={35} color={"#1D7ED8"} />
           ),
           tabBarStyle: {
             display: "none",
@@ -62,18 +68,24 @@ const BottomNavigation = () => {
         name="NotificationScreen"
         component={Notification}
         options={{
-          tabBarIcon: ({ color }) => (
-            <FontAwesome name="bell-o" size={28} color={color} />
-          ),
+          tabBarIcon: ({ color, focused }) =>
+            focused ? (
+              <Ionicons name="heart-sharp" size={28} color={color} />
+            ) : (
+              <Ionicons name="heart-outline" size={28} color={color} />
+            ),
         }}
       />
       <Tab.Screen
         name="ProfileScreen"
         component={Profile}
         options={{
-          tabBarIcon: ({ color }) => (
-            <FontAwesome name="user-circle-o" size={28} color={color} />
-          ),
+          tabBarIcon: ({ color, focused }) =>
+            focused ? (
+              <Ionicons name="person-sharp" size={28} color={color} />
+            ) : (
+              <Ionicons name="person-outline" size={28} color={color} />
+            ),
         }}
       />
       {/* <Tab.Screen

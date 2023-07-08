@@ -101,9 +101,11 @@ const TweetCard = ({ item }) => {
         </View>
         {/* tweets, Note: this is a little bit tricky code */}
         <Text className="mb-2">
-          <Text className="font-InterRegular">{item.tweet.slice(0, 550)}</Text>
+          <Text className="font-RobotoRegular text-[15px]">
+            {item.tweet.slice(0, 550)}
+          </Text>
           {item.tweet.length > 550 && (
-            <Text className="text-blue font-InterSemiBold">
+            <Text className="text-blue font-RobotoRegular text-[15px]">
               ...Baca Lebih Lanjut
             </Text>
           )}

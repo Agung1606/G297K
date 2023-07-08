@@ -27,6 +27,7 @@ export default function App() {
     InterRegular: require("./src/assets/fonts/Inter-Regular.ttf"),
     InterLight: require("./src/assets/fonts/Inter-Light.ttf"),
     LoraBold: require("./src/assets/fonts/Lora-Bold.ttf"),
+    RobotoRegular: require("./src/assets/fonts/Roboto-Regular.ttf"),
   });
   if (!loaded) return null; // wait until the fonts loaded
   return (

@@ -3,8 +3,9 @@ import {
   Text,
   ActivityIndicator,
   Pressable,
+  TouchableOpacity,
   View,
-  SectionList,
+  FlatList,
 } from "react-native";
 import {
   MaterialIcons,
@@ -112,34 +113,31 @@ export const ButtonBurgerProfile = ({ goToSettings }) => {
     openModal,
     closeModal,
     renderBackdrop,
-  } = bottomModalConfig(["22%"]);
+  } = bottomModalConfig(["15%"]);
 
   const options = [
     {
-      title: "Pengaturan & Dukungan",
-      data: [
-        {
-          text: "Pengaturan dan Privasi",
-          icon: <SimpleLineIcons name="settings" size={22} />,
-          onPress: () => {
-            goToSettings();
-            closeModal();
-          },
-        },
-        {
-          text: "Pusat Bantuan",
-          icon: <MaterialIcons name="help-outline" size={26} />,
-          onPress: () => {},
-        },
-      ],
+      id: 1,
+      text: "Pengaturan dan Privasi",
+      icon: <Ionicons name="settings-outline" size={22} />,
+      onPress: () => {
+        goToSettings();
+        closeModal();
+      },
+    },
+    {
+      id: 2,
+      text: "Pusat Bantuan",
+      icon: <Ionicons name="md-help-circle-outline" size={22} />,
+      onPress: () => {},
     },
   ];
 
   return (
     <>
-      <Pressable onPress={openModal}>
-        <SimpleLineIcons name="menu" size={28} />
-      </Pressable>
+      <TouchableOpacity onPress={openModal}>
+        <Ionicons name="md-options-outline" size={30} />
+      </TouchableOpacity>
       {/* bottom modal */}
       <BottomSheetModal
         ref={bottomSheetModalRef}
@@ -147,23 +145,18 @@ export const ButtonBurgerProfile = ({ goToSettings }) => {
         snapPoints={snapPoints}
         backdropComponent={renderBackdrop}
       >
-        <SectionList
-          sections={options}
-          renderSectionHeader={({ section }) => (
-            <Text className="px-6 py-2 font-InterRegular text-lg">
-              {section.title}
-            </Text>
-          )}
+        <FlatList
+          data={options}
           renderItem={({ item }) => (
-            <StyledPressable
+            <TouchableOpacity
               onPress={item.onPress}
-              className={`flex-row items-center px-8 pb-4 space-x-2 ${styles.pressableEffect}`}
+              className="flex-row items-center space-x-4 px-4 mb-3"
             >
               {item.icon}
-              <Text className="font-InterRegular">{item.text}</Text>
-            </StyledPressable>
+              <Text className="font-InterRegular text-lg">{item.text}</Text>
+            </TouchableOpacity>
           )}
-          keyExtractor={(item) => `basicListEntry-${item.text}`}
+          keyExtractor={(item) => item.id}
         />
       </BottomSheetModal>
     </>

@@ -13,15 +13,15 @@ const TweetInteraction = ({
     {
       id: 1,
       icon: isLiked ? (
-        <Ionicons name="md-heart-sharp" size={30} color="red" />
+        <Ionicons name="md-heart-sharp" size={26} color="red" />
       ) : (
-        <Ionicons name="md-heart-outline" size={30} />
+        <Ionicons name="md-heart-outline" size={26} />
       ),
       onPress: handleLike,
     },
     {
       id: 2,
-      icon: <Ionicons name="chatbubble-outline" size={26} />,
+      icon: <Ionicons name="chatbubble-outline" size={22} />,
       onPress: openModalSendComment,
     },
   ];

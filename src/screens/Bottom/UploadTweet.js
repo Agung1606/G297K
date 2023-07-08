@@ -33,12 +33,10 @@ const UploadTweet = ({ navigation }) => {
 
     const data = {
       userId: loggedInUserData.id,
-      name: loggedInUserData.name,
       username: loggedInUserData.username,
       profile: loggedInUserData.profile,
       tweet: tweetInput,
       date: `${dateString} ${timeString} ${timeZoneString}`,
-      // numberOfLikes: 0,
       numberOfComments: 0,
     };
 
@@ -84,7 +82,7 @@ const UploadTweet = ({ navigation }) => {
           <ScrollView className="mb-20">
             <TextInput
               placeholder={`Apa yang terjadi?`}
-              className="font-InterRegular text-lg"
+              className="font-RobotoRegular text-[15px]"
               autoFocus={true}
               multiline
               maxLength={2000}

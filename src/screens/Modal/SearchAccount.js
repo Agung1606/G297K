@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, TextInput, Pressable, FlatList } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Pressable,
+  TouchableOpacity,
+  FlatList,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { AntDesign } from "@expo/vector-icons";
 
@@ -19,9 +26,9 @@ const SearchBar = ({ goBack, searchQuery, setSearchQuery }) => (
   <View
     className={`flex-row justify-between items-center py-2 px-4 border-b border-gray-600`}
   >
-    <Pressable onPress={goBack}>
+    <TouchableOpacity onPress={goBack}>
       <AntDesign name="arrowleft" size={22} />
-    </Pressable>
+    </TouchableOpacity>
     <View className="flex-1 px-4 py-2 ml-6">
       <TextInput
         placeholder="Cari akun"
@@ -117,9 +124,9 @@ const SearchAccount = ({ navigation }) => {
                   <Text className="font-InterSemiBold text-lg text-grayCustom">
                     Baru saja
                   </Text>
-                  <Pressable onPress={openModal}>
+                  <TouchableOpacity onPress={openModal}>
                     <AntDesign name="closecircle" size={20} />
-                  </Pressable>
+                  </TouchableOpacity>
                 </View>
               )}
               <FlatList

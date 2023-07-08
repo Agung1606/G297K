@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, Pressable, FlatList } from "react-native";
+import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
@@ -24,18 +24,18 @@ const HeaderVisitProfile = ({ username }) => {
   return (
     <View className={`flex-row justify-between items-center my-1 px-3`}>
       <View className={`flex-row justify-between items-center space-x-6`}>
-        <Pressable onPress={goToPrevScreen}>
+        <TouchableOpacity onPress={goToPrevScreen}>
           <MaterialIcons name="arrow-back" size={30} />
-        </Pressable>
+        </TouchableOpacity>
         <Text className="font-InterBold text-lg tracking-wide">{username}</Text>
       </View>
       <View className={`flex-row justify-between items-center space-x-6`}>
-        <Pressable>
+        <TouchableOpacity>
           <FontAwesome name="bell-o" size={25} />
-        </Pressable>
-        <Pressable>
+        </TouchableOpacity>
+        <TouchableOpacity>
           <MaterialIcons name="more-vert" size={25} />
-        </Pressable>
+        </TouchableOpacity>
       </View>
     </View>
   );
