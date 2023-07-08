@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
+import { useNavigation } from "@react-navigation/native";
+import { Ionicons } from "@expo/vector-icons";
 
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
 import {
@@ -17,6 +18,10 @@ const TweetInteraction = ({
   numberOfComments,
   openModalSendComment,
 }) => {
+  const navigation = useNavigation();
+  const goToLikeScreen = () =>
+    navigation.navigate("LikeScreen", { param: tweetId });
+
   const loggedInUserData = useSelector((state) => state.global.user);
   const [isLiked, setIsLiked] = useState(false);
   const [numsLike, setNumsLike] = useState(0);
@@ -37,7 +42,7 @@ const TweetInteraction = ({
         if (likeDoc) await deleteDoc(likeDoc.ref);
       } else {
         await addDoc(likesCollection, {
-          name: loggedInUserData.name,
+          username: loggedInUserData.username,
           profile: loggedInUserData.profile,
           userId: loggedInUserData.id,
         });
@@ -89,18 +94,24 @@ const TweetInteraction = ({
           </TouchableOpacity>
         ))}
       </View>
-      <View className="flex-row items-center space-x-5">
-        <TouchableOpacity>
-          <Text className="font-InterMedium text-grayCustom">
-            {numsLike} Suka
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Text className="font-InterMedium text-grayCustom">
-            {numberOfComments} Komentar
-          </Text>
-        </TouchableOpacity>
-      </View>
+      {(numsLike || numberOfComments) && (
+        <View className="flex-row items-center space-x-5">
+          {numsLike && (
+            <TouchableOpacity onPress={goToLikeScreen}>
+              <Text className="font-InterMedium text-grayCustom">
+                {numsLike} Suka
+              </Text>
+            </TouchableOpacity>
+          )}
+          {numberOfComments && (
+            <TouchableOpacity>
+              <Text className="font-InterMedium text-grayCustom">
+                {numberOfComments} Komentar
+              </Text>
+            </TouchableOpacity>
+          )}
+        </View>
+      )}
     </View>
   );
 };
