@@ -1,14 +1,68 @@
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { useSelector } from "react-redux";
+
+import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
+import {
+  collection,
+  onSnapshot,
+  addDoc,
+  deleteDoc,
+  getDocs,
+} from "firebase/firestore";
 
 const TweetInteraction = ({
-  numsLike,
-  isLiked,
-  handleLike,
+  tweetId,
   numberOfComments,
   openModalSendComment,
 }) => {
+  const loggedInUserData = useSelector((state) => state.global.user);
+  const [isLiked, setIsLiked] = useState(false);
+  const [numsLike, setNumsLike] = useState(0);
+
+  const handleLike = async () => {
+    const likesCollection = collection(
+      FIREBASE_FIRESTORE,
+      `tweets/${tweetId}/likes`
+    );
+
+    try {
+      if (isLiked) {
+        const querySnapshot = await getDocs(likesCollection);
+        const likeDoc = querySnapshot.docs.find(
+          (doc) => doc.data().userId === loggedInUserData.id
+        );
+
+        if (likeDoc) await deleteDoc(likeDoc.ref);
+      } else {
+        await addDoc(likesCollection, {
+          name: loggedInUserData.name,
+          profile: loggedInUserData.profile,
+          userId: loggedInUserData.id,
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    const likesCollection = collection(
+      FIREBASE_FIRESTORE,
+      `tweets/${tweetId}/likes`
+    );
+    const unsubcribe = onSnapshot(likesCollection, (response) => {
+      const likes = response.docs.map((doc) => doc.data());
+      const isLiked = likes.some((like) => like.userId === loggedInUserData.id);
+
+      setNumsLike(likes.length);
+      setIsLiked(isLiked);
+    });
+
+    return () => unsubcribe();
+  }, [tweetId, loggedInUserData.id]);
+
   const options = [
     {
       id: 1,

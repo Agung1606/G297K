@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from "react";
-import { View, Text, FlatList, Pressable } from "react-native";
+import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
-import { FontAwesome, Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
 import Spinner from "react-native-loading-spinner-overlay";
 
@@ -30,7 +30,7 @@ const DetailsTweet = ({ route, navigation }) => {
       param: { username: item.username, userId: item.userId },
     });
   }, [navigation, item]);
-  
+
   const openModalSendComment = useCallback(() => {
     navigation.navigate("SendComment", { param: item });
   }, [navigation, item]);
@@ -66,9 +66,9 @@ const DetailsTweet = ({ route, navigation }) => {
     {
       icon:
         loggedInUserId === item.userId ? (
-          <Ionicons name="trash-outline" size={30} color={"#7d7d7d"} />
+          <Ionicons name="trash-outline" size={22} />
         ) : (
-          <MaterialIcons name="report" size={30} color={"#7d7d7d"} />
+          <Ionicons name="warning-sharp" size={22} />
         ),
       text: loggedInUserId === item.userId ? "Hapus" : "Laporkan tweet ini",
       onPress: () => {
@@ -77,7 +77,7 @@ const DetailsTweet = ({ route, navigation }) => {
           openConfirmModal();
         } else {
           // Report functionality here
-          alert("Report...");
+          closeBottomModal();
         }
       },
     },
@@ -105,7 +105,7 @@ const DetailsTweet = ({ route, navigation }) => {
       />
       {/* comment button that always there */}
       <View className="p-2 border-t border-grayCustom">
-        <Pressable
+        <TouchableOpacity
           onPress={openModalSendComment}
           className={`flex-row justify-between items-center py-2 border-b-2 border-blue`}
         >
@@ -113,7 +113,7 @@ const DetailsTweet = ({ route, navigation }) => {
             Kirim komentar Anda
           </Text>
           <FontAwesome name="comments-o" size={20} color={"#1D7ED8"} />
-        </Pressable>
+        </TouchableOpacity>
       </View>
       {/* bottom modal */}
       <BottomSheetModal
@@ -122,18 +122,16 @@ const DetailsTweet = ({ route, navigation }) => {
         snapPoints={snapPoints}
         backdropComponent={renderBackdrop}
       >
-        <View className="px-6">
-          {options.map((item) => (
-            <Pressable
-              key={item.text}
-              onPress={item.onPress}
-              className="flex-row items-center space-x-2"
-            >
-              {item.icon}
-              <Text className="font-InterMedium text-[16px]">{item.text}</Text>
-            </Pressable>
-          ))}
-        </View>
+        {options.map((item) => (
+          <TouchableOpacity
+            key={item.text}
+            onPress={item.onPress}
+            className="flex-row items-center space-x-4 px-4 mb-3"
+          >
+            {item.icon}
+            <Text className="font-InterRegular text-lg">{item.text}</Text>
+          </TouchableOpacity>
+        ))}
       </BottomSheetModal>
       {/* confirm modal */}
       <ConfirmModal

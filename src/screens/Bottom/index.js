@@ -21,7 +21,7 @@ const BottomNavigation = () => {
         tabBarInactiveTintColor: "#7d7d7d",
         tabBarStyle: {
           backgroundColor: "white",
-          borderTopColor: "gray",
+          borderTopColor: "white",
           height: 50,
         },
       }}

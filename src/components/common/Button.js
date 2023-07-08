@@ -7,12 +7,7 @@ import {
   View,
   FlatList,
 } from "react-native";
-import {
-  MaterialIcons,
-  Ionicons,
-  AntDesign,
-  SimpleLineIcons,
-} from "@expo/vector-icons";
+import { MaterialIcons, Ionicons, AntDesign } from "@expo/vector-icons";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
 
 import { styles } from "../../style/Global";
