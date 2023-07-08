@@ -1,84 +1,13 @@
-import React, { useState, useCallback } from "react";
-import {
-  View,
-  TouchableOpacity,
-  Pressable,
-  Text,
-  SectionList,
-  RefreshControl,
-} from "react-native";
+import React from "react";
+import { View, TouchableOpacity, Pressable, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { SimpleLineIcons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { SimpleLineIcons } from "@expo/vector-icons";
 
 import { styled } from "nativewind";
 const StyledPressable = styled(Pressable);
 
-import { scrollToTopConfig } from "../../hooks";
-import {
-  TrendingCard,
-  TweetCard,
-  ButtonScrollToTop,
-} from "../../components";
-import { TRENDINGLISTS, EXPLORETWEETS } from "../../constant";
-
-const Explore = ({ navigation }) => {
-  const goToSearchScreen = () => navigation.navigate("SearchAccountScreen");
-  const goToTrendingListScreen = () =>
-    navigation.navigate("TrendingListScreen");
-
-  const { isScrolled, reference, handleScroll, scrollToTop } =
-    scrollToTopConfig({ kind: "SectionList" });
-
-  // refresh configuration
-  const [refreshing, setRefreshing] = useState(false);
-  const onRefresh = useCallback(() => {
-    setRefreshing(true);
-    setTimeout(() => {
-      setRefreshing(false);
-    }, 1000);
-  }, []);
-
-  return (
-    <SafeAreaView className="flex-1">
-      <SearchBar onPress={goToSearchScreen} />
-      <SectionList
-        ref={reference}
-        onScroll={handleScroll}
-        ListHeaderComponent={
-          <ListOfTrendingTweets
-            goToTrendingListScreen={goToTrendingListScreen}
-          />
-        }
-        ListFooterComponent={() => <View className="pb-20" />}
-        sections={EXPLORETWEETS}
-        renderSectionHeader={({ section }) => (
-          <View className="m-2 flex-row items-center space-x-2">
-            <MaterialCommunityIcons
-              name="message-text"
-              size={25}
-              color={"#1D7ED8"}
-            />
-            <Text className="font-InterSemiBold text-lg">{section.title}</Text>
-          </View>
-        )}
-        renderItem={({ item }) => <TweetCard item={item} />}
-        keyExtractor={(item) => `basicListEntry-${item.id}`}
-        refreshControl={
-          <RefreshControl
-            refreshing={refreshing}
-            onRefresh={onRefresh}
-            colors={["#1D7ED8"]}
-          />
-        }
-      />
-      {isScrolled && (
-        <View className="absolute bottom-6 right-2">
-          <ButtonScrollToTop onPress={scrollToTop} />
-        </View>
-      )}
-    </SafeAreaView>
-  );
-};
+import { TrendingCard } from "../../components";
+import { TRENDINGLISTS } from "../../constant";
 
 const SearchBar = ({ onPress }) => (
   <View
@@ -96,29 +25,36 @@ const SearchBar = ({ onPress }) => (
   </View>
 );
 
-const ListOfTrendingTweets = ({ goToTrendingListScreen }) => {
+const Explore = ({ navigation }) => {
+  const goToSearchScreen = () => navigation.navigate("SearchAccountScreen");
+  const goToTrendingListScreen = () =>
+    navigation.navigate("TrendingListScreen");
+
   return (
-    <View className="my-2 pb-8 border-b border-gray-600">
-      <Text className="mx-4 font-InterBold text-xl">Trending untuk Anda</Text>
+    <SafeAreaView className="flex-1">
+      <SearchBar onPress={goToSearchScreen} />
+      <View className="my-2 pb-8">
+        <Text className="mx-4 font-InterBold text-xl">Trending untuk Anda</Text>
 
-      <View className="my-2">
-        {/* only take the first 5 off list */}
-        {TRENDINGLISTS.slice(0, 5).map((item) => (
-          <TrendingCard
-            key={item.id}
-            trendingOn={item.trendingOn}
-            trendingKeywords={item.trendingKeywords}
-            numberOfTweets={item.numberOfTweets}
-          />
-        ))}
+        <View className="my-2">
+          {/* only take the first 5 off list */}
+          {TRENDINGLISTS.slice(0, 5).map((item) => (
+            <TrendingCard
+              key={item.id}
+              trendingOn={item.trendingOn}
+              trendingKeywords={item.trendingKeywords}
+              numberOfTweets={item.numberOfTweets}
+            />
+          ))}
+        </View>
+
+        <TouchableOpacity onPress={goToTrendingListScreen}>
+          <Text className="mx-4 text-blue font-InterMedium">
+            Tampilkan lebih banyak
+          </Text>
+        </TouchableOpacity>
       </View>
-
-      <TouchableOpacity onPress={goToTrendingListScreen}>
-        <Text className="mx-4 text-blue font-InterMedium">
-          Tampilkan lebih banyak
-        </Text>
-      </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 };
 

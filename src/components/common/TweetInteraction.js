@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import { FontAwesome, Feather } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
 const TweetInteraction = ({
   numsLike,
@@ -11,41 +11,42 @@ const TweetInteraction = ({
 }) => {
   const options = [
     {
-      name: "comment",
-      icon: <FontAwesome name="comment-o" size={22} color={"#7d7d7d"} />,
-      num: numberOfComments,
-      onPress: openModalSendComment,
-    },
-    {
-      name: "likes",
+      id: 1,
       icon: isLiked ? (
-        <FontAwesome name="heart" size={22} color="red" />
+        <Ionicons name="md-heart-sharp" size={30} color="red" />
       ) : (
-        <FontAwesome name="heart-o" size={22} color="#7d7d7d" />
+        <Ionicons name="md-heart-outline" size={30} />
       ),
-      num: numsLike,
       onPress: handleLike,
     },
     {
-      name: "share",
-      icon: <Feather name="share-2" size={22} color="#7d7d7d" />,
-      text: "",
-      onPress: () => alert("Share this tweet"),
+      id: 2,
+      icon: <Ionicons name="chatbubble-outline" size={26} />,
+      onPress: openModalSendComment,
     },
   ];
 
   return (
-    <View className={`flex-row justify-between items-center`}>
-      {options.map((item) => (
-        <TouchableOpacity
-          key={item.name}
-          onPress={item.onPress}
-          className="flex-1 flex-row items-center space-x-1 py-1"
-        >
-          {item.icon}
-          <Text className="font-InterRegular text-grayCustom">{item.num}</Text>
+    <View className="space-y-2">
+      <View className="flex-row items-center space-x-5">
+        {options.map((item) => (
+          <TouchableOpacity key={item.id} onPress={item.onPress}>
+            {item.icon}
+          </TouchableOpacity>
+        ))}
+      </View>
+      <View className="flex-row items-center space-x-5">
+        <TouchableOpacity>
+          <Text className="font-InterMedium text-grayCustom">
+            {numsLike} Suka
+          </Text>
         </TouchableOpacity>
-      ))}
+        <TouchableOpacity>
+          <Text className="font-InterMedium text-grayCustom">
+            {numberOfComments} Komentar
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
