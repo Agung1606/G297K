@@ -1,5 +1,3 @@
-import assets from "./assets";
-
 export const PROFILE = [
   {
     id: "Rm0CNJNGzr5TWgP8p0Uz",

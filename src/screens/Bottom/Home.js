@@ -1,41 +1,18 @@
 import React, { useState, useCallback, useEffect } from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  FlatList,
-  RefreshControl,
-  ScrollView,
-} from "react-native";
+import { View, FlatList, RefreshControl, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Fontisto } from "@expo/vector-icons";
 
 import { scrollToTopConfig } from "../../hooks";
 import {
   TweetCard,
   SplashTweetCard,
-  BadgeNotif,
   ButtonScrollToTop,
 } from "../../components";
 
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
 import { onSnapshot, collection, query, orderBy } from "firebase/firestore";
 
-const HeaderHome = ({ title, goToMessage }) => (
-  <View
-    className={`flex-row justify-between items-center py-1 px-3 border-b border-b-gray-600`}
-  >
-    <Text className="font-LoraBold text-3xl tracking-wider">{title}</Text>
-    <TouchableOpacity onPress={goToMessage}>
-      <Fontisto name="email" size={30} />
-      <BadgeNotif num={5} />
-    </TouchableOpacity>
-  </View>
-);
-
-const Home = ({ navigation }) => {
-  const goToMessage = () => navigation.navigate("MessageScreen");
-
+const Home = () => {
   const [dataTweets, setDataTweets] = useState([]);
   const { isScrolled, reference, handleScroll, scrollToTop } =
     scrollToTopConfig({ kind: "FlatList" });
@@ -65,7 +42,6 @@ const Home = ({ navigation }) => {
 
   return (
     <SafeAreaView className="flex-1">
-      <HeaderHome title={"G297K"} goToMessage={goToMessage} />
       {dataTweets.length === 0 ? (
         <ScrollView>
           <SplashTweetCard />

@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 import { Login, Register } from "../screens/Auth";
 import BottomNavigation from "../screens/Bottom";
 import {
-  Message,
   VisitProfile,
   DetailsTweet,
   TrendingList,
@@ -40,13 +39,6 @@ const Routes = () => {
           />
           {/* app navigation */}
           <Stack.Group>
-            <Stack.Screen
-              name="MessageScreen"
-              component={Message}
-              options={{
-                animation: "slide_from_right",
-              }}
-            />
             <Stack.Screen
               name="VisitProfileScreen"
               component={VisitProfile}
