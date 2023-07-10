@@ -1,7 +1,7 @@
 import { View, Text, FlatList } from "react-native";
 import { useSelector } from "react-redux";
 import { SafeAreaView } from "react-native-safe-area-context";
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useCallback } from "react";
 
 import { modalPopupConfig, scrollToTopConfig } from "../../hooks";
 import {
@@ -27,8 +27,13 @@ const HeaderProfile = ({ username, goToSettings }) => {
 };
 
 const Profile = ({ navigation }) => {
-  const goToEditProfile = () => navigation.navigate("EditProfileScreen");
-  const goToSettings = () => navigation.navigate("SettingsScreen");
+  const goToEditProfile = useCallback(() => {
+    navigation.navigate("EditProfileScreen");
+  }, [navigation]);
+  
+  const goToSettings = useCallback(() => {
+    navigation.navigate("SettingsScreen");
+  }, [navigation]);
 
   const { isScrolled, reference, handleScroll, scrollToTop } =
     scrollToTopConfig({ kind: "FlatList" });

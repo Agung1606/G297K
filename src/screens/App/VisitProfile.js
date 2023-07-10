@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { useSelector } from "react-redux";
 
 import { modalPopupConfig } from "../../hooks";
 import {
   ButtonGray,
   ButtonFollow,
+  ButtonBurgerProfile,
   ProfileInfo,
   TweetCard,
   NoTweets,
@@ -17,7 +19,7 @@ import {
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
 import { onSnapshot, query, where, collection } from "firebase/firestore";
 
-const HeaderVisitProfile = ({ username }) => {
+const HeaderVisitProfile = ({ username, isMe, goToSettings }) => {
   const navigation = useNavigation();
   const goToPrevScreen = () => navigation.goBack();
 
@@ -29,22 +31,45 @@ const HeaderVisitProfile = ({ username }) => {
         </TouchableOpacity>
         <Text className="font-InterBold text-lg tracking-wide">{username}</Text>
       </View>
-      <View className={`flex-row justify-between items-center space-x-6`}>
-        <TouchableOpacity>
-          <FontAwesome name="bell-o" size={25} />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <MaterialIcons name="more-vert" size={25} />
-        </TouchableOpacity>
-      </View>
+      {isMe ? (
+        <ButtonBurgerProfile goToSettings={goToSettings} />
+      ) : (
+        <View className={`flex-row justify-between items-center space-x-6`}>
+          <TouchableOpacity>
+            <FontAwesome name="bell-o" size={25} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <MaterialIcons name="more-vert" size={25} />
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
   );
 };
 
-const VisitProfile = ({ route }) => {
+const VisitProfile = ({ route, navigation }) => {
+  const goToEditProfile = useCallback(() => {
+    navigation.navigate("EditProfileScreen");
+  }, [navigation]);
+
+  const goToSettings = useCallback(() => {
+    navigation.navigate("SettingsScreen");
+  }, [navigation]);
+
   const { username, userId } = route?.params?.param;
+  const loggedInUserId = useSelector((state) => state.global.user.id);
+
   const [data, setData] = useState({});
   const [tweets, setTweets] = useState([]);
+  // this configuration is just for a while
+  const [isFollow, setIsFollow] = useState(false);
+  const handleFollow = () => setIsFollow(!isFollow);
+
+  const {
+    isModalOpen,
+    openModal: openDetailProfile,
+    closeModal: closeDetailProfile,
+  } = modalPopupConfig();
 
   useEffect(() => {
     let qUser = query(
@@ -75,19 +100,13 @@ const VisitProfile = ({ route }) => {
     });
   }, [username, userId]);
 
-  // this configuration is just for a while
-  const [isFollow, setIsFollow] = useState(false);
-  const handleFollow = () => setIsFollow(!isFollow);
-
-  const {
-    isModalOpen,
-    openModal: openDetailProfile,
-    closeModal: closeDetailProfile,
-  } = modalPopupConfig();
-
   return (
     <SafeAreaView className="flex-1">
-      <HeaderVisitProfile username={data.username} />
+      <HeaderVisitProfile
+        username={data.username}
+        isMe={loggedInUserId === userId}
+        goToSettings={goToSettings}
+      />
       <FlatList
         ListHeaderComponent={() => (
           <View className="my-2 p-2 border-b border-gray-600">
@@ -104,16 +123,32 @@ const VisitProfile = ({ route }) => {
             <View
               className={`flex-row justify-between items-center space-x-2 mt-1`}
             >
-              <View className="flex-1">
-                <ButtonFollow
-                  title={isFollow ? "Mengikuti" : "Ikuti"}
-                  isFollow={isFollow}
-                  onPress={handleFollow}
-                />
-              </View>
-              <View className="flex-1">
-                <ButtonGray title={"Kirim pesan"} />
-              </View>
+              {loggedInUserId !== userId ? (
+                <>
+                  <View className="flex-1">
+                    <ButtonFollow
+                      title={isFollow ? "Mengikuti" : "Ikuti"}
+                      isFollow={isFollow}
+                      onPress={handleFollow}
+                    />
+                  </View>
+                  <View className="flex-1">
+                    <ButtonGray title={"Kirim pesan"} />
+                  </View>
+                </>
+              ) : (
+                <>
+                  <View className="flex-1">
+                    <ButtonGray
+                      title={"Edit profil"}
+                      onPress={goToEditProfile}
+                    />
+                  </View>
+                  <View className="flex-1">
+                    <ButtonGray title={"Bagikan profil"} />
+                  </View>
+                </>
+              )}
             </View>
           </View>
         )}
