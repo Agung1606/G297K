@@ -56,20 +56,24 @@ const VisitProfile = ({ route, navigation }) => {
     navigation.navigate("SettingsScreen");
   }, [navigation]);
 
-  const { username, userId } = route?.params?.param;
-  const loggedInUserId = useSelector((state) => state.global.user.id);
-
-  const [data, setData] = useState({});
-  const [tweets, setTweets] = useState([]);
-  // this configuration is just for a while
-  const [isFollow, setIsFollow] = useState(false);
-  const handleFollow = () => setIsFollow(!isFollow);
-
   const {
     isModalOpen,
     openModal: openDetailProfile,
     closeModal: closeDetailProfile,
   } = modalPopupConfig();
+
+  const { username, userId } = route?.params?.param;
+  const loggedInUserId = useSelector((state) => state.global.user.id);
+
+  const [data, setData] = useState({});
+  const [tweets, setTweets] = useState([]);
+
+  const [followersCount, setFollowersCount] = useState(0);
+  const [followingCount, setFollowingCount] = useState(0);
+  const [isMyFollowers, setIsMyFollowers] = useState(false);
+  const [isMyFollowing, setIsMyFollowing] = useState(false);
+
+  const handleFollow = async () => {};
 
   useEffect(() => {
     let qUser = query(
@@ -98,6 +102,33 @@ const VisitProfile = ({ route, navigation }) => {
         })
       );
     });
+
+    const followersCol = collection(
+      FIREBASE_FIRESTORE,
+      `users/${userId}/followers`
+    );
+    const followingCol = collection(
+      FIREBASE_FIRESTORE,
+      `users/${userId}/following`
+    );
+
+    onSnapshot(followersCol, (response) => {
+      const followers = response.docs.map((doc) => doc.data());
+      const isMyFollowers = followers.find(
+        (item) => item.userId === loggedInUserId
+      );
+      setFollowersCount(followers.length);
+      setIsMyFollowers(isMyFollowers);
+    });
+
+    onSnapshot(followingCol, (response) => {
+      const following = response.docs.map((doc) => doc.data());
+      const isMyFollowing = following.find(
+        (item) => item.userId === loggedInUserId
+      );
+      setFollowingCount(following.length);
+      setIsMyFollowing(isMyFollowing);
+    });
   }, [username, userId]);
 
   return (
@@ -114,28 +145,29 @@ const VisitProfile = ({ route, navigation }) => {
               profileUrl={data.profile}
               name={data.name}
               bio={data.bio}
-              numberOfTweets={tweets.length}
-              numberOfFollowers={data.followers}
-              numberOfFollowing={data.following}
               openDetailProfile={openDetailProfile}
+              followersCount={followersCount}
+              followingCount={followingCount}
+              tweetsCount={tweets.length}
             />
             {/* button */}
             <View
               className={`flex-row justify-between items-center space-x-2 mt-1`}
             >
               {loggedInUserId !== userId ? (
-                <>
-                  <View className="flex-1">
-                    <ButtonFollow
-                      title={isFollow ? "Mengikuti" : "Ikuti"}
-                      isFollow={isFollow}
-                      onPress={handleFollow}
-                    />
-                  </View>
-                  <View className="flex-1">
-                    <ButtonGray title={"Kirim pesan"} />
-                  </View>
-                </>
+                <View className="flex-1">
+                  <ButtonFollow
+                    title={
+                      isMyFollowing
+                        ? "Mengikuti"
+                        : !isMyFollowing && isMyFollowers
+                        ? "Ikuti balik"
+                        : "Ikuti"
+                    }
+                    isFollow={isMyFollowing}
+                    onPress={handleFollow}
+                  />
+                </View>
               ) : (
                 <>
                   <View className="flex-1">

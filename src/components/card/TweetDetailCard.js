@@ -32,7 +32,6 @@ const TweetDetailCard = ({
       <View className="my-2">
         <TweetInteraction
           tweetId={item.id}
-          numberOfComments={item.numberOfComments}
           openModalSendComment={openModalSendComment}
         />
       </View>

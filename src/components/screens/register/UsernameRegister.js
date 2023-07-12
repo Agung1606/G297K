@@ -50,8 +50,6 @@ const UsernameRegister = ({ route }) => {
           name: username,
           profile:
             "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FdefaultProfile.jpg?alt=media&token=00865e31-d1d6-4556-9130-fcd2a3b8ea6d",
-          followers: 0,
-          following: 0,
           bio: "",
         }).then(() => {
           let q = query(
@@ -67,8 +65,6 @@ const UsernameRegister = ({ route }) => {
                   username: doc.data().username,
                   name: doc.data().name,
                   profile: doc.data().profile,
-                  followers: doc.data().followers,
-                  following: doc.data().following,
                   bio: doc.data().bio,
                 }))[0],
                 token: response.user.accessToken,

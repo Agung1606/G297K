@@ -57,7 +57,6 @@ const TweetCard = ({ item }) => {
         {/* like, comment, and share */}
         <TweetInteraction
           tweetId={item.id}
-          numberOfComments={item.numberOfComments}
           openModalSendComment={openModalSendComment}
         />
       </View>

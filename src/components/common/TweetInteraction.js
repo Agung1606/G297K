@@ -13,11 +13,7 @@ import {
   getDocs,
 } from "firebase/firestore";
 
-const TweetInteraction = ({
-  tweetId,
-  numberOfComments,
-  openModalSendComment,
-}) => {
+const TweetInteraction = ({ tweetId, openModalSendComment }) => {
   const navigation = useNavigation();
   const goToLikeScreen = () =>
     navigation.navigate("LikeScreen", { param: tweetId });
@@ -59,7 +55,7 @@ const TweetInteraction = ({
     );
     const unsubcribe = onSnapshot(likesCollection, (response) => {
       const likes = response.docs.map((doc) => doc.data());
-      const isLiked = likes.some((like) => like.userId === loggedInUserData.id);
+      const isLiked = likes.find((like) => like.userId === loggedInUserData.id);
 
       setNumsLike(likes.length);
       setIsLiked(isLiked);
@@ -94,7 +90,7 @@ const TweetInteraction = ({
           </TouchableOpacity>
         ))}
       </View>
-      {(numsLike || numberOfComments) && (
+      {numsLike && (
         <View className="flex-row items-center space-x-5">
           {numsLike && (
             <TouchableOpacity onPress={goToLikeScreen}>
@@ -103,10 +99,10 @@ const TweetInteraction = ({
               </Text>
             </TouchableOpacity>
           )}
-          {numberOfComments && (
+          {false && (
             <TouchableOpacity>
               <Text className="font-InterMedium text-grayCustom">
-                {numberOfComments} Komentar
+                0 Komentar
               </Text>
             </TouchableOpacity>
           )}

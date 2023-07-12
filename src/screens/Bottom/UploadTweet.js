@@ -37,7 +37,6 @@ const UploadTweet = ({ navigation }) => {
       profile: loggedInUserData.profile,
       tweet: tweetInput,
       date: `${dateString} ${timeString} ${timeZoneString}`,
-      numberOfComments: 0,
     };
 
     setLoading(true);

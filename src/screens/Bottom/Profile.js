@@ -80,8 +80,8 @@ const Profile = ({ navigation }) => {
               name={loggedInUserData.name}
               bio={loggedInUserData.bio}
               numberOfTweets={tweets.length}
-              numberOfFollowers={loggedInUserData.followers}
-              numberOfFollowing={loggedInUserData.following}
+              // numberOfFollowers={loggedInUserData.followers}
+              // numberOfFollowing={loggedInUserData.following}
               openDetailProfile={openDetailProfile}
             />
             {/* button */}

@@ -1,7 +1,7 @@
 import { View, Text, Button } from "react-native";
 import React from "react";
 
-import { TWEETS } from "../../constant";
+import { TWEETS, PROFILE } from "../../constant";
 
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
 import { addDoc, collection } from "firebase/firestore";
@@ -74,8 +74,7 @@ const AddedDummyData = () => {
           profile: data.profile,
           username: data.username,
           date: data.date,
-          tweet: data.tweet,
-          numberOfComments: data.numberOfComments,
+          tweet: data.tweet
         });
       }
 

@@ -8,26 +8,11 @@ const ProfileInfo = ({
   profileUrl,
   name,
   bio,
-  numberOfTweets,
-  numberOfFollowers,
-  numberOfFollowing,
+  followersCount,
+  followingCount,
+  tweetsCount,
   openDetailProfile,
 }) => {
-  const info = [
-    {
-      number: changeFormat(numberOfTweets),
-      text: "Post",
-    },
-    {
-      number: changeFormat(numberOfFollowers),
-      text: "Pengikut",
-    },
-    {
-      number: changeFormat(numberOfFollowing),
-      text: "Mengikuti",
-    },
-  ];
-
   const [text, setText] = useState(bio?.slice(0, 100));
   const [readMore, setReadMore] = useState(false);
   const handleReadMore = () => {
@@ -36,6 +21,22 @@ const ProfileInfo = ({
       setReadMore(true);
     }
   };
+
+  const info = [
+    {
+      number: changeFormat(tweetsCount),
+      text: "Post",
+    },
+    {
+      number: changeFormat(followersCount),
+      text: "Pengikut",
+    },
+    {
+      number: changeFormat(followingCount),
+      text: "Mengikuti",
+    },
+  ];
+
   return (
     <>
       <View className={`flex-row justify-between items-center space-x-10`}>
