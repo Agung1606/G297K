@@ -30,7 +30,7 @@ const Profile = ({ navigation }) => {
   const goToEditProfile = useCallback(() => {
     navigation.navigate("EditProfileScreen");
   }, [navigation]);
-  
+
   const goToSettings = useCallback(() => {
     navigation.navigate("SettingsScreen");
   }, [navigation]);
@@ -45,6 +45,8 @@ const Profile = ({ navigation }) => {
 
   const loggedInUserData = useSelector((state) => state.global.user);
   const [tweets, setTweets] = useState([]);
+  const [followersCount, setFollowersCount] = useState(0);
+  const [followingCount, setFollowingCount] = useState(0);
 
   useMemo(() => {
     let q = query(
@@ -58,6 +60,25 @@ const Profile = ({ navigation }) => {
         })
       );
     });
+
+    const followersCol = collection(
+      FIREBASE_FIRESTORE,
+      `users/${loggedInUserData.id}/followers`
+    );
+    const followingCol = collection(
+      FIREBASE_FIRESTORE,
+      `users/${loggedInUserData.id}/following`
+    );
+
+    onSnapshot(followersCol, (response) => {
+      const followers = response.docs.map((doc) => doc.data());
+      setFollowersCount(followers.length);
+    });
+
+    onSnapshot(followingCol, (response) => {
+      const following = response.docs.map((doc) => doc.data());
+      setFollowingCount(following.length);
+    })
   }, []);
 
   return (
@@ -79,10 +100,10 @@ const Profile = ({ navigation }) => {
               profileUrl={loggedInUserData.profile}
               name={loggedInUserData.name}
               bio={loggedInUserData.bio}
-              numberOfTweets={tweets.length}
-              // numberOfFollowers={loggedInUserData.followers}
-              // numberOfFollowing={loggedInUserData.following}
               openDetailProfile={openDetailProfile}
+              followersCount={followersCount}
+              followingCount={followingCount}
+              tweetsCount={tweets.length}
             />
             {/* button */}
             <View

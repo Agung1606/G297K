@@ -17,7 +17,15 @@ import {
 } from "../../components";
 
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
-import { onSnapshot, query, where, collection } from "firebase/firestore";
+import {
+  onSnapshot,
+  query,
+  where,
+  collection,
+  getDocs,
+  deleteDoc,
+  addDoc,
+} from "firebase/firestore";
 
 const HeaderVisitProfile = ({ username, isMe, goToSettings }) => {
   const navigation = useNavigation();
@@ -63,17 +71,58 @@ const VisitProfile = ({ route, navigation }) => {
   } = modalPopupConfig();
 
   const { username, userId } = route?.params?.param;
-  const loggedInUserId = useSelector((state) => state.global.user.id);
+  const loggedInUserData = useSelector((state) => state.global.user);
 
   const [data, setData] = useState({});
   const [tweets, setTweets] = useState([]);
 
   const [followersCount, setFollowersCount] = useState(0);
   const [followingCount, setFollowingCount] = useState(0);
-  const [isMyFollowers, setIsMyFollowers] = useState(false);
-  const [isMyFollowing, setIsMyFollowing] = useState(false);
+  const [myFollower, setMyFollower] = useState(false);
+  const [myFollowing, setMyFollowing] = useState(false);
 
-  const handleFollow = async () => {};
+  const handleFollow = async () => {
+    const loggedInUserCollection = collection(
+      FIREBASE_FIRESTORE,
+      `users/${loggedInUserData.id}/following`
+    );
+    const otherUserCollection = collection(
+      FIREBASE_FIRESTORE,
+      `users/${userId}/followers`
+    );
+
+    try {
+      if (myFollowing) {
+        const snapshotLoggedInUser = await getDocs(loggedInUserCollection);
+        const snapshotOtherUser = await getDocs(otherUserCollection);
+
+        const loggedInFollowingDoc = snapshotLoggedInUser.docs.find(
+          (doc) => doc.data().userId === userId
+        );
+        const otherFollowersDoc = snapshotOtherUser.docs.find(
+          (doc) => doc.data().userId === loggedInUserData.id
+        );
+
+        if (loggedInFollowingDoc && otherFollowersDoc) {
+          await deleteDoc(loggedInFollowingDoc.ref);
+          await deleteDoc(otherFollowersDoc.ref);
+        }
+      } else {
+        await addDoc(loggedInUserCollection, {
+          userId,
+          profile: data.profile,
+          username: data.username,
+        });
+        await addDoc(otherUserCollection, {
+          userId: loggedInUserData.id,
+          profile: loggedInUserData.profile,
+          username: loggedInUserData.username,
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
     let qUser = query(
@@ -114,20 +163,20 @@ const VisitProfile = ({ route, navigation }) => {
 
     onSnapshot(followersCol, (response) => {
       const followers = response.docs.map((doc) => doc.data());
-      const isMyFollowers = followers.find(
-        (item) => item.userId === loggedInUserId
+      const isMyFollowing = followers.find(
+        (item) => item.userId === loggedInUserData.id
       );
       setFollowersCount(followers.length);
-      setIsMyFollowers(isMyFollowers);
+      setMyFollowing(isMyFollowing);
     });
 
     onSnapshot(followingCol, (response) => {
       const following = response.docs.map((doc) => doc.data());
-      const isMyFollowing = following.find(
-        (item) => item.userId === loggedInUserId
+      const isMyFollower = following.find(
+        (item) => item.userId === loggedInUserData.id
       );
       setFollowingCount(following.length);
-      setIsMyFollowing(isMyFollowing);
+      setMyFollower(isMyFollower);
     });
   }, [username, userId]);
 
@@ -135,7 +184,7 @@ const VisitProfile = ({ route, navigation }) => {
     <SafeAreaView className="flex-1">
       <HeaderVisitProfile
         username={data.username}
-        isMe={loggedInUserId === userId}
+        isMe={loggedInUserData.id === userId}
         goToSettings={goToSettings}
       />
       <FlatList
@@ -154,17 +203,17 @@ const VisitProfile = ({ route, navigation }) => {
             <View
               className={`flex-row justify-between items-center space-x-2 mt-1`}
             >
-              {loggedInUserId !== userId ? (
+              {loggedInUserData.id !== userId ? (
                 <View className="flex-1">
                   <ButtonFollow
                     title={
-                      isMyFollowing
+                      myFollowing
                         ? "Mengikuti"
-                        : !isMyFollowing && isMyFollowers
+                        : !myFollowing && myFollower
                         ? "Ikuti balik"
                         : "Ikuti"
                     }
-                    isFollow={isMyFollowing}
+                    isFollow={myFollowing}
                     onPress={handleFollow}
                   />
                 </View>
