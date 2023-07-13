@@ -167,18 +167,24 @@ export const ButtonScrollToTop = ({ onPress }) => (
   </StyledPressable>
 );
 
-export const ButtonFollow = ({ title, onPress, isFollow }) => (
+export const ButtonFollow = ({ loading, title, onPress, isFollow }) => (
   <StyledPressable
     onPress={onPress}
     className={`w-full py-[6px] justify-center items-center ${
       isFollow ? "bg-gray-300/50" : "bg-blue"
     } rounded-lg ${styles.pressableEffect}`}
   >
-    <Text
-      className={`font-InterSemiBold text-[16px] ${!isFollow && "text-white"}`}
-    >
-      {title}
-    </Text>
+    {loading ? (
+      <ActivityIndicator size={"small"} color={"#FFF"} />
+    ) : (
+      <Text
+        className={`font-InterSemiBold text-[16px] ${
+          !isFollow && "text-white"
+        }`}
+      >
+        {title}
+      </Text>
+    )}
   </StyledPressable>
 );
 

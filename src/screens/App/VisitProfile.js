@@ -2,7 +2,6 @@ import React, { useEffect, useState, useCallback } from "react";
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
 
 import { modalPopupConfig } from "../../hooks";
@@ -27,10 +26,12 @@ import {
   addDoc,
 } from "firebase/firestore";
 
-const HeaderVisitProfile = ({ username, isMe, goToSettings }) => {
-  const navigation = useNavigation();
-  const goToPrevScreen = () => navigation.goBack();
-
+const HeaderVisitProfile = ({
+  username,
+  isMe,
+  goToSettings,
+  goToPrevScreen,
+}) => {
   return (
     <View className={`flex-row justify-between items-center my-1 px-3`}>
       <View className={`flex-row justify-between items-center space-x-6`}>
@@ -64,6 +65,10 @@ const VisitProfile = ({ route, navigation }) => {
     navigation.navigate("SettingsScreen");
   }, [navigation]);
 
+  const goToPrevScreen = useCallback(() => {
+    navigation.goBack();
+  }, [navigation]);
+
   const {
     isModalOpen,
     openModal: openDetailProfile,
@@ -75,6 +80,7 @@ const VisitProfile = ({ route, navigation }) => {
 
   const [data, setData] = useState({});
   const [tweets, setTweets] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const [followersCount, setFollowersCount] = useState(0);
   const [followingCount, setFollowingCount] = useState(0);
@@ -82,6 +88,8 @@ const VisitProfile = ({ route, navigation }) => {
   const [myFollowing, setMyFollowing] = useState(false);
 
   const handleFollow = async () => {
+    setLoading(true);
+
     const loggedInUserCollection = collection(
       FIREBASE_FIRESTORE,
       `users/${loggedInUserData.id}/following`
@@ -121,6 +129,8 @@ const VisitProfile = ({ route, navigation }) => {
       }
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -185,6 +195,7 @@ const VisitProfile = ({ route, navigation }) => {
       <HeaderVisitProfile
         username={data.username}
         isMe={loggedInUserData.id === userId}
+        goToPrevScreen={goToPrevScreen}
         goToSettings={goToSettings}
       />
       <FlatList
@@ -206,6 +217,7 @@ const VisitProfile = ({ route, navigation }) => {
               {loggedInUserData.id !== userId ? (
                 <View className="flex-1">
                   <ButtonFollow
+                    loading={loading}
                     title={
                       myFollowing
                         ? "Mengikuti"
