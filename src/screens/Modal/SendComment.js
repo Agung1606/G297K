@@ -13,7 +13,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { ButtonBlue, Avatar } from "../../components";
 
 const SendComment = ({ route, navigation }) => {
-  const item = route?.params?.param;
+  const { item } = route?.params;
   const loggedInUserData = useSelector((state) => state.global.user);
   const goToPrevScreen = () => navigation.goBack();
 

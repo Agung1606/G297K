@@ -19,7 +19,7 @@ import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
 import { doc, collection, deleteDoc } from "firebase/firestore";
 
 const DetailsTweet = ({ route, navigation }) => {
-  const item = route?.params?.param;
+  const { item } = route?.params;
   const loggedInUserId = useSelector((state) => state.global.user.id);
   const [loading, setLoading] = useState(false);
 
@@ -27,12 +27,13 @@ const DetailsTweet = ({ route, navigation }) => {
 
   const goToVisitProfile = useCallback(() => {
     navigation.navigate("VisitProfileScreen", {
-      param: { username: item.username, userId: item.userId },
+      username: item.username,
+      userId: item.userId,
     });
   }, [navigation, item]);
 
   const openModalSendComment = useCallback(() => {
-    navigation.navigate("SendComment", { param: item });
+    navigation.navigate("SendComment", { item });
   }, [navigation, item]);
 
   const {

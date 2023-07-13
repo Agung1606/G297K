@@ -3,7 +3,6 @@ import {
   View,
   Text,
   TextInput,
-  Pressable,
   TouchableOpacity,
   FlatList,
 } from "react-native";
@@ -12,9 +11,6 @@ import { AntDesign } from "@expo/vector-icons";
 
 import { useSelector, useDispatch } from "react-redux";
 import { setUserSearchHistory } from "../../redux/globalSlice";
-
-import { styled } from "nativewind";
-const StyledPressable = styled(Pressable);
 
 import { modalPopupConfig } from "../../hooks";
 import { ConfirmModal, Avatar, InfoCard } from "../../components";
@@ -62,7 +58,8 @@ const SearchAccount = ({ navigation }) => {
   const goBack = () => navigation.goBack();
   const goToProfile = (item) => {
     navigation.navigate("VisitProfileScreen", {
-      param: { username: item.username, userId: item.id },
+      username: item.username,
+      userId: item.id,
     });
     handleHistory(item);
   };
@@ -123,9 +120,7 @@ const SearchAccount = ({ navigation }) => {
               <FlatList
                 data={userSearchHistory}
                 renderItem={({ item }) => (
-                  <View
-                    className="mr-6 p-2 items-center"
-                  >
+                  <View className="mr-6 p-2 items-center">
                     <Avatar
                       imgUrl={item.profile}
                       size={40}

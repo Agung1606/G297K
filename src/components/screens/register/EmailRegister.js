@@ -16,7 +16,7 @@ const EmailRegister = () => {
 
   const handleEmailSubmit = (values) => {
     navigation.navigate("PasswordRegisterScreen", {
-      param: { email: values.email },
+      email: values.email,
     });
   };
 

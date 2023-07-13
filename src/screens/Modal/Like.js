@@ -1,17 +1,14 @@
-import { View, Text, FlatList, Pressable } from "react-native";
+import { FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React, { useCallback, useEffect, useState } from "react";
 
-import { Header, Avatar, InfoCard } from "../../components";
-
-import { styled } from "nativewind";
-const StyledPressable = styled(Pressable);
+import { Header, InfoCard } from "../../components";
 
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
 import { getDocs, collection } from "firebase/firestore";
 
 const Like = ({ navigation, route }) => {
-  const tweetId = route?.params?.param;
+  const { tweetId } = route?.params;
   const goToPrevScreen = useCallback(() => {
     navigation.goBack();
   }, [navigation]);
@@ -48,7 +45,8 @@ const Like = ({ navigation, route }) => {
           <InfoCard
             onPress={() =>
               navigation.navigate("VisitProfileScreen", {
-                param: { username: item.username, userId: item.userId },
+                username: item.username,
+                userId: item.userId,
               })
             }
             imgUrl={item.profile}

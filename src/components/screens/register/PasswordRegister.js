@@ -15,16 +15,14 @@ const PasswordRegister = ({ route }) => {
   const navigation = useNavigation();
   const goToPrevScreen = () => navigation.goBack();
 
-  const { email } = route?.params?.param;
+  const { email } = route?.params;
   const [hidePassword, setHidePassword] = useState(true);
 
   const handleHidePassword = () => setHidePassword(!hidePassword);
   const handleCreateAccount = (values) => {
     navigation.navigate("UsernameRegisterScreen", {
-      param: {
-        email,
-        password: values.password,
-      },
+      email,
+      password: values.password,
     });
   };
 

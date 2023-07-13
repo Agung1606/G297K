@@ -30,7 +30,7 @@ const UsernameRegister = ({ route }) => {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
-  const { email, password } = route?.params?.param;
+  const { email, password } = route?.params;
   const [username, setUsername] = useState(
     generateRandomUsername(email.match(/^([^@]+)/)[1])
   );
@@ -107,10 +107,7 @@ const UsernameRegister = ({ route }) => {
               onChangeText={(text) => setUsername(text)}
             />
           </View>
-          <ButtonBlue
-            title={"Buat akun"}
-            onPress={handleCreateAccount}
-          />
+          <ButtonBlue title={"Buat akun"} onPress={handleCreateAccount} />
         </View>
       </View>
       {/* modal */}

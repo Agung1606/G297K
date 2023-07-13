@@ -12,17 +12,18 @@ const TweetCard = ({ item }) => {
   const navigation = useNavigation();
 
   const goToDetails = useCallback(() => {
-    navigation.navigate("DetailsTweetScreen", { param: item });
+    navigation.navigate("DetailsTweetScreen", { item });
   }, [navigation, item]);
 
   const goToVisitProfile = useCallback(() => {
     navigation.navigate("VisitProfileScreen", {
-      param: { username: item.username, userId: item.userId },
+      username: item.username,
+      userId: item.userId,
     });
   }, [navigation, item]);
 
   const openModalSendComment = useCallback(() => {
-    navigation.navigate("SendComment", { param: item });
+    navigation.navigate("SendComment", { item });
   }, [navigation, item]);
 
   return (

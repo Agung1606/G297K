@@ -75,7 +75,7 @@ const VisitProfile = ({ route, navigation }) => {
     closeModal: closeDetailProfile,
   } = modalPopupConfig();
 
-  const { username, userId } = route?.params?.param;
+  const { username, userId } = route?.params;
   const loggedInUserData = useSelector((state) => state.global.user);
 
   const [data, setData] = useState({});
