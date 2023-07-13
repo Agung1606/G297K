@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, Pressable } from "react-native";
 import React, { useState } from "react";
 
 import Avatar from "./Avatar";
@@ -30,10 +30,12 @@ const ProfileInfo = ({
     {
       number: changeFormat(followersCount),
       text: "Pengikut",
+      onPress: () => console.log("Open followers")
     },
     {
       number: changeFormat(followingCount),
       text: "Mengikuti",
+      onPress: () => console.log("Open following")
     },
   ];
 
@@ -43,10 +45,14 @@ const ProfileInfo = ({
         <Avatar imgUrl={profileUrl} size={80} onPress={openDetailProfile} />
         <View className={`flex-1 flex-row justify-between items-center`}>
           {info.map((item) => (
-            <View className="justify-center items-center" key={item.text}>
+            <Pressable
+            className="justify-center items-center"
+              onPress={item.onPress}
+              key={item.text}
+            >
               <Text className="font-InterSemiBold text-lg">{item.number}</Text>
               <Text className="font-InterMedium">{item.text}</Text>
-            </View>
+            </Pressable>
           ))}
         </View>
       </View>

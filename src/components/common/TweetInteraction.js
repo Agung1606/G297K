@@ -15,7 +15,8 @@ import {
 
 const TweetInteraction = ({ tweetId, openModalSendComment }) => {
   const navigation = useNavigation();
-  const goToLikeScreen = () => navigation.navigate("LikeScreen", { tweetId });
+  const goToLikeScreen = () =>
+    navigation.navigate("InfoScreen", { text: "Suka", tweetId });
 
   const loggedInUserData = useSelector((state) => state.global.user);
   const [isLiked, setIsLiked] = useState(false);

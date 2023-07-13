@@ -11,7 +11,7 @@ import {
   TrendingList,
   EditProfile,
 } from "../screens/App";
-import { SendComment, SearchAccount, Settings, Like } from "../screens/Modal";
+import { SendComment, SearchAccount, Settings, Info } from "../screens/Modal";
 
 const Routes = () => {
   const token = useSelector((state) => state.global.token);
@@ -92,8 +92,8 @@ const Routes = () => {
               }}
             />
             <Stack.Screen
-              name="LikeScreen"
-              component={Like}
+              name="InfoScreen"
+              component={Info}
               options={{
                 animation: "slide_from_right",
               }}

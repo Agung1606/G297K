@@ -7,40 +7,46 @@ import { Header, InfoCard } from "../../components";
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
 import { getDocs, collection } from "firebase/firestore";
 
-const Like = ({ navigation, route }) => {
-  const { tweetId } = route?.params;
+const Info = ({ navigation, route }) => {
+  const { text, tweetId } = route?.params;
   const goToPrevScreen = useCallback(() => {
     navigation.goBack();
   }, [navigation]);
 
-  const [likesData, setLikesData] = useState([]);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    const getLikesData = async () => {
+    const getData = async () => {
       const likesCollection = collection(
         FIREBASE_FIRESTORE,
         `tweets/${tweetId}/likes`
       );
 
       try {
-        const snapshot = await getDocs(likesCollection);
-        const likes = snapshot.docs.map((doc) => {
-          return { ...doc.data(), id: doc.id };
-        });
-        setLikesData(likes);
+        if (text === "Suka") {
+          const snapshot = await getDocs(likesCollection);
+          const likes = snapshot.docs.map((doc) => {
+            return { ...doc.data(), id: doc.id };
+          });
+          setData(likes);
+        } else if(text === "Pengikut") {
+
+        } else if(text === "Mengikuti") {
+
+        }
       } catch (error) {
         console.error(error);
       }
     };
 
-    getLikesData();
+    getData();
   }, [tweetId]);
 
   return (
     <SafeAreaView className="flex-1">
-      <Header onPress={goToPrevScreen} text={"Likes"} />
+      <Header onPress={goToPrevScreen} text={text} />
       <FlatList
-        data={likesData}
+        data={data}
         renderItem={({ item }) => (
           <InfoCard
             onPress={() =>
@@ -59,4 +65,4 @@ const Like = ({ navigation, route }) => {
   );
 };
 
-export default Like;
+export default Info;
