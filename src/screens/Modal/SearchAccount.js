@@ -17,7 +17,7 @@ import { styled } from "nativewind";
 const StyledPressable = styled(Pressable);
 
 import { modalPopupConfig } from "../../hooks";
-import { ConfirmModal, Avatar } from "../../components";
+import { ConfirmModal, Avatar, InfoCard } from "../../components";
 
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
 import { collection, query, where, onSnapshot } from "firebase/firestore";
@@ -80,7 +80,6 @@ const SearchAccount = ({ navigation }) => {
           return {
             id: doc.id,
             username: doc.data().username,
-            name: doc.data().name,
             profile: doc.data().profile,
           };
         })
@@ -99,19 +98,11 @@ const SearchAccount = ({ navigation }) => {
         <FlatList
           data={users}
           renderItem={({ item }) => (
-            <StyledPressable
+            <InfoCard
               onPress={() => goToProfile(item)}
-              key={item.id}
-              className="m-2 p-2 flex-row items-center space-x-4 active:bg-gray-200 rounded-lg"
-            >
-              <Avatar imgUrl={item.profile} size={45} />
-              <View>
-                <Text className="font-InterBold">{item.name}</Text>
-                <Text className="font-InterRegular text-grayCustom">
-                  @{item.username}
-                </Text>
-              </View>
-            </StyledPressable>
+              imgUrl={item.profile}
+              username={item.username}
+            />
           )}
           keyExtractor={(item) => item.id}
         />
@@ -132,23 +123,18 @@ const SearchAccount = ({ navigation }) => {
               <FlatList
                 data={userSearchHistory}
                 renderItem={({ item }) => (
-                  <StyledPressable
-                    onPress={() => goToProfile(item)}
-                    key={item.id}
-                    className="mr-6 p-2 items-center active:bg-gray-200 rounded-lg"
+                  <View
+                    className="mr-6 p-2 items-center"
                   >
                     <Avatar
                       imgUrl={item.profile}
                       size={40}
                       onPress={() => goToProfile(item)}
                     />
-                    <View className="items-center">
-                      <Text className="font-InterMedium">{item.name}</Text>
-                      <Text className="font-InterRegular text-grayCustom">
-                        @{item.username}
-                      </Text>
-                    </View>
-                  </StyledPressable>
+                    <Text className="font-InterRegular text-grayCustom">
+                      {item.username}
+                    </Text>
+                  </View>
                 )}
                 horizontal
                 showsHorizontalScrollIndicator={false}
@@ -172,7 +158,6 @@ const SearchAccount = ({ navigation }) => {
           closeModal();
         }}
         title={"Hapus semua pencarian terbaru?"}
-        subtitle={"Tindakan ini menghapus semua penelusuran terbaru"}
         textBtnCancel={"Batal"}
         textBtnOk={"Hapus"}
       />

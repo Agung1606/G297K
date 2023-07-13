@@ -4,6 +4,7 @@ import {
   TrendingCard,
   CommentCard,
   SplashTweetCard,
+  InfoCard
 } from "./card";
 
 import {
@@ -39,6 +40,7 @@ export {
   TrendingCard,
   CommentCard,
   SplashTweetCard,
+  InfoCard,
   Header,
   ButtonBlue,
   ButtonTransparent,

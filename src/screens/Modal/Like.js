@@ -2,7 +2,7 @@ import { View, Text, FlatList, Pressable } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React, { useCallback, useEffect, useState } from "react";
 
-import { Header, Avatar } from "../../components/common";
+import { Header, Avatar, InfoCard } from "../../components";
 
 import { styled } from "nativewind";
 const StyledPressable = styled(Pressable);
@@ -45,19 +45,15 @@ const Like = ({ navigation, route }) => {
       <FlatList
         data={likesData}
         renderItem={({ item }) => (
-          <StyledPressable
-            className="flex-row items-center space-x-2 active:bg-gray-300/50 px-2 py-1"
+          <InfoCard
             onPress={() =>
               navigation.navigate("VisitProfileScreen", {
                 param: { username: item.username, userId: item.userId },
               })
             }
-          >
-            <Avatar imgUrl={item.profile} size={40} />
-            <Text className="font-RobotoRegular text-[16px]">
-              {item.username}
-            </Text>
-          </StyledPressable>
+            imgUrl={item.profile}
+            username={item.username}
+          />
         )}
         keyExtractor={(item) => item.id}
       />
