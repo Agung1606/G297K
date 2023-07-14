@@ -8,7 +8,8 @@ import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
 import { getDocs, collection } from "firebase/firestore";
 
 const Info = ({ navigation, route }) => {
-  const { text, tweetId } = route?.params;
+  const { text, tweetId, userId } = route?.params;
+
   const goToPrevScreen = useCallback(() => {
     navigation.goBack();
   }, [navigation]);
@@ -21,6 +22,14 @@ const Info = ({ navigation, route }) => {
         FIREBASE_FIRESTORE,
         `tweets/${tweetId}/likes`
       );
+      const followersCollection = collection(
+        FIREBASE_FIRESTORE,
+        `users/${userId}/followers`
+      );
+      const followingCollection = collection(
+        FIREBASE_FIRESTORE,
+        `users/${userId}/following`
+      );
 
       try {
         if (text === "Suka") {
@@ -29,10 +38,18 @@ const Info = ({ navigation, route }) => {
             return { ...doc.data(), id: doc.id };
           });
           setData(likes);
-        } else if(text === "Pengikut") {
-
-        } else if(text === "Mengikuti") {
-
+        } else if (text === "Pengikut") {
+          const snapshot = await getDocs(followersCollection);
+          const followers = snapshot.docs.map((doc) => {
+            return { ...doc.data(), id: doc.id };
+          });
+          setData(followers);
+        } else if (text === "Mengikuti") {
+          const snapshot = await getDocs(followingCollection);
+          const following = snapshot.docs.map((doc) => {
+            return { ...doc.data(), id: doc.id };
+          });
+          setData(following);
         }
       } catch (error) {
         console.error(error);

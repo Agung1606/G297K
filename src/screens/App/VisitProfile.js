@@ -218,6 +218,7 @@ const VisitProfile = ({ route, navigation }) => {
         ListHeaderComponent={() => (
           <View className="my-2 p-2 border-b border-gray-600">
             <ProfileInfo
+              userId={userId}
               profileUrl={data.profile}
               name={data.name}
               bio={data.bio}

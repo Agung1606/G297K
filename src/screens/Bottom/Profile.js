@@ -78,7 +78,7 @@ const Profile = ({ navigation }) => {
     onSnapshot(followingCol, (response) => {
       const following = response.docs.map((doc) => doc.data());
       setFollowingCount(following.length);
-    })
+    });
   }, []);
 
   return (
@@ -97,6 +97,7 @@ const Profile = ({ navigation }) => {
         ListHeaderComponent={() => (
           <View className="mb-2 p-2 border-b border-gray-600">
             <ProfileInfo
+              userId={loggedInUserData.id}
               profileUrl={loggedInUserData.profile}
               name={loggedInUserData.name}
               bio={loggedInUserData.bio}

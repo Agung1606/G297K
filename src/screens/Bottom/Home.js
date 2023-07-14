@@ -29,7 +29,7 @@ const Home = () => {
   useEffect(() => {
     let q = query(
       collection(FIREBASE_FIRESTORE, "tweets"),
-      orderBy("date", "desc")
+      orderBy("date", "asc")
     );
     onSnapshot(q, (response) => {
       setDataTweets(

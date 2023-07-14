@@ -1,10 +1,12 @@
 import { View, Text, Pressable } from "react-native";
 import React, { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 import Avatar from "./Avatar";
 import { changeFormat } from "../../utils";
 
 const ProfileInfo = ({
+  userId,
   profileUrl,
   name,
   bio,
@@ -13,6 +15,8 @@ const ProfileInfo = ({
   tweetsCount,
   openDetailProfile,
 }) => {
+  const navigation = useNavigation();
+
   const [text, setText] = useState(bio?.slice(0, 100));
   const [readMore, setReadMore] = useState(false);
   const handleReadMore = () => {
@@ -30,12 +34,14 @@ const ProfileInfo = ({
     {
       number: changeFormat(followersCount),
       text: "Pengikut",
-      onPress: () => console.log("Open followers")
+      onPress: () =>
+        navigation.navigate("InfoScreen", { text: "Pengikut", userId }),
     },
     {
       number: changeFormat(followingCount),
       text: "Mengikuti",
-      onPress: () => console.log("Open following")
+      onPress: () =>
+        navigation.navigate("InfoScreen", { text: "Mengikuti", userId }),
     },
   ];
 
@@ -46,7 +52,7 @@ const ProfileInfo = ({
         <View className={`flex-1 flex-row justify-between items-center`}>
           {info.map((item) => (
             <Pressable
-            className="justify-center items-center"
+              className="justify-center items-center"
               onPress={item.onPress}
               key={item.text}
             >
