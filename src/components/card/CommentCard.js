@@ -4,6 +4,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
 import { Avatar } from "../common";
+import { formatRelativeTime } from "../../utils";
 
 const CommentCard = ({ item }) => {
   const navigation = useNavigation();
@@ -22,7 +23,7 @@ const CommentCard = ({ item }) => {
           <View>
             <Text className="font-InterSemiBold">{item.username}</Text>
             <Text className="text-[10px] font-InterRegular text-gray-400">
-              {item.date}
+              {formatRelativeTime(item.date)}
             </Text>
           </View>
           <TouchableOpacity>

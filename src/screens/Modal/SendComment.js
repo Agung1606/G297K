@@ -9,19 +9,52 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { MaterialIcons } from "@expo/vector-icons";
+import Spinner from "react-native-loading-spinner-overlay";
 
 import { ButtonBlue, Avatar } from "../../components";
+
+import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
+import { addDoc, collection } from "firebase/firestore";
 
 const SendComment = ({ route, navigation }) => {
   const { item } = route?.params;
   const loggedInUserData = useSelector((state) => state.global.user);
   const goToPrevScreen = () => navigation.goBack();
 
+  const [loading, setLoading] = useState(false);
   const [commentInput, setCommentInput] = useState("");
-  const handleComment = () => {};
+  const handleComment = async () => {
+    setLoading(true);
+
+    const currentDate = new Date();
+    const dateString = currentDate.toDateString();
+    const timeString = currentDate.toTimeString().split(" ")[0];
+    const timeZoneString = currentDate.toTimeString().split(" ")[1];
+
+    const data = {
+      userId: loggedInUserData.id,
+      username: loggedInUserData.username,
+      profile: loggedInUserData.profile,
+      comment: commentInput,
+      date: `${dateString} ${timeString} ${timeZoneString}`,
+    };
+
+    try {
+      await addDoc(
+        collection(FIREBASE_FIRESTORE, `tweets/${item.id}/comments`),
+        data
+      );
+      goToPrevScreen();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <SafeAreaView className="flex-1 px-2 py-4 ">
+      <Spinner visible={loading} textContent="Tunggu..." />
       {/* top */}
       <View className={`flex-row justify-between items-center mb-6`}>
         <TouchableOpacity onPress={goToPrevScreen}>
