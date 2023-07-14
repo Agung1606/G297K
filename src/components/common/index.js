@@ -13,7 +13,6 @@ import ProfileInfo from "./ProfileInfo";
 import NoTweets from "./NoTweets";
 import Avatar from "./Avatar";
 import TweetInteraction from "./TweetInteraction";
-import CommentInteraction from "./CommentInteraction";
 
 export {
   Header,
@@ -29,5 +28,4 @@ export {
   NoTweets,
   Avatar,
   TweetInteraction,
-  CommentInteraction,
 };

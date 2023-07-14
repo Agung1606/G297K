@@ -494,38 +494,21 @@ export const COMMENTS = [
   {
     id: 1,
     userId: "la7ejHn4LnTE6ldJ7jQu",
-    tweetId: undefined,
     username: "billieeilish",
-    name: "BILLIE EILISH",
     profile:
       "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FbillieProfile.jpg?alt=media&token=c88489d7-4cc1-43c7-b2de-b06d9bd6bb6a",
     date: "29 detik",
     comment: "🔥🔥❤️",
-    numberOfLikes: 4,
   },
   {
     id: 2,
-    userId: "m241t434TUwsopXdftrO",
-    tweetId: undefined,
-    username: "bebytsabina",
-    name: "Cut Beby Tsabina",
+    userId: "la7ejHn4LnTE6ldJ7jQu",
+    username: "billieeilish",
     profile:
-      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FbebyProfile.jpg?alt=media&token=7f880749-1d1e-4507-814e-f176b037baf7",
-    date: "baru saja",
-    comment: "❤️❤️❤️",
-    numberOfLikes: 2,
-  },
-  {
-    id: 3,
-    userId: "Fm2YBBlp4X8DXVhaI7yp",
-    tweetId: undefined,
-    username: "lalalalisa_m",
-    name: "Lisa",
-    profile:
-      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FlisaProfile.jpg?alt=media&token=e704b377-7ade-4f06-9b01-3faa6887142b",
-    date: "baru saja",
-    comment: "tester",
-    numberOfLikes: 6,
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FbillieProfile.jpg?alt=media&token=c88489d7-4cc1-43c7-b2de-b06d9bd6bb6a",
+    date: "29 detik",
+    comment:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ultrices mi sed orci dignissim lobortis. Suspendisse eget efficitur sapien. Maecenas nec purus id mauris tristique lacinia. In hac habitasse platea dictumst. Quisque rhoncus semper elit, id euismod nulla suscipit ac. Nunc tincidunt diam nec commodo placerat. Sed auctor eleifend augue, ac tristique tortor tempus nec. Nam consectetur odio id tellus dignissim, eu dapibus nisi pulvinar. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus mollis purus vitae rutrum auctor. Vivamus hendrerit diam in lacinia facilisis. Sed luctus faucibus mauris, nec ultrices risus. Aliquam ultrices interdum metus a feugiat. Sed tincidunt erat nec tellus dapibus, eu fermentum tortor aliquam. Aenean hendrerit eros a ullamcorper euismod.",
   },
 ];
 

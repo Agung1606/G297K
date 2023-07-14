@@ -29,7 +29,7 @@ const TweetCard = ({ item }) => {
   return (
     <StyledPressable
       onPress={goToDetails}
-      className="flex-row space-x-2 active:bg-grayCustom/10 p-2 border-b border-gray-300"
+      className="flex-row space-x-2 p-2 active:bg-grayCustom/10 border-b border-gray-300"
     >
       {/* profile */}
       <View>
@@ -40,7 +40,7 @@ const TweetCard = ({ item }) => {
         {/* username and date */}
         <View className="mb-1">
           <Text className="font-InterBold">{item.username}</Text>
-          <Text className="text-[12px] text-gray-400">
+          <Text className="text-[12px] font-InterRegular text-gray-400">
             {formatRelativeTime(item.date)}
           </Text>
         </View>

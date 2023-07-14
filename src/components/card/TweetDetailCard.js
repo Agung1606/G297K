@@ -12,7 +12,7 @@ const TweetDetailCard = ({
   openModalSendComment,
 }) => {
   return (
-    <View className="px-3 py-2 mb-2 border-b border-gray-300">
+    <View className="px-3 py-2 border-b border-gray-300">
       <View className="flex-row justify-between items-center mb-2">
         <View className="flex-row items-center space-x-4">
           <Avatar imgUrl={item.profile} size={50} onPress={goToVisitProfile} />
