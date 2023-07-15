@@ -60,18 +60,20 @@ const CommentCard = ({ item }) => {
           <Ionicons name="warning-sharp" size={22} />
         ),
       text: loggedInUserId === item.userId ? "Hapus" : "Laporkan komentar ini",
-      onPress: () => {if (loggedInUserId === item.userId) {
-        handleDeleteComment();
-      } else {
-        // Report functionality here
-        closeBottomModal();
-      }},
+      onPress: () => {
+        if (loggedInUserId === item.userId) {
+          handleDeleteComment();
+        } else {
+          // Report functionality here
+          closeBottomModal();
+        }
+      },
     },
   ];
 
   return (
     <>
-    <Spinner visible={loading} textContent="Tunggu..." />
+      <Spinner visible={loading} textContent="Tunggu..." />
       <View className="flex-row space-x-2 px-2 py-4 border-b border-gray-300">
         <Avatar imgUrl={item.profile} size={40} onPress={goToVisitProfile} />
         <View className="flex-1">

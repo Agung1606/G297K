@@ -25,7 +25,8 @@ const Notification = ({ navigation }) => {
           <StyledPressable
             onPress={() =>
               navigation.navigate("VisitProfileScreen", {
-                param: { username: item.username, userId: item.userId },
+                username: item.username,
+                userId: item.userId,
               })
             }
             className={`mb-3 p-3 flex-row justify-between items-center active:bg-gray-600/50`}

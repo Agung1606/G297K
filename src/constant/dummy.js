@@ -617,7 +617,7 @@ export const NOTIFICATION = [
     data: [
       {
         id: 1,
-        userId: "qE7FIcpKVVlbT0IPuRNy",
+        userId: "YfpCLQgef4V28WnUBOzy",
         profile:
           "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FjokowiProfile.jpeg?alt=media&token=12c8f7b5-d6e9-4040-b7cf-f28b60ca45ae",
         username: "jokowi",
@@ -625,7 +625,7 @@ export const NOTIFICATION = [
       },
       {
         id: 2,
-        userId: "Fm2YBBlp4X8DXVhaI7yp",
+        userId: "vHu3XAEafVZLV9ROAzLB",
         profile:
           "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FlisaProfile.jpg?alt=media&token=e704b377-7ade-4f06-9b01-3faa6887142b",
         username: "lalalalisa_m",
@@ -633,7 +633,7 @@ export const NOTIFICATION = [
       },
       {
         id: 3,
-        userId: "m241t434TUwsopXdftrO",
+        userId: "PeoX4BN9hfAKlJCtY3Rz",
         profile:
           "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FbebyProfile.jpg?alt=media&token=7f880749-1d1e-4507-814e-f176b037baf7",
         username: "bebytsabina",
@@ -641,7 +641,7 @@ export const NOTIFICATION = [
       },
       {
         id: 4,
-        userId: "la7ejHn4LnTE6ldJ7jQu",
+        userId: "qlIIOgzdyHKI5gDVM7Ka",
         profile:
           "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FbillieProfile.jpg?alt=media&token=c88489d7-4cc1-43c7-b2de-b06d9bd6bb6a",
         username: "billieeilish",
@@ -654,7 +654,7 @@ export const NOTIFICATION = [
     data: [
       {
         id: 5,
-        userId: "BD5xEJmUFNzDFRmFRQEt",
+        userId: "CPsksmOh606SaQ9FBnkb",
         profile:
           "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FliamProfile.jpg?alt=media&token=df6623b1-58b1-420e-8773-ed152d1bded8",
         username: "liamgallagher",

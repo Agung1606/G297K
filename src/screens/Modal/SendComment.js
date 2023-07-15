@@ -32,6 +32,7 @@ const SendComment = ({ route, navigation }) => {
     const timeZoneString = currentDate.toTimeString().split(" ")[1];
 
     const data = {
+      tweetId: item.id,
       userId: loggedInUserData.id,
       username: loggedInUserData.username,
       profile: loggedInUserData.profile,

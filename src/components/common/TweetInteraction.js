@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 
+import { changeFormat } from "../../utils";
+
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
 import {
   collection,
@@ -21,6 +23,7 @@ const TweetInteraction = ({ tweetId, openModalSendComment }) => {
   const loggedInUserData = useSelector((state) => state.global.user);
   const [isLiked, setIsLiked] = useState(false);
   const [numsLike, setNumsLike] = useState(0);
+  const [numsComment, setNumsComment] = useState(0);
 
   const handleLike = async () => {
     const likesCollection = collection(
@@ -53,7 +56,17 @@ const TweetInteraction = ({ tweetId, openModalSendComment }) => {
       FIREBASE_FIRESTORE,
       `tweets/${tweetId}/likes`
     );
-    const unsubcribe = onSnapshot(likesCollection, (response) => {
+    const commentsCollection = collection(
+      FIREBASE_FIRESTORE,
+      `tweets/${tweetId}/comments`
+    );
+
+    const unsubcribeComment = onSnapshot(commentsCollection, (response) => {
+      const comments = response.docs.map((doc) => doc.data());
+      setNumsComment(comments.length);
+    });
+
+    const unsubcribeLike = onSnapshot(likesCollection, (response) => {
       const likes = response.docs.map((doc) => doc.data());
       const isLiked = likes.find((like) => like.userId === loggedInUserData.id);
 
@@ -61,7 +74,10 @@ const TweetInteraction = ({ tweetId, openModalSendComment }) => {
       setIsLiked(isLiked);
     });
 
-    return () => unsubcribe();
+    return () => {
+      unsubcribeLike();
+      unsubcribeComment();
+    };
   }, [tweetId, loggedInUserData.id]);
 
   const options = [
@@ -95,14 +111,14 @@ const TweetInteraction = ({ tweetId, openModalSendComment }) => {
           {numsLike && (
             <TouchableOpacity onPress={goToLikeScreen}>
               <Text className="font-InterMedium text-grayCustom">
-                {numsLike} Suka
+                {changeFormat(numsLike)} Suka
               </Text>
             </TouchableOpacity>
           )}
-          {false && (
+          {numsComment && (
             <TouchableOpacity>
               <Text className="font-InterMedium text-grayCustom">
-                0 Komentar
+                {changeFormat(numsComment)} Komentar
               </Text>
             </TouchableOpacity>
           )}

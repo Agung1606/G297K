@@ -15,13 +15,7 @@ import {
 } from "../../components";
 
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
-import {
-  doc,
-  collection,
-  deleteDoc,
-  query,
-  onSnapshot,
-} from "firebase/firestore";
+import { doc, collection, deleteDoc, onSnapshot } from "firebase/firestore";
 
 const DetailsTweet = ({ route, navigation }) => {
   const { item } = route?.params;
@@ -55,10 +49,11 @@ const DetailsTweet = ({ route, navigation }) => {
   } = modalPopupConfig();
 
   const handleDeleteTweet = useCallback(async () => {
-    const documentRef = doc(collection(FIREBASE_FIRESTORE, "tweets"), item.id);
-    closeConfirmModal();
     setLoading(true);
+
+    closeConfirmModal();
     try {
+      const documentRef = doc(collection(FIREBASE_FIRESTORE, "tweets"), item.id);
       await deleteDoc(documentRef);
       navigation.goBack();
     } catch (error) {
@@ -76,7 +71,7 @@ const DetailsTweet = ({ route, navigation }) => {
         ) : (
           <Ionicons name="warning-sharp" size={22} />
         ),
-      text: loggedInUserId === item.userId ? "Hapus" : "Laporkan tweet ini",
+      text: loggedInUserId === item.userId ? "Hapus" : "Laporkan postingan ini",
       onPress: () => {
         if (loggedInUserId === item.userId) {
           closeBottomModal();
