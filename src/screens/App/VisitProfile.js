@@ -26,6 +26,8 @@ import {
   addDoc,
 } from "firebase/firestore";
 
+import { getUserTweets } from "../../services/tweet";
+
 const HeaderVisitProfile = ({
   username,
   isMe,
@@ -79,7 +81,7 @@ const VisitProfile = ({ route, navigation }) => {
   } = modalPopupConfig();
 
   const [data, setData] = useState({});
-  const [tweets, setTweets] = useState([]);
+  const [dataTweets, setDataTweets] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const [followersCount, setFollowersCount] = useState(0);
@@ -166,17 +168,7 @@ const VisitProfile = ({ route, navigation }) => {
       );
     });
 
-    let qTweets = query(
-      collection(FIREBASE_FIRESTORE, "tweets"),
-      where("userId", "==", userId)
-    );
-    onSnapshot(qTweets, (response) => {
-      setTweets(
-        response.docs.map((doc) => {
-          return { ...doc.data(), id: doc.id };
-        })
-      );
-    });
+    getUserTweets(userId, setDataTweets);
 
     const followersCol = collection(
       FIREBASE_FIRESTORE,
@@ -225,7 +217,7 @@ const VisitProfile = ({ route, navigation }) => {
               openDetailProfile={openDetailProfile}
               followersCount={followersCount}
               followingCount={followingCount}
-              tweetsCount={tweets.length}
+              tweetsCount={dataTweets.length}
             />
             {/* button */}
             <View
@@ -262,7 +254,7 @@ const VisitProfile = ({ route, navigation }) => {
             </View>
           </View>
         )}
-        data={tweets}
+        data={dataTweets}
         renderItem={({ item }) => <TweetCard item={item} />}
         keyExtractor={(item) => item.id}
         ListEmptyComponent={

@@ -17,6 +17,8 @@ import {
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
 import { query, collection, where, onSnapshot } from "firebase/firestore";
 
+import { getUserTweets } from "../../services/tweet";
+
 const HeaderProfile = ({ username, goToSettings }) => {
   return (
     <View className={`flex-row justify-between items-center py-2 px-4`}>
@@ -44,22 +46,12 @@ const Profile = ({ navigation }) => {
   } = modalPopupConfig();
 
   const loggedInUserData = useSelector((state) => state.global.user);
-  const [tweets, setTweets] = useState([]);
+  const [dataTweets, setDataTweets] = useState([]);
   const [followersCount, setFollowersCount] = useState(0);
   const [followingCount, setFollowingCount] = useState(0);
 
   useMemo(() => {
-    let q = query(
-      collection(FIREBASE_FIRESTORE, "tweets"),
-      where("userId", "==", loggedInUserData.id)
-    );
-    onSnapshot(q, (response) => {
-      setTweets(
-        response.docs.map((doc) => {
-          return { ...doc.data(), id: doc.id };
-        })
-      );
-    });
+    getUserTweets(loggedInUserData.id, setDataTweets)
 
     const followersCol = collection(
       FIREBASE_FIRESTORE,
@@ -91,7 +83,7 @@ const Profile = ({ navigation }) => {
         ref={reference}
         onScroll={handleScroll}
         showsVerticalScrollIndicator={false}
-        data={tweets}
+        data={dataTweets}
         renderItem={({ item }) => <TweetCard item={item} />}
         keyExtractor={(item) => item.id}
         ListHeaderComponent={() => (
@@ -104,7 +96,7 @@ const Profile = ({ navigation }) => {
               openDetailProfile={openDetailProfile}
               followersCount={followersCount}
               followingCount={followingCount}
-              tweetsCount={tweets.length}
+              tweetsCount={dataTweets.length}
             />
             {/* button */}
             <View
