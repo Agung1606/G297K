@@ -13,15 +13,8 @@ import { useDispatch } from "react-redux";
 import { modalPopupConfig } from "../../../hooks";
 import { setLogin } from "../../../redux/globalSlice";
 
-import { FIREBASE_AUTH, FIREBASE_FIRESTORE } from "../../../../firebaseConfig";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import {
-  addDoc,
-  collection,
-  onSnapshot,
-  query,
-  where,
-} from "firebase/firestore";
+import { singUp } from "../../../services/auth";
+import { addUser, getUser } from "../../../services/user";
 
 const UsernameRegister = ({ route }) => {
   const dispatch = useDispatch();
@@ -38,40 +31,33 @@ const UsernameRegister = ({ route }) => {
   const handleCreateAccount = async () => {
     setLoading(true);
     try {
-      const response = await createUserWithEmailAndPassword(
-        FIREBASE_AUTH,
-        email,
-        password
-      );
-      if (response.user) {
-        await addDoc(collection(FIREBASE_FIRESTORE, "users"), {
-          email: email,
-          username: username,
+      const response = await singUp(email, password);
+      if (response) {
+        const data = {
+          email,
+          username,
           name: username,
           profile:
             "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FdefaultProfile.jpg?alt=media&token=00865e31-d1d6-4556-9130-fcd2a3b8ea6d",
           bio: "",
-        }).then(() => {
-          let q = query(
-            collection(FIREBASE_FIRESTORE, "users"),
-            where("email", "==", email)
-          );
-          onSnapshot(q, (res) => {
-            dispatch(
-              setLogin({
-                user: res.docs.map((doc) => ({
-                  id: doc.id,
-                  email: doc.data().email,
-                  username: doc.data().username,
-                  name: doc.data().name,
-                  profile: doc.data().profile,
-                  bio: doc.data().bio,
-                }))[0],
-                token: response.user.accessToken,
-              })
-            );
-          });
-        });
+        };
+        await addUser(data);
+        const { userId, userData } = await getUser(email);
+        dispatch(
+          setLogin({
+            user: {
+              id: userId,
+              email: userData.email,
+              username: userData.username,
+              name: userData.name,
+              profile: userData.profile,
+              followers: userData.followers,
+              following: userData.following,
+              bio: userData.bio,
+            },
+            token: response.accessToken,
+          })
+        );
       }
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {

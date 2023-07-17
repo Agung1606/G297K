@@ -1,10 +1,4 @@
-import {
-  collection,
-  getDocs,
-  onSnapshot,
-  query,
-  where,
-} from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
 
 const getUser = async (email) => {
