@@ -59,6 +59,7 @@ const TweetCard = ({ item }) => {
         <TweetInteraction
           tweetId={item.id}
           openModalSendComment={openModalSendComment}
+          goToDetails={goToDetails}
         />
       </View>
     </StyledPressable>

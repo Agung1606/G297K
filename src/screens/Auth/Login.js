@@ -12,9 +12,8 @@ import { useKeyboardVisible, modalPopupConfig } from "../../hooks";
 import { assets } from "../../constant";
 import { styles } from "../../style/Global";
 
-import { FIREBASE_AUTH, FIREBASE_FIRESTORE } from "../../../firebaseConfig";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { collection, query, where, onSnapshot } from "firebase/firestore";
+import { signIn } from "../../services/auth";
+import { getUser } from "../../services/user";
 
 const Login = ({ navigation }) => {
   const persistedEmail = useSelector((state) => state.global.user?.email);
@@ -35,52 +34,34 @@ const Login = ({ navigation }) => {
   const handleLogin = async () => {
     setLoading(true);
     try {
-      const response = await signInWithEmailAndPassword(
-        FIREBASE_AUTH,
-        loginInput.email,
-        loginInput.password
-      );
-
-      if (response.user) {
-        const usersCollectionRef = collection(FIREBASE_FIRESTORE, "users");
-        const userQuery = query(
-          usersCollectionRef,
-          where("email", "==", loginInput.email)
+      const response = await signIn(loginInput.email, loginInput.password);
+      if (response) {
+        const { userId, userData } = await getUser(loginInput.email);
+        dispatch(
+          setLogin({
+            user: {
+              id: userId,
+              email: userData.email,
+              username: userData.username,
+              name: userData.name,
+              profile: userData.profile,
+              followers: userData.followers,
+              following: userData.following,
+              bio: userData.bio,
+            },
+            token: response.accessToken,
+          })
         );
-        onSnapshot(userQuery, (snapshot) => {
-          const userDoc = snapshot.docs[0];
-
-          if (userDoc) {
-            const userId = userDoc.id;
-            const userData = userDoc.data();
-
-            dispatch(
-              setLogin({
-                user: {
-                  id: userId,
-                  email: userData.email,
-                  username: userData.username,
-                  name: userData.name,
-                  profile: userData.profile,
-                  followers: userData.followers,
-                  following: userData.following,
-                  bio: userData.bio,
-                },
-                token: response.user.accessToken,
-              })
-            );
-          }
-        });
       }
     } catch (error) {
       if (error.code === "auth/invalid-email") {
-        setErrorMsg("Email tidak valid❗");
+        setErrorMsg("Email tidak valid❗❗❗");
       } else if (error.code === "auth/missing-password") {
-        setErrorMsg("Tolong masukan password 🙏");
+        setErrorMsg("Tolong masukan password 😭🙏");
       } else if (error.code === "auth/wrong-password") {
-        setErrorMsg("Password salah❗");
+        setErrorMsg("Password salah❗❗❗");
       } else if (error.code === "auth/user-not-found") {
-        setErrorMsg("User tidak ditemukan 😭");
+        setErrorMsg("User tidak ditemukan 😭🙏");
       }
       openModal();
     } finally {

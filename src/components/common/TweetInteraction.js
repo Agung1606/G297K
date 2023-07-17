@@ -15,7 +15,7 @@ import {
   getDocs,
 } from "firebase/firestore";
 
-const TweetInteraction = ({ tweetId, openModalSendComment }) => {
+const TweetInteraction = ({ tweetId, openModalSendComment, goToDetails }) => {
   const navigation = useNavigation();
   const goToLikeScreen = () =>
     navigation.navigate("InfoScreen", { text: "Suka", tweetId });
@@ -106,7 +106,7 @@ const TweetInteraction = ({ tweetId, openModalSendComment }) => {
           </TouchableOpacity>
         ))}
       </View>
-      {numsLike && (
+      {(numsLike || numsComment) && (
         <View className="flex-row items-center space-x-5">
           {numsLike && (
             <TouchableOpacity onPress={goToLikeScreen}>
@@ -116,7 +116,7 @@ const TweetInteraction = ({ tweetId, openModalSendComment }) => {
             </TouchableOpacity>
           )}
           {numsComment && (
-            <TouchableOpacity>
+            <TouchableOpacity onPress={goToDetails}>
               <Text className="font-InterMedium text-grayCustom">
                 {changeFormat(numsComment)} Komentar
               </Text>
