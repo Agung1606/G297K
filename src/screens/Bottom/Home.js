@@ -9,8 +9,7 @@ import {
   ButtonScrollToTop,
 } from "../../components";
 
-import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
-import { onSnapshot, collection, query, orderBy } from "firebase/firestore";
+import { getTweets } from "../../services/tweet";
 
 const Home = () => {
   const [dataTweets, setDataTweets] = useState([]);
@@ -27,17 +26,7 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    let q = query(
-      collection(FIREBASE_FIRESTORE, "tweets"),
-      orderBy("date", "asc")
-    );
-    onSnapshot(q, (response) => {
-      setDataTweets(
-        response.docs.map((doc) => {
-          return { ...doc.data(), id: doc.id };
-        })
-      );
-    });
+    getTweets(setDataTweets);
   }, []);
 
   return (
