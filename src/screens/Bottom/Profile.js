@@ -52,8 +52,6 @@ const Profile = ({ navigation }) => {
   const [followingCount, setFollowingCount] = useState(0);
 
   useMemo(() => {
-    getUserTweets(loggedInUserData.id, setDataTweets);
-
     const followersCol = collection(
       FIREBASE_FIRESTORE,
       `users/${loggedInUserData.id}/followers`
@@ -63,6 +61,7 @@ const Profile = ({ navigation }) => {
       `users/${loggedInUserData.id}/following`
     );
 
+    getUserTweets(loggedInUserData.id, setDataTweets);
     getCollectionData(followersCol, setFollowersCount);
     getCollectionData(followingCol, setFollowingCount);
   }, []);

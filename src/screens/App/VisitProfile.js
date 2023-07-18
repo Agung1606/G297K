@@ -16,17 +16,13 @@ import {
 } from "../../components";
 
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
-import {
-  onSnapshot,
-  query,
-  where,
-  collection,
-  getDocs,
-  deleteDoc,
-  addDoc,
-} from "firebase/firestore";
+import { collection } from "firebase/firestore";
 
-import { getUser, getCollectionData } from "../../services/user";
+import {
+  getUser,
+  getCollectionData,
+  followeHandler,
+} from "../../services/user";
 import { getUserTweets } from "../../services/tweet";
 
 const HeaderVisitProfile = ({
@@ -89,69 +85,6 @@ const VisitProfile = ({ route, navigation }) => {
   const [followingCount, setFollowingCount] = useState(0);
   const [myFollower, setMyFollower] = useState(false);
   const [myFollowing, setMyFollowing] = useState(false);
-
-  const handleFollow = async () => {
-    setLoading(true);
-    try {
-      const loggedInUserFollowingRef = collection(
-        FIREBASE_FIRESTORE,
-        `users/${loggedInUserData.id}/following`
-      );
-      const otherUserFollowersRef = collection(
-        FIREBASE_FIRESTORE,
-        `users/${userId}/followers`
-      );
-
-      if (myFollowing) {
-        const queryLoggedInUser = query(
-          loggedInUserFollowingRef,
-          where("userId", "==", userId)
-        );
-        const queryOtherUser = query(
-          otherUserFollowersRef,
-          where("userId", "==", loggedInUserData.id)
-        );
-
-        const [snapshotLoggedInUser, snapshotOtherUser] = await Promise.all([
-          getDocs(queryLoggedInUser),
-          getDocs(queryOtherUser),
-        ]);
-
-        const [loggedInFollowingDoc, otherFollowersDoc] = [
-          snapshotLoggedInUser.docs[0],
-          snapshotOtherUser.docs[0],
-        ];
-
-        if (loggedInFollowingDoc && otherFollowersDoc) {
-          await Promise.all([
-            deleteDoc(loggedInFollowingDoc.ref),
-            deleteDoc(otherFollowersDoc.ref),
-          ]);
-        }
-      } else {
-        const loggedInUser = {
-          userId: loggedInUserData.id,
-          profile: loggedInUserData.profile,
-          username: loggedInUserData.username,
-        };
-
-        const otherUser = {
-          userId,
-          profile: data.profile,
-          username: data.username,
-        };
-
-        await Promise.all([
-          addDoc(loggedInUserFollowingRef, otherUser),
-          addDoc(otherUserFollowersRef, loggedInUser),
-        ]);
-      }
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   useEffect(() => {
     (async function () {
@@ -220,7 +153,14 @@ const VisitProfile = ({ route, navigation }) => {
                         : "Ikuti"
                     }
                     isFollow={myFollowing}
-                    onPress={handleFollow}
+                    onPress={() =>
+                      followeHandler(
+                        loggedInUserData,
+                        data,
+                        myFollowing,
+                        setLoading
+                      )
+                    }
                   />
                 </View>
               ) : (
@@ -257,3 +197,68 @@ const VisitProfile = ({ route, navigation }) => {
 };
 
 export default VisitProfile;
+
+/*
+const followeHandler = async () => {
+    setLoading(true);
+    try {
+      const loggedInUserFollowingRef = collection(
+        FIREBASE_FIRESTORE,
+        `users/${loggedInUserData.id}/following`
+      );
+      const otherUserFollowersRef = collection(
+        FIREBASE_FIRESTORE,
+        `users/${userId}/followers`
+      );
+
+      if (myFollowing) {
+        const queryLoggedInUser = query(
+          loggedInUserFollowingRef,
+          where("userId", "==", userId)
+        );
+        const queryOtherUser = query(
+          otherUserFollowersRef,
+          where("userId", "==", loggedInUserData.id)
+        );
+
+        const [snapshotLoggedInUser, snapshotOtherUser] = await Promise.all([
+          getDocs(queryLoggedInUser),
+          getDocs(queryOtherUser),
+        ]);
+
+        const [loggedInFollowingDoc, otherFollowersDoc] = [
+          snapshotLoggedInUser.docs[0],
+          snapshotOtherUser.docs[0],
+        ];
+
+        if (loggedInFollowingDoc && otherFollowersDoc) {
+          await Promise.all([
+            deleteDoc(loggedInFollowingDoc.ref),
+            deleteDoc(otherFollowersDoc.ref),
+          ]);
+        }
+      } else {
+        const loggedInUser = {
+          userId: loggedInUserData.id,
+          profile: loggedInUserData.profile,
+          username: loggedInUserData.username,
+        };
+
+        const otherUser = {
+          userId,
+          profile: data.profile,
+          username: data.username,
+        };
+
+        await Promise.all([
+          addDoc(loggedInUserFollowingRef, otherUser),
+          addDoc(otherUserFollowersRef, loggedInUser),
+        ]);
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+ */
