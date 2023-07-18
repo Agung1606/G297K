@@ -15,8 +15,9 @@ import {
 } from "../../components";
 
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
-import { query, collection, where, onSnapshot } from "firebase/firestore";
+import { collection } from "firebase/firestore";
 
+import { getCollectionData } from "../../services/user";
 import { getUserTweets } from "../../services/tweet";
 
 const HeaderProfile = ({ username, goToSettings }) => {
@@ -51,7 +52,7 @@ const Profile = ({ navigation }) => {
   const [followingCount, setFollowingCount] = useState(0);
 
   useMemo(() => {
-    getUserTweets(loggedInUserData.id, setDataTweets)
+    getUserTweets(loggedInUserData.id, setDataTweets);
 
     const followersCol = collection(
       FIREBASE_FIRESTORE,
@@ -62,15 +63,8 @@ const Profile = ({ navigation }) => {
       `users/${loggedInUserData.id}/following`
     );
 
-    onSnapshot(followersCol, (response) => {
-      const followers = response.docs.map((doc) => doc.data());
-      setFollowersCount(followers.length);
-    });
-
-    onSnapshot(followingCol, (response) => {
-      const following = response.docs.map((doc) => doc.data());
-      setFollowingCount(following.length);
-    });
+    getCollectionData(followersCol, setFollowersCount);
+    getCollectionData(followingCol, setFollowingCount);
   }, []);
 
   return (

@@ -26,7 +26,7 @@ import {
   addDoc,
 } from "firebase/firestore";
 
-import { getUser } from "../../services/user";
+import { getUser, getCollectionData } from "../../services/user";
 import { getUserTweets } from "../../services/tweet";
 
 const HeaderVisitProfile = ({
@@ -158,34 +158,29 @@ const VisitProfile = ({ route, navigation }) => {
       const { userId, userData } = await getUser(username);
       setData({ id: userId, ...userData });
       getUserTweets(userId, setDataTweets);
+
+      const followersCol = collection(
+        FIREBASE_FIRESTORE,
+        `users/${userId}/followers`
+      );
+      const followingCol = collection(
+        FIREBASE_FIRESTORE,
+        `users/${userId}/following`
+      );
+
+      getCollectionData(
+        followersCol,
+        setFollowersCount,
+        setMyFollowing,
+        loggedInUserData.id
+      );
+      getCollectionData(
+        followingCol,
+        setFollowingCount,
+        setMyFollower,
+        loggedInUserData.id
+      );
     })();
-
-    const followersCol = collection(
-      FIREBASE_FIRESTORE,
-      `users/${userId}/followers`
-    );
-    const followingCol = collection(
-      FIREBASE_FIRESTORE,
-      `users/${userId}/following`
-    );
-
-    onSnapshot(followersCol, (response) => {
-      const followers = response.docs.map((doc) => doc.data());
-      const isMyFollowing = followers.find(
-        (item) => item.userId === loggedInUserData.id
-      );
-      setFollowersCount(followers.length);
-      setMyFollowing(isMyFollowing);
-    });
-
-    onSnapshot(followingCol, (response) => {
-      const following = response.docs.map((doc) => doc.data());
-      const isMyFollower = following.find(
-        (item) => item.userId === loggedInUserData.id
-      );
-      setFollowingCount(following.length);
-      setMyFollower(isMyFollower);
-    });
   }, [username, userId]);
 
   return (
