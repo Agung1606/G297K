@@ -1,10 +1,18 @@
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
 
-const getUser = async (email) => {
+const getUser = async (input) => {
   try {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    let userQuery;
+
     const collectionRef = collection(FIREBASE_FIRESTORE, "users");
-    const userQuery = query(collectionRef, where("email", "==", email));
+    if (emailRegex.test(input)) {
+      userQuery = query(collectionRef, where("email", "==", input));
+    } else {
+      userQuery = query(collectionRef, where("username", "==", input));
+    }
+
     const userData = await getDocs(userQuery);
 
     return {

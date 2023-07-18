@@ -26,6 +26,7 @@ import {
   addDoc,
 } from "firebase/firestore";
 
+import { getUser } from "../../services/user";
 import { getUserTweets } from "../../services/tweet";
 
 const HeaderVisitProfile = ({
@@ -153,22 +154,11 @@ const VisitProfile = ({ route, navigation }) => {
   };
 
   useEffect(() => {
-    let qUser = query(
-      collection(FIREBASE_FIRESTORE, "users"),
-      where("username", "==", username)
-    );
-    onSnapshot(qUser, (res) => {
-      setData(
-        res.docs.map((doc) => {
-          return {
-            id: doc.id,
-            ...doc.data(),
-          };
-        })[0]
-      );
-    });
-
-    getUserTweets(userId, setDataTweets);
+    (async function () {
+      const { userId, userData } = await getUser(username);
+      setData({ id: userId, ...userData });
+      getUserTweets(userId, setDataTweets);
+    })();
 
     const followersCol = collection(
       FIREBASE_FIRESTORE,
