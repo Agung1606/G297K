@@ -9,16 +9,7 @@ import { setUpdateUser } from "../../redux/globalSlice";
 import { Avatar, Header, ButtonBlue, DialogModal } from "../../components";
 import { modalPopupConfig } from "../../hooks";
 
-import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
-import {
-  doc,
-  collection,
-  updateDoc,
-  where,
-  query,
-  getDocs,
-  onSnapshot,
-} from "firebase/firestore";
+import { editHandler } from "../../services/user";
 
 const EditProfile = ({ navigation }) => {
   const goToPrevScreen = () => navigation.goBack();
@@ -35,58 +26,6 @@ const EditProfile = ({ navigation }) => {
   const [username, setUsername] = useState(loggedInUserData.username);
   const [bio, setBio] = useState(loggedInUserData.bio);
 
-  const handleEdit = async () => {
-    // Added an early return if either the name or username is empty to avoid unnecessary operations.
-    if (name === "" || username === "") {
-      setErrorMsg("Nama atau username dibutuhkan 🙏");
-      openModal();
-      return;
-    }
-
-    // sets the loading state to true to indicate that the update operation is in progress.
-    setLoading(true);
-
-    const collectionUserRef = collection(FIREBASE_FIRESTORE, "users");
-    const collectionTweetRef = collection(FIREBASE_FIRESTORE, "tweets");
-
-    const userUpdatePromise = updateDoc(
-      doc(collectionUserRef, loggedInUserData.id),
-      {
-        name,
-        username,
-        bio,
-      }
-    );
-
-    const usernameChanged = username !== loggedInUserData.username;
-    // const nameChanged = name !== loggedInUserData.name;
-
-    try {
-      if (usernameChanged) {
-        const tweetsQuerySnapshot = await getDocs(
-          query(collectionTweetRef, where("userId", "==", loggedInUserData.id))
-        );
-        const tweetUpdatePromise = tweetsQuerySnapshot.docs.map((doc) => {
-          const docRef = doc.ref;
-          const updateData = {
-            username,
-          };
-
-          return updateDoc(docRef, updateData);
-        });
-
-        await Promise.all([userUpdatePromise, ...tweetUpdatePromise]);
-      } else {
-        await userUpdatePromise;
-      }
-      dispatch(setUpdateUser({ name, username, bio }));
-      goToPrevScreen();
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
   return (
     <SafeAreaView className="flex-1 p-3">
       <Header onPress={goToPrevScreen} text={"Edit Profile"} />
@@ -123,7 +62,20 @@ const EditProfile = ({ navigation }) => {
         <View className="mt-4">
           <ButtonBlue
             title={loading ? "Tunggu..." : "Edit"}
-            onPress={handleEdit}
+            onPress={() =>
+              editHandler(
+                name,
+                username,
+                bio,
+                setLoading,
+                loggedInUserData,
+                setErrorMsg,
+                openModal,
+                dispatch,
+                setUpdateUser,
+                goToPrevScreen
+              )
+            }
             disabled={
               name === loggedInUserData.name &&
               username === loggedInUserData.username &&
