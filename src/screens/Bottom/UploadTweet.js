@@ -13,8 +13,7 @@ import Spinner from "react-native-loading-spinner-overlay";
 import { ButtonBlue, ButtonUploadType, Avatar } from "../../components";
 import { useSelector } from "react-redux";
 
-import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
-import { addDoc, collection } from "firebase/firestore";
+import { addTweet } from "../../services/tweet";
 
 const UploadTweet = ({ navigation }) => {
   const loggedInUserData = useSelector((state) => state.global.user);
@@ -26,22 +25,9 @@ const UploadTweet = ({ navigation }) => {
   const [tweetInput, setTweetInput] = useState("");
 
   const handleUploadTweet = async () => {
-    const currentDate = new Date();
-    const dateString = currentDate.toDateString();
-    const timeString = currentDate.toTimeString().split(" ")[0];
-    const timeZoneString = currentDate.toTimeString().split(" ")[1];
-
-    const data = {
-      userId: loggedInUserData.id,
-      username: loggedInUserData.username,
-      profile: loggedInUserData.profile,
-      tweet: tweetInput,
-      date: `${dateString} ${timeString} ${timeZoneString}`,
-    };
-
     setLoading(true);
     try {
-      await addDoc(collection(FIREBASE_FIRESTORE, "tweets"), data);
+      await addTweet(loggedInUserData, tweetInput);
       navigation.goBack();
     } catch (error) {
       console.error(error);
