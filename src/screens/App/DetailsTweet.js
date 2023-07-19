@@ -14,10 +14,8 @@ import {
   ConfirmModal,
 } from "../../components";
 
-import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
-import { collection, onSnapshot } from "firebase/firestore";
-
 import { deleteTweet } from "../../services/tweet";
+import { getComment } from "../../services/comment";
 
 const DetailsTweet = ({ route, navigation }) => {
   const { item } = route?.params;
@@ -73,24 +71,8 @@ const DetailsTweet = ({ route, navigation }) => {
 
   const [dataComments, setDataComments] = useState([]);
   useEffect(() => {
-    const unsubscribe = onSnapshot(
-      collection(FIREBASE_FIRESTORE, `tweets/${item.id}/comments`),
-      (snapshot) => {
-        const comments = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setDataComments(comments);
-      },
-      (error) => {
-        console.error("Error fetching comments:", error);
-      }
-    );
-
-    return () => {
-      unsubscribe();
-    };
-  }, [item.id]);
+    getComment(item.id, setDataComments);
+  }, []);
 
   return (
     <SafeAreaView className="flex-1">
