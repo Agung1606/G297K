@@ -1,3 +1,4 @@
 import getComment from "./getComment";
+import deleteComment from "./deleteComment";
 
-export { getComment };
+export { getComment, deleteComment };
