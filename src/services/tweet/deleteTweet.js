@@ -7,11 +7,17 @@ const deleteTweet = async (
   closeConfirmModal,
   goToPrevScreen
 ) => {
-  setLoading(true);
-  closeConfirmModal();
+  if (!tweetId) throw new Error("Invalid tweetId");
   try {
+    // the request is ongoing
+    setLoading(true);
+
+    // Close the confirmation modal immediately
+    closeConfirmModal();
+
     const documentRef = doc(collection(FIREBASE_FIRESTORE, "tweets"), tweetId);
     await deleteDoc(documentRef);
+
     goToPrevScreen();
   } catch (error) {
     throw error;
