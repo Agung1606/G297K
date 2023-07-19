@@ -4,7 +4,7 @@ import { onSnapshot, query, collection, orderBy } from "firebase/firestore";
 const getTweets = (setDataTweets) => {
   let queryTweets = query(
     collection(FIREBASE_FIRESTORE, "tweets"),
-    orderBy("date", "asc")
+    orderBy("date", "desc")
   );
   onSnapshot(queryTweets, (response) => {
     setDataTweets(response.docs.map((doc) => ({ ...doc.data(), id: doc.id })));

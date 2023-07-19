@@ -15,7 +15,9 @@ import {
 } from "../../components";
 
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
-import { doc, collection, deleteDoc, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
+
+import { deleteTweet } from "../../services/tweet";
 
 const DetailsTweet = ({ route, navigation }) => {
   const { item } = route?.params;
@@ -47,21 +49,6 @@ const DetailsTweet = ({ route, navigation }) => {
     openModal: openConfirmModal,
     closeModal: closeConfirmModal,
   } = modalPopupConfig();
-
-  const handleDeleteTweet = useCallback(async () => {
-    setLoading(true);
-
-    closeConfirmModal();
-    try {
-      const documentRef = doc(collection(FIREBASE_FIRESTORE, "tweets"), item.id);
-      await deleteDoc(documentRef);
-      navigation.goBack();
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  }, [navigation, item.id]);
 
   const options = [
     {
@@ -159,7 +146,9 @@ const DetailsTweet = ({ route, navigation }) => {
       <ConfirmModal
         isModalOpen={isModalOpen}
         onCancel={closeConfirmModal}
-        onOk={handleDeleteTweet}
+        onOk={() =>
+          deleteTweet(item.id, setLoading, closeConfirmModal, goToPrevScreen)
+        }
         title={"Hapus postingan?"}
         textBtnOk={"Hapus"}
         textBtnCancel={"Batal"}
