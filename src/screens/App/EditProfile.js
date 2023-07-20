@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { View, Text } from "react-native";
+import { View, TouchableOpacity } from "react-native";
 import { TextInput } from "react-native-paper";
+import { MaterialIcons, Ionicons } from "@expo/vector-icons";
+import Spinner from "react-native-loading-spinner-overlay";
 
 import { useSelector, useDispatch } from "react-redux";
 import { setUpdateUser } from "../../redux/globalSlice";
 
-import { Avatar, Header, ButtonBlue, DialogModal } from "../../components";
+import { Avatar, ButtonBlue, DialogModal } from "../../components";
 import { modalPopupConfig } from "../../hooks";
 
 import { editHandler } from "../../services/user";
@@ -27,41 +29,16 @@ const EditProfile = ({ navigation }) => {
   const [bio, setBio] = useState(loggedInUserData.bio);
 
   return (
-    <SafeAreaView className="flex-1 p-3">
-      <Header onPress={goToPrevScreen} text={"Edit Profile"} />
-      <View className="items-center my-6">
-        <Avatar imgUrl={loggedInUserData.profile} size={90} />
-        <Text className="font-InterMedium text-lg text-grayCustom">
-          Edit gambar
-        </Text>
-      </View>
-      {/* text input */}
-      <View>
-        <TextInput
-          label={"Nama"}
-          value={name}
-          onChangeText={(text) => setName(text)}
-          className="bg-transparent mb-3"
-          underlineColor="#1D7ED8"
-        />
-        <TextInput
-          label={"Username"}
-          value={username}
-          onChangeText={(text) => setUsername(text)}
-          className="bg-transparent mb-3"
-          underlineColor="#1D7ED8"
-        />
-        <TextInput
-          label={"Bio"}
-          value={bio}
-          onChangeText={(text) => setBio(text)}
-          multiline={true}
-          className="bg-transparent mb-3"
-          underlineColor="#1D7ED8"
-        />
-        <View className="mt-4">
+    <SafeAreaView className="flex-1">
+      <Spinner visible={loading} textContent="Tunggu..." />
+      {/* top */}
+      <View className="px-2 flex-row justify-between items-center mb-4">
+        <TouchableOpacity onPress={goToPrevScreen}>
+          <MaterialIcons name="close" size={30} />
+        </TouchableOpacity>
+        <View className="w-[110px]">
           <ButtonBlue
-            title={loading ? "Tunggu..." : "Edit"}
+            title={"Selesai"}
             onPress={() =>
               editHandler(
                 name,
@@ -84,7 +61,48 @@ const EditProfile = ({ navigation }) => {
           />
         </View>
       </View>
-      {/* simple modal */}
+      {/* */}
+      <View className="h-[70vh] justify-center items-center space-y-6 px-4">
+        {/* edit profile */}
+        <View className="items-center my-2">
+          <View className="relative">
+            <Avatar imgUrl={loggedInUserData.profile} size={90} />
+            <View className="absolute left-1 bottom-1">
+              <Ionicons name="md-add-circle" size={30} color={"#1D7ED8"} />
+            </View>
+          </View>
+        </View>
+        {/* card edit */}
+        <View className="bg-gray-200 w-full p-3 rounded-md shadow-sm shadow-grayCustom">
+          <TextInput
+            value={name}
+            onChangeText={(text) => setName(text)}
+            className="bg-transparent mb-3"
+            label="Nama"
+            mode="outlined"
+            activeOutlineColor="#1D7ED8"
+          />
+          <TextInput
+            value={username}
+            onChangeText={(text) => setUsername(text)}
+            className="bg-transparent mb-3"
+            label="Username"
+            mode="outlined"
+            activeOutlineColor="#1D7ED8"
+          />
+          <TextInput
+            value={bio}
+            onChangeText={(text) => setBio(text)}
+            className="bg-transparent mb-3"
+            label="Bio"
+            mode="outlined"
+            multiline={true}
+            maxLength={150}
+            activeOutlineColor="#1D7ED8"
+          />
+        </View>
+      </View>
+      {/* dialog modal */}
       <DialogModal
         isModalOpen={isModalOpen}
         msg={errorMsg}
