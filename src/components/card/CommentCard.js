@@ -11,9 +11,6 @@ import { Avatar } from "../common";
 import { bottomModalConfig } from "../../hooks";
 import { formatRelativeTime } from "../../utils";
 
-import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
-import { doc, collection, deleteDoc } from "firebase/firestore";
-
 import { deleteComment } from "../../services/comment";
 
 const CommentCard = ({ item }) => {
@@ -34,24 +31,6 @@ const CommentCard = ({ item }) => {
 
   const loggedInUserId = useSelector((state) => state.global.user.id);
   const [loading, setLoading] = useState(false);
-
-  // const handleDeleteComment = async () => {
-  //   setLoading(true);
-  //   closeBottomModal();
-
-  //   const parentDocRef = doc(FIREBASE_FIRESTORE, "tweets", item.tweetId); // tweet id
-  //   const subcollectionRef = collection(parentDocRef, "comments");
-
-  //   const docToDelete = doc(subcollectionRef, item.id); // comment id
-
-  //   try {
-  //     await deleteDoc(docToDelete);
-  //   } catch (error) {
-  //     console.error(error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
 
   const options = [
     {

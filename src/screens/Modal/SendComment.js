@@ -13,8 +13,7 @@ import Spinner from "react-native-loading-spinner-overlay";
 
 import { ButtonBlue, Avatar } from "../../components";
 
-import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
-import { addDoc, collection } from "firebase/firestore";
+import { addComment } from "../../services/comment";
 
 const SendComment = ({ route, navigation }) => {
   const { item } = route?.params;
@@ -26,25 +25,8 @@ const SendComment = ({ route, navigation }) => {
   const handleComment = async () => {
     setLoading(true);
 
-    const currentDate = new Date();
-    const dateString = currentDate.toDateString();
-    const timeString = currentDate.toTimeString().split(" ")[0];
-    const timeZoneString = currentDate.toTimeString().split(" ")[1];
-
-    const data = {
-      tweetId: item.id,
-      userId: loggedInUserData.id,
-      username: loggedInUserData.username,
-      profile: loggedInUserData.profile,
-      comment: commentInput,
-      date: `${dateString} ${timeString} ${timeZoneString}`,
-    };
-
     try {
-      await addDoc(
-        collection(FIREBASE_FIRESTORE, `tweets/${item.id}/comments`),
-        data
-      );
+      await addComment(loggedInUserData, item.id, commentInput);
       goToPrevScreen();
     } catch (error) {
       console.error(error);
