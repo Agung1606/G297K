@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect } from "react";
 import { View, FlatList, RefreshControl, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { registerForPushNotificationsAsync } from "../../utils";
 import { scrollToTopConfig } from "../../hooks";
 import {
   TweetCard,
@@ -26,6 +27,7 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
+    registerForPushNotificationsAsync();
     getTweets(setDataTweets);
   }, []);
 

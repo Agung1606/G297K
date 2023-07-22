@@ -1,18 +1,50 @@
 import * as yup from "yup";
+import * as Notifications from "expo-notifications";
+import * as Device from "expo-device";
+import { Platform } from "react-native";
 
-export const emailValidation = yup.object().shape({
-  email: yup
-    .string()
-    .email("Tolong masukan email dengan benar")
-    .required("Email address di butuhkan"),
-});
+export async function registerForPushNotificationsAsync() {
+  let token;
 
-export const passwordValidation = yup.object().shape({
-  password: yup
-    .string()
-    .required("Password dibutuhkan")
-    .min(6, ({ min }) => `Kata sandi harus setidaknya ${min} karakter`),
-});
+  if (Platform.OS === "android") {
+    await Notifications.setNotificationChannelAsync("new-emails", {
+      name: "E-mail notifications",
+      importance: Notifications.AndroidImportance.HIGH,
+    });
+  }
+
+  Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+      shouldShowAlert: true,
+      shouldPlaySound: false,
+      shouldSetBadge: false,
+    }),
+  });
+
+  if (Device.isDevice) {
+    const { status: existingStatus } =
+      await Notifications.getPermissionsAsync();
+    let finalStatus = existingStatus;
+    if (existingStatus !== "granted") {
+      const { status } = await Notifications.requestPermissionsAsync();
+      finalStatus = status;
+    }
+    if (finalStatus !== "granted") {
+      alert("Failed to get push token for push notification!");
+      return;
+    }
+
+    token = (
+      await Notifications.getExpoPushTokenAsync({
+        projectId: "d82edc18-dc66-4f6b-af57-93cd8f3bea29",
+      })
+    ).data;
+  } else {
+    alert("Must use physical device for Push Notifications!");
+  }
+
+  return token;
+}
 
 export function generateRandomUsername(name) {
   const randomNumber = Math.floor(Math.random() * 1000);
@@ -99,3 +131,17 @@ export function formatRelativeTime(dateInput) {
     }, ${date.getFullYear()}`;
   }
 }
+
+export const emailValidation = yup.object().shape({
+  email: yup
+    .string()
+    .email("Tolong masukan email dengan benar")
+    .required("Email address di butuhkan"),
+});
+
+export const passwordValidation = yup.object().shape({
+  password: yup
+    .string()
+    .required("Password dibutuhkan")
+    .min(6, ({ min }) => `Kata sandi harus setidaknya ${min} karakter`),
+});

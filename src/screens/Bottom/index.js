@@ -88,7 +88,7 @@ const BottomNavigation = () => {
             ),
         }}
       />
-      {/* <Tab.Screen
+      <Tab.Screen
        name="AddedDummyDataScreen"
         component={AddedDummyData}
         options={{
@@ -96,7 +96,7 @@ const BottomNavigation = () => {
             <FontAwesome name="address-book-o" size={28} color={color} />
           ),
         }}
-      />  */}
+      /> 
     </Tab.Navigator>
   );
 };

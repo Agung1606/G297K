@@ -1,68 +1,25 @@
 import { View, Text, Button } from "react-native";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import * as Notifications from "expo-notifications";
 
 import { TWEETS, PROFILE } from "../../constant";
 
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
 import { addDoc, collection } from "firebase/firestore";
 
-const agungTweets = [
-  {
-    userId: "tLw9Ujv85KLwD0Fsid0L",
-    name: "AGUNG SAPUTRA",
-    username: "agngsptra._",
-    profile:
-      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FdefaultProfile.jpg?alt=media&token=00865e31-d1d6-4556-9130-fcd2a3b8ea6d",
-    tweet: "test 1",
-    date: "Sat Jul 1 2023 06:56:10 GMT+0700",
-    numberOfLikes: 0,
-    numberOfComments: 0,
-  },
-  {
-    userId: "tLw9Ujv85KLwD0Fsid0L",
-    name: "AGUNG SAPUTRA",
-    username: "agngsptra._",
-    profile:
-      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FdefaultProfile.jpg?alt=media&token=00865e31-d1d6-4556-9130-fcd2a3b8ea6d",
-    tweet: "test 2",
-    date: "Sat Jul 1 2023 07:56:10 GMT+0700",
-    numberOfLikes: 0,
-    numberOfComments: 0,
-  },
-  {
-    userId: "tLw9Ujv85KLwD0Fsid0L",
-    name: "AGUNG SAPUTRA",
-    username: "agngsptra._",
-    profile:
-      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FdefaultProfile.jpg?alt=media&token=00865e31-d1d6-4556-9130-fcd2a3b8ea6d",
-    tweet: "test 3",
-    date: "Sat Jul 1 2023 08:56:10 GMT+0700",
-    numberOfLikes: 0,
-    numberOfComments: 0,
-  },
-  {
-    userId: "tLw9Ujv85KLwD0Fsid0L",
-    name: "AGUNG SAPUTRA",
-    username: "agngsptra._",
-    profile:
-      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FdefaultProfile.jpg?alt=media&token=00865e31-d1d6-4556-9130-fcd2a3b8ea6d",
-    tweet: "test 4",
-    date: "Sat Jul 1 2023 08:56:10 GMT+0700",
-    numberOfLikes: 0,
-    numberOfComments: 0,
-  },
-  {
-    userId: "tLw9Ujv85KLwD0Fsid0L",
-    name: "AGUNG SAPUTRA",
-    username: "agngsptra._",
-    profile:
-      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2FdefaultProfile.jpg?alt=media&token=00865e31-d1d6-4556-9130-fcd2a3b8ea6d",
-    tweet: "test 5",
-    date: "Sat Jul 1 2023 08:56:10 GMT+0700",
-    numberOfLikes: 0,
-    numberOfComments: 0,
-  },
-];
+async function schedulePushNotification() {
+  await Notifications.scheduleNotificationAsync({
+    content: {
+      title: "You've got mail! 📬",
+      body: "Open the notification to read them all",
+      sound: "email-sound.wav", // <- for Android below 8.0
+    },
+    trigger: {
+      seconds: 2,
+      channelId: "new-emails", // <- for Android 8.0+, see definition above
+    },
+  });
+}
 
 const AddedDummyData = () => {
   const handle = async () => {
@@ -74,7 +31,7 @@ const AddedDummyData = () => {
           profile: data.profile,
           username: data.username,
           date: data.date,
-          tweet: data.tweet
+          tweet: data.tweet,
         });
       }
 
@@ -84,9 +41,43 @@ const AddedDummyData = () => {
     }
   };
 
+  const [notification, setNotification] = useState(false);
+  const notificationListener = useRef();
+  const responseListener = useRef();
+
+  useEffect(() => {
+    notificationListener.current =
+      Notifications.addNotificationReceivedListener((notification) =>
+        setNotification(notification)
+      );
+    responseListener.current = Notifications.addNotificationReceivedListener(
+      (response) => console.log(response)
+    );
+
+    return () => {
+      Notifications.removeNotificationSubscription(
+        notificationListener.current
+      );
+      Notifications.removeNotificationSubscription(responseListener.current);
+    };
+  }, []);
+
   return (
     <View className="flex-1 justify-center items-center">
-      <Button title="add data" onPress={handle} />
+      {/* <View className="items-center justify-center">
+        <Text>
+          Title: {notification && notification.request.content.title}{" "}
+        </Text>
+        <Text>Body: {notification && notification.request.content.body}</Text>
+        <Text>
+          Data:{" "}
+          {notification && JSON.stringify(notification.request.content.data)}
+        </Text>
+      </View> */}
+      <Button
+        title="Press to schedule a notification"
+        onPress={async () => await schedulePushNotification()}
+      />
     </View>
   );
 };
