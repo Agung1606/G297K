@@ -13,7 +13,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setUserSearchHistory } from "../../redux/globalSlice";
 
 import { modalPopupConfig } from "../../hooks";
-import { ConfirmModal, Avatar, InfoCard } from "../../components";
+import { ConfirmModal, Avatar, SearchUserCard } from "../../components";
 
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
 import { collection, query, where, onSnapshot } from "firebase/firestore";
@@ -76,6 +76,7 @@ const SearchAccount = ({ navigation }) => {
         response.docs.map((doc) => {
           return {
             id: doc.id,
+            name: doc.data().name,
             username: doc.data().username,
             profile: doc.data().profile,
           };
@@ -95,9 +96,10 @@ const SearchAccount = ({ navigation }) => {
         <FlatList
           data={users}
           renderItem={({ item }) => (
-            <InfoCard
+            <SearchUserCard
               onPress={() => goToProfile(item)}
               imgUrl={item.profile}
+              name={item.name}
               username={item.username}
             />
           )}

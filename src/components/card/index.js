@@ -3,7 +3,7 @@ import TweetDetailCard from "./TweetDetailCard";
 import TrendingCard from "./TrendingCard";
 import CommentCard from "./CommentCard";
 import SplashTweetCard from "./SplashTweetCard";
-import InfoCard from "./InfoCard";
+import SearchUserCard from "./SearchUserCard";
 
 export {
   TweetCard,
@@ -11,5 +11,5 @@ export {
   TrendingCard,
   CommentCard,
   SplashTweetCard,
-  InfoCard,
+  SearchUserCard,
 };
