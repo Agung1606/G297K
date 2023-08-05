@@ -8,7 +8,6 @@ import BottomNavigation from "../screens/Bottom";
 import {
   VisitProfile,
   DetailsTweet,
-  TrendingList,
   EditProfile,
 } from "../screens/App";
 import { SendComment, SearchAccount, Settings, Info } from "../screens/Modal";
@@ -49,13 +48,6 @@ const Routes = () => {
             <Stack.Screen
               name="DetailsTweetScreen"
               component={DetailsTweet}
-              options={{
-                animation: "slide_from_right",
-              }}
-            />
-            <Stack.Screen
-              name="TrendingListScreen"
-              component={TrendingList}
               options={{
                 animation: "slide_from_right",
               }}

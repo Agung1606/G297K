@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
-  TextInput,
   TouchableOpacity,
   FlatList,
 } from "react-native";
@@ -13,29 +12,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { setUserSearchHistory } from "../../redux/globalSlice";
 
 import { modalPopupConfig } from "../../hooks";
-import { ConfirmModal, Avatar, SearchUserCard } from "../../components";
+import { ConfirmModal, Avatar, SearchUserCard, SearchBar } from "../../components";
 
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
 import { collection, query, where, onSnapshot } from "firebase/firestore";
-
-const SearchBar = ({ goBack, searchQuery, setSearchQuery }) => (
-  <View
-    className={`flex-row justify-between items-center py-2 px-4 border-b border-gray-600`}
-  >
-    <TouchableOpacity onPress={goBack}>
-      <AntDesign name="arrowleft" size={22} />
-    </TouchableOpacity>
-    <View className="flex-1 px-4 py-2 ml-6">
-      <TextInput
-        placeholder="Cari akun"
-        className="font-InterMedium text-gray-600"
-        autoFocus={true}
-        value={searchQuery}
-        onChangeText={(text) => setSearchQuery(text)}
-      />
-    </View>
-  </View>
-);
 
 const SearchAccount = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -86,7 +66,7 @@ const SearchAccount = ({ navigation }) => {
   }, [searchQuery]);
 
   return (
-    <SafeAreaView className="flex-1 ">
+    <SafeAreaView className="flex-1 mx-4">
       <SearchBar
         goBack={goBack}
         searchQuery={searchQuery}
@@ -104,6 +84,7 @@ const SearchAccount = ({ navigation }) => {
             />
           )}
           keyExtractor={(item) => item.id}
+          showsVerticalScrollIndicator={false}
         />
       ) : (
         <View className="m-2">
