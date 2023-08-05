@@ -3,9 +3,8 @@ import {
   Text,
   ActivityIndicator,
   Pressable,
-  TouchableOpacity,
   View,
-  FlatList,
+  Platform,
 } from "react-native";
 import { MaterialIcons, Ionicons, AntDesign } from "@expo/vector-icons";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
@@ -101,63 +100,6 @@ export const ButtonUploadType = () => {
   );
 };
 
-export const ButtonBurgerProfile = ({ goToSettings }) => {
-  const {
-    bottomSheetModalRef,
-    snapPoints,
-    openModal,
-    closeModal,
-    renderBackdrop,
-  } = bottomModalConfig(["15%"]);
-
-  const options = [
-    {
-      id: 1,
-      text: "Pengaturan dan Privasi",
-      icon: <Ionicons name="settings-outline" size={22} />,
-      onPress: () => {
-        goToSettings();
-        closeModal();
-      },
-    },
-    {
-      id: 2,
-      text: "Pusat Bantuan",
-      icon: <Ionicons name="md-help-circle-outline" size={22} />,
-      onPress: () => {},
-    },
-  ];
-
-  return (
-    <>
-      <TouchableOpacity onPress={openModal}>
-        <Ionicons name="md-options-outline" size={30} />
-      </TouchableOpacity>
-      {/* bottom modal */}
-      <BottomSheetModal
-        ref={bottomSheetModalRef}
-        index={0}
-        snapPoints={snapPoints}
-        backdropComponent={renderBackdrop}
-      >
-        <FlatList
-          data={options}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              onPress={item.onPress}
-              className="flex-row items-center space-x-4 px-4 mb-3"
-            >
-              {item.icon}
-              <Text className="font-InterRegular text-lg">{item.text}</Text>
-            </TouchableOpacity>
-          )}
-          keyExtractor={(item) => item.id}
-        />
-      </BottomSheetModal>
-    </>
-  );
-};
-
 export const ButtonScrollToTop = ({ onPress }) => (
   <StyledPressable
     onPress={onPress}
@@ -203,7 +145,9 @@ export const ButtonBlue = ({ title, onPress, loading, disabled }) => (
     onPress={onPress}
     className={`w-full py-[6px] justify-center items-center rounded-full ${
       disabled ? "bg-blue/50" : "bg-blue"
-    } shadow-md shadow-black ${styles.pressableEffect}`}
+    } ${Platform.OS === "android" && "shadow-md shadow-black"} ${
+      styles.pressableEffect
+    }`}
   >
     {loading ? (
       <ActivityIndicator size={"large"} color={"#FFF"} />

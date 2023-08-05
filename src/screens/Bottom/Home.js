@@ -1,5 +1,11 @@
 import React, { useState, useCallback, useEffect } from "react";
-import { View, FlatList, RefreshControl, ScrollView } from "react-native";
+import {
+  View,
+  FlatList,
+  RefreshControl,
+  ScrollView,
+  Platform,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { registerForPushNotificationsAsync } from "../../utils";
@@ -27,7 +33,7 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    registerForPushNotificationsAsync();
+    if (Platform.OS === "android") registerForPushNotificationsAsync();
     getTweets(setDataTweets);
   }, []);
 

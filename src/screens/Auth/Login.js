@@ -1,4 +1,12 @@
-import { View, TextInput, Text, TouchableOpacity, Image } from "react-native";
+import {
+  View,
+  TextInput,
+  Text,
+  TouchableOpacity,
+  Image,
+  Platform,
+  KeyboardAvoidingView,
+} from "react-native";
 import React, { useState } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { Entypo } from "@expo/vector-icons";
@@ -70,7 +78,10 @@ const Login = ({ navigation }) => {
   };
 
   return (
-    <View className="flex-1 justify-center items-center px-[6px]">
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      className="flex-1 justify-center items-center px-[6px]"
+    >
       <Spinner visible={loading} textContent="Tunggu..." />
       <LinearGradient
         // Background Linear Gradient
@@ -151,7 +162,7 @@ const Login = ({ navigation }) => {
         msg={errorMsg}
         closeModal={closeModal}
       />
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 

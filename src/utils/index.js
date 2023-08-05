@@ -7,19 +7,13 @@ export async function registerForPushNotificationsAsync() {
   let token;
 
   if (Platform.OS === "android") {
-    await Notifications.setNotificationChannelAsync("new-emails", {
-      name: "E-mail notifications",
-      importance: Notifications.AndroidImportance.HIGH,
+    await Notifications.setNotificationChannelAsync("defaults", {
+      name: "default",
+      importance: Notifications.AndroidImportance.MAX,
+      vibrationPattern: [0, 250, 250, 250],
+      lightColor: "#FF231F7C",
     });
   }
-
-  Notifications.setNotificationHandler({
-    handleNotification: async () => ({
-      shouldShowAlert: true,
-      shouldPlaySound: false,
-      shouldSetBadge: false,
-    }),
-  });
 
   if (Device.isDevice) {
     const { status: existingStatus } =
@@ -34,11 +28,10 @@ export async function registerForPushNotificationsAsync() {
       return;
     }
 
-    token = (
-      await Notifications.getExpoPushTokenAsync({
-        projectId: "d82edc18-dc66-4f6b-af57-93cd8f3bea29",
-      })
-    ).data;
+    token = await Notifications.getExpoPushTokenAsync({
+      // projectId: Constants.expoConfig.extra.eas.projectId,
+      projectId: "d82edc18-dc66-4f6b-af57-93cd8f3bea29",
+    });
   } else {
     alert("Must use physical device for Push Notifications!");
   }

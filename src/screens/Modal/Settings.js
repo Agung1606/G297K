@@ -3,10 +3,7 @@ import { View, Text, ScrollView, Pressable } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
   MaterialIcons,
-  Entypo,
   Ionicons,
-  Feather,
-  MaterialCommunityIcons,
 } from "@expo/vector-icons";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -30,43 +27,6 @@ const Settings = ({ navigation }) => {
   const SETTINGOPTIONS = [
     {
       id: 1,
-      title: "Bagaimana Anda menggunakan G297K",
-      data: [
-        {
-          id: 1,
-          text: "Notifikasi",
-          icon: <Entypo name="bell" size={25} />,
-        },
-        {
-          id: 2,
-          text: "Waktu yang dihabiskan",
-          icon: <MaterialIcons name="access-time" size={25} />,
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: "Apa yang Anda lihat",
-      data: [
-        {
-          id: 1,
-          text: "Favorit",
-          icon: <Feather name="star" size={24} />,
-        },
-        {
-          id: 2,
-          text: "Akun disenyapkan",
-          icon: <Feather name="bell-off" size={24} />,
-        },
-        {
-          id: 3,
-          text: "Sembunyikan suka",
-          icon: <Ionicons name="heart-dislike-outline" size={25} />,
-        },
-      ],
-    },
-    {
-      id: 3,
       title: "Siapa yang bisa melihat konten Anda",
       data: [
         {
@@ -87,38 +47,7 @@ const Settings = ({ navigation }) => {
       ],
     },
     {
-      id: 4,
-      title: "Aplikasi dan media Anda",
-      data: [
-        {
-          id: 1,
-          text: "Mengarsipkan dan mengunduh",
-          icon: <MaterialCommunityIcons name="arrow-collapse-down" size={22} />,
-        },
-        {
-          id: 2,
-          text: "Aksesibilitas",
-          icon: <MaterialIcons name="accessibility" size={25} />,
-        },
-        {
-          id: 3,
-          text: "Bahasa",
-          icon: <Entypo name="language" size={25} />,
-        },
-        {
-          id: 4,
-          text: "Penggunaan data dan kualitas media",
-          icon: <MaterialIcons name="signal-cellular-alt" size={25} />,
-        },
-        {
-          id: 5,
-          text: "Izin situs web",
-          icon: <MaterialIcons name="computer" size={25} />,
-        },
-      ],
-    },
-    {
-      id: 5,
+      id: 2,
       title: "Login",
       data: [
         {

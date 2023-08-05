@@ -3,11 +3,13 @@ import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { PaperProvider } from "react-native-paper";
+import * as Notifications from "expo-notifications";
 
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 import { store } from "./src/redux";
+
 
 import Routes from "./src/navigation";
 
@@ -18,6 +20,14 @@ const theme = {
     background: "transparent",
   },
 };
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+  }),
+});
 
 export default function App() {
   const [loaded] = useFonts({
@@ -30,6 +40,7 @@ export default function App() {
     RobotoRegular: require("./src/assets/fonts/Roboto-Regular.ttf"),
   });
   if (!loaded) return null; // wait until the fonts loaded
+
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistStore(store)}>

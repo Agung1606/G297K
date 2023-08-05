@@ -10,13 +10,11 @@ import { addDoc, collection } from "firebase/firestore";
 async function schedulePushNotification() {
   await Notifications.scheduleNotificationAsync({
     content: {
-      title: "You've got mail! 📬",
-      body: "Open the notification to read them all",
-      sound: "email-sound.wav", // <- for Android below 8.0
+      title: "testing 📬",
+      body: "agung ganteng",
     },
     trigger: {
-      seconds: 2,
-      channelId: "new-emails", // <- for Android 8.0+, see definition above
+      seconds: 1
     },
   });
 }
@@ -40,40 +38,9 @@ const AddedDummyData = () => {
       console.error(error.code);
     }
   };
-
-  const [notification, setNotification] = useState(false);
-  const notificationListener = useRef();
-  const responseListener = useRef();
-
-  useEffect(() => {
-    notificationListener.current =
-      Notifications.addNotificationReceivedListener((notification) =>
-        setNotification(notification)
-      );
-    responseListener.current = Notifications.addNotificationReceivedListener(
-      (response) => console.log(response)
-    );
-
-    return () => {
-      Notifications.removeNotificationSubscription(
-        notificationListener.current
-      );
-      Notifications.removeNotificationSubscription(responseListener.current);
-    };
-  }, []);
-
+  
   return (
     <View className="flex-1 justify-center items-center">
-      {/* <View className="items-center justify-center">
-        <Text>
-          Title: {notification && notification.request.content.title}{" "}
-        </Text>
-        <Text>Body: {notification && notification.request.content.body}</Text>
-        <Text>
-          Data:{" "}
-          {notification && JSON.stringify(notification.request.content.data)}
-        </Text>
-      </View> */}
       <Button
         title="Press to schedule a notification"
         onPress={async () => await schedulePushNotification()}

@@ -1,13 +1,13 @@
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import { useSelector } from "react-redux";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React, { useMemo, useState, useCallback } from "react";
+import { Ionicons } from "@expo/vector-icons";
 
 import { modalPopupConfig, scrollToTopConfig } from "../../hooks";
 import {
   ProfileInfo,
   ButtonGray,
-  ButtonBurgerProfile,
   ButtonScrollToTop,
   TweetCard,
   NoTweets,
@@ -24,7 +24,9 @@ const HeaderProfile = ({ username, goToSettings }) => {
   return (
     <View className={`flex-row justify-between items-center py-2 px-4`}>
       <Text className="font-InterBold text-xl tracking-wide">{username}</Text>
-      <ButtonBurgerProfile goToSettings={goToSettings} />
+      <TouchableOpacity onPress={goToSettings}>
+        <Ionicons name="settings-outline" size={28} />
+      </TouchableOpacity>
     </View>
   );
 };
