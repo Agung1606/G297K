@@ -4,8 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { SearchBar, SearchUserCard } from "../../components";
 
-import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
-import { collection, onSnapshot } from "firebase/firestore";
+import { getUsers } from "../../services/user";
 
 const Explore = ({ navigation }) => {
   const [users, setUsers] = useState([]);
@@ -18,29 +17,7 @@ const Explore = ({ navigation }) => {
   };
 
   useEffect(() => {
-    const getUsers = async () => {
-      let collectionRef = collection(FIREBASE_FIRESTORE, "users");
-
-      const unsubscribe = onSnapshot(
-        collectionRef,
-        (response) => {
-          const users = response.docs.map((doc) => ({
-            id: doc.id,
-            username: doc.data().username,
-            name: doc.data().name,
-            profile: doc.data().profile,
-          }));
-          setUsers(users);
-        },
-        (error) => {
-          console.log("Error fetching users: ", error);
-        }
-      );
-
-      return () => unsubscribe();
-    };
-
-    getUsers();
+    getUsers(setUsers);
   }, []);
 
   return (

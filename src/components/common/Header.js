@@ -4,7 +4,7 @@ import { MaterialIcons } from '@expo/vector-icons'
 
 const Header = ({ onPress, text }) => {
   return (
-    <View className="flex-row items-center space-x-10 p-2">
+    <View className="flex-row items-center space-x-10 py-2">
       <TouchableOpacity onPress={onPress}>
         <MaterialIcons name="arrow-back" size={30} />
       </TouchableOpacity>

@@ -1,6 +1,6 @@
+import React, { useCallback, useEffect, useState } from "react";
 import { FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import React, { useCallback, useEffect, useState } from "react";
 
 import { Header, SearchUserCard } from "../../components";
 
@@ -60,7 +60,7 @@ const Info = ({ navigation, route }) => {
   }, [tweetId]);
 
   return (
-    <SafeAreaView className="flex-1">
+    <SafeAreaView className="flex-1 mx-4">
       <Header onPress={goToPrevScreen} text={text} />
       <FlatList
         data={data}

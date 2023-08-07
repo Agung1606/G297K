@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { FontAwesome, MaterialIcons, Ionicons } from "@expo/vector-icons";
+import { MaterialIcons, Ionicons } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
 
 import { modalPopupConfig } from "../../hooks";
@@ -38,19 +38,10 @@ const HeaderVisitProfile = ({
         </TouchableOpacity>
         <Text className="font-InterBold text-lg tracking-wide">{username}</Text>
       </View>
-      {isMe ? (
+      {isMe && (
         <TouchableOpacity onPress={goToSettings}>
           <Ionicons name="settings-outline" size={28} />
         </TouchableOpacity>
-      ) : (
-        <View className={`flex-row justify-between items-center space-x-6`}>
-          <TouchableOpacity>
-            <FontAwesome name="bell-o" size={25} />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <MaterialIcons name="more-vert" size={25} />
-          </TouchableOpacity>
-        </View>
       )}
     </View>
   );
