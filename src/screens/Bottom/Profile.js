@@ -22,7 +22,7 @@ import { getUserTweets } from "../../services/tweet";
 
 const HeaderProfile = ({ username, goToSettings }) => {
   return (
-    <View className={`flex-row justify-between items-center py-2 px-4`}>
+    <View className={`flex-row justify-between items-center p-2`}>
       <Text className="font-InterBold text-xl tracking-wide">{username}</Text>
       <TouchableOpacity onPress={goToSettings}>
         <Ionicons name="settings-outline" size={28} />
@@ -82,7 +82,7 @@ const Profile = ({ navigation }) => {
         renderItem={({ item }) => <TweetCard item={item} />}
         keyExtractor={(item) => item.id}
         ListHeaderComponent={() => (
-          <View className="mb-2 p-2 border-b border-gray-600">
+          <View className="p-2 border-b border-gray-600">
             <ProfileInfo
               userId={loggedInUserData.id}
               profileUrl={loggedInUserData.profile}
@@ -108,7 +108,7 @@ const Profile = ({ navigation }) => {
         )}
         ListFooterComponent={() => <View className="pb-20" />}
         ListEmptyComponent={
-          <NoTweets text="Ketika Anda membuat postingan, itu akan muncul di sini" />
+          <NoTweets text="Ketika Anda membuat postingan, itu akan muncul di sini." />
         }
       />
       {isScrolled && (

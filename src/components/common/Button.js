@@ -1,104 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Text,
   ActivityIndicator,
   Pressable,
-  View,
   Platform,
 } from "react-native";
-import { MaterialIcons, Ionicons, AntDesign } from "@expo/vector-icons";
-import { BottomSheetModal } from "@gorhom/bottom-sheet";
-
+import { AntDesign } from "@expo/vector-icons";
 import { styles } from "../../style/Global";
-import { bottomModalConfig } from "../../hooks";
 
 import { styled } from "nativewind";
 const StyledPressable = styled(Pressable);
-
-export const ButtonUploadType = () => {
-  const {
-    bottomSheetModalRef,
-    snapPoints,
-    openModal,
-    closeModal,
-    renderBackdrop,
-  } = bottomModalConfig(["40%"]);
-
-  const [type, setType] = useState("Publik");
-
-  const options = [
-    {
-      id: 1,
-      type: "Publik",
-      desc: "Semua orang bisa melihat.",
-      iconName: "people",
-      onPress: () => {
-        setType("Publik");
-        closeModal();
-      },
-    },
-    {
-      id: 2,
-      type: "Private",
-      desc: "Tidak seorangpun yang bisa melihat kecuali kamu.",
-      iconName: "lock-closed",
-      onPress: () => {
-        setType("Private");
-        closeModal();
-      },
-    },
-  ];
-
-  return (
-    <>
-      <StyledPressable
-        className={`w-full py-[7px] ${styles.pressableEffect} flex-row justify-center items-center space-x-1 border border-blue rounded-full`}
-        onPress={openModal}
-      >
-        <Text className="font-InterMedium text-blue text-center">{type}</Text>
-        <MaterialIcons name="keyboard-arrow-down" size={20} color={"#1D7ED8"} />
-      </StyledPressable>
-      <BottomSheetModal
-        ref={bottomSheetModalRef}
-        index={0}
-        snapPoints={snapPoints}
-        backdropComponent={renderBackdrop}
-      >
-        <View className="flex-1 p-2 space-y-2">
-          {options.map((item) => (
-            <StyledPressable
-              key={item.id}
-              className={`py-2 flex-row items-center space-x-4 active:bg-gray-200`}
-              onPress={item.onPress}
-            >
-              <Ionicons
-                name={item.iconName}
-                size={30}
-                color={type === item.type ? "#1D7ED8" : "#7D7D7D"}
-              />
-              <View className="w-8/12">
-                <Text
-                  className={`font-InterSemiBold text-lg ${
-                    type === item.type ? "text-blue" : "text-grayCustom"
-                  }`}
-                >
-                  {item.type}
-                </Text>
-                <Text
-                  className={`font-InterRegular ${
-                    type === item.type ? "text-blue" : "text-grayCustom"
-                  }`}
-                >
-                  {item.desc}
-                </Text>
-              </View>
-            </StyledPressable>
-          ))}
-        </View>
-      </BottomSheetModal>
-    </>
-  );
-};
 
 export const ButtonScrollToTop = ({ onPress }) => (
   <StyledPressable

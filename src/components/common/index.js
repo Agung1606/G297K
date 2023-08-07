@@ -5,7 +5,6 @@ import {
   ButtonTransparent,
   ButtonGray,
   ButtonFollow,
-  ButtonUploadType,
   ButtonScrollToTop,
 } from "./Button";
 import SearchBar from "./SearchBar";
@@ -21,7 +20,6 @@ export {
   ButtonTransparent,
   ButtonGray,
   ButtonFollow,
-  ButtonUploadType,
   ButtonScrollToTop,
   SearchBar,
   ProfileInfo,

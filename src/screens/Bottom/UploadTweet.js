@@ -10,7 +10,7 @@ import React, { useState, useCallback } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import Spinner from "react-native-loading-spinner-overlay";
 
-import { ButtonBlue, ButtonUploadType, Avatar } from "../../components";
+import { ButtonBlue, Avatar } from "../../components";
 import { useSelector } from "react-redux";
 
 import { addTweet } from "../../services/tweet";
@@ -37,12 +37,12 @@ const UploadTweet = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView className="flex-1 px-2 py-4">
+    <SafeAreaView className="flex-1 mx-2">
       <Spinner visible={loading} textContent="Tunggu..." />
       {/* top */}
       <View className={`flex-row justify-between items-center mb-6`}>
         <TouchableOpacity onPress={goToPrevScreen}>
-          <MaterialIcons name="close" size={35} />
+          <MaterialIcons name="close" size={30} />
         </TouchableOpacity>
         <View className="w-[110px]">
           <ButtonBlue
@@ -60,21 +60,17 @@ const UploadTweet = ({ navigation }) => {
             {tweetInput.length}/2000
           </Text>
         </View>
-        <View className="flex-1 space-y-2">
-          <View className="w-24">
-            <ButtonUploadType />
-          </View>
-          <ScrollView className="mb-20">
-            <TextInput
-              placeholder={`Apa yang terjadi?`}
-              className="font-RobotoRegular text-[15px]"
-              autoFocus={true}
-              multiline
-              maxLength={2000}
-              onChangeText={(input) => setTweetInput(input)}
-            />
-          </ScrollView>
-        </View>
+        <ScrollView className="mb-20">
+          <Text className="font-InterSemiBold">{loggedInUserData.username}</Text>
+          <TextInput
+            placeholder={`Apa yang terjadi?`}
+            className="font-RobotoRegular text-[15px]"
+            autoFocus={true}
+            multiline
+            maxLength={2000}
+            onChangeText={(input) => setTweetInput(input)}
+          />
+        </ScrollView>
       </View>
     </SafeAreaView>
   );
