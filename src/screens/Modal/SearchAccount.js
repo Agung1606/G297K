@@ -12,7 +12,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setUserSearchHistory } from "../../redux/globalSlice";
 
 import { modalPopupConfig } from "../../hooks";
-import { ConfirmModal, Avatar, SearchUserCard, SearchBar } from "../../components";
+import { ConfirmModal, SearchUserCard, SearchBar } from "../../components";
 
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
 import { collection, query, where, onSnapshot } from "firebase/firestore";
@@ -87,12 +87,12 @@ const SearchAccount = ({ navigation }) => {
           showsVerticalScrollIndicator={false}
         />
       ) : (
-        <View className="m-2">
+        <View>
           {userSearchHistory[0] !== null && (
             <>
               {userSearchHistory.length > 0 && (
-                <View className={`mb-2 flex-row justify-between items-center`}>
-                  <Text className="font-InterSemiBold text-lg text-grayCustom">
+                <View className={`my-2 flex-row justify-between items-center`}>
+                  <Text className="font-InterRegular text-grayCustom text-lg">
                     Baru saja
                   </Text>
                   <TouchableOpacity onPress={openModal}>
@@ -103,26 +103,21 @@ const SearchAccount = ({ navigation }) => {
               <FlatList
                 data={userSearchHistory}
                 renderItem={({ item }) => (
-                  <View className="mr-6 p-2 items-center">
-                    <Avatar
-                      imgUrl={item.profile}
-                      size={40}
-                      onPress={() => goToProfile(item)}
-                    />
-                    <Text className="font-InterRegular text-grayCustom">
-                      {item.username}
-                    </Text>
-                  </View>
+                  <SearchUserCard
+                    onPress={() => goToProfile(item)}
+                    imgUrl={item.profile}
+                    name={item.name}
+                    username={item.username}
+                  />
                 )}
-                horizontal
-                showsHorizontalScrollIndicator={false}
+                showsVerticalScrollIndicator={false}
                 keyExtractor={(item) => item.id}
+                ListEmptyComponent={() => (
+                  <Text className="font-InterMedium text-grayCustom text-center">
+                    Coba telusuri orang
+                  </Text>
+                )}
               />
-              {userSearchHistory.length === 0 && (
-                <Text className="font-InterSemiBold text-center text-grayCustom">
-                  Coba telusuri orang
-                </Text>
-              )}
             </>
           )}
         </View>
