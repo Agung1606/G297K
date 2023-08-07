@@ -1,14 +1,13 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
+import { FontAwesome, MaterialIcons, Ionicons } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
 
 import { modalPopupConfig } from "../../hooks";
 import {
   ButtonGray,
   ButtonFollow,
-  ButtonBurgerProfile,
   ProfileInfo,
   TweetCard,
   NoTweets,
@@ -40,7 +39,9 @@ const HeaderVisitProfile = ({
         <Text className="font-InterBold text-lg tracking-wide">{username}</Text>
       </View>
       {isMe ? (
-        <ButtonBurgerProfile goToSettings={goToSettings} />
+        <TouchableOpacity onPress={goToSettings}>
+          <Ionicons name="settings-outline" size={28} />
+        </TouchableOpacity>
       ) : (
         <View className={`flex-row justify-between items-center space-x-6`}>
           <TouchableOpacity>

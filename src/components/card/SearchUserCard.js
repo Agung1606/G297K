@@ -12,7 +12,7 @@ const SearchUserCard = ({ onPress, imgUrl, name, username }) => {
       <Avatar imgUrl={imgUrl} size={42} />
       <View className="flex-1 border-b border-grayCustom/40 py-3">
         <Text className="font-InterSemiBold text-md">{username}</Text>
-        <Text className="font-InterMedium text-grayCustom">{name}</Text>
+        {name && <Text className="font-InterMedium text-grayCustom">{name}</Text>}
       </View>
     </StyledPressable>
   );

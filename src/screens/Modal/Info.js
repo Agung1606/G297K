@@ -2,7 +2,7 @@ import { FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React, { useCallback, useEffect, useState } from "react";
 
-import { Header, InfoCard } from "../../components";
+import { Header, SearchUserCard } from "../../components";
 
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
 import { getDocs, collection } from "firebase/firestore";
@@ -65,7 +65,7 @@ const Info = ({ navigation, route }) => {
       <FlatList
         data={data}
         renderItem={({ item }) => (
-          <InfoCard
+          <SearchUserCard
             onPress={() =>
               navigation.navigate("VisitProfileScreen", {
                 username: item.username,
