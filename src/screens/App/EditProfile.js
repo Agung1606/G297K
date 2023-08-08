@@ -72,7 +72,7 @@ const EditProfile = ({ navigation }) => {
             </View>
           </View>
         </View>
-        {/* card edit */}
+        {/* edit card */}
         <View className="bg-gray-200 w-full p-3 rounded-md shadow-sm shadow-grayCustom">
           <TextInput
             value={name}

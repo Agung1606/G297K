@@ -1,5 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Text, View, ActivityIndicator, FlatList } from "react-native";
+import React, { useEffect, useState, useCallback } from "react";
+import {
+  Text,
+  View,
+  ActivityIndicator,
+  FlatList,
+  RefreshControl,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { SearchBar, SearchUserCard } from "../../components";
@@ -15,6 +21,15 @@ const Explore = ({ navigation }) => {
       userId: item.id,
     });
   };
+
+  // refresh configuration
+  const [refreshing, setRefreshing] = useState(false);
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 1000);
+  }, []);
 
   useEffect(() => {
     getUsers(setUsers);
@@ -41,6 +56,13 @@ const Explore = ({ navigation }) => {
             />
           )}
           showsVerticalScrollIndicator={false}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={onRefresh}
+              colors={["#1D7ED8"]}
+            />
+          }
         />
       )}
     </SafeAreaView>

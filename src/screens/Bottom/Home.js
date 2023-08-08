@@ -1,6 +1,8 @@
 import React, { useState, useCallback, useEffect } from "react";
 import {
   View,
+  Text,
+  Image,
   FlatList,
   RefreshControl,
   ScrollView,
@@ -15,6 +17,7 @@ import {
   SplashTweetCard,
   ButtonScrollToTop,
 } from "../../components";
+import { assets } from "../../constant";
 
 import { getTweets } from "../../services/tweet";
 
@@ -56,6 +59,15 @@ const Home = () => {
           keyExtractor={(item) => item.id}
           initialNumToRender={10}
           showsVerticalScrollIndicator={false}
+          ListHeaderComponent={() => (
+            <View className="justify-center items-center py-2">
+              <Image
+                source={assets.logoGrk}
+                alt="logo-grk"
+                className="w-[100px] h-[25px]"
+              />
+            </View>
+          )}
           ListFooterComponent={() => <View className="pb-20" />}
           refreshControl={
             <RefreshControl
