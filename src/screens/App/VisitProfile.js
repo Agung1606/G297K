@@ -40,7 +40,7 @@ const HeaderVisitProfile = ({
       </View>
       {isMe && (
         <TouchableOpacity onPress={goToSettings}>
-          <Ionicons name="settings-outline" size={28} />
+          <Ionicons name="filter" size={28} />
         </TouchableOpacity>
       )}
     </View>

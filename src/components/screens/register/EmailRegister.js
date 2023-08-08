@@ -32,7 +32,7 @@ const EmailRegister = () => {
       <View className="mt-8 mx-3 space-y-5">
         <HeaderRegister
           title="Apa email Anda?"
-          subtitle="Silakan masukkan email yang sering Anda gunakan, email Anda akan digunakan jika sewaktu-waktu Anda lupa kata sandi Anda."
+          subtitle="Silakan masukkan email yang sering Anda gunakan, email Anda akan digunakan jika sewaktu-waktu Anda lupa kata sandi."
           onPress={goToLogin}
           showBtn
         />

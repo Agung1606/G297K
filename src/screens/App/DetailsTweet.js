@@ -2,8 +2,8 @@ import React, { useCallback, useState, useEffect } from "react";
 import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
-import { FontAwesome } from "@expo/vector-icons";
 import Spinner from "react-native-loading-spinner-overlay";
+import { FontAwesome, Ionicons } from "@expo/vector-icons";
 
 import { bottomModalConfig } from "../../hooks";
 import { Header, TweetDetailCard, CommentCard } from "../../components";
@@ -70,7 +70,7 @@ const DetailsTweet = ({ route, navigation }) => {
           <Text className="text-grayCustom font-InterMedium">
             Kirim komentar Anda
           </Text>
-          <FontAwesome name="comments-o" size={20} color={"#1D7ED8"} />
+          <Ionicons name="chatbubbles-outline" size={20} color={"#7d7d7d"} />
         </TouchableOpacity>
       </View>
       {/* bottom modal */}

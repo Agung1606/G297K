@@ -25,7 +25,7 @@ const HeaderProfile = ({ username, goToSettings }) => {
     <View className={`flex-row justify-between items-center p-2`}>
       <Text className="font-InterBold text-xl tracking-wide">{username}</Text>
       <TouchableOpacity onPress={goToSettings}>
-        <Ionicons name="settings-outline" size={28} />
+        <Ionicons name="filter" size={28} />
       </TouchableOpacity>
     </View>
   );

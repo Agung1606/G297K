@@ -5,7 +5,7 @@ const getTweets = (setDataTweets) => {
   // set up the query
   let queryTweets = query(
     collection(FIREBASE_FIRESTORE, "tweets"),
-    orderBy("date", "desc")
+    orderBy("date", "asc")
   );
 
   // set up the listener and error handling

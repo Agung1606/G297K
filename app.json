@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "G297K",
-    "slug": "G297K",
+    "name": "agung",
+    "slug": "agung",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/icon.png",
@@ -22,7 +22,7 @@
         "foregroundImage": "./src/assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.agngsptra.G297K",
+      "package": "com.agngsptra.agung",
        "googleServicesFile": "./google-services.json"
     },
     "web": {
