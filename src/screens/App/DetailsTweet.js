@@ -2,24 +2,17 @@ import React, { useCallback, useState, useEffect } from "react";
 import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
-import { FontAwesome, Ionicons } from "@expo/vector-icons";
-import { useSelector } from "react-redux";
+import { FontAwesome } from "@expo/vector-icons";
 import Spinner from "react-native-loading-spinner-overlay";
 
-import { bottomModalConfig, modalPopupConfig } from "../../hooks";
-import {
-  Header,
-  TweetDetailCard,
-  CommentCard,
-  ConfirmModal,
-} from "../../components";
+import { bottomModalConfig } from "../../hooks";
+import { Header, TweetDetailCard, CommentCard } from "../../components";
 
 import { deleteTweet } from "../../services/tweet";
 import { getComment } from "../../services/comment";
 
 const DetailsTweet = ({ route, navigation }) => {
   const { item } = route?.params;
-  const loggedInUserId = useSelector((state) => state.global.user.id);
   const [loading, setLoading] = useState(false);
 
   const goToPrevScreen = useCallback(() => navigation.goBack(), [navigation]);
@@ -41,33 +34,7 @@ const DetailsTweet = ({ route, navigation }) => {
     openModal: openBottomModal,
     closeModal: closeBottomModal,
     renderBackdrop,
-  } = bottomModalConfig(["10%"]);
-  const {
-    isModalOpen,
-    openModal: openConfirmModal,
-    closeModal: closeConfirmModal,
-  } = modalPopupConfig();
-
-  const options = [
-    {
-      icon:
-        loggedInUserId === item.userId ? (
-          <Ionicons name="trash-outline" size={22} />
-        ) : (
-          <Ionicons name="warning-sharp" size={22} />
-        ),
-      text: loggedInUserId === item.userId ? "Hapus" : "Laporkan postingan ini",
-      onPress: () => {
-        if (loggedInUserId === item.userId) {
-          closeBottomModal();
-          openConfirmModal();
-        } else {
-          // Report functionality here
-          closeBottomModal();
-        }
-      },
-    },
-  ];
+  } = bottomModalConfig(["12%"]);
 
   const [dataComments, setDataComments] = useState([]);
   useEffect(() => {
@@ -113,28 +80,16 @@ const DetailsTweet = ({ route, navigation }) => {
         snapPoints={snapPoints}
         backdropComponent={renderBackdrop}
       >
-        {options.map((item) => (
-          <TouchableOpacity
-            key={item.text}
-            onPress={item.onPress}
-            className="flex-row items-center space-x-4 px-4 mb-3"
-          >
-            {item.icon}
-            <Text className="font-InterRegular text-lg">{item.text}</Text>
-          </TouchableOpacity>
-        ))}
+        <TouchableOpacity
+          onPress={() => {
+            closeBottomModal();
+            deleteTweet(item.id, setLoading, goToPrevScreen);
+          }}
+          className="bg-gray-300 flex-row items-center justify-between mx-3 p-3 rounded-md"
+        >
+          <Text className="font-InterSemiBold text-red-600">Hapus</Text>
+        </TouchableOpacity>
       </BottomSheetModal>
-      {/* confirm modal */}
-      <ConfirmModal
-        isModalOpen={isModalOpen}
-        onCancel={closeConfirmModal}
-        onOk={() =>
-          deleteTweet(item.id, setLoading, closeConfirmModal, goToPrevScreen)
-        }
-        title={"Hapus postingan?"}
-        textBtnOk={"Hapus"}
-        textBtnCancel={"Batal"}
-      />
     </SafeAreaView>
   );
 };

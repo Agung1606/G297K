@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { View, Text, TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 
@@ -11,6 +12,8 @@ const TweetDetailCard = ({
   openBottomModal,
   openModalSendComment,
 }) => {
+  const loggedInUserId = useSelector((state) => state.global.user.id);
+
   return (
     <View className="px-3 py-2 border-b border-gray-300">
       <View className="flex-row justify-between items-center mb-2">
@@ -23,9 +26,11 @@ const TweetDetailCard = ({
             </Text>
           </View>
         </View>
-        <TouchableOpacity onPress={openBottomModal}>
-          <MaterialIcons name="more-vert" size={25} />
-        </TouchableOpacity>
+        {loggedInUserId === item.userId && (
+          <TouchableOpacity onPress={openBottomModal}>
+            <MaterialIcons name="more-vert" size={25} />
+          </TouchableOpacity>
+        )}
       </View>
       {/* tweets */}
       <Text className="font-RobotoRegular text-[16px]">{item.tweet}</Text>

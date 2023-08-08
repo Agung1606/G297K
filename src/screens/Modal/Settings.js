@@ -36,11 +36,6 @@ const Settings = ({ navigation }) => {
         },
         {
           id: 2,
-          text: "Teman Dekat",
-          icon: <MaterialIcons name="stars" size={25} />,
-        },
-        {
-          id: 3,
           text: "Diblokir",
           icon: <MaterialIcons name="block-flipped" size={25} />,
         },
