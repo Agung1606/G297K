@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
-import { Ionicons } from "@expo/vector-icons";
 import Spinner from "react-native-loading-spinner-overlay";
 
 import { Avatar } from "../common";
@@ -27,30 +26,10 @@ const CommentCard = ({ item }) => {
     openModal: openBottomModal,
     closeModal: closeBottomModal,
     renderBackdrop,
-  } = bottomModalConfig(["10%"]);
+  } = bottomModalConfig(["12%"]);
 
   const loggedInUserId = useSelector((state) => state.global.user.id);
   const [loading, setLoading] = useState(false);
-
-  const options = [
-    {
-      icon:
-        loggedInUserId === item.userId ? (
-          <Ionicons name="trash-outline" size={22} />
-        ) : (
-          <Ionicons name="warning-sharp" size={22} />
-        ),
-      text: loggedInUserId === item.userId ? "Hapus" : "Laporkan komentar ini",
-      onPress: () => {
-        if (loggedInUserId === item.userId) {
-          deleteComment(item.id, item.tweetId, setLoading, closeBottomModal);
-        } else {
-          // Report functionality here
-          closeBottomModal();
-        }
-      },
-    },
-  ];
 
   return (
     <>
@@ -66,9 +45,11 @@ const CommentCard = ({ item }) => {
                 {formatRelativeTime(item.date)}
               </Text>
             </View>
-            <TouchableOpacity onPress={openBottomModal}>
-              <MaterialIcons name="more-vert" size={25} />
-            </TouchableOpacity>
+            {loggedInUserId === item.userId && (
+              <TouchableOpacity onPress={openBottomModal}>
+                <MaterialIcons name="more-vert" size={25} />
+              </TouchableOpacity>
+            )}
           </View>
           {/* comment */}
           <Text className="font-RobotoRegular text-[15px]">{item.comment}</Text>
@@ -80,16 +61,12 @@ const CommentCard = ({ item }) => {
         snapPoints={snapPoints}
         backdropComponent={renderBackdrop}
       >
-        {options.map((item) => (
-          <TouchableOpacity
-            key={item.text}
-            onPress={item.onPress}
-            className="flex-row items-center space-x-4 px-4 mb-3"
-          >
-            {item.icon}
-            <Text className="font-InterRegular text-lg">{item.text}</Text>
-          </TouchableOpacity>
-        ))}
+        <TouchableOpacity
+          onPress={() => deleteComment(item.id, item.tweetId, setLoading, closeBottomModal)}
+          className="bg-gray-300 flex-row items-center justify-between mx-3 p-3 rounded-md"
+        >
+          <Text className="font-InterSemiBold text-red-600">Hapus</Text>
+        </TouchableOpacity>
       </BottomSheetModal>
     </>
   );
