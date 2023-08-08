@@ -37,7 +37,7 @@ const UploadTweet = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView className="flex-1 mx-2">
+    <SafeAreaView className="flex-1 px-2 py-4">
       <Spinner visible={loading} textContent="Tunggu..." />
       {/* top */}
       <View className={`flex-row justify-between items-center mb-6`}>

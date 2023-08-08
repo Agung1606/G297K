@@ -32,7 +32,7 @@ const EditProfile = ({ navigation }) => {
     <SafeAreaView className="flex-1">
       <Spinner visible={loading} textContent="Tunggu..." />
       {/* top */}
-      <View className="px-2 flex-row justify-between items-center mb-4">
+      <View className="px-2 py-4 flex-row justify-between items-center mb-4">
         <TouchableOpacity onPress={goToPrevScreen}>
           <MaterialIcons name="close" size={30} />
         </TouchableOpacity>
@@ -97,7 +97,7 @@ const EditProfile = ({ navigation }) => {
             label="Bio"
             mode="outlined"
             multiline={true}
-            maxLength={150}
+            maxLength={100}
             activeOutlineColor="#1D7ED8"
           />
         </View>
