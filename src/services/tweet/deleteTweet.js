@@ -1,11 +1,13 @@
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
 import { doc, collection, deleteDoc } from "firebase/firestore";
 
-const deleteTweet = async (
-  tweetId,
-  setLoading,
-  goToPrevScreen
-) => {
+import { ToastAndroid } from "react-native";
+
+function showToast() {
+  ToastAndroid.show("Berhasil hapus postingan :)", ToastAndroid.SHORT);
+}
+
+const deleteTweet = async (tweetId, setLoading, goToPrevScreen) => {
   if (!tweetId) throw new Error("Invalid tweetId");
   try {
     // the request is ongoing
@@ -15,6 +17,7 @@ const deleteTweet = async (
     await deleteDoc(documentRef);
 
     goToPrevScreen();
+    showToast();
   } catch (error) {
     throw error;
   } finally {

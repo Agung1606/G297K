@@ -9,6 +9,7 @@ import {
 } from "firebase/firestore";
 
 const editHandler = async (
+  selectedImage,
   name,
   username,
   bio,

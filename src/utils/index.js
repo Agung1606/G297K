@@ -1,7 +1,21 @@
 import * as yup from "yup";
 import * as Notifications from "expo-notifications";
 import * as Device from "expo-device";
+import * as ImagePicker from "expo-image-picker";
 import { Platform } from "react-native";
+
+export async function pickImageAsync(setSelectedImage) {
+  let result = await ImagePicker.launchImageLibraryAsync({
+    allowsEditing: true,
+    quality: 1
+  });
+
+  if(!result.canceled) {
+    setSelectedImage(result.assets[0].uri);
+  } else {
+    alert("You didn't select any image");
+  }
+}
 
 export async function registerForPushNotificationsAsync() {
   let token;

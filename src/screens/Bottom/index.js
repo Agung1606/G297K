@@ -1,4 +1,4 @@
-import { FontAwesome, Ionicons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 const Tab = createBottomTabNavigator();
 
@@ -33,9 +33,9 @@ const BottomNavigation = () => {
         options={{
           tabBarIcon: ({ color, focused }) =>
             focused ? (
-              <Ionicons name="home-sharp" size={28} color={color} />
+              <Ionicons name="home-sharp" size={30} color={color} />
             ) : (
-              <Ionicons name="home-outline" size={28} color={color} />
+              <Ionicons name="home-outline" size={30} color={color} />
             ),
         }}
       />
@@ -45,9 +45,9 @@ const BottomNavigation = () => {
         options={{
           tabBarIcon: ({ color, focused }) =>
             focused ? (
-              <Ionicons name="search-sharp" size={28} color={color} />
+              <Ionicons name="search-sharp" size={30} color={color} />
             ) : (
-              <Ionicons name="search-outline" size={28} color={color} />
+              <Ionicons name="search-outline" size={30} color={color} />
             ),
         }}
       />
@@ -56,8 +56,8 @@ const BottomNavigation = () => {
         component={UploadTweet}
         options={{
           unmountOnBlur: true,
-          tabBarIcon: () => (
-            <Ionicons name="md-add-circle" size={35} color={"#1D7ED8"} />
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="add-circle-outline" size={35} color={color} />
           ),
           tabBarStyle: {
             display: "none",
@@ -70,9 +70,9 @@ const BottomNavigation = () => {
         options={{
           tabBarIcon: ({ color, focused }) =>
             focused ? (
-              <Ionicons name="heart-sharp" size={28} color={color} />
+              <Ionicons name="heart-sharp" size={30} color={color} />
             ) : (
-              <Ionicons name="heart-outline" size={28} color={color} />
+              <Ionicons name="heart-outline" size={30} color={color} />
             ),
         }}
       />
@@ -82,9 +82,9 @@ const BottomNavigation = () => {
         options={{
           tabBarIcon: ({ color, focused }) =>
             focused ? (
-              <Ionicons name="person-sharp" size={28} color={color} />
+              <Ionicons name="person-sharp" size={30} color={color} />
             ) : (
-              <Ionicons name="person-outline" size={28} color={color} />
+              <Ionicons name="person-outline" size={30} color={color} />
             ),
         }}
       />
@@ -93,7 +93,7 @@ const BottomNavigation = () => {
         component={AddedDummyData}
         options={{
           tabBarIcon: ({ color }) => (
-            <FontAwesome name="address-book-o" size={28} color={color} />
+            <Ionicons name="add-circle-outline" size={35} color={color} />
           ),
         }}
       />  */}

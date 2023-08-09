@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { View, TouchableOpacity } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { TextInput } from "react-native-paper";
-import { MaterialIcons, Ionicons } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 import Spinner from "react-native-loading-spinner-overlay";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -10,6 +10,7 @@ import { setUpdateUser } from "../../redux/globalSlice";
 
 import { Avatar, ButtonBlue, DialogModal } from "../../components";
 import { modalPopupConfig } from "../../hooks";
+import { pickImageAsync } from "../../utils";
 
 import { editHandler } from "../../services/user";
 
@@ -24,6 +25,7 @@ const EditProfile = ({ navigation }) => {
   const [errorMsg, setErrorMsg] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const [selectedImage, setSelectedImage] = useState(null);
   const [name, setName] = useState(loggedInUserData.name);
   const [username, setUsername] = useState(loggedInUserData.username);
   const [bio, setBio] = useState(loggedInUserData.bio);
@@ -41,6 +43,7 @@ const EditProfile = ({ navigation }) => {
             title={"Selesai"}
             onPress={() =>
               editHandler(
+                selectedImage,
                 name,
                 username,
                 bio,
@@ -54,6 +57,7 @@ const EditProfile = ({ navigation }) => {
               )
             }
             disabled={
+              selectedImage === null &&
               name === loggedInUserData.name &&
               username === loggedInUserData.username &&
               bio === loggedInUserData.bio
@@ -65,12 +69,11 @@ const EditProfile = ({ navigation }) => {
       <View className="h-[70vh] justify-center items-center space-y-6 px-4">
         {/* edit profile */}
         <View className="items-center my-2">
-          <View className="relative">
-            <Avatar imgUrl={loggedInUserData.profile} size={90} />
-            <View className="absolute left-1 bottom-1">
-              <Ionicons name="md-add-circle" size={30} color={"#1D7ED8"} />
-            </View>
-          </View>
+          <Avatar
+            imgUrl={selectedImage ? selectedImage : loggedInUserData.profile}
+            size={100}
+            onPress={() => pickImageAsync(setSelectedImage)}
+          />
         </View>
         {/* edit card */}
         <View className="bg-gray-200 w-full p-3 rounded-md shadow-sm shadow-grayCustom">

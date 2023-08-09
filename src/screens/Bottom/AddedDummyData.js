@@ -1,4 +1,4 @@
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, ToastAndroid } from "react-native";
 import React, { useEffect, useRef, useState } from "react";
 import * as Notifications from "expo-notifications";
 
@@ -19,7 +19,7 @@ async function schedulePushNotification() {
   });
 }
 
-const AddedDummyData = () => {
+const AddedDummyData = ({ navigation }) => {
   const handle = async () => {
     try {
       console.log("wait...");
@@ -38,12 +38,19 @@ const AddedDummyData = () => {
       console.error(error.code);
     }
   };
+
+  function showToast() {
+    ToastAndroid.show("AGUNG GANTENG!", ToastAndroid.SHORT);
+  }
   
   return (
     <View className="flex-1 justify-center items-center">
       <Button
         title="Press to schedule a notification"
-        onPress={async () => await schedulePushNotification()}
+        onPress={() => {
+          navigation.navigate("HomeScreen");
+          showToast();
+        }}
       />
     </View>
   );

@@ -27,22 +27,6 @@ const Settings = ({ navigation }) => {
   const SETTINGOPTIONS = [
     {
       id: 1,
-      title: "Siapa yang bisa melihat konten Anda",
-      data: [
-        {
-          id: 1,
-          text: "Privasi akun",
-          icon: <Ionicons name="md-lock-closed-outline" size={25} />,
-        },
-        {
-          id: 2,
-          text: "Diblokir",
-          icon: <MaterialIcons name="block-flipped" size={25} />,
-        },
-      ],
-    },
-    {
-      id: 2,
       title: "Login",
       data: [
         {
@@ -57,7 +41,9 @@ const Settings = ({ navigation }) => {
 
   return (
     <SafeAreaView className="flex-1">
-      <Header onPress={goToPrevScreen} text={"Pengaturan dan privasi"} />
+      <View className="mx-4">
+        <Header onPress={goToPrevScreen} text={"Pengaturan dan privasi"} />
+      </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         {SETTINGOPTIONS.map((section) => (
           <View key={section.id} className="bg-gray-100 mb-2">

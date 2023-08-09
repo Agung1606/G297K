@@ -22,9 +22,7 @@ const SearchAccount = ({ navigation }) => {
 
   const [searchQuery, setSearchQuery] = useState("");
   const [users, setUsers] = useState([]);
-  const userSearchHistory = useSelector(
-    (state) => state.global.userSearchHistory
-  );
+  const userSearchHistory = useSelector((state) => state.global.userSearchHistory);
 
   const handleHistory = (item) => {
     const isUserAlreadyExist = userSearchHistory.some(
