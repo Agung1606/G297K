@@ -23,6 +23,7 @@
   - Users can follow or unfollow other users directly from their profile page.
 
 * Search Engine
-  - Users can search for other users by entering their username or relevant keywords.
+  - Users can search for other users by entering their username or relevant keywords.  
+![splash](https://github.com/Agung1606/G297K/assets/107747646/4172ace5-1442-4e9c-a77f-4a0695330a82)
 
-![icon](https://github.com/Agung1606/G297K/assets/107747646/6bf41bca-be61-4acd-88f7-caee5c3fff60)
+
