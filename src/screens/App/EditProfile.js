@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import { View, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { TextInput } from "react-native-paper";
 import { MaterialIcons } from "@expo/vector-icons";
+import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import Spinner from "react-native-loading-spinner-overlay";
 
 import { useSelector, useDispatch } from "react-redux";
 import { setUpdateUser } from "../../redux/globalSlice";
 
 import { Avatar, ButtonBlue, DialogModal } from "../../components";
-import { modalPopupConfig } from "../../hooks";
+import { modalPopupConfig, bottomModalConfig } from "../../hooks";
 import { pickImageAsync } from "../../utils";
 
 import { editHandler } from "../../services/user";
@@ -21,6 +22,13 @@ const EditProfile = ({ navigation }) => {
   const loggedInUserData = useSelector((state) => state.global.user);
 
   const { isModalOpen, openModal, closeModal } = modalPopupConfig();
+  const {
+    bottomSheetModalRef,
+    snapPoints,
+    renderBackdrop,
+    openModal: openBottomModal,
+    closeModal: closeBottomModal
+  } = bottomModalConfig(["18%"]);
 
   const [errorMsg, setErrorMsg] = useState("");
   const [loading, setLoading] = useState(false);
@@ -29,6 +37,26 @@ const EditProfile = ({ navigation }) => {
   const [name, setName] = useState(loggedInUserData.name);
   const [username, setUsername] = useState(loggedInUserData.username);
   const [bio, setBio] = useState(loggedInUserData.bio);
+
+  const profileOptions = [
+    {
+      id: 1,
+      text: "Ganti foto profil",
+      onPress: () => {
+        closeBottomModal();
+        pickImageAsync(setSelectedImage);
+      },
+    },
+    {
+      id: 2,
+      text: "Hapus foto profil",
+      delete: true,
+      onPress: () => {
+        alert("Hapus foto profile");
+        closeBottomModal();
+      },
+    },
+  ];
 
   return (
     <SafeAreaView className="flex-1">
@@ -72,7 +100,7 @@ const EditProfile = ({ navigation }) => {
           <Avatar
             imgUrl={selectedImage ? selectedImage : loggedInUserData.profile}
             size={100}
-            onPress={() => pickImageAsync(setSelectedImage)}
+            onPress={openBottomModal}
           />
         </View>
         {/* edit card */}
@@ -111,6 +139,27 @@ const EditProfile = ({ navigation }) => {
         msg={errorMsg}
         closeModal={closeModal}
       />
+      {/* bottom modal */}
+      <BottomSheetModal
+        ref={bottomSheetModalRef}
+        index={0}
+        snapPoints={snapPoints}
+        backdropComponent={renderBackdrop}
+      >
+        {profileOptions.map((item) => (
+          <TouchableOpacity
+            key={item.id}
+            onPress={item.onPress}
+            className="bg-gray-300 flex-row items-center justify-between mx-3 mb-2 p-3 rounded-md"
+          >
+            <Text
+              className={`${item.delete && "text-red-600"} font-InterSemiBold`}
+            >
+              {item.text}
+            </Text>
+          </TouchableOpacity>
+        ))}
+      </BottomSheetModal>
     </SafeAreaView>
   );
 };
