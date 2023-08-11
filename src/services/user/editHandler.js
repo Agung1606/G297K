@@ -6,6 +6,7 @@ import {
   getDocs,
   query,
   where,
+  writeBatch,
 } from "firebase/firestore";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 
@@ -28,47 +29,28 @@ const editHandler = async (
     return;
   }
 
+  
   setLoading(true);
 
+  const batch = writeBatch(FIREBASE_FIRESTORE);
   let newProfile;
 
-  if (
-    selectedImage !==
-      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2Fdefault.jpg?alt=media&token=50a4d5c2-0eb6-4877-a795-de541e4bf054" &&
-    selectedImage !== null
-  ) {
+  if(selectedImage && selectedImage !== "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2Fdefault.jpg?alt=media&token=50a4d5c2-0eb6-4877-a795-de541e4bf054") {
     try {
-      const blobImg = await fetch(selectedImage).then((response) =>
-        response.blob()
-      );
+      const blobImg = await fetch(selectedImage).then((response) => response.blob());
 
       const metadata = {
-        contentType: "image/jpeg",
-      };
+        contentType: "image/jpeg"
+      }
 
       const imageName = selectedImage.match(/\/([^\/]+\.(jpeg|jpg|png))$/)[1];
 
-      const storageRef = ref(FIREBASE_STORAGE, "profiles/" + imageName);
+      const storageRef = ref(FIREBASE_STORAGE, "profile/" + imageName);
       const uploadTask = uploadBytesResumable(storageRef, blobImg, metadata);
-
-      await new Promise((resolve, reject) => {
-        uploadTask.on(
-          "state_changed",
-          (snapshot) => {},
-          (error) => {
-            reject(error);
-          },
-          async () => {
-            try {
-              const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-              newProfile = downloadURL;
-              resolve();
-            } catch (error) {
-              reject(error);
-            }
-          }
-        );
-      });
+      
+      const snapshot = await uploadTask;
+      
+      newProfile = await getDownloadURL(snapshot.ref);
     } catch (error) {
       console.error("Error uploading image:", error);
     }
@@ -76,57 +58,52 @@ const editHandler = async (
     newProfile = selectedImage;
   }
 
-  const collectionUserRef = collection(FIREBASE_FIRESTORE, "users");
-  const collectionTweetRef = collection(FIREBASE_FIRESTORE, "tweets");
+  const userRef = doc(collection(FIREBASE_FIRESTORE, "users"), loggedInUserData.id);
+  const tweetRef = collection(FIREBASE_FIRESTORE, "tweets");
+
   const userUpdateData = {
     name,
     username,
-    bio,
-  };
+    bio
+  }
 
-  if (newProfile) {
+  if(newProfile) {
     userUpdateData.profile = newProfile;
   }
 
   const usernameChanged = username !== loggedInUserData.username;
+  
+  batch.update(userRef, userUpdateData);
 
-  try {
-    const userUpdatePromise = updateDoc(
-      doc(collectionUserRef, loggedInUserData.id),
-      userUpdateData
+  if(usernameChanged || newProfile) {
+    const tweetsQuerySnapshot = await getDocs(
+      query(tweetRef, where("userId", "==", loggedInUserData.id))
     );
 
-    if (usernameChanged || newProfile) {
-      const tweetsQuerySnapshot = await getDocs(
-        query(collectionTweetRef, where("userId", "==", loggedInUserData.id))
-      );
+    tweetsQuerySnapshot.docs.forEach((doc) => {
+      const docRef = doc.ref;
+      const updateData = {
+        username,
+      }
 
-      const tweetUpdatePromises = tweetsQuerySnapshot.docs.map(async (doc) => {
-        const docRef = doc.ref;
-        const updateData = {
-          username,
-        };
+      if(newProfile) {
+        updateData.profile = newProfile;
+      }
 
-        if (newProfile) {
-          updateData.profile = newProfile;
-        }
+      batch.update(docRef, updateData)
+    });
+  }
 
-        await updateDoc(docRef, updateData);
-      });
-
-      await Promise.all([userUpdatePromise, ...tweetUpdatePromises]);
-    } else {
-      await userUpdatePromise;
-    }
-
+  try {
+    await batch.commit();
     dispatch(setUpdateUser({ name, username, bio, newProfile }));
     goToPrevScreen();
   } catch (error) {
     console.error("An error occurred:", error);
   } finally {
-    setLoading(false);
+    setLoading(false)
   }
-};
 
+};
 
 export default editHandler;
