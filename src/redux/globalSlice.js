@@ -36,7 +36,9 @@ export const globalSlice = createSlice({
       state.user.name = action.payload.name;
       state.user.username = action.payload.username;
       state.user.bio = action.payload.bio;
-      state.user.profile = action.payload.newProfile
+      if(action.payload.newProfile) {
+        state.user.profile = action.payload.newProfile
+      }
     },
   },
 });
