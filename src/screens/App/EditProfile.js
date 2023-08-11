@@ -52,7 +52,9 @@ const EditProfile = ({ navigation }) => {
       text: "Hapus foto profil",
       delete: true,
       onPress: () => {
-        alert("Hapus foto profile");
+        setSelectedImage(
+          "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2Fdefault.jpg?alt=media&token=50a4d5c2-0eb6-4877-a795-de541e4bf054"
+        );
         closeBottomModal();
       },
     },

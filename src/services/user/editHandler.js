@@ -32,7 +32,11 @@ const editHandler = async (
 
   let newProfile;
 
-  if (selectedImage) {
+  if (
+    selectedImage !==
+      "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2Fdefault.jpg?alt=media&token=50a4d5c2-0eb6-4877-a795-de541e4bf054" &&
+    selectedImage !== null
+  ) {
     try {
       const blobImg = await fetch(selectedImage).then((response) =>
         response.blob()
@@ -68,6 +72,8 @@ const editHandler = async (
     } catch (error) {
       console.error("Error uploading image:", error);
     }
+  } else {
+    newProfile = selectedImage;
   }
 
   const collectionUserRef = collection(FIREBASE_FIRESTORE, "users");
