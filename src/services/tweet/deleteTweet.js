@@ -4,7 +4,7 @@ import { doc, collection, deleteDoc } from "firebase/firestore";
 import { ToastAndroid } from "react-native";
 
 function showToast() {
-  ToastAndroid.show("Berhasil hapus postingan ジ", ToastAndroid.SHORT);
+  ToastAndroid.show("Postingan dihapus ジ", ToastAndroid.SHORT);
 }
 
 const deleteTweet = async (tweetId, setLoading, goToPrevScreen) => {

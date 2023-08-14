@@ -11,6 +11,12 @@ import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 
 import { assets } from "../../constant";
 
+import { ToastAndroid } from "react-native";
+
+function showToast() {
+  ToastAndroid.show("Berhasil update profil ジ", ToastAndroid.SHORT);
+}
+
 const editHandler = async (
   selectedImage,
   name,
@@ -103,6 +109,7 @@ const editHandler = async (
     await batch.commit();
     dispatch(setUpdateUser({ name, username, bio, newProfile }));
     goToPrevScreen();
+    showToast();
   } catch (error) {
     console.error("An error occurred:", error);
   } finally {

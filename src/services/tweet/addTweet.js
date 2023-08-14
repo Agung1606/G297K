@@ -1,6 +1,12 @@
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
 import { addDoc, collection } from "firebase/firestore";
 
+import { ToastAndroid } from "react-native";
+
+function showToast() {
+  ToastAndroid.show("Berhasil Upload postingan ジ", ToastAndroid.SHORT);
+}
+
 const addTweet = async (loggedInUserData, tweetInput) => {
   try {
     const currentDate = new Date();
@@ -17,6 +23,7 @@ const addTweet = async (loggedInUserData, tweetInput) => {
     };
 
     await addDoc(collection(FIREBASE_FIRESTORE, "tweets"), data);
+    showToast();
   } catch (error) {
     throw error;
   }
