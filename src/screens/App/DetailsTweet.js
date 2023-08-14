@@ -45,7 +45,7 @@ const DetailsTweet = ({ route, navigation }) => {
     <SafeAreaView className="flex-1">
       {/* loading spinner */}
       <Spinner visible={loading} textContent="Menghapus postingan" />
-      <Header onPress={goToPrevScreen} text="Tweet" />
+      <Header onPress={goToPrevScreen} text="Post" />
       {/* this configuration is just for a while */}
       <FlatList
         ListHeaderComponent={

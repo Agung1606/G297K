@@ -9,6 +9,7 @@ import Spinner from "react-native-loading-spinner-overlay";
 import { useSelector, useDispatch } from "react-redux";
 import { setUpdateUser } from "../../redux/globalSlice";
 
+import { assets } from "../../constant";
 import { Avatar, ButtonBlue, DialogModal } from "../../components";
 import { modalPopupConfig, bottomModalConfig } from "../../hooks";
 import { pickImageAsync } from "../../utils";
@@ -27,7 +28,7 @@ const EditProfile = ({ navigation }) => {
     snapPoints,
     renderBackdrop,
     openModal: openBottomModal,
-    closeModal: closeBottomModal
+    closeModal: closeBottomModal,
   } = bottomModalConfig(["18%"]);
 
   const [errorMsg, setErrorMsg] = useState("");
@@ -37,28 +38,6 @@ const EditProfile = ({ navigation }) => {
   const [name, setName] = useState(loggedInUserData.name);
   const [username, setUsername] = useState(loggedInUserData.username);
   const [bio, setBio] = useState(loggedInUserData.bio);
-
-  const profileOptions = [
-    {
-      id: 1,
-      text: "Ganti foto profil",
-      onPress: () => {
-        closeBottomModal();
-        pickImageAsync(setSelectedImage);
-      },
-    },
-    {
-      id: 2,
-      text: "Hapus foto profil",
-      delete: true,
-      onPress: () => {
-        setSelectedImage(
-          "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2Fdefault.jpg?alt=media&token=50a4d5c2-0eb6-4877-a795-de541e4bf054"
-        );
-        closeBottomModal();
-      },
-    },
-  ];
 
   return (
     <SafeAreaView className="flex-1">
@@ -148,19 +127,27 @@ const EditProfile = ({ navigation }) => {
         snapPoints={snapPoints}
         backdropComponent={renderBackdrop}
       >
-        {profileOptions.map((item) => (
-          <TouchableOpacity
-            key={item.id}
-            onPress={item.onPress}
-            className="bg-gray-300 flex-row items-center justify-between mx-3 mb-2 p-3 rounded-md"
-          >
-            <Text
-              className={`${item.delete && "text-red-600"} font-InterSemiBold`}
-            >
-              {item.text}
-            </Text>
-          </TouchableOpacity>
-        ))}
+        <TouchableOpacity
+          onPress={() => {
+            pickImageAsync(setSelectedImage);
+            closeBottomModal();
+          }}
+          className="bg-gray-300 flex-row items-center justify-between mx-3 mb-2 p-3 rounded-md"
+        >
+          <Text className="font-InterSemiBold">Ganti foto profil</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          disabled={loggedInUserData.profile === assets.defaultProfile}
+          onPress={() => {
+            setSelectedImage(assets.defaultProfile);
+            closeBottomModal();
+          }}
+          className="bg-gray-300 flex-row items-center justify-between mx-3 mb-2 p-3 rounded-md"
+        >
+          <Text className="text-red-600 font-InterSemiBold">
+            Hapus foto profil
+          </Text>
+        </TouchableOpacity>
       </BottomSheetModal>
     </SafeAreaView>
   );

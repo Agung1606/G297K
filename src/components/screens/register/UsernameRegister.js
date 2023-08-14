@@ -4,6 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { LinearGradient } from "expo-linear-gradient";
 import Spinner from "react-native-loading-spinner-overlay";
 
+import { assets } from "../../../constant";
 import { HeaderRegister, ButtonBlue } from "../../common";
 import { DialogModal } from "../../reactPaper";
 import { styles } from "../../../style/Global";
@@ -37,8 +38,7 @@ const UsernameRegister = ({ route }) => {
           email,
           username,
           name: username,
-          profile:
-            "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2Fdefault.jpg?alt=media&token=50a4d5c2-0eb6-4877-a795-de541e4bf054",
+          profile: assets.defaultProfile,
           bio: "",
         };
         await addUser(data);

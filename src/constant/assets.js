@@ -1,5 +1,6 @@
 import logoGrk from "../assets/images/logo.png";
-import defaultProfile from "../assets/images/defaultProfile.jpg";
+const defaultProfile =
+  "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2Fdefault.jpg?alt=media&token=50a4d5c2-0eb6-4877-a795-de541e4bf054";
 
 import jinbeiProfile from "../assets/images/jinbeiProfile.jpg";
 import luffyProfile from "../assets/images/luffyProfile.jpg";
