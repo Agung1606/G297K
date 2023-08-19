@@ -13,9 +13,9 @@ import Spinner from "react-native-loading-spinner-overlay";
 import { ButtonBlue, Avatar } from "../../components";
 import { useSelector } from "react-redux";
 
-import { addTweet } from "../../services/tweet";
+import { addPost } from "../../services/post";
 
-const UploadTweet = ({ navigation }) => {
+const UploadPost = ({ navigation }) => {
   const loggedInUserData = useSelector((state) => state.global.user);
   const goToPrevScreen = useCallback(() => {
     navigation.goBack();
@@ -27,7 +27,7 @@ const UploadTweet = ({ navigation }) => {
   const handleUploadTweet = async () => {
     setLoading(true);
     try {
-      await addTweet(loggedInUserData, tweetInput);
+      await addPost(loggedInUserData, tweetInput);
       navigation.goBack();
     } catch (error) {
       console.error(error);
@@ -61,7 +61,9 @@ const UploadTweet = ({ navigation }) => {
           </Text>
         </View>
         <ScrollView className="mb-20">
-          <Text className="font-InterSemiBold">{loggedInUserData.username}</Text>
+          <Text className="font-InterSemiBold">
+            {loggedInUserData.username}
+          </Text>
           <TextInput
             placeholder={`Apa yang terjadi?`}
             className="font-RobotoRegular text-[15px]"
@@ -76,4 +78,4 @@ const UploadTweet = ({ navigation }) => {
   );
 };
 
-export default UploadTweet;
+export default UploadPost;

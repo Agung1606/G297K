@@ -1,7 +1,7 @@
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
 import { onSnapshot, query, collection, orderBy } from "firebase/firestore";
 
-const getTweets = (setDataTweets) => {
+const getPosts = (setDataTweets) => {
   // set up the query
   let queryTweets = query(
     collection(FIREBASE_FIRESTORE, "tweets"),
@@ -29,4 +29,4 @@ const getTweets = (setDataTweets) => {
   return () => unsubscribe();
 };
 
-export default getTweets;
+export default getPosts;

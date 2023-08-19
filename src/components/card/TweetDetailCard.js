@@ -7,7 +7,7 @@ import { Avatar, TweetInteraction } from "../common";
 import { formatRelativeTime } from "../../utils";
 
 const TweetDetailCard = ({
-  item,
+  postData,
   goToVisitProfile,
   openBottomModal,
   openModalSendComment,
@@ -18,25 +18,25 @@ const TweetDetailCard = ({
     <View className="px-3 py-2 border-b border-gray-300">
       <View className="flex-row justify-between items-center mb-2">
         <View className="flex-row items-center space-x-4">
-          <Avatar imgUrl={item.profile} size={50} onPress={goToVisitProfile} />
+          <Avatar imgUrl={postData.profile} size={50} onPress={goToVisitProfile} />
           <View>
-            <Text className="font-InterBold">{item.username}</Text>
+            <Text className="font-InterBold">{postData.username}</Text>
             <Text className="text-[12px] text-grayCustom">
-              {formatRelativeTime(item.date)}
+              {formatRelativeTime(postData.date)}
             </Text>
           </View>
         </View>
-        {loggedInUserId === item.userId && (
+        {loggedInUserId === postData.userId && (
           <TouchableOpacity onPress={openBottomModal}>
             <MaterialIcons name="more-vert" size={25} />
           </TouchableOpacity>
         )}
       </View>
       {/* tweets */}
-      <Text className="font-RobotoRegular text-[16px]">{item.tweet}</Text>
+      <Text className="font-RobotoRegular text-[16px]">{postData.tweet}</Text>
       <View className="my-2">
         <TweetInteraction
-          tweetId={item.id}
+          tweetId={postData.id}
           openModalSendComment={openModalSendComment}
         />
       </View>

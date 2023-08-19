@@ -1,5 +1,5 @@
 import VisitProfile from "./VisitProfile";
-import DetailsTweet from "./DetailsTweet";
+import DetailsPost from "./DetailsPost";
 import EditProfile from "./EditProfile";
 
-export { VisitProfile, DetailsTweet, EditProfile };
+export { VisitProfile, DetailsPost, EditProfile };

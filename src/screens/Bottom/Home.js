@@ -18,7 +18,7 @@ import {
 } from "../../components";
 import { assets } from "../../constant";
 
-import { getTweets } from "../../services/tweet";
+import { getPosts } from "../../services/post";
 
 const Home = () => {
   const [dataTweets, setDataTweets] = useState([]);
@@ -36,7 +36,7 @@ const Home = () => {
 
   useEffect(() => {
     if (Platform.OS === "android") registerForPushNotificationsAsync();
-    getTweets(setDataTweets);
+    getPosts(setDataTweets);
   }, []);
 
   return (
@@ -86,4 +86,4 @@ const Home = () => {
   );
 };
 
-export default React.memo(Home);
+export default Home;

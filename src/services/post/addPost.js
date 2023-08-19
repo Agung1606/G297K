@@ -7,7 +7,7 @@ function showToast() {
   ToastAndroid.show("Berhasil Upload postingan ジ", ToastAndroid.SHORT);
 }
 
-const addTweet = async (loggedInUserData, tweetInput) => {
+const addPost = async (loggedInUserData, tweetInput) => {
   try {
     const currentDate = new Date();
     const dateString = currentDate.toDateString();
@@ -29,4 +29,4 @@ const addTweet = async (loggedInUserData, tweetInput) => {
   }
 };
 
-export default addTweet;
+export default addPost;

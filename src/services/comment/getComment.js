@@ -1,14 +1,14 @@
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
 import { onSnapshot, collection } from "firebase/firestore";
 
-const getComment = (tweetId, setDataComments) => {
+const getComment = (postId, setDataComments) => {
   // early check
-  if (!tweetId) throw new Error("Invalid tweetId");
+  if (!postId) throw new Error("Invalid postId");
 
   // set up collection
   const collectionRef = collection(
     FIREBASE_FIRESTORE,
-    `tweets/${tweetId}/comments`
+    `tweets/${postId}/comments`
   );
 
   // set up listener and error handling

@@ -1,7 +1,7 @@
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
 import { query, collection, where, onSnapshot } from "firebase/firestore";
 
-const getUserTweets = async (userId, setDataTweets) => {
+const getUserPosts = async (userId, setDataTweets) => {
   let queryTweets = query(
     collection(FIREBASE_FIRESTORE, "tweets"),
     where("userId", "==", userId)
@@ -15,4 +15,4 @@ const getUserTweets = async (userId, setDataTweets) => {
   });
 };
 
-export default getUserTweets;
+export default getUserPosts;

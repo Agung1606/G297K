@@ -7,7 +7,7 @@ import { Login, Register } from "../screens/Auth";
 import BottomNavigation from "../screens/Bottom";
 import {
   VisitProfile,
-  DetailsTweet,
+  DetailsPost,
   EditProfile,
 } from "../screens/App";
 import { SendComment, SearchAccount, Settings, Info } from "../screens/Modal";
@@ -46,8 +46,8 @@ const Routes = () => {
               }}
             />
             <Stack.Screen
-              name="DetailsTweetScreen"
-              component={DetailsTweet}
+              name="DetailsPostScreen"
+              component={DetailsPost}
               options={{
                 animation: "slide_from_right",
               }}
@@ -80,7 +80,7 @@ const Routes = () => {
               name="SettingsScreen"
               component={Settings}
               options={{
-                animation: "slide_from_right",
+                animation: "slide_from_left",
               }}
             />
             <Stack.Screen

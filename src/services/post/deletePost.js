@@ -7,7 +7,7 @@ function showToast() {
   ToastAndroid.show("Postingan dihapus ジ", ToastAndroid.SHORT);
 }
 
-const deleteTweet = async (tweetId, setLoading, goToPrevScreen) => {
+const deletePost = async (tweetId, setLoading, goToPrevScreen) => {
   if (!tweetId) throw new Error("Invalid tweetId");
   try {
     // the request is ongoing
@@ -25,4 +25,4 @@ const deleteTweet = async (tweetId, setLoading, goToPrevScreen) => {
   }
 };
 
-export default deleteTweet;
+export default deletePost;

@@ -18,7 +18,7 @@ import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
 import { collection } from "firebase/firestore";
 
 import { getCollectionData } from "../../services/user";
-import { getUserTweets } from "../../services/tweet";
+import { getUserPosts } from "../../services/post";
 
 const HeaderProfile = ({ username, goToSettings }) => {
   return (
@@ -63,7 +63,7 @@ const Profile = ({ navigation }) => {
       `users/${loggedInUserData.id}/following`
     );
 
-    getUserTweets(loggedInUserData.id, setDataTweets);
+    getUserPosts(loggedInUserData.id, setDataTweets);
     getCollectionData(followersCol, setFollowersCount);
     getCollectionData(followingCol, setFollowingCount);
   }, []);

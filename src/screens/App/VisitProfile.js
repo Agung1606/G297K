@@ -22,7 +22,7 @@ import {
   getCollectionData,
   followeHandler,
 } from "../../services/user";
-import { getUserTweets } from "../../services/tweet";
+import { getUserPosts } from "../../services/post";
 
 const HeaderVisitProfile = ({
   username,
@@ -48,7 +48,7 @@ const HeaderVisitProfile = ({
 };
 
 const VisitProfile = ({ route, navigation }) => {
-  const { username, userId } = route?.params;
+  const { userId } = route?.params;
   const loggedInUserData = useSelector((state) => state.global.user);
 
   const goToEditProfile = useCallback(() => {
@@ -80,9 +80,8 @@ const VisitProfile = ({ route, navigation }) => {
 
   useEffect(() => {
     (async function () {
-      const { userId, userData } = await getUser(username);
-      setData({ id: userId, ...userData });
-      getUserTweets(userId, setDataTweets);
+      getUser(userId, setData);
+      getUserPosts(userId, setDataTweets);
 
       const followersCol = collection(
         FIREBASE_FIRESTORE,
@@ -106,7 +105,7 @@ const VisitProfile = ({ route, navigation }) => {
         loggedInUserData.id
       );
     })();
-  }, [username, userId]);
+  }, [userId]);
 
   return (
     <SafeAreaView className="flex-1">

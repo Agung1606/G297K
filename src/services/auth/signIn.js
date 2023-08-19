@@ -8,6 +8,7 @@ const signIn = async (email, password) => {
       email,
       password
     );
+
     return response.user;
   } catch (error) {
    throw error;

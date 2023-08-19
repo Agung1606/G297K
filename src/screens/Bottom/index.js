@@ -6,7 +6,7 @@ import Home from "./Home";
 import Explore from "./Explore";
 import Notification from "./Notification";
 import Profile from "./Profile";
-import UploadTweet from "./UploadTweet";
+import UploadPost from "./UploadPost";
 
 import AddedDummyData from "./AddedDummyData";
 
@@ -52,8 +52,8 @@ const BottomNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="UploadTweetScreen"
-        component={UploadTweet}
+        name="UploadPostScreen"
+        component={UploadPost}
         options={{
           unmountOnBlur: true,
           tabBarIcon: ({ color }) => (

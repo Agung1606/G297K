@@ -16,7 +16,7 @@ import { ButtonBlue, Avatar } from "../../components";
 import { addComment } from "../../services/comment";
 
 const SendComment = ({ route, navigation }) => {
-  const { item } = route?.params;
+  const { postId, username } = route?.params;
   const loggedInUserData = useSelector((state) => state.global.user);
   const goToPrevScreen = () => navigation.goBack();
 
@@ -26,7 +26,7 @@ const SendComment = ({ route, navigation }) => {
     setLoading(true);
 
     try {
-      await addComment(loggedInUserData, item.id, commentInput);
+      await addComment(loggedInUserData, postId, commentInput);
       goToPrevScreen();
     } catch (error) {
       console.error(error);
@@ -62,9 +62,7 @@ const SendComment = ({ route, navigation }) => {
         <View className="flex-1 space-y-2">
           <Text className="font-InterRegular text-gray-600">
             Membalas{" "}
-            <Text className="text-blue font-InterSemiBold">
-              {item.username}
-            </Text>
+            <Text className="text-blue font-InterSemiBold">{username}</Text>
           </Text>
           <ScrollView className="mb-20">
             <TextInput

@@ -12,19 +12,19 @@ const TweetCard = ({ item }) => {
   const navigation = useNavigation();
 
   const goToDetails = useCallback(() => {
-    navigation.navigate("DetailsTweetScreen", { item });
-  }, [navigation, item]);
+    navigation.navigate("DetailsPostScreen", { postId: item.id });
+  }, [navigation, item.id]);
 
   const goToVisitProfile = useCallback(() => {
-    navigation.navigate("VisitProfileScreen", {
-      username: item.username,
-      userId: item.userId,
-    });
-  }, [navigation, item]);
+    navigation.navigate("VisitProfileScreen", { userId: item.userId });
+  }, [navigation, item.userId]);
 
-  const openModalSendComment = useCallback(() => {
-    navigation.navigate("SendComment", { item });
-  }, [navigation, item]);
+ const openModalSendComment = useCallback(() => {
+   navigation.navigate("SendComment", {
+     postId: item.id,
+     username: item.username,
+   });
+ }, [navigation, item.id]);
 
   return (
     <StyledPressable
@@ -66,4 +66,4 @@ const TweetCard = ({ item }) => {
   );
 };
 
-export default React.memo(TweetCard);
+export default TweetCard;

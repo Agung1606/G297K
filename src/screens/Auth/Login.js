@@ -21,7 +21,9 @@ import { assets } from "../../constant";
 import { styles } from "../../style/Global";
 
 import { signIn } from "../../services/auth";
-import { getUser } from "../../services/user";
+
+import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
+import { collection, query, where, getDocs } from "firebase/firestore";
 
 const Login = ({ navigation }) => {
   const persistedEmail = useSelector((state) => state.global.user?.email);
@@ -44,18 +46,25 @@ const Login = ({ navigation }) => {
     try {
       const response = await signIn(loginInput.email, loginInput.password);
       if (response) {
-        const { userId, userData } = await getUser(loginInput.email);
+        const collectionRef = collection(FIREBASE_FIRESTORE, "users");
+        const documentRef = query(
+          collectionRef,
+          where("email", "==", loginInput.email)
+        );
+
+        const userData = await getDocs(documentRef);
+
         dispatch(
           setLogin({
             user: {
-              id: userId,
-              email: userData.email,
-              username: userData.username,
-              name: userData.name,
-              profile: userData.profile,
-              followers: userData.followers,
-              following: userData.following,
-              bio: userData.bio,
+              id: userData.docs[0].id,
+              email: userData.docs[0].data().email,
+              username: userData.docs[0].data().username,
+              name: userData.docs[0].data().name,
+              profile: userData.docs[0].data().profile,
+              followers: userData.docs[0].data().followers,
+              following: userData.docs[0].data().following,
+              bio: userData.docs[0].data().bio,
             },
             token: response.accessToken,
           })
