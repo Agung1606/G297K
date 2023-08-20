@@ -9,7 +9,7 @@ import {
   ProfileInfo,
   ButtonGray,
   ButtonScrollToTop,
-  TweetCard,
+  PostCard,
   NoTweets,
   SeeProfileModal,
 } from "../../components";
@@ -79,7 +79,7 @@ const Profile = ({ navigation }) => {
         onScroll={handleScroll}
         showsVerticalScrollIndicator={false}
         data={dataTweets}
-        renderItem={({ item }) => <TweetCard item={item} />}
+        renderItem={({ item }) => <PostCard item={item} />}
         keyExtractor={(item) => item.id}
         ListHeaderComponent={() => (
           <View className="p-2 border-b border-gray-600">

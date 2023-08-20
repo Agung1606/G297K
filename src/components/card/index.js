@@ -1,15 +1,15 @@
-import TweetCard from "./TweetCard";
-import TweetDetailCard from "./TweetDetailCard";
+import PostCard from "./PostCard";
+import DetailPostCard from "./DetailPostCard";
 import TrendingCard from "./TrendingCard";
 import CommentCard from "./CommentCard";
-import SplashTweetCard from "./SplashTweetCard";
+import SplashPostCard from "./SplashPostCard";
 import SearchUserCard from "./SearchUserCard";
 
 export {
-  TweetCard,
-  TweetDetailCard,
+  PostCard,
+  DetailPostCard,
   TrendingCard,
   CommentCard,
-  SplashTweetCard,
+  SplashPostCard,
   SearchUserCard,
 };

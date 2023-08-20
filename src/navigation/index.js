@@ -5,11 +5,7 @@ import { useSelector } from "react-redux";
 
 import { Login, Register } from "../screens/Auth";
 import BottomNavigation from "../screens/Bottom";
-import {
-  VisitProfile,
-  DetailsPost,
-  EditProfile,
-} from "../screens/App";
+import { VisitProfile, DetailsPost, EditProfile } from "../screens/App";
 import { SendComment, SearchAccount, Settings, Info } from "../screens/Modal";
 
 const Routes = () => {
@@ -80,7 +76,7 @@ const Routes = () => {
               name="SettingsScreen"
               component={Settings}
               options={{
-                animation: "slide_from_left",
+                animation: "slide_from_right",
               }}
             />
             <Stack.Screen

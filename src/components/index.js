@@ -1,9 +1,9 @@
 import {
-  TweetCard,
-  TweetDetailCard,
+  PostCard,
+  DetailPostCard,
   TrendingCard,
   CommentCard,
-  SplashTweetCard,
+  SplashPostCard,
   SearchUserCard,
 } from "./card";
 
@@ -34,11 +34,11 @@ import {
 } from "./screens";
 
 export {
-  TweetCard,
-  TweetDetailCard,
+  PostCard,
+  DetailPostCard,
   TrendingCard,
   CommentCard,
-  SplashTweetCard,
+  SplashPostCard,
   SearchUserCard,
   Header,
   ButtonBlue,

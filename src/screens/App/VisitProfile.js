@@ -9,7 +9,7 @@ import {
   ButtonGray,
   ButtonFollow,
   ProfileInfo,
-  TweetCard,
+  PostCard,
   NoTweets,
   SeeProfileModal,
 } from "../../components";
@@ -171,7 +171,7 @@ const VisitProfile = ({ route, navigation }) => {
           </View>
         )}
         data={dataTweets}
-        renderItem={({ item }) => <TweetCard item={item} />}
+        renderItem={({ item }) => <PostCard item={item} />}
         keyExtractor={(item) => item.id}
         ListEmptyComponent={
           <NoTweets text="Sepertinya orang ini belum membuat postingan" />

@@ -6,7 +6,7 @@ import Spinner from "react-native-loading-spinner-overlay";
 import { Ionicons } from "@expo/vector-icons";
 
 import { bottomModalConfig } from "../../hooks";
-import { Header, TweetDetailCard, CommentCard } from "../../components";
+import { Header, DetailPostCard, CommentCard } from "../../components";
 
 import { deletePost, getSinglePost } from "../../services/post";
 import { getComment } from "../../services/comment";
@@ -52,7 +52,7 @@ const DetailsPost = ({ route, navigation }) => {
       <Header onPress={goToPrevScreen} text="Post" />
       <FlatList
         ListHeaderComponent={
-          <TweetDetailCard
+          <DetailPostCard
             postData={postData}
             goToVisitProfile={goToVisitProfile}
             openBottomModal={openBottomModal}

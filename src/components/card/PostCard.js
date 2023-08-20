@@ -8,7 +8,7 @@ import { formatRelativeTime } from "../../utils";
 import { styled } from "nativewind";
 const StyledPressable = styled(Pressable);
 
-const TweetCard = ({ item }) => {
+const PostCard = ({ item }) => {
   const navigation = useNavigation();
 
   const goToDetails = useCallback(() => {
@@ -66,4 +66,4 @@ const TweetCard = ({ item }) => {
   );
 };
 
-export default TweetCard;
+export default PostCard;

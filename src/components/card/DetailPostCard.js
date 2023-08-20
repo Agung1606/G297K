@@ -6,7 +6,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { Avatar, TweetInteraction } from "../common";
 import { formatRelativeTime } from "../../utils";
 
-const TweetDetailCard = ({
+const DetailPostCard = ({
   postData,
   goToVisitProfile,
   openBottomModal,
@@ -44,4 +44,4 @@ const TweetDetailCard = ({
   );
 };
 
-export default TweetDetailCard;
+export default DetailPostCard;

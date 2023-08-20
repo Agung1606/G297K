@@ -12,8 +12,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { registerForPushNotificationsAsync } from "../../utils";
 import { scrollToTopConfig } from "../../hooks";
 import {
-  TweetCard,
-  SplashTweetCard,
+  SplashPostCard,
+  PostCard,
   ButtonScrollToTop,
 } from "../../components";
 import { assets } from "../../constant";
@@ -43,18 +43,18 @@ const Home = () => {
     <SafeAreaView className="flex-1">
       {dataTweets.length === 0 ? (
         <ScrollView>
-          <SplashTweetCard />
-          <SplashTweetCard />
-          <SplashTweetCard />
-          <SplashTweetCard />
-          <SplashTweetCard />
+          <SplashPostCard />
+          <SplashPostCard />
+          <SplashPostCard />
+          <SplashPostCard />
+          <SplashPostCard />
         </ScrollView>
       ) : (
         <FlatList
           ref={reference}
           onScroll={handleScroll}
           data={dataTweets}
-          renderItem={({ item }) => <TweetCard item={item} />}
+          renderItem={({ item }) => <PostCard item={item} />}
           keyExtractor={(item) => item.id}
           initialNumToRender={10}
           showsVerticalScrollIndicator={false}

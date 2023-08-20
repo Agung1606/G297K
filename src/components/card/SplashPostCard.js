@@ -1,7 +1,7 @@
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import React from "react";
 
-const SplashTweetCard = () => {
+const SplashPostCard = () => {
   return (
     <View className="flex-row space-x-2 p-2">
       {/* profile */}
@@ -22,4 +22,4 @@ const SplashTweetCard = () => {
   );
 };
 
-export default SplashTweetCard;
+export default SplashPostCard;
