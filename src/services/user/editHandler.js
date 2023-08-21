@@ -9,7 +9,7 @@ import {
 } from "firebase/firestore";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 
-import { assets } from "../../constant";
+import { DEFAULT_PROFILE } from "@env";
 
 import { ToastAndroid } from "react-native";
 
@@ -41,7 +41,7 @@ const editHandler = async (
   const batch = writeBatch(FIREBASE_FIRESTORE);
   let newProfile;
 
-  if (selectedImage && selectedImage !== assets.defaultProfile) {
+  if (selectedImage && selectedImage !== DEFAULT_PROFILE) {
     try {
       const blobImg = await fetch(selectedImage).then((response) =>
         response.blob()

@@ -9,7 +9,7 @@ import Spinner from "react-native-loading-spinner-overlay";
 import { useSelector, useDispatch } from "react-redux";
 import { setUpdateUser } from "../../redux/globalSlice";
 
-import { assets } from "../../constant";
+import { DEFAULT_PROFILE } from "@env";
 import { Avatar, ButtonBlue, DialogModal } from "../../components";
 import { modalPopupConfig, bottomModalConfig } from "../../hooks";
 import { pickImageAsync } from "../../utils";
@@ -137,9 +137,9 @@ const EditProfile = ({ navigation }) => {
           <Text className="font-InterSemiBold">Ganti foto profil</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          disabled={loggedInUserData.profile === assets.defaultProfile}
+          disabled={loggedInUserData.profile === DEFAULT_PROFILE}
           onPress={() => {
-            setSelectedImage(assets.defaultProfile);
+            setSelectedImage(DEFAULT_PROFILE);
             closeBottomModal();
           }}
           className="bg-gray-300 flex-row items-center justify-between mx-3 mb-2 p-3 rounded-md"

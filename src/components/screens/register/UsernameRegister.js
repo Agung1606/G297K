@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { LinearGradient } from "expo-linear-gradient";
 import Spinner from "react-native-loading-spinner-overlay";
 
-import { assets } from "../../../constant";
+import { DEFAULT_PROFILE } from "@env";
 import { HeaderRegister, ButtonBlue } from "../../common";
 import { DialogModal } from "../../reactPaper";
 import { styles } from "../../../style/Global";
@@ -38,7 +38,7 @@ const UsernameRegister = ({ route }) => {
           email,
           username,
           name: username,
-          profile: assets.defaultProfile,
+          profile: DEFAULT_PROFILE,
           bio: "",
         };
         await addUser(data);

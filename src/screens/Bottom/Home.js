@@ -20,13 +20,19 @@ import { assets } from "../../constant";
 
 import { getPosts } from "../../services/post";
 
+import * as Location from "expo-location";
+
 const Home = () => {
   const [dataTweets, setDataTweets] = useState([]);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const [location, setLocation] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
+
   const { isScrolled, reference, handleScroll, scrollToTop } =
     scrollToTopConfig({ kind: "FlatList" });
 
   // refresh configuration
-  const [refreshing, setRefreshing] = useState(false);
   const onRefresh = useCallback(() => {
     setRefreshing(true);
     setTimeout(() => {
@@ -37,6 +43,18 @@ const Home = () => {
   useEffect(() => {
     if (Platform.OS === "android") registerForPushNotificationsAsync();
     getPosts(setDataTweets);
+
+    (async () => {
+      const { status } = await Location.requestForegroundPermissionsAsync();
+      if(status !== "granted") {
+        setErrorMsg("Permission to access location was denied");
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync();
+      setLocation(location);
+    })();
+
   }, []);
 
   return (
