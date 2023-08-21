@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import React, { useMemo, useState, useCallback } from "react";
 import { Ionicons } from "@expo/vector-icons";
 
-import { modalPopupConfig, scrollToTopConfig } from "../../hooks";
+import { modalPopupConfig, useScrollToTop, useModalPopup } from "../../hooks";
 import {
   ProfileInfo,
   ButtonGray,
@@ -40,13 +40,8 @@ const Profile = ({ navigation }) => {
     navigation.navigate("SettingsScreen");
   }, [navigation]);
 
-  const { isScrolled, reference, handleScroll, scrollToTop } =
-    scrollToTopConfig({ kind: "FlatList" });
-  const {
-    isModalOpen,
-    openModal: openDetailProfile,
-    closeModal: closeDetailProfile,
-  } = modalPopupConfig();
+  const [isScroll, referenceScroll, handleScroll, scrollToTop] = useScrollToTop("FlatList");
+  const [isModalOpen, openDetailProfile, closeDetailProfile] = useModalPopup();
 
   const loggedInUserData = useSelector((state) => state.global.user);
   const [dataTweets, setDataTweets] = useState([]);
@@ -75,7 +70,7 @@ const Profile = ({ navigation }) => {
         username={loggedInUserData.username}
       />
       <FlatList
-        ref={reference}
+        ref={referenceScroll}
         onScroll={handleScroll}
         showsVerticalScrollIndicator={false}
         data={dataTweets}
@@ -111,7 +106,7 @@ const Profile = ({ navigation }) => {
           <NoTweets text="Ketika Anda membuat postingan, itu akan muncul di sini." />
         }
       />
-      {isScrolled && (
+      {isScroll && (
         <View className="absolute bottom-6 right-2">
           <ButtonScrollToTop onPress={scrollToTop} />
         </View>

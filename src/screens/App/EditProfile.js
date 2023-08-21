@@ -10,8 +10,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { setUpdateUser } from "../../redux/globalSlice";
 
 import { DEFAULT_PROFILE } from "@env";
+import { useModalPopup, bottomModalConfig } from "../../hooks";
 import { Avatar, ButtonBlue, DialogModal } from "../../components";
-import { modalPopupConfig, bottomModalConfig } from "../../hooks";
 import { pickImageAsync } from "../../utils";
 
 import { editHandler } from "../../services/user";
@@ -22,7 +22,8 @@ const EditProfile = ({ navigation }) => {
   const dispatch = useDispatch();
   const loggedInUserData = useSelector((state) => state.global.user);
 
-  const { isModalOpen, openModal, closeModal } = modalPopupConfig();
+  const [isModalOpen, openModal, closeModal] = useModalPopup();
+
   const {
     bottomSheetModalRef,
     snapPoints,

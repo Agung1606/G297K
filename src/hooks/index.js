@@ -1,58 +1,15 @@
-import { useState, useEffect, useRef, useMemo, useCallback } from "react";
-import { Keyboard } from "react-native";
+import { useState, useRef, useMemo, useCallback } from "react";
 import { BottomSheetBackdrop } from "@gorhom/bottom-sheet";
 
-export const scrollToTopConfig = ({ kind }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const reference = useRef(null);
-  const handleScroll = (event) => {
-    const offsetY = event.nativeEvent.contentOffset.y;
-    setIsScrolled(offsetY > 0);
-  };
-  const scrollToTop = () => {
-    if (kind === "FlatList") {
-      reference.current.scrollToOffset({ offset: 0, animated: true });
-    } else {
-      reference.current.scrollToLocation({ sectionIndex: 0, itemIndex: 0 });
-    }
-  };
+import useKeyboardVisible from "./useKeyboardVisible";
+import useScrollToTop from "./useScrollToTop";
+import useModalPopup from "./useModalPopup";
 
-  return { isScrolled, reference, handleScroll, scrollToTop };
-};
-
-export const useKeyboardVisible = () => {
-  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
-
-  useEffect(() => {
-    const keyboardDidShowListener = Keyboard.addListener(
-      "keyboardDidShow",
-      () => {
-        setKeyboardVisible(true);
-      }
-    );
-    const keyboardDidHideListener = Keyboard.addListener(
-      "keyboardDidHide",
-      () => {
-        setKeyboardVisible(false);
-      }
-    );
-
-    return () => {
-      keyboardDidHideListener.remove();
-      keyboardDidShowListener.remove();
-    };
-  }, []);
-
-  return isKeyboardVisible;
-};
-
-export const modalPopupConfig = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
-
-  return { isModalOpen, openModal, closeModal };
-};
+export {
+  useKeyboardVisible,
+  useScrollToTop,
+  useModalPopup
+}
 
 export const bottomModalConfig = (points) => {
   const bottomSheetModalRef = useRef(null);

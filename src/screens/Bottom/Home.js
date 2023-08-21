@@ -10,7 +10,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { registerForPushNotificationsAsync } from "../../utils";
-import { scrollToTopConfig } from "../../hooks";
+import { useScrollToTop } from "../../hooks";
 import {
   SplashPostCard,
   PostCard,
@@ -29,8 +29,7 @@ const Home = () => {
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
 
-  const { isScrolled, reference, handleScroll, scrollToTop } =
-    scrollToTopConfig({ kind: "FlatList" });
+  const [ isScroll, referenceScroll, handleScroll, scrollToTop ] = useScrollToTop("FlatList");
 
   // refresh configuration
   const onRefresh = useCallback(() => {
@@ -69,7 +68,7 @@ const Home = () => {
         </ScrollView>
       ) : (
         <FlatList
-          ref={reference}
+          ref={referenceScroll}
           onScroll={handleScroll}
           data={dataTweets}
           renderItem={({ item }) => <PostCard item={item} />}
@@ -95,7 +94,7 @@ const Home = () => {
           }
         />
       )}
-      {isScrolled && (
+      {isScroll && (
         <View className="absolute bottom-6 right-2">
           <ButtonScrollToTop onPress={scrollToTop} />
         </View>

@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  FlatList,
-} from "react-native";
+import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { AntDesign } from "@expo/vector-icons";
 
 import { useSelector, useDispatch } from "react-redux";
 import { setUserSearchHistory } from "../../redux/globalSlice";
 
-import { modalPopupConfig } from "../../hooks";
+import { useModalPopup } from "../../hooks";
 import { ConfirmModal, SearchUserCard, SearchBar } from "../../components";
 
 import { FIREBASE_FIRESTORE } from "../../../firebaseConfig";
@@ -22,7 +17,11 @@ const SearchAccount = ({ navigation }) => {
 
   const [searchQuery, setSearchQuery] = useState("");
   const [users, setUsers] = useState([]);
-  const userSearchHistory = useSelector((state) => state.global.userSearchHistory);
+  const [isModalOpen, openModal, closeModal] = useModalPopup();
+
+  const userSearchHistory = useSelector(
+    (state) => state.global.userSearchHistory
+  );
 
   const handleHistory = (item) => {
     const isUserAlreadyExist = userSearchHistory.some(
@@ -41,8 +40,6 @@ const SearchAccount = ({ navigation }) => {
     });
     handleHistory(item);
   };
-
-  const { isModalOpen, openModal, closeModal } = modalPopupConfig();
 
   useEffect(() => {
     const q = query(
@@ -136,4 +133,4 @@ const SearchAccount = ({ navigation }) => {
   );
 };
 
-export default React.memo(SearchAccount);
+export default SearchAccount;

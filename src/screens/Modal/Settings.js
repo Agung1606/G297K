@@ -1,15 +1,12 @@
 import React from "react";
 import { View, Text, ScrollView, Pressable } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import {
-  MaterialIcons,
-  Ionicons,
-} from "@expo/vector-icons";
+import { MaterialIcons, Ionicons } from "@expo/vector-icons";
 
 import { useSelector, useDispatch } from "react-redux";
 import { setLogout } from "../../redux/globalSlice";
 
-import { modalPopupConfig } from "../../hooks";
+import { useModalPopup } from "../../hooks";
 import { ConfirmModal } from "../../components";
 
 import { styled } from "nativewind";
@@ -22,7 +19,7 @@ const Settings = ({ navigation }) => {
   const loggedInUserData = useSelector((state) => state.global.user);
   const goToPrevScreen = () => navigation.goBack();
 
-  const { isModalOpen, openModal, closeModal } = modalPopupConfig();
+  const [isModalOpen, openModal, closeModal] = useModalPopup();
 
   const SETTINGOPTIONS = [
     {

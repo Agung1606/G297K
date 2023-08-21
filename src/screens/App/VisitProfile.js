@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { MaterialIcons, Ionicons } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
 
-import { modalPopupConfig } from "../../hooks";
+import { useModalPopup } from "../../hooks";
 import {
   ButtonGray,
   ButtonFollow,
@@ -63,11 +63,7 @@ const VisitProfile = ({ route, navigation }) => {
     navigation.goBack();
   }, [navigation]);
 
-  const {
-    isModalOpen,
-    openModal: openDetailProfile,
-    closeModal: closeDetailProfile,
-  } = modalPopupConfig();
+  const [isModalOpen, openDetailProfile, closeDetailProfile] = useModalPopup();
 
   const [data, setData] = useState({});
   const [dataTweets, setDataTweets] = useState([]);
