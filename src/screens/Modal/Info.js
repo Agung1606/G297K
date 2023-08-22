@@ -73,6 +73,7 @@ const Info = ({ navigation, route }) => {
               })
             }
             imgUrl={item.profile}
+            name={item.name}
             username={item.username}
           />
         )}

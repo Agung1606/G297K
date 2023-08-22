@@ -1,4 +1,4 @@
-import { View, Text, Button, ToastAndroid } from "react-native";
+import { View, Text, Button, ToastAndroid, Image } from "react-native";
 import React, { useEffect, useRef, useState } from "react";
 import * as Notifications from "expo-notifications";
 
@@ -45,13 +45,7 @@ const AddedDummyData = ({ navigation }) => {
   
   return (
     <View className="flex-1 justify-center items-center">
-      <Button
-        title="Press to schedule a notification"
-        onPress={() => {
-          navigation.navigate("HomeScreen");
-          showToast();
-        }}
-      />
+      <Text>AGUNG</Text>
     </View>
   );
 };

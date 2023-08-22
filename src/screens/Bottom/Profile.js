@@ -1,14 +1,15 @@
-import { View, Text, FlatList, TouchableOpacity } from "react-native";
+import { View, FlatList, TouchableOpacity, Image } from "react-native";
 import { useSelector } from "react-redux";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React, { useMemo, useState, useCallback } from "react";
 import { Ionicons } from "@expo/vector-icons";
 
-import { modalPopupConfig, useScrollToTop, useModalPopup } from "../../hooks";
+import { useScrollToTop, useModalPopup } from "../../hooks";
 import {
   ProfileInfo,
   ButtonGray,
   ButtonScrollToTop,
+  Name,
   PostCard,
   NoTweets,
   SeeProfileModal,
@@ -23,7 +24,7 @@ import { getUserPosts } from "../../services/post";
 const HeaderProfile = ({ username, goToSettings }) => {
   return (
     <View className={`flex-row justify-between items-center p-2`}>
-      <Text className="font-InterBold text-xl tracking-wide">{username}</Text>
+      <Name text={username} size="large" />
       <TouchableOpacity onPress={goToSettings}>
         <Ionicons name="filter" size={28} />
       </TouchableOpacity>

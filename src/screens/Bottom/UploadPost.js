@@ -10,7 +10,7 @@ import React, { useState, useCallback } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import Spinner from "react-native-loading-spinner-overlay";
 
-import { ButtonBlue, Avatar } from "../../components";
+import { ButtonBlue, Avatar, Name } from "../../components";
 import { useSelector } from "react-redux";
 
 import { addPost } from "../../services/post";
@@ -61,9 +61,7 @@ const UploadPost = ({ navigation }) => {
           </Text>
         </View>
         <ScrollView className="mb-20">
-          <Text className="font-InterSemiBold">
-            {loggedInUserData.username}
-          </Text>
+          <Name text={loggedInUserData.username} />
           <TextInput
             placeholder={`Apa yang terjadi?`}
             className="font-RobotoRegular text-[15px]"

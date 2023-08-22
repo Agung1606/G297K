@@ -16,7 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLogin } from "../../redux/globalSlice";
 
 import { ButtonBlue, ButtonTransparent, DialogModal } from "../../components";
-import { useKeyboardVisible, modalPopupConfig } from "../../hooks";
+import { useKeyboardVisible, useModalPopup } from "../../hooks";
 import { assets } from "../../constant";
 import { styles } from "../../style/Global";
 
@@ -34,7 +34,7 @@ const Login = ({ navigation }) => {
   });
 
   const isKeyboardVisible = useKeyboardVisible();
-  const { isModalOpen, openModal, closeModal } = modalPopupConfig();
+  const [isModalOpen, openModal, closeModal] = useModalPopup();
 
   const [loading, setLoading] = useState(false);
   const [hidePassword, setHidePassword] = useState(true);

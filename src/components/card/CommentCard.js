@@ -6,7 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import Spinner from "react-native-loading-spinner-overlay";
 
-import { Avatar } from "../common";
+import { Avatar, Name } from "../common";
 import { bottomModalConfig } from "../../hooks";
 import { formatRelativeTime } from "../../utils";
 
@@ -40,7 +40,7 @@ const CommentCard = ({ item }) => {
           {/* username and date */}
           <View className="mb-1 flex-row items-center justify-between">
             <View>
-              <Text className="font-InterSemiBold">{item.username}</Text>
+              <Name text={item.username} />
               <Text className="text-[10px] font-InterRegular text-gray-400">
                 {formatRelativeTime(item.date)}
               </Text>

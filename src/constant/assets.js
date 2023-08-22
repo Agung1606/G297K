@@ -2,6 +2,8 @@ import logoGrk from "../assets/images/logo.png";
 const defaultProfile =
   "https://firebasestorage.googleapis.com/v0/b/g297k-dd26d.appspot.com/o/profiles%2Fdefault.jpg?alt=media&token=50a4d5c2-0eb6-4877-a795-de541e4bf054";
 
+import verified from "../assets/images/quality.png"
+
 import jinbeiProfile from "../assets/images/jinbeiProfile.jpg";
 import luffyProfile from "../assets/images/luffyProfile.jpg";
 import sanjiProfile from "../assets/images/sanjiProfile.jpg";
@@ -24,6 +26,7 @@ import jokowiProfile from "../assets/images/jokowiProfile.jpeg";
 export default {
   logoGrk,
   defaultProfile,
+  verified,
   jinbeiProfile,
   luffyProfile,
   sanjiProfile,

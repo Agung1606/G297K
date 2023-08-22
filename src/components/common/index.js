@@ -7,6 +7,7 @@ import {
   ButtonFollow,
   ButtonScrollToTop,
 } from "./Button";
+import Name from "./Name";
 import SearchBar from "./SearchBar";
 import ProfileInfo from "./ProfileInfo";
 import NoTweets from "./NoTweets";
@@ -21,6 +22,7 @@ export {
   ButtonGray,
   ButtonFollow,
   ButtonScrollToTop,
+  Name,
   SearchBar,
   ProfileInfo,
   NoTweets,

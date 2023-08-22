@@ -55,12 +55,14 @@ const followeHandler = async (
       const loggedInUser = {
         userId: loggedInUserData.id,
         profile: loggedInUserData.profile,
+        name: loggedInUserData.name,
         username: loggedInUserData.username,
       };
 
       const otherUser = {
         userId: data.id,
         profile: data.profile,
+        name: data.name,
         username: data.username,
       };
 

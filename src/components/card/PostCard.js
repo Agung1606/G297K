@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { View, Text, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-import { Avatar, TweetInteraction } from "../common";
+import { Avatar, TweetInteraction, Name } from "../common";
 import { formatRelativeTime } from "../../utils";
 
 import { styled } from "nativewind";
@@ -19,12 +19,12 @@ const PostCard = ({ item }) => {
     navigation.navigate("VisitProfileScreen", { userId: item.userId });
   }, [navigation, item.userId]);
 
- const openModalSendComment = useCallback(() => {
-   navigation.navigate("SendComment", {
-     postId: item.id,
-     username: item.username,
-   });
- }, [navigation, item.id]);
+  const openModalSendComment = useCallback(() => {
+    navigation.navigate("SendComment", {
+      postId: item.id,
+      username: item.username,
+    });
+  }, [navigation, item.id]);
 
   return (
     <StyledPressable
@@ -39,7 +39,7 @@ const PostCard = ({ item }) => {
       <View className="flex-1">
         {/* username and date */}
         <View className="mb-1">
-          <Text className="font-InterBold">{item.username}</Text>
+          <Name text={item.username} />
           <Text className="text-[12px] font-InterRegular text-gray-400">
             {formatRelativeTime(item.date)}
           </Text>

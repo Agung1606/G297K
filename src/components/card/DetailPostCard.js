@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { View, Text, TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 
-import { Avatar, TweetInteraction } from "../common";
+import { Avatar, TweetInteraction, Name } from "../common";
 import { formatRelativeTime } from "../../utils";
 
 const DetailPostCard = ({
@@ -18,9 +18,13 @@ const DetailPostCard = ({
     <View className="px-3 py-2 border-b border-gray-300">
       <View className="flex-row justify-between items-center mb-2">
         <View className="flex-row items-center space-x-4">
-          <Avatar imgUrl={postData.profile} size={50} onPress={goToVisitProfile} />
+          <Avatar
+            imgUrl={postData.profile}
+            size={50}
+            onPress={goToVisitProfile}
+          />
           <View>
-            <Text className="font-InterBold">{postData.username}</Text>
+            <Name text={postData.username} />
             <Text className="text-[12px] text-grayCustom">
               {formatRelativeTime(postData.date)}
             </Text>

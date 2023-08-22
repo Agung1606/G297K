@@ -41,6 +41,7 @@ const TweetInteraction = ({ tweetId, openModalSendComment, goToDetails }) => {
         if (likeDoc) await deleteDoc(likeDoc.ref);
       } else {
         await addDoc(likesCollection, {
+          name: loggedInUserData.name,
           username: loggedInUserData.username,
           profile: loggedInUserData.profile,
           userId: loggedInUserData.id,

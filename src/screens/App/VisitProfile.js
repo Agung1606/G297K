@@ -8,6 +8,7 @@ import { useModalPopup } from "../../hooks";
 import {
   ButtonGray,
   ButtonFollow,
+  Name,
   ProfileInfo,
   PostCard,
   NoTweets,
@@ -32,11 +33,13 @@ const HeaderVisitProfile = ({
 }) => {
   return (
     <View className={`flex-row justify-between items-center my-1 px-3`}>
-      <View className={`flex-row justify-between items-center space-x-6`}>
+      <View className="flex-row items-center space-x-6">
         <TouchableOpacity onPress={goToPrevScreen}>
           <MaterialIcons name="arrow-back" size={30} />
         </TouchableOpacity>
-        <Text className="font-InterBold text-lg tracking-wide">{username}</Text>
+        <View>
+          <Name text={username} size="large" />
+        </View>
       </View>
       {isMe && (
         <TouchableOpacity onPress={goToSettings}>
