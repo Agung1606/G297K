@@ -27,30 +27,26 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 
 const Login = ({ navigation }) => {
   const persistedEmail = useSelector((state) => state.global.user?.email);
-  const dispatch = useDispatch();
-  const [loginInput, setLoginInput] = useState({
-    email: persistedEmail,
-    password: "",
-  });
 
-  const isKeyboardVisible = useKeyboardVisible();
-  const [isModalOpen, openModal, closeModal] = useModalPopup();
-
+  const [email, setEmail] = useState(persistedEmail);
+  const [password, setPassword] = useState(null);
   const [loading, setLoading] = useState(false);
   const [hidePassword, setHidePassword] = useState(true);
   const [errorMsg, setErrorMsg] = useState("");
+
+  const dispatch = useDispatch();
+
+  const isKeyboardVisible = useKeyboardVisible();
+  const [isModalOpen, openModal, closeModal] = useModalPopup();
 
   const handleHidePassword = () => setHidePassword(!hidePassword);
   const handleLogin = async () => {
     setLoading(true);
     try {
-      const response = await signIn(loginInput.email, loginInput.password);
+      const response = await signIn(email, password);
       if (response) {
         const collectionRef = collection(FIREBASE_FIRESTORE, "users");
-        const documentRef = query(
-          collectionRef,
-          where("email", "==", loginInput.email)
-        );
+        const documentRef = query(collectionRef, where("email", "==", email));
 
         const userData = await getDocs(documentRef);
 
@@ -112,10 +108,8 @@ const Login = ({ navigation }) => {
           <TextInput
             placeholder="Email"
             className="font-InterBold text-[16px]"
-            value={loginInput.email}
-            onChangeText={(text) =>
-              setLoginInput({ ...loginInput, email: text })
-            }
+            value={email}
+            onChangeText={(text) => setEmail(text)}
           />
         </View>
         {/* password */}
@@ -124,13 +118,11 @@ const Login = ({ navigation }) => {
             placeholder="Kata sandi"
             className="font-InterBold text-[16px]"
             secureTextEntry={hidePassword}
-            value={loginInput.password}
-            onChangeText={(text) =>
-              setLoginInput({ ...loginInput, password: text })
-            }
+            value={password}
+            onChangeText={(text) => setPassword(text)}
           />
           <View className="absolute right-4">
-            {loginInput.password && (
+            {password && (
               <TouchableOpacity onPress={handleHidePassword}>
                 <Entypo
                   name={hidePassword ? "eye-with-line" : "eye"}
@@ -142,11 +134,7 @@ const Login = ({ navigation }) => {
           </View>
         </View>
         {/* button login */}
-        <ButtonBlue
-          disabled={!loginInput.email}
-          title={"Masuk"}
-          onPress={handleLogin}
-        />
+        <ButtonBlue disabled={!email} title={"Masuk"} onPress={handleLogin} />
       </View>
       {/* forget password */}
       <TouchableOpacity>

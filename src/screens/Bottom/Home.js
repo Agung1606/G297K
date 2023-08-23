@@ -43,16 +43,16 @@ const Home = () => {
     if (Platform.OS === "android") registerForPushNotificationsAsync();
     getPosts(setDataTweets);
 
-    (async () => {
-      const { status } = await Location.requestForegroundPermissionsAsync();
-      if(status !== "granted") {
-        setErrorMsg("Permission to access location was denied");
-        return;
-      }
+    // (async () => {
+    //   const { status } = await Location.requestForegroundPermissionsAsync();
+    //   if(status !== "granted") {
+    //     setErrorMsg("Permission to access location was denied");
+    //     return;
+    //   }
 
-      let location = await Location.getCurrentPositionAsync();
-      setLocation(location);
-    })();
+    //   let location = await Location.getCurrentPositionAsync();
+    //   setLocation(location);
+    // })();
 
   }, []);
 
