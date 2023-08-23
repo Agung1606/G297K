@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { View, Text, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-import { Avatar, TweetInteraction, Name } from "../common";
+import { Avatar, PostInteraction, Name } from "../common";
 import { formatRelativeTime } from "../../utils";
 
 import { styled } from "nativewind";
@@ -56,7 +56,7 @@ const PostCard = ({ item }) => {
           )}
         </Text>
         {/* like, comment, and share */}
-        <TweetInteraction
+        <PostInteraction
           tweetId={item.id}
           openModalSendComment={openModalSendComment}
           goToDetails={goToDetails}

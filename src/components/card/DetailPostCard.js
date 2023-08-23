@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { View, Text, TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 
-import { Avatar, TweetInteraction, Name } from "../common";
+import { Avatar, PostInteraction, Name } from "../common";
 import { formatRelativeTime } from "../../utils";
 
 const DetailPostCard = ({
@@ -39,7 +39,7 @@ const DetailPostCard = ({
       {/* tweets */}
       <Text className="font-RobotoRegular text-[16px]">{postData.tweet}</Text>
       <View className="my-2">
-        <TweetInteraction
+        <PostInteraction
           tweetId={postData.id}
           openModalSendComment={openModalSendComment}
         />

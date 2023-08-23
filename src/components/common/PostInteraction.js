@@ -15,7 +15,7 @@ import {
   getDocs,
 } from "firebase/firestore";
 
-const TweetInteraction = ({ tweetId, openModalSendComment, goToDetails }) => {
+const PostInteraction = ({ tweetId, openModalSendComment, goToDetails }) => {
   const navigation = useNavigation();
   const goToLikeScreen = () =>
     navigation.navigate("InfoScreen", { text: "Suka", tweetId });
@@ -129,4 +129,4 @@ const TweetInteraction = ({ tweetId, openModalSendComment, goToDetails }) => {
   );
 };
 
-export default TweetInteraction;
+export default PostInteraction;

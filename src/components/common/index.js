@@ -12,7 +12,7 @@ import SearchBar from "./SearchBar";
 import ProfileInfo from "./ProfileInfo";
 import NoTweets from "./NoTweets";
 import Avatar from "./Avatar";
-import TweetInteraction from "./TweetInteraction";
+import PostInteraction from "./PostInteraction";
 
 export {
   Header,
@@ -27,5 +27,5 @@ export {
   ProfileInfo,
   NoTweets,
   Avatar,
-  TweetInteraction,
+  PostInteraction,
 };
