@@ -1,4 +1,4 @@
-import { View, FlatList, TouchableOpacity, Image } from "react-native";
+import { View, FlatList, TouchableOpacity, Image, Text } from "react-native";
 import { useSelector } from "react-redux";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React, { useMemo, useState, useCallback } from "react";
@@ -21,10 +21,10 @@ import { collection } from "firebase/firestore";
 import { getCollectionData } from "../../services/user";
 import { getUserPosts } from "../../services/post";
 
-const HeaderProfile = ({ username, goToSettings }) => {
+const HeaderProfile = ({ goToSettings }) => {
   return (
     <View className={`flex-row justify-between items-center p-2`}>
-      <Name text={username} size="large" />
+      <Text className="text-lg">(⁠•⁠‿⁠•⁠)</Text>
       <TouchableOpacity onPress={goToSettings}>
         <Ionicons name="filter" size={28} />
       </TouchableOpacity>
@@ -78,12 +78,9 @@ const Profile = ({ navigation }) => {
         renderItem={({ item }) => <PostCard item={item} />}
         keyExtractor={(item) => item.id}
         ListHeaderComponent={() => (
-          <View className="p-2 border-b border-gray-600">
+          <View className="px-2 py-1 border-b border-gray-600">
             <ProfileInfo
-              userId={loggedInUserData.id}
-              profileUrl={loggedInUserData.profile}
-              name={loggedInUserData.name}
-              bio={loggedInUserData.bio}
+              user={loggedInUserData}
               openDetailProfile={openDetailProfile}
               followersCount={followersCount}
               followingCount={followingCount}
@@ -91,7 +88,7 @@ const Profile = ({ navigation }) => {
             />
             {/* button */}
             <View
-              className={`flex-row justify-between items-center space-x-2 mt-1`}
+              className={`flex-row justify-between items-center space-x-2 mt-4`}
             >
               <View className="flex-1">
                 <ButtonGray title={"Edit profil"} onPress={goToEditProfile} />

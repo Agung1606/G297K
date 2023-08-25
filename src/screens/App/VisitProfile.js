@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { View, Text, TouchableOpacity, FlatList } from "react-native";
+import { View, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { MaterialIcons, Ionicons } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
@@ -8,7 +8,6 @@ import { useModalPopup } from "../../hooks";
 import {
   ButtonGray,
   ButtonFollow,
-  Name,
   ProfileInfo,
   PostCard,
   NoTweets,
@@ -26,20 +25,16 @@ import {
 import { getUserPosts } from "../../services/post";
 
 const HeaderVisitProfile = ({
-  username,
   isMe,
   goToSettings,
   goToPrevScreen,
 }) => {
   return (
-    <View className={`flex-row justify-between items-center my-1 px-3`}>
+    <View className={`flex-row justify-between items-center p-2`}>
       <View className="flex-row items-center space-x-6">
         <TouchableOpacity onPress={goToPrevScreen}>
           <MaterialIcons name="arrow-back" size={30} />
         </TouchableOpacity>
-        <View>
-          <Name text={username} size="large" />
-        </View>
       </View>
       {isMe && (
         <TouchableOpacity onPress={goToSettings}>
@@ -116,12 +111,9 @@ const VisitProfile = ({ route, navigation }) => {
       />
       <FlatList
         ListHeaderComponent={() => (
-          <View className="my-2 p-2 border-b border-gray-600">
+          <View className="px-2 py-1 border-b border-gray-600">
             <ProfileInfo
-              userId={userId}
-              profileUrl={data.profile}
-              name={data.name}
-              bio={data.bio}
+              user={data}
               openDetailProfile={openDetailProfile}
               followersCount={followersCount}
               followingCount={followingCount}
@@ -129,7 +121,7 @@ const VisitProfile = ({ route, navigation }) => {
             />
             {/* button */}
             <View
-              className={`flex-row justify-between items-center space-x-2 mt-1`}
+              className={`flex-row justify-between items-center space-x-2 mt-4`}
             >
               {loggedInUserData.id !== userId ? (
                 <View className="flex-1">
