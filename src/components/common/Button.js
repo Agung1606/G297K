@@ -23,15 +23,15 @@ export const ButtonScrollToTop = ({ onPress }) => (
 export const ButtonFollow = ({ loading, title, onPress, isFollow }) => (
   <StyledPressable
     onPress={onPress}
-    className={`w-full py-[6px] justify-center items-center ${
-      isFollow ? "bg-gray-300/50" : "bg-blue"
+    className={`w-full py-1.5 justify-center items-center ${
+      isFollow ? "border border-grayCustom/50" : "bg-blue"
     } rounded-lg ${styles.pressableEffect}`}
   >
     {loading ? (
       <ActivityIndicator size={"small"} color={"#FFF"} />
     ) : (
       <Text
-        className={`font-InterSemiBold text-[16px] ${
+        className={`font-InterMedium text-[15px] ${
           !isFollow && "text-white"
         }`}
       >
@@ -44,9 +44,9 @@ export const ButtonFollow = ({ loading, title, onPress, isFollow }) => (
 export const ButtonGray = ({ title, onPress }) => (
   <StyledPressable
     onPress={onPress}
-    className={`w-full py-[6px] justify-center items-center bg-gray-300/50 rounded-lg ${styles.pressableEffect}`}
+    className={`w-full py-1.5 justify-center items-center border border-grayCustom rounded-lg ${styles.pressableEffect}`}
   >
-    <Text className="font-InterSemiBold text-[16px]">{title}</Text>
+    <Text className="font-InterMedium text-[15px]">{title}</Text>
   </StyledPressable>
 );
 

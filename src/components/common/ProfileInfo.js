@@ -1,15 +1,13 @@
-import { View, Text, Pressable } from "react-native";
+import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 
 import Avatar from "./Avatar";
+import Name from "./Name";
 import { changeFormat } from "../../utils";
 
 const ProfileInfo = ({
-  userId,
-  profileUrl,
-  name,
-  bio,
+  user,
   followersCount,
   followingCount,
   tweetsCount,
@@ -17,38 +15,74 @@ const ProfileInfo = ({
 }) => {
   const navigation = useNavigation();
 
-  const [text, setText] = useState(bio?.slice(0, 100));
-  const [readMore, setReadMore] = useState(false);
-  const handleReadMore = () => {
-    if (!readMore) {
-      setText(bio);
-      setReadMore(true);
-    }
-  };
-
   const info = [
     {
-      number: changeFormat(tweetsCount),
-      text: "Post",
-    },
-    {
+      id: 1,
       number: changeFormat(followersCount),
-      text: "Pengikut",
+      text: "pengikut",
       onPress: () =>
-        navigation.navigate("InfoScreen", { text: "Pengikut", userId }),
+        navigation.navigate("InfoScreen", {
+          text: "Pengikut",
+          userId: user.id,
+        }),
     },
     {
+      id: 2,
       number: changeFormat(followingCount),
-      text: "Mengikuti",
+      text: "mengikuti",
       onPress: () =>
-        navigation.navigate("InfoScreen", { text: "Mengikuti", userId }),
+        navigation.navigate("InfoScreen", {
+          text: "Mengikuti",
+          userId: user.id,
+        }),
+    },
+    {
+      id: 3,
+      number: changeFormat(tweetsCount),
+      text: "post",
     },
   ];
 
   return (
     <>
+      <View className="mb-1">
+        <View className="flex-row justify-between items-center">
+          <View>
+            <Text className="font-LoraBold text-xl">{user.name}</Text>
+            <Name text={user.username} />
+          </View>
+          <Avatar
+            imgUrl={user?.profile}
+            size={70}
+            onPress={openDetailProfile}
+          />
+        </View>
+        <Text className="font-RobotoRegular text-[15px]">{user.bio}</Text>
+      </View>
+      <FlatList
+        data={info}
+        renderItem={({ item }) => (
+          <TouchableOpacity onPress={item.onPress}>
+            <Text className="font-InterMedium text-grayCustom">
+              {`${item.number} ${item.text}`}
+            </Text>
+          </TouchableOpacity>
+        )}
+        horizontal
+        ItemSeparatorComponent={() => <Text className="mx-2 text-grayCustom">•</Text>}
+        keyExtractor={(item) => item.id}
+      />
+    </>
+  );
+};
+
+export default ProfileInfo;
+
+/*
+ return (
+    <>
       <View className={`flex-row justify-between items-center space-x-10`}>
-        <Avatar imgUrl={profileUrl} size={80} onPress={openDetailProfile} />
+        <Avatar imgUrl={user?.profile} size={80} onPress={openDetailProfile} />
         <View className={`flex-1 flex-row justify-between items-center`}>
           {info.map((item) => (
             <Pressable
@@ -62,11 +96,11 @@ const ProfileInfo = ({
           ))}
         </View>
       </View>
-      <Text className="font-InterBold">{name}</Text>
-      {bio && (
+      <Text className="font-InterBold">{user?.name}</Text>
+      {user?.bio && (
         <Text className="text-[15px] text-justify">
           {text}
-          {bio?.length > 100 && !readMore && (
+          {user.bio?.length > 100 && !readMore && (
             <Text onPress={handleReadMore} className="text-gray-600">
               ...more
             </Text>
@@ -75,6 +109,4 @@ const ProfileInfo = ({
       )}
     </>
   );
-};
-
-export default ProfileInfo;
+*/
