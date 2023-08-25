@@ -77,36 +77,3 @@ const ProfileInfo = ({
 };
 
 export default ProfileInfo;
-
-/*
- return (
-    <>
-      <View className={`flex-row justify-between items-center space-x-10`}>
-        <Avatar imgUrl={user?.profile} size={80} onPress={openDetailProfile} />
-        <View className={`flex-1 flex-row justify-between items-center`}>
-          {info.map((item) => (
-            <Pressable
-              className="justify-center items-center"
-              onPress={item.onPress}
-              key={item.text}
-            >
-              <Text className="font-InterSemiBold text-lg">{item.number}</Text>
-              <Text className="font-InterMedium">{item.text}</Text>
-            </Pressable>
-          ))}
-        </View>
-      </View>
-      <Text className="font-InterBold">{user?.name}</Text>
-      {user?.bio && (
-        <Text className="text-[15px] text-justify">
-          {text}
-          {user.bio?.length > 100 && !readMore && (
-            <Text onPress={handleReadMore} className="text-gray-600">
-              ...more
-            </Text>
-          )}
-        </Text>
-      )}
-    </>
-  );
-*/
