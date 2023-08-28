@@ -24,11 +24,7 @@ import {
 } from "../../services/user";
 import { getUserPosts } from "../../services/post";
 
-const HeaderVisitProfile = ({
-  isMe,
-  goToSettings,
-  goToPrevScreen,
-}) => {
+const HeaderVisitProfile = ({ isMe, goToSettings, goToPrevScreen }) => {
   return (
     <View className={`flex-row justify-between items-center p-2`}>
       <View className="flex-row items-center space-x-6">
@@ -104,7 +100,6 @@ const VisitProfile = ({ route, navigation }) => {
   return (
     <SafeAreaView className="flex-1">
       <HeaderVisitProfile
-        username={data.username}
         isMe={loggedInUserData.id === userId}
         goToPrevScreen={goToPrevScreen}
         goToSettings={goToSettings}
@@ -117,7 +112,6 @@ const VisitProfile = ({ route, navigation }) => {
               openDetailProfile={openDetailProfile}
               followersCount={followersCount}
               followingCount={followingCount}
-              tweetsCount={dataTweets.length}
             />
             {/* button */}
             <View

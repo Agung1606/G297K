@@ -44,7 +44,7 @@ export const ButtonFollow = ({ loading, title, onPress, isFollow }) => (
 export const ButtonGray = ({ title, onPress }) => (
   <StyledPressable
     onPress={onPress}
-    className={`w-full py-1.5 justify-center items-center border border-grayCustom rounded-lg ${styles.pressableEffect}`}
+    className={`w-full py-1.5 justify-center items-center border border-grayCustom/50 rounded-lg ${styles.pressableEffect}`}
   >
     <Text className="font-InterMedium text-[15px]">{title}</Text>
   </StyledPressable>

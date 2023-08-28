@@ -9,7 +9,6 @@ import {
   ProfileInfo,
   ButtonGray,
   ButtonScrollToTop,
-  Name,
   PostCard,
   NoTweets,
   SeeProfileModal,
@@ -84,7 +83,6 @@ const Profile = ({ navigation }) => {
               openDetailProfile={openDetailProfile}
               followersCount={followersCount}
               followingCount={followingCount}
-              tweetsCount={dataTweets.length}
             />
             {/* button */}
             <View

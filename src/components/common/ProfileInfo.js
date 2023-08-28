@@ -10,7 +10,6 @@ const ProfileInfo = ({
   user,
   followersCount,
   followingCount,
-  tweetsCount,
   openDetailProfile,
 }) => {
   const navigation = useNavigation();
@@ -35,12 +34,7 @@ const ProfileInfo = ({
           text: "Mengikuti",
           userId: user.id,
         }),
-    },
-    {
-      id: 3,
-      number: changeFormat(tweetsCount),
-      text: "post",
-    },
+    }
   ];
 
   return (

@@ -1,5 +1,5 @@
 import { View, Text, Button, ToastAndroid, Image } from "react-native";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import * as Notifications from "expo-notifications";
 
 import { TWEETS, PROFILE } from "../../constant";
@@ -17,6 +17,11 @@ async function schedulePushNotification() {
       seconds: 1
     },
   });
+}
+
+const Child = ({ onPress }) => {
+  console.log("render Child component")
+  return <Button title="Press me" onPress={onPress} />
 }
 
 const AddedDummyData = ({ navigation }) => {
@@ -43,9 +48,21 @@ const AddedDummyData = ({ navigation }) => {
     ToastAndroid.show("AGUNG GANTENG!", ToastAndroid.SHORT);
   }
   
+  const [msg, setMsg] = useState(0);
+  const [count, setCount] = useState(0);
+
+  const increment = useCallback(() => {
+    setCount(prev => prev + 1);
+  }, [setCount]);
+
   return (
     <View className="flex-1 justify-center items-center">
-      <Text>AGUNG</Text>
+      <View>
+        <Text>Message: {msg}</Text>
+        <Text>Count: {count}</Text>
+      </View>
+      <Button title="Add Message" onPress={() => setMsg(prev => prev + 1)} />
+      <Child onPress={increment} />
     </View>
   );
 };

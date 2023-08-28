@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { FlatList } from "react-native";
+import { FlatList, View, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { Header, SearchUserCard } from "../../components";
@@ -76,6 +76,11 @@ const Info = ({ navigation, route }) => {
             name={item.name}
             username={item.username}
           />
+        )}
+        ListEmptyComponent={() => (
+          <View className="h-screen justify-center items-center">
+            <Text className="font-RobotoRegular text-lg text-grayCustom">Nothing to see here yet.</Text>
+          </View>
         )}
         keyExtractor={(item) => item.id}
       />
