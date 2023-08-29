@@ -3,7 +3,7 @@ import HeaderRegister from "./HeaderRegister";
 import {
   ButtonBlue,
   ButtonTransparent,
-  ButtonGray,
+  ButtonRect,
   ButtonFollow,
   ButtonScrollToTop,
 } from "./Button";
@@ -19,7 +19,7 @@ export {
   HeaderRegister,
   ButtonBlue,
   ButtonTransparent,
-  ButtonGray,
+  ButtonRect,
   ButtonFollow,
   ButtonScrollToTop,
   Name,

@@ -7,7 +7,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useScrollToTop, useModalPopup } from "../../hooks";
 import {
   ProfileInfo,
-  ButtonGray,
+  ButtonRect,
   ButtonScrollToTop,
   PostCard,
   NoTweets,
@@ -89,10 +89,10 @@ const Profile = ({ navigation }) => {
               className={`flex-row justify-between items-center space-x-2 mt-4`}
             >
               <View className="flex-1">
-                <ButtonGray title={"Edit profil"} onPress={goToEditProfile} />
+                <ButtonRect title={"Edit profil"} onPress={goToEditProfile} />
               </View>
               <View className="flex-1">
-                <ButtonGray title={"Bagikan profil"} />
+                <ButtonRect title={"Bagikan profil"} />
               </View>
             </View>
           </View>

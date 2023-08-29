@@ -25,7 +25,7 @@ const ConfirmModal = ({
     >
       <View className="space-y-2 p-4">
         <Text className="text-center font-InterBold text-lg">{title}</Text>
-        <Text className="text-center font-InterRegular">{subtitle}</Text>
+        {subtitle && <Text className="text-center font-InterRegular">{subtitle}</Text>}
       </View>
       <View className="mt-2">
         <StyledPressable

@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 import { useModalPopup } from "../../hooks";
 import {
-  ButtonGray,
+  ButtonRect,
   ButtonFollow,
   ProfileInfo,
   PostCard,
@@ -142,13 +142,13 @@ const VisitProfile = ({ route, navigation }) => {
               ) : (
                 <>
                   <View className="flex-1">
-                    <ButtonGray
+                    <ButtonRect
                       title={"Edit profil"}
                       onPress={goToEditProfile}
                     />
                   </View>
                   <View className="flex-1">
-                    <ButtonGray title={"Bagikan profil"} />
+                    <ButtonRect title={"Bagikan profil"} />
                   </View>
                 </>
               )}
