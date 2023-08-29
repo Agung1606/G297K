@@ -10,9 +10,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { setUpdateUser } from "../../redux/globalSlice";
 
 import { DEFAULT_PROFILE } from "@env";
-import { useModalPopup, bottomModalConfig } from "../../hooks";
 import { Avatar, ButtonBlue, DialogModal } from "../../components";
 import { pickImageAsync } from "../../utils";
+import { useModalPopup, useBottomModal } from "../../hooks";
 
 import { editHandler } from "../../services/user";
 
@@ -22,16 +22,6 @@ const EditProfile = ({ navigation }) => {
   const dispatch = useDispatch();
   const loggedInUserData = useSelector((state) => state.global.user);
 
-  const [isModalOpen, openModal, closeModal] = useModalPopup();
-
-  const {
-    bottomSheetModalRef,
-    snapPoints,
-    renderBackdrop,
-    openModal: openBottomModal,
-    closeModal: closeBottomModal,
-  } = bottomModalConfig(["18%"]);
-
   const [errorMsg, setErrorMsg] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -39,6 +29,16 @@ const EditProfile = ({ navigation }) => {
   const [name, setName] = useState(loggedInUserData.name);
   const [username, setUsername] = useState(loggedInUserData.username);
   const [bio, setBio] = useState(loggedInUserData.bio);
+
+  const [isModalOpen, openModal, closeModal] = useModalPopup();
+  const [
+    bottomSheetModalRef,
+    snapPoints,
+    openBottomModal,
+    closeBottomModal,
+    renderBackdrop,
+  ] = useBottomModal({ points: ["18%"] });
+
 
   return (
     <SafeAreaView className="flex-1">

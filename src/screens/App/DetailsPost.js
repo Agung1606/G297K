@@ -5,7 +5,7 @@ import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import Spinner from "react-native-loading-spinner-overlay";
 import { Ionicons } from "@expo/vector-icons";
 
-import { bottomModalConfig } from "../../hooks";
+import { useBottomModal } from "../../hooks";
 import { Header, DetailPostCard, CommentCard } from "../../components";
 
 import { deletePost, getSinglePost } from "../../services/post";
@@ -38,13 +38,13 @@ const DetailsPost = ({ route, navigation }) => {
     getComment(postId, setDataComments);
   }, []);
 
-  const {
+  const [
     bottomSheetModalRef,
     snapPoints,
-    openModal: openBottomModal,
-    closeModal: closeBottomModal,
+    openBottomModal,
+    closeBottomModal,
     renderBackdrop,
-  } = bottomModalConfig(["12%"]);
+  ] = useBottomModal({ points: ["12%"] });
 
   return (
     <SafeAreaView className="flex-1">
