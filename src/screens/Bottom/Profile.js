@@ -8,7 +8,7 @@ import { useScrollToTop, useModalPopup } from "../../hooks";
 import {
   ProfileInfo,
   ButtonRect,
-  ButtonScrollToTop,
+  ButtonRound,
   PostCard,
   NoTweets,
   SeeProfileModal,
@@ -104,7 +104,7 @@ const Profile = ({ navigation }) => {
       />
       {isScroll && (
         <View className="absolute bottom-6 right-2">
-          <ButtonScrollToTop onPress={scrollToTop} />
+          <ButtonRound onPress={scrollToTop} />
         </View>
       )}
       {/* when user press the profile this will triggered */}

@@ -38,7 +38,7 @@ const PasswordRegister = ({ route }) => {
       <View className="mt-8 mx-3 space-y-5">
         <HeaderRegister
           title="Buat kata sandi"
-          subtitle="Buat kata sandi dengan setidaknya 6 huruf dan angka. Itu harus menjadi sesuatu yang tidak bisa ditebak orang lain."
+          subtitle="Buat kata sandi dengan setidaknya 6 huruf dan angka. Pastikan tidak gampang ditebak orang lain."
           onPress={goToPrevScreen}
           showBtn
         />

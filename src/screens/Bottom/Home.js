@@ -14,7 +14,7 @@ import { useScrollToTop } from "../../hooks";
 import {
   SplashPostCard,
   PostCard,
-  ButtonScrollToTop,
+  ButtonRound,
 } from "../../components";
 import { assets } from "../../constant";
 
@@ -96,7 +96,7 @@ const Home = () => {
       )}
       {isScroll && (
         <View className="absolute bottom-6 right-2">
-          <ButtonScrollToTop onPress={scrollToTop} />
+          <ButtonRound onPress={scrollToTop} />
         </View>
       )}
     </SafeAreaView>

@@ -5,7 +5,7 @@ import {
   ButtonTransparent,
   ButtonRect,
   ButtonFollow,
-  ButtonScrollToTop,
+  ButtonRound,
 } from "./Button";
 import Name from "./Name";
 import SearchBar from "./SearchBar";
@@ -21,7 +21,7 @@ export {
   ButtonTransparent,
   ButtonRect,
   ButtonFollow,
-  ButtonScrollToTop,
+  ButtonRound,
   Name,
   SearchBar,
   ProfileInfo,

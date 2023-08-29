@@ -11,7 +11,7 @@ import { styles } from "../../style/Global";
 import { styled } from "nativewind";
 const StyledPressable = styled(Pressable);
 
-export const ButtonScrollToTop = ({ onPress }) => (
+export const ButtonRound = ({ onPress }) => (
   <StyledPressable
     onPress={onPress}
     className={`${styles.pressableEffect} bg-blue rounded-full p-2`}

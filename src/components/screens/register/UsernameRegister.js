@@ -82,7 +82,7 @@ const UsernameRegister = ({ route }) => {
       <View className="mt-8 mx-3 space-y-5">
         <HeaderRegister
           title="Buat username"
-          subtitle="Tambahkan username atau gunakan saran kami. Kamu bisa merubah ini kapanpun."
+          subtitle="Tambahkan username atau gunakan saran kami. Kamu bisa merubah username ini kapanpun."
         />
         <View>
           <View className={`${styles.inputStyle} mb-3`}>
