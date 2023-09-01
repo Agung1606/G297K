@@ -109,7 +109,7 @@ const SearchAccount = ({ navigation }) => {
                 keyExtractor={(item) => item.id}
                 ListEmptyComponent={() => (
                   <Text className="font-InterMedium text-grayCustom text-center">
-                    Coba telusuri orang
+                    Coba telusuri
                   </Text>
                 )}
               />

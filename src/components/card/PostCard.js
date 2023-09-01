@@ -48,9 +48,9 @@ const PostCard = ({ item }) => {
         <Text className="mb-2">
           <Text className="font-RobotoRegular text-[15px]">
             {item.tweet.slice(0, 550)}
-          </Text>
+          </Text>{" "}
           {item.tweet.length > 550 && (
-            <Text className="text-blue font-RobotoRegular text-[15px]">
+            <Text className="text-grayCustom font-RobotoRegular text-[15px]">
               ...Baca Lebih Lanjut
             </Text>
           )}

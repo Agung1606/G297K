@@ -37,7 +37,7 @@ const DetailPostCard = ({
         )}
       </View>
       {/* tweets */}
-      <Text className="font-RobotoRegular text-[16px]">{postData.tweet}</Text>
+      <Text className="font-RobotoRegular text-[16px] break-words">{postData.tweet}</Text>
       <View className="my-2">
         <PostInteraction
           tweetId={postData.id}

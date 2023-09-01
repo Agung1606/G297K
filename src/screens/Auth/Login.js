@@ -149,7 +149,7 @@ const Login = ({ navigation }) => {
             onPress={() => navigation.navigate("RegisterScreen")}
           />
           <Text className="text-center font-LoraBold tracking-wider text-gray-600">
-            G297K
+            JOYBOY
           </Text>
         </View>
       )}

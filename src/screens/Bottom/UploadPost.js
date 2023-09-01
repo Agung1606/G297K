@@ -64,7 +64,7 @@ const UploadPost = ({ navigation }) => {
           <Name text={loggedInUserData.username} />
           <TextInput
             placeholder={`Apa yang terjadi?`}
-            className="font-RobotoRegular text-[15px]"
+            className="font-RobotoRegular text-[15px] break-words"
             autoFocus={true}
             multiline
             maxLength={2000}
