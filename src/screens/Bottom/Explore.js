@@ -42,7 +42,7 @@ const Explore = ({ navigation }) => {
         <SearchBar isExplore onPress={goToSearchScreen} />
       </View>
       {users.length === 0 ? (
-        <ActivityIndicator size={"large"} color={"#1D7ED8"} />
+        <ActivityIndicator size={"large"} color={"#FFFFFF"} />
       ) : (
         <FlatList
           data={users}

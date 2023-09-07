@@ -1,5 +1,5 @@
+import React from "react";
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
-import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 
 import Avatar from "./Avatar";

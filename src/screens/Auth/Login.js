@@ -1,13 +1,12 @@
+import React, { useState } from "react";
 import {
   View,
   TextInput,
   Text,
   TouchableOpacity,
-  Image,
-  Platform,
-  KeyboardAvoidingView,
+  Image
 } from "react-native";
-import React, { useState } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { LinearGradient } from "expo-linear-gradient";
 import { Entypo } from "@expo/vector-icons";
 import Spinner from "react-native-loading-spinner-overlay";
@@ -83,11 +82,7 @@ const Login = ({ navigation }) => {
   };
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      className="flex-1 justify-center items-center px-[6px]"
-    >
-      <Spinner visible={loading} textContent="Tunggu..." />
+    <SafeAreaView className="flex-1 relative">
       <LinearGradient
         // Background Linear Gradient
         colors={["#C9D6FF", "#E2E2E2"]}
@@ -95,71 +90,68 @@ const Login = ({ navigation }) => {
         end={[1, 1]}
         className="absolute top-0 bottom-0 left-0 right-0"
       />
-      {/* logo */}
-      <Image
-        source={assets.logoGrk}
-        alt="logo-grk"
-        className="w-[200px] h-[60px]"
-      />
-      {/* form login wrapper */}
-      <View className="w-full h-auto p-4">
-        {/* email */}
-        <View className={`${styles.inputStyle} mb-3`}>
-          <TextInput
-            placeholder="Email"
-            className="font-InterBold text-[16px]"
-            value={email}
-            onChangeText={(text) => setEmail(text)}
+      <Spinner visible={loading} textContent="Tunggu..." />
+      <View className="relative flex-1 flex justify-center items-center px-2 ">
+        <View className="bottom-14">
+          <Image
+            source={assets.logoGrk}
+            alt="logo-grk"
+            className="w-[200px] h-[60px]"
           />
         </View>
-        {/* password */}
-        <View className={`${styles.inputStyle} mb-5`}>
-          <TextInput
-            placeholder="Kata sandi"
-            className="font-InterBold text-[16px]"
-            secureTextEntry={hidePassword}
-            value={password}
-            onChangeText={(text) => setPassword(text)}
-          />
-          <View className="absolute right-4">
-            {password && (
-              <TouchableOpacity onPress={handleHidePassword}>
-                <Entypo
-                  name={hidePassword ? "eye-with-line" : "eye"}
-                  size={22}
-                  color={styles.gray}
-                />
-              </TouchableOpacity>
-            )}
+        <View className="w-full">
+          <View className={`${styles.inputStyle} mb-3`}>
+            <TextInput
+              placeholder="Email"
+              className="font-InterBold text-[16px]"
+              value={email}
+              onChangeText={(text) => setEmail(text)}
+            />
           </View>
+          <View className={`${styles.inputStyle} mb-5`}>
+            <TextInput
+              placeholder="Kata sandi"
+              className="font-InterBold text-[16px]"
+              secureTextEntry={hidePassword}
+              value={password}
+              onChangeText={(text) => setPassword(text)}
+            />
+            <View className="absolute right-4">
+              {password && (
+                <TouchableOpacity onPress={handleHidePassword}>
+                  <Entypo
+                    name={hidePassword ? "eye-with-line" : "eye"}
+                    size={22}
+                    color={styles.gray}
+                  />
+                </TouchableOpacity>
+              )}
+            </View>
+          </View>
+          <ButtonBlue disabled={!email} title={"Masuk"} onPress={handleLogin} />
         </View>
-        {/* button login */}
-        <ButtonBlue disabled={!email} title={"Masuk"} onPress={handleLogin} />
+        <TouchableOpacity className="mt-4">
+          <Text className="font-InterSemiBold">Lupa kata sandi?</Text>
+        </TouchableOpacity>
       </View>
-      {/* forget password */}
-      <TouchableOpacity>
-        <Text className="font-InterSemiBold">Lupa kata sandi?</Text>
-      </TouchableOpacity>
-      {/* create new account */}
       {!isKeyboardVisible && (
-        <View className="w-[90%] absolute bottom-3 space-y-1">
+        <View className="w-full px-2">
           <ButtonTransparent
             title={"Buat akun baru"}
             borderColor={"border-blue"}
             onPress={() => navigation.navigate("RegisterScreen")}
           />
-          <Text className="text-center font-LoraBold tracking-wider text-gray-600">
+          <Text className="text-center font-LoraBold tracking-wider uppercase text-gray-600">
             JOYBOY
           </Text>
         </View>
       )}
-      {/* simple modal */}
       <DialogModal
         isModalOpen={isModalOpen}
         msg={errorMsg}
         closeModal={closeModal}
       />
-    </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 };
 
