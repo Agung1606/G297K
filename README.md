@@ -1,4 +1,4 @@
-# G297K - (Social Media App)
+# Social Media App
 
 I created this social media app for the purpose of learning and exploring technology,The technology behind the scenes is React Native, Firebase, and open source libraries.
 
