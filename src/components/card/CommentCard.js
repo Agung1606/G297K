@@ -7,7 +7,7 @@ import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import Spinner from "react-native-loading-spinner-overlay";
 
 import { Avatar, Name } from "../common";
-import { bottomModalConfig } from "../../hooks";
+import { useBottomModal } from "../../hooks";
 import { formatRelativeTime } from "../../utils";
 
 import { deleteComment } from "../../services/comment";
@@ -20,13 +20,13 @@ const CommentCard = ({ item }) => {
       userId: item.userId,
     });
 
-  const {
+  const [
     bottomSheetModalRef,
     snapPoints,
-    openModal: openBottomModal,
-    closeModal: closeBottomModal,
+    openBottomModal,
+    closeBottomModal,
     renderBackdrop,
-  } = bottomModalConfig(["12%"]);
+  ] = useBottomModal({ points: ["12%"] });
 
   const loggedInUserId = useSelector((state) => state.global.user.id);
   const [loading, setLoading] = useState(false);
